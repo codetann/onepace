@@ -1,36 +1,37 @@
-import { Chip } from "@heroui/react";
-import React, { useEffect } from "react";
+import { Chip, Button, Spinner } from "@heroui/react";
+import { useState } from "react";
 import { FiClock } from "react-icons/fi";
 import {
   BiCheck,
-  BiStar,
-  BiBook,
-  BiTv,
   BiPlay,
   BiX,
-  BiArrowToBottom,
   BiChevronDown,
-  BiChevronUp,
 } from "react-icons/bi";
-import { data, useNavigate, useParams } from "react-router";
-import { useState } from "react";
-import { Button } from "@heroui/react";
+import { useNavigate, useParams } from "react-router";
 import { jellyfinClient } from "@/api/jellyfin";
 import { useDataContext } from "@/context";
+import type { Arc, Episode } from "@/typings";
 
 interface EpisodesProps {
-  data: any;
+  data: Arc;
 }
 
 export default function Episodes({ data }: EpisodesProps) {
   const { episodeId } = useParams();
+  const { isEpisodePlayed, getEpisodeProgress } = useDataContext();
+
   if (!data) {
-    return <div>Episodes not found</div>;
+    return (
+      <div className="flex flex-col items-center justify-center py-12 gap-3 w-full">
+        <Spinner size="md" color="accent" />
+        <p className="text-white/50 text-xs animate-pulse">Loading episodes...</p>
+      </div>
+    );
   }
 
-  const handleJumpToEpisode = (episodeId: string) => {
+  const handleJumpToEpisode = (targetEpisodeId: string) => {
     document.getElementById("content")?.scrollTo({
-      top: document.getElementById(episodeId)?.offsetTop,
+      top: document.getElementById(targetEpisodeId)?.offsetTop,
       behavior: "smooth",
     });
   };
@@ -52,75 +53,95 @@ export default function Episodes({ data }: EpisodesProps) {
       </div>
 
       <div className="flex flex-col gap-2">
-        {data.episodes.map((episode, index) => (
-          <EpisodeCard
-            key={episode.metadata.Id}
-            arcId={data.id.toString()}
-            episode={episode}
-            isWatching={episodeId === episode.id.toString()}
-            isWatched={episode.metadata.UserData?.Played}
-          />
-        ))}
+        {data.episodes.map((episode) => {
+          const played =
+            episode.metadata?.UserData?.Played ??
+            isEpisodePlayed(data.id, episode.id);
+          const progress = getEpisodeProgress(data.id, episode.id);
+
+          return (
+            <EpisodeCard
+              key={episode.metadata?.Id || `${data.id}-${episode.id}`}
+              arcId={data.id.toString()}
+              arcTitle={data.title}
+              episode={episode}
+              isWatching={episodeId === episode.id.toString()}
+              isWatched={played}
+              progressPercent={progress.percent}
+              positionTicks={progress.ticks}
+            />
+          );
+        })}
       </div>
-      {/* <Button
-        isIconOnly
-        size="lg"
-        className="fixed bottom-10 right-10"
-        onPress={() =>
-          document
-            .getElementById("content")
-            ?.scrollTo({ top: 0, behavior: "smooth" })
-        }
-      >
-        <BiChevronUp />
-      </Button> */}
     </div>
   );
 }
 
-function ticksToMinutes(ticks: number): number {
-  return (ticks / 10000000 / 60).toFixed(2);
+function ticksToMinutes(ticks: number): string {
+  return (ticks / 10000000 / 60).toFixed(0);
 }
 
 interface EpisodeCardProps {
   arcId: string;
-  episode: any;
-  isPlaying: boolean;
+  arcTitle: string;
+  episode: Episode;
   isWatched?: boolean;
   isWatching?: boolean;
+  progressPercent?: number;
+  positionTicks?: number;
 }
+
 function EpisodeCard({
   arcId,
+  arcTitle,
   episode,
   isWatched,
   isWatching,
+  progressPercent = 0,
+  positionTicks = 0,
 }: EpisodeCardProps) {
   const { refreshData } = useDataContext();
   const navigate = useNavigate();
-  const handleNavigate = (episodeId: number) =>
-    navigate(`/${arcId}/${episodeId}`);
+  const handleNavigate = (targetEpisodeId: number) =>
+    navigate(`/${arcId}/${targetEpisodeId}`);
   const [isHovering, setIsHovering] = useState(false);
   const [isHoveringFinished, setIsHoveringFinished] = useState(false);
 
-  const handleFinish = async () => {
-    await jellyfinClient.unmarkPlayedItem(episode.metadata.Id);
-
-    refreshData();
+  const handleTogglePlayed = async () => {
+    const itemId = episode.metadata?.Id;
+    if (!itemId) return;
+    if (isWatched) {
+      await jellyfinClient.unmarkPlayedItem(itemId);
+    } else {
+      await jellyfinClient.markPlayedItem(itemId);
+    }
+    await refreshData();
   };
+
+  const runtimeTicks = episode.metadata?.RunTimeTicks || 0;
+  const calculatedPercent =
+    progressPercent > 0
+      ? progressPercent
+      : runtimeTicks > 0 && positionTicks > 0
+        ? Math.min(100, Math.round((positionTicks / runtimeTicks) * 100))
+        : 0;
 
   return (
     <div
-      key={episode.metadata.Id}
+      key={episode.metadata?.Id || episode.id}
       id={episode.id.toString()}
-      className={`flex items-start gap-4 rounded-2xl px-2  py-2 hover:bg-default/10 sm:flex-row sm:items-start flex-col w-full`}
+      className="flex items-start gap-4 rounded-2xl px-2 py-2 hover:bg-default/10 xl:flex-row sm:items-start flex-col w-full"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
       <div
-        className={`lg:w-64 w-full  rounded-sm flex justify-center items-center brightness-80 hover:brightness-100 transition-all duration-300 ${isHovering ? "brightness-100" : "brightness-80"}`}
+        className={`relative xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center brightness-90 hover:brightness-100 transition-all duration-300 ${isHovering ? "brightness-100" : "brightness-90"}`}
         style={{
           aspectRatio: "16 / 9",
-          backgroundImage: `url(${jellyfinClient.getItemImageUrl(episode.metadata?.Id || "")})`,
+          backgroundImage: episode.metadata?.Id
+            ? `url(${jellyfinClient.getItemImageUrl(episode.metadata.Id)})`
+            : undefined,
+          backgroundColor: "#18181b",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -128,61 +149,85 @@ function EpisodeCard({
       >
         {isHovering && (
           <Button
-            variant={"tertiary"}
+            variant="tertiary"
             isIconOnly
-            className="rounded-full mx-4 text-sm p-2"
-            onPress={() => handleNavigate(episode.id.toString())}
+            className="rounded-full mx-4 text-sm p-2 shadow-lg"
+            onPress={() => handleNavigate(episode.id)}
           >
             <BiPlay size={24} />
           </Button>
         )}
-        <Chip
-          size="sm"
-          color="default"
-          className="gap-1 absolute bottom-2 right-2 "
-        >
-          <FiClock />
-          {ticksToMinutes(episode.metadata?.RunTimeTicks || 0)}
-        </Chip>
+
+        {/* Runtime Badge */}
+        {runtimeTicks > 0 && (
+          <Chip
+            size="sm"
+            color="default"
+            className="gap-1 absolute bottom-2 right-2 bg-black/70 text-white border-none"
+          >
+            <FiClock />
+            {ticksToMinutes(runtimeTicks)}m
+          </Chip>
+        )}
+
+        {/* Progress Bar overlay on thumbnail */}
+        {!isWatched && calculatedPercent > 0 && (
+          <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-black/60 overflow-hidden">
+            <div
+              className="h-full bg-accent transition-all duration-300"
+              style={{ width: `${calculatedPercent}%` }}
+            />
+          </div>
+        )}
       </div>
 
-      <div className="flex flex-col gap-1 pr-3 pb-2">
-        <span className="flex items-center gap-2 ">
+      <div className="flex flex-col gap-1 pr-3 pb-2 flex-1">
+        <div className="flex items-center gap-2 flex-wrap">
           {isWatching && (
             <Chip size="sm" color="accent">
               <BiPlay /> Watching
             </Chip>
           )}
+
           <p
             className={`hover:underline cursor-pointer text-md font-semibold ${isWatching ? "text-accent" : ""} ${isWatched ? "line-through opacity-70" : ""}`}
-            onClick={() => handleNavigate(episode.id.toString())}
+            onClick={() => handleNavigate(episode.id)}
           >
-            {episode.title}
+            {arcTitle} Episode {episode.id}
           </p>
-          {isWatched && (
+
+          {isWatched ? (
             <Chip
               size="sm"
               color="success"
-              className="cursor-pointer hover:bg-success/10 hover:text-success  transition-all duration-200 hover:opacity-90"
+              className="cursor-pointer hover:bg-success/20 transition-all duration-200"
               onMouseEnter={() => setIsHoveringFinished(true)}
               onMouseLeave={() => setIsHoveringFinished(false)}
-              onClick={handleFinish}
+              onClick={handleTogglePlayed}
+              title="Click to mark as unplayed"
             >
               {isHoveringFinished ? <BiX /> : <BiCheck />} Finished
             </Chip>
+          ) : (
+            <Button
+              size="sm"
+              variant="ghost"
+              className="text-xs h-6 px-2 text-muted hover:text-success flex items-center gap-1 cursor-pointer"
+              onPress={handleTogglePlayed}
+              aria-label="Mark as watched"
+            >
+              <BiCheck /> Mark watched
+            </Button>
           )}
-        </span>
-        <span className="flex items-center gap-2 my-1 ">
-          <Chip color="default" className="gap-1" size="sm">
-            <BiBook />
-            {episode?.coverage?.manga}
-          </Chip>
-          <Chip color="default" className="gap-1" size="sm">
-            <BiTv />
-            {episode?.coverage?.anime}
-          </Chip>
-        </span>
-        <p className="text-muted text-sm max-w-2xl">{episode.description}</p>
+
+          {!isWatched && calculatedPercent > 0 && (
+            <Chip size="sm" color="accent" variant="secondary" className="text-xs">
+              {calculatedPercent}% watched
+            </Chip>
+          )}
+        </div>
+
+        <p className="text-muted text-sm max-w-4xl">{episode.description}</p>
       </div>
     </div>
   );

@@ -2,11 +2,12 @@ import { jellyfinClient } from "@/api/jellyfin/client";
 import { DATA } from "@/data/data";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
+import type { Arc } from "@/typings";
 
 export const useArcData = () => {
   const { arcId } = useParams();
   const location = useLocation();
-  const [_data, setData] = useState(() => {
+  const [_data, setData] = useState<Arc | null>(() => {
     const arc = DATA.arcs.find((arc) => arc.id === parseInt(arcId || "0"));
     if (arc) {
       return arc;
@@ -29,7 +30,7 @@ export const useArcData = () => {
           ...episode,
           metadata: episodes[index],
         })),
-      } as any);
+      } as unknown as Arc);
     };
     fetchData();
   }, [arcId, location.pathname]);

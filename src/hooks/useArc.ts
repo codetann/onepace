@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import type { Arc } from "@/typings";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 
-const CACHE_KEY = "onepace:arc";
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL || "http://localhost:3001"
+).replace(/\/+$/, "");
 
 export const useArc = () => {
   const { arcId } = useParams();
@@ -15,7 +17,7 @@ export const useArc = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const data = await fetch(`http://localhost:3001/api/arcs/${arcId}`);
+        const data = await fetch(`${API_BASE_URL}/api/arcs/${arcId}`);
         console.log(data);
         const json = await data.json();
         setArc(json);

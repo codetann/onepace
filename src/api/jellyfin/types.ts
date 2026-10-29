@@ -2,6 +2,10 @@ export interface JellyfinUser {
   Id: string;
   Name: string;
   ServerId?: string;
+  Policy?: {
+    IsAdministrator?: boolean;
+    [key: string]: unknown;
+  };
 }
 
 export interface JellyfinAuthenticationRequest {
@@ -77,6 +81,8 @@ export interface JellyfinItem {
   Type: string;
   Overview?: string;
   ParentId?: string;
+  SeasonId?: string;
+  IndexNumber?: number;
   SeriesName?: string;
   ProductionYear?: number;
   RunTimeTicks?: number;

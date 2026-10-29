@@ -18,13 +18,13 @@ export const useUtils = () => {
   }, [arc, arcs]);
 
   const nextEpisode = useMemo(() => {
-    if (!arc) return null;
-    return arc?.episodes?.find((e) => e.id === arc?.episodes?.id + 1);
-  }, [arc, arc?.episodes]);
+    if (!arc?.episodes?.length) return null;
+    return arc.episodes[0] ?? null;
+  }, [arc]);
   const previousEpisode = useMemo(() => {
-    if (!arc) return null;
-    return arc?.episodes?.find((e) => e.id === arc?.episodes?.id - 1);
-  }, [arc, arc?.episodes]);
+    if (!arc?.episodes?.length) return null;
+    return arc.episodes[0] ?? null;
+  }, [arc]);
   const navigateTo = (arcId: number, episodeId?: number) => {
     navigate(`/${arcId}${episodeId ? `/${episodeId}` : ""}`);
   };

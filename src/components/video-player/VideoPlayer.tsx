@@ -13,7 +13,7 @@
 
 import React, { useRef, useState, useCallback, useEffect } from "react";
 import type { MouseEvent as RMouseEvent, PointerEvent as RPointerEvent } from "react";
-import { Button, Chip, Slider, Tooltip } from "@heroui/react";
+import { Button, Chip, Tooltip } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { JellyfinPlaybackInfoResponse } from "@/api/jellyfin/types";
 import { jellyfinClient, jellyfinSecondsToTicks } from "@/api/jellyfin";
@@ -23,6 +23,7 @@ import {
   BiPause,
   BiPlay,
   BiVolumeFull,
+  BiVolumeLow,
   BiVolumeMute,
   BiWindows,
 } from "react-icons/bi";
@@ -33,8 +34,11 @@ const PlayIcon = () => <BiPlay />;
 
 const PauseIcon = () => <BiPause />;
 
-const VolumeIcon = ({ muted }: { muted: boolean }) =>
-  muted ? <BiVolumeMute /> : <BiVolumeFull />;
+const VolumeIcon = ({ muted, vol }: { muted: boolean; vol: number }) => {
+  if (muted || vol === 0) return <BiVolumeMute />;
+  if (vol < 0.5) return <BiVolumeLow />;
+  return <BiVolumeFull />;
+};
 
 const FullscreenIcon = () => <BiFullscreen />;
 
@@ -253,29 +257,84 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // ── Volume ────────────────────────────────────────────────────────────────
 
-  // HeroUI v3 Slider: onChange receives `number | number[]`
-  const handleVolumeChange = useCallback((val: number | number[]) => {
+  const volumeBarRef = useRef<HTMLDivElement>(null);
+  const [isDraggingVolume, setIsDraggingVolume] = useState(false);
+
+  const handleVolumeChange = useCallback((val: number) => {
     const v = videoRef.current;
-    const vol = Array.isArray(val) ? val[0] : val;
-    if (!v) return;
-    v.volume = vol;
-    if (vol > 0) {
-      preMuteVolumeRef.current = vol;
-      if (v.muted) {
+    const clamped = Math.max(0, Math.min(1, Math.round(val * 100) / 100));
+    if (v) {
+      v.volume = clamped;
+      if (clamped > 0) {
+        preMuteVolumeRef.current = clamped;
         v.muted = false;
         setMuted(false);
+      } else {
+        v.muted = true;
+        setMuted(true);
       }
     }
-    setVolume(vol);
-    setMuted(vol === 0);
+    setVolume(clamped);
+    if (clamped === 0) {
+      setMuted(true);
+    }
   }, []);
+
+  const updateVolumeFromPointer = useCallback(
+    (clientX: number) => {
+      if (!volumeBarRef.current) return;
+      const rect = volumeBarRef.current.getBoundingClientRect();
+      if (rect.width <= 0) return;
+      const raw = (clientX - rect.left) / rect.width;
+      handleVolumeChange(raw);
+    },
+    [handleVolumeChange],
+  );
+
+  const onVolumePointerDown = (e: RPointerEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    e.preventDefault();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+    setIsDraggingVolume(true);
+    updateVolumeFromPointer(e.clientX);
+  };
+
+  const onVolumePointerMove = (e: RPointerEvent<HTMLDivElement>) => {
+    if (isDraggingVolume) {
+      e.stopPropagation();
+      updateVolumeFromPointer(e.clientX);
+    }
+  };
+
+  const onVolumePointerUp = (e: RPointerEvent<HTMLDivElement>) => {
+    if (isDraggingVolume) {
+      e.stopPropagation();
+      setIsDraggingVolume(false);
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        /* ignore */
+      }
+    }
+  };
+
+  const onVolumeWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    const current = muted ? 0 : volume;
+    const delta = e.deltaY < 0 ? 0.05 : -0.05;
+    handleVolumeChange(current + delta);
+  };
 
   const toggleMute = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
-    if (v.muted) {
+    if (v.muted || muted || volume === 0) {
       const next =
-        preMuteVolumeRef.current > 0.02 ? preMuteVolumeRef.current : 0.25;
+        preMuteVolumeRef.current > 0.05 ? preMuteVolumeRef.current : 0.5;
       v.muted = false;
       v.volume = next;
       setMuted(false);
@@ -283,9 +342,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     } else {
       preMuteVolumeRef.current = v.volume > 0 ? v.volume : volume;
       v.muted = true;
+      v.volume = 0;
       setMuted(true);
+      setVolume(0);
     }
-  }, [volume]);
+  }, [muted, volume]);
 
   // ── Seek ──────────────────────────────────────────────────────────────────
 
@@ -339,6 +400,44 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setPlaybackRate(rate);
     setShowSettings(false);
   }, []);
+
+  // Keyboard shortcuts (only active once the user has engaged with the player,
+  // and ignored while typing in form fields):
+  //   1 / 2          → playback rate 1×/2×
+  //   ← / →          → seek back/forward 15 seconds
+  useEffect(() => {
+    if (!hasStarted) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const target = e.target as HTMLElement | null;
+      if (target) {
+        const tag = target.tagName;
+        if (
+          tag === "INPUT" ||
+          tag === "TEXTAREA" ||
+          tag === "SELECT" ||
+          target.isContentEditable
+        ) {
+          return;
+        }
+      }
+      if (e.key === "1") {
+        e.preventDefault();
+        applyRate(1);
+      } else if (e.key === "2") {
+        e.preventDefault();
+        applyRate(2);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        seekBy(15);
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        seekBy(-15);
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [hasStarted, applyRate, seekBy]);
 
   // ── Auto-hide controls ────────────────────────────────────────────────────
 
@@ -453,11 +552,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       if (!base) return;
       jellyfinStoppedRef.current = true;
       activeJellyfinSessionRef.current = null;
+      const currentTicks = jellyfinSecondsToTicks(v.currentTime);
       void jellyfinClient.reportPlaybackStopped({
         ...base,
-        PositionTicks: jellyfinSecondsToTicks(v.currentTime),
+        PositionTicks: currentTicks,
         Played: played,
       });
+
+      if (played) {
+        void jellyfinClient.markPlayedItem(base.ItemId);
+      } else if (currentTicks > 0) {
+        void jellyfinClient.updateItemUserData(base.ItemId, {
+          PlaybackPositionTicks: currentTicks,
+          Played: false,
+        });
+      }
     };
 
     const onPlay = () => {
@@ -469,11 +578,17 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const onPause = () => {
       setPlaying(false);
       setShowControls(true);
-      jellyfinLastPositionTicksRef.current = jellyfinSecondsToTicks(
-        v.currentTime,
-      );
+      const currentTicks = jellyfinSecondsToTicks(v.currentTime);
+      jellyfinLastPositionTicksRef.current = currentTicks;
       jellyfinLastProgressAtRef.current = Date.now();
       sendProgress();
+      const s = getSession();
+      if (s.ok && s.itemId) {
+        void jellyfinClient.updateItemUserData(s.itemId, {
+          PlaybackPositionTicks: currentTicks,
+          Played: false,
+        });
+      }
     };
 
     const onTimeUpdate = () => {
@@ -782,35 +897,45 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                     isIconOnly
                     size="sm"
                     onPress={toggleMute}
-                    className="text-white hover:bg-white/10 rounded-lg"
-                    aria-label={muted ? "Unmute" : "Mute"}
+                    className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                    aria-label={muted || volume === 0 ? "Unmute" : "Mute"}
                   >
-                    <VolumeIcon muted={muted} />
+                    <VolumeIcon muted={muted} vol={volume} />
                   </Button>
                 </Tooltip.Trigger>
                 <Tooltip.Content placement="top">
-                  {muted ? "Unmute" : "Mute"}
+                  {muted || volume === 0 ? "Unmute" : "Mute"}
                 </Tooltip.Content>
               </Tooltip>
 
-              {/* Volume: true level + mute restores previous level */}
+              {/* Volume Slider: smooth clickable/draggable bar */}
               <div
-                className={`mx-1 flex min-w-0 flex-1 items-center gap-2 sm:max-w-[100px] ${muted ? "opacity-70" : ""}`}
+                className="group/vol mx-1 flex items-center py-2 cursor-pointer select-none"
+                onWheel={onVolumeWheel}
+                title={`Volume: ${Math.round((muted ? 0 : volume) * 100)}%`}
               >
-                <Slider
-                  aria-label="Volume"
-                  minValue={0}
-                  maxValue={1}
-                  step={0.01}
-                  value={volume}
-                  onChange={handleVolumeChange}
-                  className="min-w-0 flex-1 "
+                <div
+                  ref={volumeBarRef}
+                  onPointerDown={onVolumePointerDown}
+                  onPointerMove={onVolumePointerMove}
+                  onPointerUp={onVolumePointerUp}
+                  onPointerCancel={onVolumePointerUp}
+                  className="w-20 sm:w-24 h-6 flex items-center touch-none relative"
                 >
-                  <Slider.Track className={"h-1 "}>
-                    <Slider.Fill />
-                    <Slider.Thumb className="size-3.5 rounded-full border border-white/30 bg-white shadow-md ring-2 ring-white/20" />
-                  </Slider.Track>
-                </Slider>
+                  {/* Track Background */}
+                  <div className="w-full h-1.5 rounded-full bg-white/30 group-hover/vol:h-2 transition-all relative overflow-hidden">
+                    {/* Active Fill */}
+                    <div
+                      className="h-full bg-white rounded-full transition-[width] duration-75"
+                      style={{ width: `${(muted ? 0 : volume) * 100}%` }}
+                    />
+                  </div>
+                  {/* Thumb */}
+                  <div
+                    className="absolute size-3 rounded-full bg-white shadow-md top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none group-hover/vol:scale-110 transition-transform"
+                    style={{ left: `${(muted ? 0 : volume) * 100}%` }}
+                  />
+                </div>
               </div>
 
               {/* Timestamp */}

@@ -16,7 +16,7 @@ import type {
   JellyfinUser,
 } from "./types";
 
-const DEFAULT_BASE_URL = "http://localhost:8096";
+const DEFAULT_BASE_URL = "https://jellyfin.tannerthomas.dev";
 const API_KEY = import.meta.env.VITE_JELLYFIN_API_KEY ?? "";
 
 /**
@@ -58,7 +58,7 @@ const getResolvedUserId = (): string => {
 const normalizeBaseUrl = (url: string): string => url.replace(/\/+$/, "");
 
 const BASE_URL = normalizeBaseUrl(
-  import.meta.env.VITE_JELLYFIN_URL ?? DEFAULT_BASE_URL,
+  import.meta.env.VITE_JELLYFIN_URL || DEFAULT_BASE_URL,
 );
 
 const buildUrl = (
@@ -101,6 +101,10 @@ const authFetchHeaders = (options: RequestInit = {}): HeadersInit => {
   const token = getEmbyToken();
   if (token) {
     headers.set("X-Emby-Token", token);
+    headers.set(
+      "Authorization",
+      `MediaBrowser Client="OnePace", Device="Web", DeviceId="onepace-web", Version="1.0.0", Token="${token}"`,
+    );
   }
   return headers;
 };
@@ -384,12 +388,43 @@ export const jellyfinClient = {
   /**
    * Jellyfin: `POST /UserPlayedItems/{itemId}` — mark current user's item as played.
    */
-  markPlayedItem(itemId: string): Promise<void> {
-    return requestNoContent(`/UserPlayedItems/${itemId}`, { method: "POST" });
+  markPlayedItem(itemId: string, userId = getResolvedUserId()): Promise<void> {
+    return requestNoContent(
+      `/UserPlayedItems/${itemId}`,
+      { method: "POST" },
+      userId ? { userId } : {},
+    );
   },
 
-  unmarkPlayedItem(itemId: string): Promise<void> {
-    return requestNoContent(`/UserPlayedItems/${itemId}`, { method: "DELETE" });
+  unmarkPlayedItem(itemId: string, userId = getResolvedUserId()): Promise<void> {
+    return requestNoContent(
+      `/UserPlayedItems/${itemId}`,
+      { method: "DELETE" },
+      userId ? { userId } : {},
+    );
+  },
+
+  /**
+   * Updates user data for an item (playback position, played status).
+   * Jellyfin: `POST /UserItems/{itemId}/UserData`
+   */
+  updateItemUserData(
+    itemId: string,
+    data: {
+      PlaybackPositionTicks?: number;
+      Played?: boolean;
+    },
+    userId = getResolvedUserId(),
+  ): Promise<void> {
+    return requestNoContent(
+      `/UserItems/${itemId}/UserData`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      },
+      userId ? { userId } : {},
+    );
   },
 
   /**

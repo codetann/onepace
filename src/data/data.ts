@@ -2,7 +2,7 @@ export const DATA = {
   arcs: [
     {
       id: 1,
-      showId: "b1049c8fd5772698d0deca4adb296d58",
+      showId: "21d677d99bd9bd774382050d40ccefc0",
       title: "Romance Dawn",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-1-Romance-Dawn-ALT.jpg",
@@ -19,8 +19,9 @@ export const DATA = {
         {
           id: 1,
           title: "Romance Dawn 01",
+          altTitle: "Romance Dawn, the Dawn of an Adventure",
           description:
-            "Luffy's origin and motivation are established as he begins his adventure and makes his first move toward becoming a pirate captain.",
+            "A young Monkey D. Luffy is inspired by the pirate Red-Haired Shanks and begins dreaming of becoming King of the Pirates. After gaining strange rubber powers, he sets his sights on one day setting sail for the Grand Line.",
           coverage: {
             anime: "1",
             manga: "1",
@@ -30,8 +31,9 @@ export const DATA = {
         {
           id: 2,
           title: "Romance Dawn 02",
+          altTitle: "They Call Him “Straw Hat” Luffy",
           description:
-            "With his goal set, Luffy reaches a Marine-held town and gets pulled into a local conflict that tests his values and resolve.",
+            "Luffy’s journey begins when he emerges from a barrel aboard Alvida’s pirate ship. There he meets the timid cabin boy Koby, and the two quickly form an unlikely friendship built on shared dreams of freedom.",
           coverage: {
             anime: "2",
             manga: "2",
@@ -41,8 +43,9 @@ export const DATA = {
         {
           id: 3,
           title: "Romance Dawn 03",
+          altTitle: "The Pirate King and the Master Swordsman",
           description:
-            "Luffy pushes forward to free a potential crewmate, confronting danger head-on while proving what kind of captain he wants to be.",
+            "Arriving at Shells Town, Luffy searches for strong crewmates and learns of the feared bounty hunter Roronoa Zoro. While dealing with Helmeppo and the corrupt Marines, Luffy decides Zoro is exactly the kind of ally he needs.",
           coverage: {
             anime: "3-5",
             manga: "3-5",
@@ -52,8 +55,9 @@ export const DATA = {
         {
           id: 4,
           title: "Romance Dawn 04",
+          altTitle: "The First",
           description:
-            "The first major stand in Luffy's journey concludes, laying the groundwork for the crew's next destination and the wider world ahead.",
+            "Luffy works to free Zoro and challenge the tyrannical Captain Morgan. After a fierce first battle together, the Straw Hat Pirates officially gain their first swordsman and set sail for greater adventures.",
           coverage: {
             anime: "5-7",
             manga: "5-7",
@@ -64,7 +68,7 @@ export const DATA = {
     },
     {
       id: 2,
-      showId: "4e97f9e98986d8cd0d6547833a8bd623",
+      showId: "eafdc46376264e332563178628497c1b",
       title: "Orange Town",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-2-Orange-Town-ALT.jpg",
@@ -83,8 +87,9 @@ export const DATA = {
         {
           id: 1,
           title: "Orange Town 01",
+          altTitle: "The Town Under Siege",
           description:
-            "The crew enters Orange Town, meets a key new player, and gets pulled into a clash with a dangerous pirate crew.",
+            "Luffy and Zoro arrive at Orange Town, a village overrun by the clown pirate Buggy and his crew. While searching for supplies, they meet the crafty thief Nami, who has her own plans involving pirates and treasure.",
           coverage: {
             anime: "5-6",
             manga: "8-11",
@@ -94,8 +99,9 @@ export const DATA = {
         {
           id: 2,
           title: "Orange Town 02",
+          altTitle: "Buggy the Clown",
           description:
-            "Alliances stay uneasy as the battle in town escalates and each side pushes for control of the situation.",
+            "As Buggy reveals the strange powers of the Chop-Chop Fruit, Luffy and Zoro are pulled into a chaotic fight against his officers. Nami must decide whether to use the newcomers for her own gain or trust them.",
           coverage: {
             anime: "6-7",
             manga: "11-18",
@@ -105,8 +111,9 @@ export const DATA = {
         {
           id: 3,
           title: "Orange Town 03",
+          altTitle: "A New Companion",
           description:
-            "The conflict reaches its conclusion, and the crew leaves Orange Town with stronger momentum for the next leg of the adventure.",
+            "The battle for Orange Town reaches its end as Luffy takes on Buggy directly. With the town freed and new bonds beginning to form, the Straw Hat crew leaves with greater momentum for the journey ahead.",
           coverage: {
             anime: "7-8",
             manga: "19-21",
@@ -117,7 +124,7 @@ export const DATA = {
     },
     {
       id: 3,
-      showId: "b6246456e52f1691dab15f1904d51b12",
+      showId: "9736b447e0676907d2032089e677206a",
       title: "Syrup Village",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-3-Syrup-Village-ALT.jpg",
@@ -136,56 +143,63 @@ export const DATA = {
         {
           id: 1,
           title: "Syrup Village 01",
+          altTitle: "The Liar of the Village",
           description:
-            "A new island introduces unusual locals, fresh personalities, and early signs that trouble is closer than it first seems.",
+            "The Straw Hats arrive at Syrup Village and meet Usopp, a loud but kindhearted storyteller who dreams of adventure. His daily cries of “pirates are coming” hide deeper loneliness and bigger ambitions.",
           coverage: { anime: "9-10", manga: "22-24" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Syrup Village 02",
+          altTitle: "Kaya and the Butler",
           description:
-            "As the crew settles in, hidden motives begin to surface and the situation around the village grows more tense.",
+            "Usopp introduces the crew to Kaya, a wealthy young woman recovering from illness. At her mansion, the crew meets her stern caretaker Klahadore, whose calm demeanor hides suspicious intentions.",
           coverage: { anime: "10-11", manga: "25-27" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Syrup Village 03",
+          altTitle: "A Hidden Plot",
           description:
-            "Plans are set in motion and the crew has to decide who to trust while preparing for an incoming confrontation.",
+            "Usopp uncovers the truth that Klahadore is actually the pirate Captain Kuro. Realizing Kaya and the village are in danger, he races to warn everyone before the planned attack begins.",
           coverage: { anime: "11-12", manga: "28-30" },
           length: "TBD",
         },
         {
           id: 4,
           title: "Syrup Village 04",
+          altTitle: "No One Believes the Liar",
           description:
-            "The first clashes begin and the crew is pushed to coordinate under pressure against a more organized threat.",
+            "Because of Usopp’s history of tall tales, the villagers dismiss his warnings. Forced to face the threat seriously for the first time, Usopp resolves to fight even if no one stands beside him.",
           coverage: { anime: "12-14", manga: "31-33" },
           length: "TBD",
         },
         {
           id: 5,
           title: "Syrup Village 05",
+          altTitle: "Pirates at the Shore",
           description:
-            "The battle spreads across the village outskirts, with each crewmate facing difficult choices and close calls.",
+            "Kuro’s crew lands at the coast and the battle begins. Luffy, Zoro, and Nami join Usopp to stop the invasion while protecting Kaya from Kuro’s larger scheme.",
           coverage: { anime: "14-15", manga: "34-36" },
           length: "TBD",
         },
         {
           id: 6,
           title: "Syrup Village 06",
+          altTitle: "Clash with Captain Kuro",
           description:
-            "Momentum swings as the crew adapts to the enemy's tactics and fights to protect their new friends.",
+            "The fighting intensifies as Captain Kuro reveals his speed and deadly skill. Each Straw Hat is pushed into battle while Usopp struggles to prove his courage through action.",
           coverage: { anime: "15-17", manga: "37-39" },
           length: "TBD",
         },
         {
           id: 7,
           title: "Syrup Village 07",
+          altTitle: "Departure",
           description:
-            "Syrup Village reaches its conclusion and the Straw Hats leave with stronger bonds and a clearer direction.",
+            "With Kuro defeated, peace returns to the village. In gratitude, Kaya gifts the crew a ship called the Going Merry, and Usopp leaves home to begin life as a pirate.",
           coverage: { anime: "17-18", manga: "40-41" },
           length: "TBD",
         },
@@ -193,7 +207,7 @@ export const DATA = {
     },
     {
       id: 4,
-      showId: "36968b5901ff08d5d275e6e9168aa244",
+      showId: "35477688911a7785260e0e7a94b2618b",
       title: "Gaimon",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-4-Gaimon-ALT.jpg",
@@ -210,8 +224,9 @@ export const DATA = {
         {
           id: 1,
           title: "Gaimon 01",
+          altTitle: "The Strange Creature of the Island",
           description:
-            "The Straw Hats meet an unusual castaway and learn that even a quick stop can leave a lasting impression.",
+            "While sailing toward Baratie, the Straw Hats stop at an isolated island inhabited by rare animals and meet Gaimon, a man stranded for years inside a treasure chest. After helping him chase the treasure he once dedicated his life to, the crew learns that some things become more valuable than gold. With a heartfelt farewell, they continue their journey across the East Blue.",
           coverage: {
             anime: "18",
             manga: "22",
@@ -222,7 +237,7 @@ export const DATA = {
     },
     {
       id: 5,
-      showId: "465b3baa228be7c07ad358188f1f05a5",
+      showId: "e6433dfa45b97f5098ffbf3a89e0b2b3",
       title: "Baratie",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-5-Baratie-ALT.jpg",
@@ -239,64 +254,72 @@ export const DATA = {
         {
           id: 1,
           title: "Baratie 01",
+          altTitle: "The Sea Restaurant",
           description:
-            "The crew reaches Baratie and quickly gets involved in the bustling rhythm and tension of life at a sea restaurant.",
+            "The Straw Hats arrive at the floating restaurant Baratie while searching for a cook. There they meet Sanji, a talented chef whose calm attitude and fierce kicks quickly make an impression.",
           coverage: { anime: "19-20", manga: "42-45" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Baratie 02",
+          altTitle: "A Cook’s Pride",
           description:
-            "As new figures enter the scene, the crew faces rising pressure and the first signs of a major clash.",
+            "After a naval accident leaves trouble at the restaurant, Sanji’s compassion for the hungry is revealed. Luffy becomes convinced Sanji belongs on his crew, though Sanji has reasons to stay behind.",
           coverage: { anime: "20-21", manga: "46-49" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Baratie 03",
+          altTitle: "Hawk-Eye Mihawk",
           description:
-            "Baratie's ideals are tested as competing values collide and the stakes on the restaurant floor escalate.",
+            "The world’s greatest swordsman, Dracule Mihawk, suddenly appears at Baratie. Zoro challenges him to a duel, determined to test his strength and honor his dream.",
           coverage: { anime: "22-23", manga: "50-53" },
           length: "TBD",
         },
         {
           id: 4,
           title: "Baratie 04",
+          altTitle: "The Greatest Swordsman",
           description:
-            "The conflict widens, pushing the Straw Hats and Baratie staff to hold their ground under difficult odds.",
+            "Zoro faces overwhelming power in a battle that changes him forever. Though defeated, his resolve only grows stronger as he renews his promise to never lose again.",
           coverage: { anime: "23-24", manga: "54-57" },
           length: "TBD",
         },
         {
           id: 5,
           title: "Baratie 05",
+          altTitle: "Don Krieg Arrives",
           description:
-            "A powerful opponent changes the pace of the arc and forces everyone to confront their limits.",
+            "The pirate admiral Don Krieg reaches Baratie after suffering a crushing defeat at sea. Desperate and ruthless, he sets his sights on taking the restaurant for himself.",
           coverage: { anime: "24-26", manga: "58-61" },
           length: "TBD",
         },
         {
           id: 6,
           title: "Baratie 06",
+          altTitle: "Battle at Baratie",
           description:
-            "Personal convictions and promises take center stage as the crew pushes through a turning point.",
+            "Krieg’s forces invade the restaurant, forcing the cooks and Straw Hats into battle. Sanji fights to defend the place that gave him a home.",
           coverage: { anime: "26-28", manga: "62-64" },
           length: "TBD",
         },
         {
           id: 7,
           title: "Baratie 07",
+          altTitle: "Sanji’s Resolve",
           description:
-            "With the main battle nearing its end, emotional decisions shape what comes next for the crew.",
+            "As the conflict escalates, Sanji’s past with Baratie’s owner Zeff is revealed. Their shared history explains Sanji’s loyalty and the code he lives by.",
           coverage: { anime: "28-29", manga: "65-67" },
           length: "TBD",
         },
         {
           id: 8,
           title: "Baratie 08",
+          altTitle: "Farewell, Baratie",
           description:
-            "Baratie concludes with farewells, new direction, and momentum toward the next major East Blue challenge.",
+            "Luffy defeats Don Krieg and ends the threat to the restaurant. After an emotional goodbye, Sanji finally accepts Luffy’s invitation and joins the Straw Hat crew.",
           coverage: { anime: "29-30", manga: "68" },
           length: "TBD",
         },
@@ -304,7 +327,7 @@ export const DATA = {
     },
     {
       id: 6,
-      showId: "51a0f51bf6888c7ba18898c7c7effdb0",
+      showId: "48e0757d49c55cbcdcd806e9a77812ec",
       title: "Arlong Park",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-6-Arlong-Park-ALT.jpg",
@@ -321,54 +344,61 @@ export const DATA = {
         {
           id: 1,
           title: "Arlong Park 01",
+          altTitle: "Maps, Money, and Betrayal",
           description:
-            "The crew arrives at a troubled island chain and begins uncovering the scale of a long-standing local threat.",
+            "After leaving Baratie, the crew discovers Nami has stolen their ship and treasure. Following her trail to a distant island, they begin to realize her greed may hide a far more painful truth.",
           coverage: { anime: "31-32", manga: "69-72" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Arlong Park 02",
+          altTitle: "The Price of Freedom",
           description:
-            "Tensions rise quickly as the crew investigates what happened and who controls the region.",
+            "Following Nami’s trail leads the crew toward Cocoyasi Village, where hints of her past begin to surface. Her cold behavior starts to feel less like greed—and more like survival..",
           coverage: { anime: "32-33", manga: "73-75" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Arlong Park 03",
+          altTitle: "A Map Drawn in Pain",
           description:
-            "A key backstory thread begins to surface, reframing the conflict and what is at stake for the crew.",
+            "The Straw Hats learn of Arlong, a fish-man pirate ruling the area through fear and tribute. Nami’s connection to him becomes clearer, revealing a life bound by impossible conditions.",
           coverage: { anime: "33-35", manga: "76-79" },
           length: "TBD",
         },
         {
           id: 4,
           title: "Arlong Park 04",
+          altTitle: "The Weight of Eight Years",
           description:
-            "The emotional core of the arc deepens as past and present collide, leading to a critical decision point.",
+            "Nami’s past under Arlong’s control is revealed, including the sacrifices she has made for her village. Her hatred for pirates—and her silent suffering—finally make sense.",
           coverage: { anime: "35-36", manga: "80-82" },
           length: "TBD",
         },
         {
           id: 5,
           title: "Arlong Park 05",
+          altTitle: "I Can’t Ask for Help",
           description:
-            "The crew commits fully, and the road to Arlong Park turns into a direct challenge against overwhelming odds.",
+            "Trapped by her deal with Arlong, Nami struggles alone as the crew arrives in Cocoyasi Village. Her refusal to rely on others begins to crack under the weight of her reality.",
           coverage: { anime: "36-37", manga: "83-85" },
           length: "TBD",
         },
         {
           id: 6,
           title: "Arlong Park 06",
+          altTitle: "Walk of Resolve",
           description:
-            "The main battle begins, with each Straw Hat taking on a critical role in the fight.",
+            "Nami finally breaks down and asks Luffy for help. Without hesitation, the Straw Hats head toward Arlong Park, united for the first time in full conviction.",
           coverage: { anime: "38-39", manga: "86-88" },
           length: "TBD",
         },
         {
           id: 7,
           title: "Arlong Park 07",
+          altTitle: "March of the Straw Hats",
           description:
             "Major matchups unfold as the crew endures intense opposition and fights to maintain momentum.",
           coverage: { anime: "39-40", manga: "89-91" },
@@ -377,24 +407,27 @@ export const DATA = {
         {
           id: 8,
           title: "Arlong Park 08",
+          altTitle: "The Park Burns",
           description:
-            "The conflict peaks with decisive moments that test endurance, teamwork, and conviction.",
+            "The battle begins as each Straw Hat engages Arlong’s officers. Usopp is forced to confront fear head-on, while Zoro and Sanji push through overwhelming odds.",
           coverage: { anime: "40-42", manga: "92-93" },
           length: "TBD",
         },
         {
           id: 9,
           title: "Arlong Park 09",
+          altTitle: "Shark Teeth and Broken Steel",
           description:
-            "The final phase of the battle settles the fate of the island and brings long-awaited answers.",
+            "The fight intensifies across Arlong Park. Luffy, injured but unrelenting, begins his confrontation with Arlong as the rest of the crew holds the line.",
           coverage: { anime: "42-43", manga: "94" },
           length: "TBD",
         },
         {
           id: 10,
           title: "Arlong Park 10",
+          altTitle: "Help Me, Luffy",
           description:
-            "Arlong Park closes with aftermath, recovery, and a stronger Straw Hat crew moving forward together.",
+            "Nami’s plea becomes the turning point of everything. Luffy destroys Arlong Park’s legacy in a decisive final battle, freeing Cocoyasi Village and solidifying the Straw Hats as a true crew.",
           coverage: { anime: "43-44", manga: "95" },
           length: "TBD",
         },
@@ -402,7 +435,7 @@ export const DATA = {
     },
     {
       id: 7,
-      showId: "0cbc84a7ab7d51485855fe6fec7a2c4d",
+      showId: "3c83dd463ee85ce4170f6044f4682a41",
       title: "The Adventures of Buggy's Crew",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-7-The-Adventures-of-Buggys-Crew-ALT.jpg",
@@ -431,7 +464,7 @@ export const DATA = {
     },
     {
       id: 8,
-      showId: "58891a910aa6126d23460adfa969551f",
+      showId: "c1908ac62dfbfaa6e4e5a2a666aaed19",
       title: "Loguetown",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-8-Loguetown-ALT-2.jpg",
@@ -482,7 +515,7 @@ export const DATA = {
     },
     {
       id: 9,
-      showId: "bb86eaebf9bdfba5df73541009f0d592",
+      showId: "97deb55ad1b28f74b56e09ce35ab2c9b",
       title: "Reverse Mountain",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-9-Reverse-Mountain-ALT-2.jpg",
@@ -522,7 +555,7 @@ export const DATA = {
     },
     {
       id: 10,
-      showId: "65cef77d27ab7dbff9cf7ef77bbaa88c",
+      showId: "dfb5fc5f647c73b2a9ea3b1cca8270d9",
       title: "Whisky Peak",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-10-Whiskey-Peak-ALT-2.jpg",
@@ -562,7 +595,7 @@ export const DATA = {
     },
     {
       id: 11,
-      showId: "fc2b3e7667bb1ff10494ac3f1c0c5de2",
+      showId: "d2047f306d81d6e01dff5fb007487038",
       title: "The Trials of Koby-Meppo",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-11-The-Trials-of-Koby-Meppo-ALT.jpg",
@@ -591,7 +624,7 @@ export const DATA = {
     },
     {
       id: 12,
-      showId: "c99fe4875b26ab079d91f38827c560e8",
+      showId: "7ff7b6aafe24d986bcdcff549bc08ce1",
       title: "Little Garden",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-12-Little-Garden-ALT-2.jpg",
@@ -664,7 +697,7 @@ export const DATA = {
     },
     {
       id: 13,
-      showId: "c645868b6bd761951b3786acd66f5b1c",
+      showId: "214b90da87dcc9321ec6bf5b0451d7f5",
       title: "Drum Island",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-13-Drum-Island-ALT-2.jpg",
@@ -770,7 +803,7 @@ export const DATA = {
     },
     {
       id: 14,
-      showId: "df6ae7facce1d65361fb401c39d93a11",
+      showId: "a59e08b9654c56669f2804c1c857283c",
       title: "Arabasta",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-14-Alabasta-ALT.jpg",
@@ -956,7 +989,7 @@ export const DATA = {
     },
     {
       id: 15,
-      showId: "7ec20f23afa465749c1e4cf889c7d806",
+      showId: "62e02c9620c2ca1432893293313abe7d",
       title: "Jaya",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-15-Jaya-ALT-2.jpg",
@@ -1062,7 +1095,7 @@ export const DATA = {
     },
     {
       id: 16,
-      showId: "7648d06bcc077774cfc6f0dae1b5d06b",
+      showId: "ad40628a7009f9f1880a87adb2b6919a",
       title: "Skypiea",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-16-Skypiea-ALT.jpg",
@@ -1280,7 +1313,7 @@ export const DATA = {
     },
     {
       id: 17,
-      showId: "1f4b652107884119227c0b55836d3a3e",
+      showId: "9fc8481b86f8208d39bdad6ec141739c",
       title: "Long Ring Long Land",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-17-Long-Ring-Long-Land-ALT-2.jpg",
@@ -1354,7 +1387,7 @@ export const DATA = {
     },
     {
       id: 18,
-      showId: "0f7cae21cf0ce7c969637679f21c7deb",
+      showId: "2df6f29482d13ee3da7fbfedd9b1bfd2",
       title: "Water Seven",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-18-Water-Seven-ALT.jpg",
@@ -1532,7 +1565,7 @@ export const DATA = {
     },
     {
       id: 19,
-      showId: "61cd9aa617799ac871510f195fd23a2c",
+      showId: "ea3b778c877ab6ffd82434ab71e4c5d9",
       title: "Enies Lobby",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-19-Enies-Lobby-ALT.jpg",
@@ -1750,7 +1783,7 @@ export const DATA = {
     },
     {
       id: 20,
-      showId: "bece7782dfd0ee6580b73b300c147cb9",
+      showId: "d47901e3caf20d8dde9c14d8f8f08f74",
       title: "Post-Enies Lobby",
       image:
         "https://onepace.co/wp-content/uploads/2025/09/Season-20-Post-Enies-Lobby-ALT.jpg",
@@ -1808,7 +1841,7 @@ export const DATA = {
     },
     {
       id: 21,
-      showId: "0f1b7b1e2d5ba366f7e392f5a944ef12",
+      showId: "a2117dffd32852e301c4590b70727919",
       title: "Thriller Bark",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2001,7 +2034,7 @@ export const DATA = {
     },
     {
       id: 22,
-      showId: "fcc1ac4b6391d436ff68777c6a886f79",
+      showId: "eda693c349cc0354aadba1cec6ac41da",
       title: "Sabaody Archipelago",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2106,7 +2139,7 @@ export const DATA = {
     },
     {
       id: 23,
-      showId: "779879e6599c4c9eb9d7712a84b33984",
+      showId: "bc63b932e6177c291ccc4e973ac22e86",
       title: "Amazon Lily",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2163,7 +2196,7 @@ export const DATA = {
     },
     {
       id: 24,
-      showId: "8341138e4e3b3cf91decc2809f4f8454",
+      showId: "5dac4b32a5d5d874b055fda8b141a4a6",
       title: "Impel Down",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2260,7 +2293,7 @@ export const DATA = {
     },
     {
       id: 25,
-      showId: "f2d323c9e8196158dc3a925c0dfd25e0",
+      showId: "3ae4c0d258ac86a10d0ec9bcba589325",
       title: "If You Could Go Anywhere... The Adventures of the Straw Hats",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2289,7 +2322,7 @@ export const DATA = {
     },
     {
       id: 26,
-      showId: "cf54cc3311de77f5723c9d352d33ddfc",
+      showId: "199919e7f2c047125bf2e6d540675990",
       title: "Marineford",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2442,7 +2475,7 @@ export const DATA = {
     },
     {
       id: 27,
-      showId: "0aecac6f1afaa5eaac005e53434ddce6",
+      showId: "da59fe0107c4728978d74fb3ff13b4cb",
       title: "Post-War",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2523,7 +2556,7 @@ export const DATA = {
     },
     {
       id: 28,
-      showId: "85e4aa345f42846872f055f7e5ed209b",
+      showId: "4399f40034ff6812b69fffa3e47ce726",
       title: "Return to Sabaody",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2564,7 +2597,7 @@ export const DATA = {
     },
     {
       id: 29,
-      showId: "845d78d039c69a06b8536ce429c2b349",
+      showId: "5b5f7f1c439fcecb76e6655f1bebeffa",
       title: "Fishman Island",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2770,7 +2803,7 @@ export const DATA = {
     },
     {
       id: 30,
-      showId: "ff2e46f9c8418704cb3e3aed9b29ca8c",
+      showId: "d62dc262e0fa43472fa23727002a5e8d",
       title: "Punk Hazard",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -2960,7 +2993,7 @@ export const DATA = {
     },
     {
       id: 31,
-      showId: "82cd8539e8c22c620f587f55403c443a",
+      showId: "d80c7a13fddcbaa24d583310562491f4",
       title: "Dressrosa",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -3358,7 +3391,7 @@ export const DATA = {
     },
     {
       id: 32,
-      showId: "d0a0db9322a69c020289e6884a04f516",
+      showId: "a6521c13aa926965fdf5377185817ce6",
       title: "Zou",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -3452,7 +3485,7 @@ export const DATA = {
     },
     {
       id: 33,
-      showId: "57d6afa780d75d701b07ec96f3cf80af",
+      showId: "a714a5bdfc9bf5d084198d87e8bfe26d",
       title: "Whole Cake Island",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -3465,320 +3498,359 @@ export const DATA = {
         {
           id: 1,
           title: "Whole Cake Island 01",
+          altTitle: "A World on the Brink",
           description:
-            "The Straw Hats enter Big Mom’s territory where every sweet treat hides teeth and every invitation reads like a contract.",
-          coverage: { anime: "783-785", manga: "825-826" },
+            "Kings and queens set sail for the Reverie as Luffy's rescue team — joined by stowaway Carrot — closes on Big Mom's territory. News breaks that Blackbeard razed the Revolutionary HQ at Baltigo, and Luffy learns Dragon is his father. Far ahead, Sanji is shown a photo of his bride and refuses to look.",
+          coverage: { anime: "823-824", manga: "823-824" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Whole Cake Island 02",
+          altTitle: "Poison Pink",
           description:
-            "Totto Land’s candy-bright islands mask a rigid hierarchy where pirates are guests until they become problems.",
-          coverage: { anime: "786-788", manga: "827-828" },
+            "Starving at sea, Luffy hooks a poisonous armored stonefish and bites in. A Germa 66 ship rescues him — not Sanji, but his brother Yonji and sister Reiju, who sucks the poison out herself and quietly explains the Vinsmokes' bloody North Blue legacy of conquest and science.",
+          coverage: { anime: "825-826", manga: "825-826" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Whole Cake Island 03",
+          altTitle: "Welcome to Chocolat Town",
           description:
-            "Sanji’s past catches up at the worst possible moment, forcing the crew to split focus between rescue and survival.",
-          coverage: { anime: "789-791", manga: "829-830" },
+            "The crew slips into Cacao Island's edible Chocolat Town, where Luffy and Chopper are nearly arrested for \"snackalism\" after eating a café. A young chocolatier named Pudding — Sanji's chosen bride — agrees to bring him to a secret cape so the Straw Hats can take him home. Their guide Pekoms vanishes, leaving only a scrawled warning to turn back.",
+          coverage: { anime: "827-828", manga: "827-828" },
           length: "TBD",
         },
         {
           id: 4,
           title: "Whole Cake Island 04",
+          altTitle: "Mama's Hunger",
           description:
-            "A royal wedding looms as politics, family ties, and brute force align into one dangerous calendar date.",
-          coverage: { anime: "792-794", manga: "831-832" },
+            "On Whole Cake Island, Big Mom rampages for croquembouche and crushes her own son Moscato with Soul Pocus. Jinbe arrives with the dessert and formally requests release from her crew to join Luffy. Out at sea, Pedro reveals old wounds as the Sunny spots Whole Cake Chateau on the horizon.",
+          coverage: { anime: "829-830", manga: "829-830" },
           length: "TBD",
         },
         {
           id: 5,
           title: "Whole Cake Island 05",
+          altTitle: "The Seducing Woods",
           description:
-            "Allies in the underworld of the archipelago prove that even enemies-of-enemies can be unreliable guides.",
-          coverage: { anime: "795-797", manga: "833-834" },
+            "The crew lands on the southwest coast and chases a Sanji-shaped lure into the Seducing Woods — talking trees, suited crocodiles, and a mocking Madame Brûlée. Inside the chateau, the real Sanji squares off against his father Judge, who clamps explosive bracelets on his wrists so he can never run from the wedding.",
+          coverage: { anime: "831-832", manga: "831-832" },
           length: "TBD",
         },
         {
           id: 6,
           title: "Whole Cake Island 06",
+          altTitle: "Garuda's Duel",
           description:
-            "Infiltration and improvisation become daily skills as the crew navigates surveillance, storms, and hungry locals.",
-          coverage: { anime: "798-800", manga: "835-836" },
+            "Sanji deliberately loses a private duel to Judge — spared only because the wedding still needs him. Bege intercepts the runaway Pekoms and Praline at sea. In the Seducing Woods, Brûlée drags Carrot into a mirror, while Big Mom orders Caesar to revive her giantification research.",
+          coverage: { anime: "833-834", manga: "833-834" },
           length: "TBD",
         },
         {
           id: 7,
           title: "Whole Cake Island 07",
+          altTitle: "Pound the Forgotten",
           description:
-            "Big Mom’s children and commanders raise the stakes, turning a family dinner into a battlefield of egos.",
-          coverage: { anime: "801-803", manga: "837-838" },
+            "Pursued through the woods, Luffy and Nami stumble across Pound — Big Mom's discarded husband and Lola's father. His Vivre Card protects them when Sweet Commander Charlotte Cracker arrives with his biscuit knights. A furious Carrot bites Brûlée, breaking the mirror network.",
+          coverage: { anime: "835-836", manga: "835-836" },
           length: "TBD",
         },
         {
           id: 8,
           title: "Whole Cake Island 08",
+          altTitle: "Thousand-Arm Cracker",
           description:
-            "Loyalty strains under pressure when personal debts outweigh crew safety and time keeps shrinking.",
-          coverage: { anime: "804-806", manga: "839-840" },
+            "Cracker reveals himself as a Biscuit-Biscuit user hiding inside a hollow knight, conjuring an endless armored army. While Luffy is buried under waves of biscuit warriors, Carrot and Chopper escape into the mirror world. At the chateau, the Vinsmoke siblings make their entrance and Sanji is forced to dine with the family he despises.",
+          coverage: { anime: "837-838", manga: "837-838" },
           length: "TBD",
         },
         {
           id: 9,
           title: "Whole Cake Island 09",
+          altTitle: "Failure of the Vinsmokes",
           description:
-            "The Straw Hats press deeper into hostile territory where rumors, bounties, and hunger follow every move.",
-          coverage: { anime: "807-809", manga: "841-842" },
+            "A flashback opens Sanji's wound: the genetically enhanced \"failure\" mocked by his brothers, masked in iron, protected only by his terminally ill mother Sora — who secretly drugged her own womb to keep one son human. In the present, Niji's cruelty toward kitchen maid Cosette finally snaps Sanji at the family table.",
+          coverage: { anime: "839-840", manga: "839-840" },
           length: "TBD",
         },
         {
           id: 10,
           title: "Whole Cake Island 10",
+          altTitle: "Tankman Cannonball",
           description:
-            "A chaotic chase through bizarre islands shows how quickly Totto Land turns hospitality into a hunt.",
-          coverage: { anime: "810-812", manga: "843-844" },
+            "The flashback closes with Sora's death and Reiju unlocking Sanji's cell on the condition he never call himself a Vinsmoke again. In the present, Nami funnels Cracker's biscuit army into Luffy until he balloons into Tankman — and a single Gear Fourth Cannonball flattens the Sweet Commander across the countryside.",
+          coverage: { anime: "841-842", manga: "841-842" },
           length: "TBD",
         },
         {
           id: 11,
           title: "Whole Cake Island 11",
+          altTitle: "I'll Wait Right Here",
           description:
-            "Mirrors, maps, and misdirection stack up as the crew races to stay ahead of an empire that rarely loses.",
-          coverage: { anime: "813-815", manga: "845-846" },
+            "Word of Cracker's defeat reaches an enraged Big Mom. Sanji finally appears before Luffy and beats his captain bloody to drive him off, calling him garbage. Luffy refuses to lift a finger or move, vowing through swollen lips to sit in the rain until Sanji comes back.",
+          coverage: { anime: "843-844", manga: "843-844" },
           length: "TBD",
         },
         {
           id: 12,
           title: "Whole Cake Island 12",
+          altTitle: "Sanji's Sacrifice",
           description:
-            "Sanji’s choices ripple outward, forcing friends to confront what they’re willing to trade for one member’s future.",
-          coverage: { anime: "816-818", manga: "847-848" },
+            "Big Mom's homies march on a starving Luffy as he sits in the syrup, refusing to budge. At the chateau, Pudding tearfully proposes the trap: marry her, and Big Mom spares every Straw Hat. Brook and Pedro begin scouting the Road Poneglyph in Big Mom's library.",
+          coverage: { anime: "845-846", manga: "845-846" },
           length: "TBD",
         },
         {
           id: 13,
           title: "Whole Cake Island 13",
+          altTitle: "Lola's Mother",
           description:
-            "Battle lines harden between pirate crews and Big Mom’s forces as collateral damage becomes unavoidable.",
-          coverage: { anime: "819-821", manga: "849-850" },
+            "Pound is dragged before Cracker and killed for fathering Lola, while Brûlée corners Carrot and Chopper. Big Mom calls Luffy to gloat — Lola was her daughter, betrothed to a giant prince of Elbaf, and her escape humiliated the Empress. Pudding visits the cell and tearfully swears she'll save Sanji.",
+          coverage: { anime: "847-848", manga: "847-848" },
           length: "TBD",
         },
         {
           id: 14,
           title: "Whole Cake Island 14",
+          altTitle: "Pudding's Smiling Mask",
           description:
-            "Strength alone isn’t enough when the enemy controls logistics, information, and the weather itself.",
-          coverage: { anime: "822-824", manga: "851-852" },
+            "Carrot and Chopper claw out of Brûlée's house and slip back through the mirrors. In the courtyard, Pedro confronts Charlotte Tamago, who reincarnates through Egg, Hiyoko, and Niwatori forms. Hidden above, Sanji overhears Pudding tell Reiju her real plan: shoot the groom at the altar and let Big Mom slaughter every Vinsmoke.",
+          coverage: { anime: "849-850", manga: "849-850" },
           length: "TBD",
         },
         {
           id: 15,
           title: "Whole Cake Island 15",
+          altTitle: "A Mother's Defiance",
           description:
-            "The arc’s emotional weight sharpens: family, duty, and freedom collide in ways that can’t all win cleanly.",
-          coverage: { anime: "825-827", manga: "853-854" },
+            'Pudding details the assassination — a single hidden pistol shot during the kiss. Pedro escapes Tamago by detonating his own gunpowder. Reiju finds the broken Sanji, removes the "unbreakable" bracelets, and tells him the truth about Sora\'s defiance. Luffy smashes through the chateau searching for his cook.',
+          coverage: { anime: "851-852", manga: "851-852" },
           length: "TBD",
         },
         {
           id: 16,
           title: "Whole Cake Island 16",
+          altTitle: "A Plate Worth Living For",
           description:
-            "Key duels erupt across battlefields that feel less like islands and more like stages built for cruelty.",
-          coverage: { anime: "828-830", manga: "855-856" },
+            "Brook reveals he has already rubbed copies of the Road Poneglyph onto his bones. Pudding presents her plan to a delighted Big Mom. Wandering the chateau half-starved, Sanji stumbles on the meal he had cooked for Pudding — and tasting his own food finally reminds him who he is. Luffy blasts another hole through another wall.",
+          coverage: { anime: "853-854", manga: "853-854" },
           length: "TBD",
         },
         {
           id: 17,
           title: "Whole Cake Island 17",
+          altTitle: "I Want to Go Back",
           description:
-            "Allies gamble everything on timing as the wedding clock ticks toward a moment nobody truly controls.",
-          coverage: { anime: "831-833", manga: "857-858" },
+            "Carrot and Chopper sneak into Big Mom's bedroom and pry the sleeping Brook out of her arms, swapping in a cloth-and-bone decoy. Sanji finds Luffy in the rain and breaks down: if he runs, the Vinsmokes die and the Baratie burns. Bruised and grinning, Luffy decides they'll crash the wedding instead.",
+          coverage: { anime: "855-856", manga: "855-856" },
           length: "TBD",
         },
         {
           id: 18,
           title: "Whole Cake Island 18",
+          altTitle: "An Alliance of Necessity",
           description:
-            "Big Mom’s wrath becomes a natural disaster, rewriting the rules of what a Yonko’s tantrum can do.",
-          coverage: { anime: "834-835", manga: "859-860" },
+            "Reunited with Carrot, Chopper and a recovered Brook, the rescue team retreats to Capone Bege's hidden base. Jinbe lays out Bege's reputation as the New World's deadliest hitman and his plan to murder Big Mom at the wedding. Inside, they find a badly disguised \"Gastino,\" and an uneasy alliance is forged.",
+          coverage: { anime: "857-858", manga: "857-858" },
           length: "TBD",
         },
         {
           id: 19,
           title: "Whole Cake Island 19",
+          altTitle: "Mother Carmel's Portrait",
           description:
-            "The crew coordinates under fire, turning chaos into a plan only pirates would dare call strategy.",
-          coverage: { anime: "836-837", manga: "861-862" },
+            "Bege's plan: shatter Mother Carmel's portrait mid-ceremony to trigger Big Mom's five-second seizure, then fire Caesar's KX poison launchers point-blank. Jinbe quietly secures the Sun Pirates' release. As guests arrive — Du Feld, Stussy, the gossip Morgans — Katakuri silently snipes a vengeful guest before he can ruin Mama's tea party.",
+          coverage: { anime: "859-860", manga: "859-860" },
           length: "TBD",
         },
         {
           id: 20,
           title: "Whole Cake Island 20",
+          altTitle: "A Beautiful Third Eye",
           description:
-            "Escapes narrow as doors close, bridges burn, and Totto Land’s cheerful mask finally slips.",
-          coverage: { anime: "838-839", manga: "863-864" },
+            "The Tea Party begins. Sanji and a beaming Pudding take the altar while Luffy lies hidden, dead asleep from exhaustion. At the moment of the kiss Pudding raises her pistol — but Sanji whispers that her secret third eye is beautiful, and her hands won't fire. Katakuri's future-sight twitches; the priest pulls his trigger early instead.",
+          coverage: { anime: "861-862", manga: "861-862" },
           length: "TBD",
         },
         {
           id: 21,
           title: "Whole Cake Island 21",
+          altTitle: "Jinbe's Rebellion",
           description:
-            "Hope hinges on small openings: a map, a message, a single mistake in an otherwise airtight trap.",
-          coverage: { anime: "840-841", manga: "865-866" },
+            "The wedding cake bursts open and a horde of Brûlée-cloned Luffy doppelgängers pours out, throwing the chateau into pandemonium. Jinbe formally renounces his oath to Big Mom and casts his lot with the Straw Hats. Carmel's portrait shatters, Big Mom locks up mid-shriek, and Perospero pins the Vinsmokes in candy as Caesar lines up the killing shot.",
+          coverage: { anime: "863-864", manga: "863-864" },
           length: "TBD",
         },
         {
           id: 22,
           title: "Whole Cake Island 22",
+          altTitle: "Linlin and Mother Carmel",
           description:
-            "The war for Whole Cake Island escalates into a sprint where every second costs streets, ships, and lives.",
-          coverage: { anime: "842-843", manga: "867-868" },
+            "Caesar fires the KX Launchers, but Big Mom's seizure breaks too soon and the assassination misfires. As her family scrambles to explain her shrieking at the painting, the show plunges into her past — a hungry giantess child named Linlin abandoned on a winter day, and the gentle nun who took her into the House of Lambs.",
+          coverage: { anime: "865-866", manga: "865-866" },
           length: "TBD",
         },
         {
           id: 23,
           title: "Whole Cake Island 23",
+          altTitle: "Soul Pocus",
           description:
-            "Old debts and new injuries pile up as fighters trade polish for desperation and still refuse to yield.",
-          coverage: { anime: "844-845", manga: "869-870" },
+            "On Elbaf, six-year-old Linlin's craving for semla becomes a city-leveling hunger frenzy that kills the giant chief Jorl. Carmel flees with Linlin and the orphans, secretly trafficking talented children for the World Government. On the morning after Linlin's birthday tea, Carmel and every other lamb simply vanish — and a humming Linlin awakens her Soul-Soul fruit. In the present, Big Mom finally screams.",
+          coverage: { anime: "867-868", manga: "867-868" },
           length: "TBD",
         },
         {
           id: 24,
           title: "Whole Cake Island 24",
+          altTitle: "Inside the Iron Castle",
           description:
-            "The climax nears with the sea itself feeling like an enemy when pursuit turns ocean-wide.",
-          coverage: { anime: "846-847", manga: "871-872" },
+            'Bege folds the alliance inside his "Big Father" fortress as Big Mom claws the walls and his cannon-arm Rook turns guests to dust. With the chateau collapsing, Sanji confesses he can\'t laugh at the deaths of the family that broke him; the Vinsmokes come too. Caesar will fly the fortress out, while Germa 66 volunteers as rear guard against an enraged Emperor.',
+          coverage: { anime: "869-870", manga: "869-870" },
           length: "TBD",
         },
         {
           id: 25,
           title: "Whole Cake Island 25",
+          altTitle: "One Punch on an Emperor",
           description:
-            "Mirrored worlds and shattered plans force split-second choices with consequences that won’t wait.",
-          coverage: { anime: "848-849", manga: "873-874" },
+            "Germa 66 holds the line as Caesar lifts Bege's fortress into the sky. Refusing to be smuggled out, Luffy lands a thunderous Red Hawk on Big Mom's jaw and roars he's coming for her head. The chateau collapses — but Streusen turns the falling tower into actual cake mid-fall, just before Big Mom remembers her ruined wedding cake.",
+          coverage: { anime: "870-872", manga: "870-872" },
           length: "TBD",
         },
         {
           id: 26,
           title: "Whole Cake Island 26",
+          altTitle: "Become My Servant, Zeus",
           description:
-            "Victory stops looking clean as the crew accepts messy wins if it means leaving with everyone breathing.",
-          coverage: { anime: "850-851", manga: "875-876" },
+            "Big Mom's hunger pangs return and she devours her own son Opera for refusing her cocoa. To buy time, Pudding offers to bake a substitute cake on Cacao Island if Sanji helps. The Straw Hats flee on a kidnapped tree-homie named Kingbaum, and Nami coaxes Big Mom's storm-cloud Zeus into eating one of her thunderbolts and claims him.",
+          coverage: { anime: "873-874", manga: "873-874" },
           length: "TBD",
         },
         {
           id: 27,
           title: "Whole Cake Island 27",
+          altTitle: "A Cake Worth Their Lives",
           description:
-            "Aftershocks ripple through Big Mom’s territory as news spreads faster than wounds can heal.",
-          coverage: { anime: "852-853", manga: "877-878" },
+            "Pudding and her secret twin sister Chiffon ambush the fleeing crew with a desperate proposal — they'll bake a cake fit to soothe Big Mom if Sanji lends his hands. Pudding's love-and-hate for Sanji bleeds through every sentence as she edits memories on the side. Out at sea, the Sunny is cornered by Perospero and Katakuri.",
+          coverage: { anime: "875-876", manga: "875-876" },
           length: "TBD",
         },
         {
           id: 28,
           title: "Whole Cake Island 28",
+          altTitle: "Pedro's Last Light",
           description:
-            "The Straw Hats reckon with what they provoked—and what kind of target they’ve painted on their backs.",
-          coverage: { anime: "854-855", manga: "879-880" },
+            "Perospero pins Chopper and Brook to the deck with rivers of candy as Katakuri prepares to sink the Sunny. Pedro the jaguar mink walks smiling into the heart of the candy ship and detonates every grain of gunpowder on his body — clearing one lane for the Coup de Burst. Luffy stays behind, smashing back into the Mirro-World for a duel with Katakuri.",
+          coverage: { anime: "877-878", manga: "877-878" },
           length: "TBD",
         },
         {
           id: 29,
           title: "Whole Cake Island 29",
+          altTitle: "Walking on the Sea",
           description:
-            "Loose ends tangle with new dangers as escape routes close and allies pay the price for bravery.",
-          coverage: { anime: "856-857", manga: "881-882" },
+            "A grieving Nami clutches Pedro's hat as Jinbe rallies the shaken crew — his sacrifice cannot be wasted. Big Mom strides across the open ocean atop a giant candy slug forged by Perospero, faster than any ship can flee. In the mirror dimension, Luffy is buried alive under a mountain of awakened mochi.",
+          coverage: { anime: "879-880", manga: "879-880" },
           length: "TBD",
         },
         {
           id: 30,
           title: "Whole Cake Island 30",
+          altTitle: "The Green Room",
           description:
-            "A final push tests endurance, teamwork, and nerve while the Yonko’s shadow stretches beyond the horizon.",
-          coverage: { anime: "858-859", manga: "883-884" },
+            "Jinbe steers the Sunny straight into a colossal wave — the fishman's \"Green Room\" — and the ship slips out the back as Big Mom's slug crashes past. Luffy orders Brûlée to break every mirror on the Sunny so Katakuri can never reach the crew, severing his own escape route. Across Totto Land, Big Mom's tracking sea slugs mysteriously go silent.",
+          coverage: { anime: "881-883", manga: "881-883" },
           length: "TBD",
         },
         {
           id: 31,
           title: "Whole Cake Island 31",
+          altTitle: "Donuts in Secret",
           description:
-            "Personal confrontations decide more than a fight’s outcome; they decide who gets to choose their own future.",
-          coverage: { anime: "860-861", manga: "885-886" },
+            "Katakuri retreats to a private chamber for his sacred ritual — devouring stacks of donuts in solitude. A bloodied Luffy crashes through the wrong mirror and sees the Sweet Commander's hidden eel-like mouth. Humiliated, Katakuri snaps and traps Luffy with awakened Mirror Mochi. Out in the ocean, Totto Land's tracking slugs are quietly liberated by an unseen friend.",
+          coverage: { anime: "883-884", manga: "883-884" },
           length: "TBD",
         },
         {
           id: 32,
           title: "Whole Cake Island 32",
+          altTitle: "I Want to Surpass You",
           description:
-            "The crew’s bond becomes the loudest weapon against an empire built on fear and arranged marriages.",
-          coverage: { anime: "862-863", manga: "887-888" },
+            "Luffy chews his way out of Katakuri's awakened mochi and demands a real fight, declaring he'll surpass the man who is supposedly Big Mom's strongest son. Katakuri admits for the first time that Luffy is no longer beneath him and sheds his stoic detachment. On Cacao Island, Pound steps between Charlotte Oven and his daughter Chiffon as Bege races to save his wife.",
+          coverage: { anime: "885-886", manga: "885-886" },
           length: "TBD",
         },
         {
           id: 33,
           title: "Whole Cake Island 33",
+          altTitle: "Sulong",
           description:
-            "Totto Land’s spectacle collapses into survival as the arc trades pageantry for raw momentum.",
-          coverage: { anime: "864-865", manga: "889-890" },
+            "Bege's Nostra Castello rolls onto land on tank treads to extract Chiffon and the cake, while Sanji ferries the towering pastry across the harbor on Sky Walk. Big Mom catches up to the Sunny and Daifuku summons his fleet of jinni warriors. As a perfect full moon rises, Carrot leaps into the sky in white-furred Sulong form and shreds the armada.",
+          coverage: { anime: "887-888", manga: "887-888" },
           length: "TBD",
         },
         {
           id: 34,
           title: "Whole Cake Island 34",
+          altTitle: "The Knight in Black",
           description:
-            "Every delay costs ground as pursuers tighten the net and the Thousand Sunny becomes a symbol to destroy.",
-          coverage: { anime: "866-867", manga: "891-892" },
+            'Carrot tears through battleships in the moonlight before her body gives out. Big Mom catches up riding a fattened Prometheus and reveals her sword Napoleon\'s true form — a flaming greatsword that nearly cleaves the Sunny in two. Brook discharges Zeus with a spectral slash and Nami brings the chastened cloud aboard as her new "servant."',
+          coverage: { anime: "889-891", manga: "889-891" },
           length: "TBD",
         },
         {
           id: 35,
           title: "Whole Cake Island 35",
+          altTitle: "An Honorable Wound",
           description:
-            "Hidden strengths surface when veterans and rookies alike bet on instincts over orders.",
-          coverage: { anime: "868-869", manga: "893-894" },
+            "Katakuri's adoring sister Flambé sneaks into the mirror world and poisons Luffy with a needle to guarantee her brother's victory. Disgusted, Katakuri stabs his own gut with his trident to even the score, exposing both his secret pelican-eel mouth and the rumor that he can never sit down. On Cacao Island, Pudding and Chiffon place the last layer on the rescue cake.",
+          coverage: { anime: "891-893", manga: "891-893" },
           length: "TBD",
         },
         {
           id: 36,
           title: "Whole Cake Island 36",
+          altTitle: "The Sweetness of Surrender",
           description:
-            "The island arc’s turning points stack until the only path left is forward—through the storm.",
-          coverage: { anime: "870-871", manga: "895-896" },
+            "Bege's ship sails up to a still-rampaging Big Mom and Sanji uncovers the cake — the smell alone disarms her, halting the assassination cold. Bege and Pudding lure her north toward Liqueur Island while Cacao Island braces for an ambush. In the mirror dimension, Luffy unveils a new Gear Fourth form built to outpace future-sight: the slithering Snakeman.",
+          coverage: { anime: "892-895", manga: "892-895" },
           length: "TBD",
         },
         {
           id: 37,
           title: "Whole Cake Island 37",
+          altTitle: "A Kiss and a Goodbye",
           description:
-            "Sanji’s arc and the crew’s arc merge: food, family, and freedom stop being separate arguments.",
-          coverage: { anime: "872-873", manga: "897-898" },
+            "Pudding asks Sanji for a single farewell favor before they part forever. As the Sun Pirates and Bege's ship sprint for Cacao Island, Luffy slingshots through the only mirror left in Totto Land — smuggled in by a sheepish Pekoms — and lands surrounded by the entire Charlotte family. Just as the noose tightens, the battleships of Germa 66 thunder over the horizon.",
+          coverage: { anime: "896-897", manga: "896-897" },
           length: "TBD",
         },
         {
           id: 38,
           title: "Whole Cake Island 38",
+          altTitle: "Germa Pays Its Debt",
           description:
-            "Big Mom’s domain answers defiance with overwhelming force, proving emperors don’t forgive embarrassment.",
-          coverage: { anime: "874-875", manga: "899-900" },
+            "The Vinsmokes cut down anyone who tries to stop their disowned brother as Sanji rockets across the harbor on Sky Walk to scoop Luffy off Cacao Island, finally repaying the cook who swallowed his pride to save them. On distant Puffs Island, Big Mom takes a single bite of the wedding cake and is transported into teary, blissful silence.",
+          coverage: { anime: "898-900", manga: "898-900" },
           length: "TBD",
         },
         {
           id: 39,
           title: "Whole Cake Island 39",
+          altTitle: "I'll Wait for You in Wano",
           description:
-            "The Straw Hats improvise miracles under fire, turning impossible odds into temporary openings.",
-          coverage: { anime: "876-877", manga: "901-902" },
+            "The cake's impossible flavor restores Big Mom's senses just long enough for the alliance to slip away. The Sun Pirates' giant Wadatsumi swallows the Sunny to hide it from Charlotte ships. Jinbe stays behind as rear guard, promising to catch up in Wano. The Straw Hats finally clear Totto Land — free with their cook, the Road Poneglyph rubbing, and a very angry new enemy on their heels.",
+          coverage: { anime: "901-902", manga: "901-902" },
           length: "TBD",
         },
       ],
     },
     {
       id: 34,
-      showId: "917decee984ec0d525d7101599d04efd",
+      showId: "518ef5b649904a6dbeb8b271b9512364",
       title: "Reverie",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -3791,24 +3863,27 @@ export const DATA = {
         {
           id: 1,
           title: "Reverie 01",
+          altTitle: "The Fifth Emperor",
           description:
-            "World leaders convene as old grudges and new proposals echo through the sacred halls of power.",
+            "On a small unprotected island, a Blackbeard-affiliated crew shakes down farmers for the heavenly tribute their absent king is supposed to deliver at the Reverie — until four Revolutionary Army commanders (Belo Betty, Karasu, Lindbergh, and the underground giant Morley) erupt from the ground to wipe them out and reveal Sabo's plan to declare war on the Celestial Dragons. Out at sea, Captain Koby of the Marines saves the Dressrosa delegation from a torpedo attack, while on the Sunny the crew opens the morning paper to discover that Cracker has been silenced, Sanji's bounty now reads \"Vinsmoke Sanji,\" and Big News Morgans has crowned Luffy the Fifth Emperor — backed by a stunning new bounty of 1.5 billion berries.",
           coverage: { anime: "878-881", manga: "903-904" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Reverie 02",
+          altTitle: "Climb to the Holy Land",
           description:
-            "Summit politics turn personal when pirates, royals, and revolutionaries share the same crowded stage.",
+            "Fleet Admiral Sakazuki rages from New Marineford as Admiral Fujitora and the wandering Ryokugyu vanish into Mary Geoise behind his back. At the Red Port, the world's monarchs board the bondolas — Beer VI of Roshwan, the Vinsmoke-faced Tacos of the Kingdom of the Dead, the painfully slow Ham Burger of Ballywood — and Garp escorts a wide-eyed Shirahoshi to the surface, where the sky and sun overwhelm her. The newly crowned, insufferable King Sterry of Goa demands Garp bow to him; Vivi, Rebecca, Viola, and the disguised Tontatta knight Leo recognize each other through their shared debt to a certain straw-hatted pirate.",
           coverage: { anime: "882-885", manga: "905-906" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Reverie 03",
+          altTitle: "The Empty Throne",
           description:
-            "Reverie closes with the world order visibly shifting—quiet agreements and loud threats alike.",
+            'Big Mom calls Kaido on an open line to lay claim to Luffy\'s head; Kaido refuses, citing a lifetime debt. The Marine high command — Sakazuki, Kizaru, Garp, Tsuru, Hina — realize they can\'t intervene with every soldier guarding the Reverie, and the long-buried name "Rocks" surfaces again. King Sterry is brought before the Empty Throne and its twenty ancient weapons. In the Unity Courtyard, Saint Charlos tries to claim Shirahoshi as his pet; Vivi, Rebecca, and Leo strike at him only to be pinned by CP0 — until the reformed Saint Mjosgard intervenes to save the Ryugu delegation. Saint Rosward then drags out his "rented invincible slave" — the silent, broken Bartholomew Kuma — as Jewelry Bonney watches in fury from the depths of Mariejois. The Reverie convenes, Cobra of Alabasta requests an audience with the Five Elders, and far above the throne room a being known only as Imu-sama waits to name who will be erased from history next.',
           coverage: { anime: "886-889", manga: "907-908" },
           length: "TBD",
         },
@@ -3816,7 +3891,7 @@ export const DATA = {
     },
     {
       id: 35,
-      showId: "75e56fb72fdc44a58074b890d8533cd2",
+      showId: "9cd8f357c86a0c366bbaa02390819a9c",
       title: "Wano",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
@@ -3829,776 +3904,763 @@ export const DATA = {
         {
           id: 1,
           title: "Wano 01",
+          altTitle: "Arrival in Wano",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "890-891", manga: "909" },
+            "Luffy's group arrives at the isolated nation of Wano Country. After surviving the treacherous whirlpool entrance, Luffy washes ashore and quickly finds himself entangled in the cruel reality of life under Kaido and the shogun's rule. He meets a young girl named Tama whose suffering puts a face on the oppression gripping the land.",
+          coverage: { anime: "909-910", manga: "909-910" },
           length: "TBD",
         },
         {
           id: 2,
           title: "Wano 02",
+          altTitle: "Infiltration and Disguise",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "892-893", manga: "910" },
+            "The Straw Hats scattered across Wano begin taking on new identities to blend into the populace. Zoro poses as a wandering ronin in the Flower Capital while other crewmates assume cover roles. Meanwhile, the brutal grip of the Beast Pirates over the people of Wano becomes increasingly apparent.",
+          coverage: { anime: "909-911", manga: "909-911" },
           length: "TBD",
         },
         {
           id: 3,
           title: "Wano 03",
+          altTitle: "Zoro the Ronin",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "894-895", manga: "911" },
+            "Zoro navigates the dangerous politics of the Flower Capital, where he is framed for murders he didn't commit. His quick deduction exposes the corrupt magistrate as the true killer, but the incident draws unwanted attention. Luffy, still in Kuri, learns more about the suffering inflicted on the local people by Kaido's forces.",
+          coverage: { anime: "911-912", manga: "911-912" },
           length: "TBD",
         },
         {
           id: 4,
           title: "Wano 04",
+          altTitle: "The Yokozuna Beast",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "896-897", manga: "912" },
+            "Luffy encounters Kaido's subordinate Holdem and his forces in Bakura Town. Outraged by the suffering of the people — especially Tama — Luffy launches a furious assault on Holdem, uncaring of the political consequences. His bold action sends a shockwave through the region and puts the alliance's careful cover plan at risk.",
+          coverage: { anime: "913", manga: "913" },
           length: "TBD",
         },
         {
           id: 5,
           title: "Wano 05",
+          altTitle: "The Road to Udon",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "898-899", manga: "913" },
+            "The fallout from Luffy's attack continues as the group flees Bakura Town. Law scolds Luffy for blowing their cover so early, but the damage is done. The crew begins to learn more about the alliance being assembled to challenge Kaido, and the enormous scale of the task ahead starts to take shape.",
+          coverage: { anime: "914-915", manga: "914-915" },
           length: "TBD",
         },
         {
           id: 6,
           title: "Wano 06",
+          altTitle: "Hiyori and the Witching Hour Boy",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "900-901", manga: "914" },
+            "A mysterious figure known as the Witching Hour Boy is revealed to be sneaking into the estates of Wano's corrupt nobles and redistributing stolen goods to the poor. Zoro crosses paths with this enigmatic person, and the encounter begins to pull back the curtain on deeper secrets buried within Wano's past.",
+          coverage: { anime: "915-916", manga: "915-916" },
           length: "TBD",
         },
         {
           id: 7,
           title: "Wano 07",
+          altTitle: "The Kozuki Clan's Retainers",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "902-903", manga: "915" },
+            "The history of Wano's fallen Kozuki clan comes into clearer focus. Kin'emon reveals more of the plan to the Straw Hats and allies, explaining how the retainers have waited twenty years for this moment of rebellion. The weight of loyalty, sacrifice, and a dying lord's wish gives the coming battle profound emotional stakes.",
+          coverage: { anime: "916-917", manga: "916-917" },
           length: "TBD",
         },
         {
           id: 8,
           title: "Wano 08",
+          altTitle: "Prison Break Plans",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "904-905", manga: "916" },
+            "Luffy ends up imprisoned in the harsh labor camp of Udon, where he meets Hyogoro, a legendary yakuza boss reduced to a prisoner. Rather than despair, Luffy sees an opportunity — if he can win the trust of inmates, he can recruit a fighting force for the coming war. His training under these brutal conditions begins.",
+          coverage: { anime: "918-919", manga: "918-919" },
           length: "TBD",
         },
         {
           id: 9,
           title: "Wano 09",
+          altTitle: "Luffy's Sumo Training",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "906-907", manga: "917" },
+            "Inside Udon's labor camp, Luffy embraces the challenge of sumo-style combat to sharpen his Haki. Through grueling matches against powerful guards, he begins to sense a new level of Armament Haki — one that doesn't require direct contact. Hyogoro's quiet guidance proves unexpectedly valuable.",
+          coverage: { anime: "919-920", manga: "919-920" },
           length: "TBD",
         },
         {
           id: 10,
           title: "Wano 10",
+          altTitle: "The Great Banquet at Orochi Castle",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "908-909", manga: "918" },
+            "Shogun Orochi hosts a lavish banquet in the Flower Capital while the people of Wano starve. Robin, undercover as a geisha, infiltrates the festivities to gather intelligence. The stark contrast between the ruler's decadence and the nation's misery underscores the evil the alliance is fighting to overthrow.",
+          coverage: { anime: "921-922", manga: "921-922" },
           length: "TBD",
         },
         {
           id: 11,
           title: "Wano 11",
+          altTitle: "Orochi's Paranoia",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "910-911", manga: "919" },
+            "Shogun Orochi proves to be a paranoid and erratic ruler, prone to violent outbursts at any perceived threat. Robin's undercover mission becomes increasingly dangerous as Orochi's suspicions flare at the banquet. A prophecy tied to the Kozuki clan looms over the evening, and Orochi's obsessive fear of it reveals his instability.",
+          coverage: { anime: "922-923", manga: "922-923" },
           length: "TBD",
         },
         {
           id: 12,
           title: "Wano 12",
+          altTitle: "Kaido Descends",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "912-913", manga: "920" },
+            "Kaido himself arrives in a stunning display of power, crash-landing on the capital in his colossal dragon form. The Emperor's sheer presence is overwhelming. Luffy, still in Udon, remains unaware of the chaos, but the gravity of who they are truly up against becomes impossible to ignore.",
+          coverage: { anime: "924", manga: "924" },
           length: "TBD",
         },
         {
           id: 13,
           title: "Wano 13",
+          altTitle: "The Flower Capital's Dark Festival",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "914-915", manga: "921" },
+            "The alliance's plans inch forward while darkness spreads through the Flower Capital. Nami and others continue their undercover work as Orochi tightens his grip. The Kozuki loyalists scattered across Wano quietly prepare for the day of reckoning, sustained only by hope and a promise made long ago.",
+          coverage: { anime: "925-926", manga: "925-926" },
           length: "TBD",
         },
         {
           id: 14,
           title: "Wano 14",
+          altTitle: "Big Mom Arrives",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "916-917", manga: "922" },
+            "Big Mom, one of the Four Emperors, unexpectedly arrives on the shores of Wano after falling from a ship. Her arrival throws a massive wrench into the alliance's plans and sends shockwaves through both the Beast Pirates and the Straw Hats alike. A second Emperor on the board changes every calculation.",
+          coverage: { anime: "926-927", manga: "926-927" },
           length: "TBD",
         },
         {
           id: 15,
           title: "Wano 15",
+          altTitle: "Queen's Udon Prison",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "918-919", manga: "923" },
+            "Luffy continues to endure the brutal conditions of Udon under the sadistic warden Queen, one of Kaido's three top commanders. Queen's twisted games and punishments reveal the full horror of the labor camp. Luffy's resolve only hardens, and his bond with the imprisoned Hyogoro deepens as they quietly plan resistance.",
+          coverage: { anime: "928-930", manga: "928-930" },
           length: "TBD",
         },
         {
           id: 16,
           title: "Wano 16",
+          altTitle: "Sanji vs. the Raid Suit",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "920-921", manga: "924" },
+            "Sanji discovers that his family's designed Raid Suit — which grants him stealth and power — is causing unsettling changes to his body and mind. Troubled by what it might mean about his true nature as a Vinsmoke, he wrestles with whether to use it at all. His identity and what it means to be human are thrown into question.",
+          coverage: { anime: "930-931", manga: "930-931" },
           length: "TBD",
         },
         {
           id: 17,
           title: "Wano 17",
+          altTitle: "Kid and Killer in Udon",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "922-923", manga: "925" },
+            "Eustass Kid and his first mate Killer are revealed to be prisoners in Udon alongside Luffy. The two former rivals find themselves in an unlikely shared predicament. Their presence and the conditions they've endured hint at the crushing defeats Kaido has already handed out to some of the most powerful pirates in the New World.",
+          coverage: { anime: "932-933", manga: "932-933" },
           length: "TBD",
         },
         {
           id: 18,
           title: "Wano 18",
+          altTitle: "The Geisha and the Spy",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "924-925", manga: "926" },
+            "Robin's infiltration of the Flower Capital deepens as she gets closer to Orochi's inner circle. Her careful intelligence gathering uncovers critical information about the shogun's defenses and plans. Elsewhere, Nami and the others continue building the network of rebel samurai needed for the upcoming raid.",
+          coverage: { anime: "934-935", manga: "934-935" },
           length: "TBD",
         },
         {
           id: 19,
           title: "Wano 19",
+          altTitle: "Zoro and the Cursed Blade",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "926-927", manga: "927" },
+            "Zoro's quest for his stolen sword Shusui leads him to confront Gyukimaru, a mysterious monk guarding a bridge. Their fierce duel is interrupted by the arrival of Kamazo, a deadly assassin. The battle reveals unexpected connections to Wano's past and a secret that cuts to the heart of the country's tragedy.",
+          coverage: { anime: "936-938", manga: "936-938" },
           length: "TBD",
         },
         {
           id: 20,
           title: "Wano 20",
+          altTitle: "Hiyori Revealed",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "928-929", manga: "928" },
+            "A wounded young woman saved during Zoro's battle is revealed to be Kozuki Hiyori — daughter of the legendary Lord Oden and the long-lost princess of Wano. Her survival has been a closely guarded secret. Her reunion with those loyal to her family's name carries enormous emotional and strategic weight for the coming rebellion.",
+          coverage: { anime: "938-939", manga: "938-939" },
           length: "TBD",
         },
         {
           id: 21,
           title: "Wano 21",
+          altTitle: "Udon Uprising",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "930-931", manga: "929" },
+            "Luffy finally makes his move inside Udon prison, launching an all-out uprising. With the help of Hyogoro and the other prisoners, Luffy battles through the guards. The prison break is a pivotal moment — not just an escape, but a rallying cry that begins to turn the tide of morale among Wano's oppressed people.",
+          coverage: { anime: "940-941", manga: "940-941" },
           length: "TBD",
         },
         {
           id: 22,
           title: "Wano 22",
+          altTitle: "Conquering Udon",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "932-933", manga: "930" },
+            "The battle for Udon reaches its peak as Luffy fights Queen directly. Using the combat instincts refined during his imprisonment, Luffy pushes forward even as Queen unleashes devastating techniques. The chaos of the prison riot spreads, and an unexpected player from the Charlotte family enters the scene.",
+          coverage: { anime: "941-942", manga: "941-942" },
           length: "TBD",
         },
         {
           id: 23,
           title: "Wano 23",
+          altTitle: "Big Mom's Rampage",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "934-935", manga: "931" },
+            "Big Mom, having lost her memories after the sea journey, wanders Wano in a confused but still terrifyingly powerful state. Her uncontrolled rampage causes havoc for everyone in her path. The alliance scrambles to contain the situation, knowing that a fully restored Big Mom in Kaido's corner would be catastrophic.",
+          coverage: { anime: "943-944", manga: "943-944" },
           length: "TBD",
         },
         {
           id: 24,
           title: "Wano 24",
+          altTitle: "The Alliance Grows",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "936-937", manga: "932" },
+            "With Udon now under their control, Luffy and his allies begin the work of preparing for war in earnest. The rebel forces gather, samurai are rallied, and the scope of what the alliance has built in secret starts to take shape. Time is running out before Kaido and Orochi discover the rebellion brewing beneath their feet.",
+          coverage: { anime: "944-945", manga: "944-945" },
           length: "TBD",
         },
         {
           id: 25,
           title: "Wano 25",
+          altTitle: "The Raid is Set",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "938-939", manga: "933" },
+            "Final preparations for the assault on Onigashima begin. The alliance — Straw Hats, Heart Pirates, samurai, and mink warriors — coordinated their plans for the Fire Festival, when Kaido traditionally holds his celebration on Onigashima. The night that could liberate Wano or destroy everyone fighting for it is almost at hand.",
+          coverage: { anime: "946-947", manga: "946-947" },
           length: "TBD",
         },
         {
           id: 26,
           title: "Wano 26",
+          altTitle: "Orochi's Treachery",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "940-941", manga: "934" },
+            "A devastating betrayal shakes the alliance to its core when their carefully planned meetup point is revealed to have been compromised. The rebel numbers are a fraction of what was expected. Rather than crumble, the remaining fighters resolve to press on regardless — their commitment to Wano's liberation absolute.",
+          coverage: { anime: "948-949", manga: "948-949" },
           length: "TBD",
         },
         {
           id: 27,
           title: "Wano 27",
+          altTitle: "Oden's Journal",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "942-943", manga: "935" },
+            "The story travels back in time to reveal the life of Kozuki Oden through his personal journal. A young, wild, and impossibly strong Oden dominates the region of Kuri in Wano, drawing both fear and admiration. His early years paint a portrait of a man too large for any single place to contain.",
+          coverage: { anime: "950-951", manga: "960-961" },
           length: "TBD",
         },
         {
           id: 28,
           title: "Wano 28",
+          altTitle: "Oden Joins Whitebeard",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "944-945", manga: "936" },
+            "The flashback continues as a restless Oden leaves Wano to seek adventure on the seas. Against all odds, he manages to join Whitebeard's crew — one of the most formidable pirate crews in the world. His time with Whitebeard shapes him profoundly, and sets him on a path toward an even greater destiny.",
+          coverage: { anime: "951-952", manga: "963-964" },
           length: "TBD",
         },
         {
           id: 29,
           title: "Wano 29",
+          altTitle: "The Dawn of the Roger Pirates",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "946-947", manga: "937" },
+            "Oden's journey takes an extraordinary turn when he crosses paths with Gol D. Roger himself. Joining the Roger Pirates for their final voyage, Oden witnesses the crew reach the end of the Grand Line and learn a truth that reshapes his understanding of the world. The weight of that knowledge would follow him home.",
+          coverage: { anime: "953-954", manga: "966-967" },
           length: "TBD",
         },
         {
           id: 30,
           title: "Wano 30",
+          altTitle: "Oden's Return and Fall",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "948-949", manga: "938" },
+            "Oden returns to Wano to find his homeland corrupted by Orochi, who has seized power with Kaido's backing. Despite his legendary strength, Oden is eventually captured and publicly humiliated in a cruel scheme orchestrated by Orochi. The truth of how Wano fell — and how its greatest hero was broken — is finally laid bare.",
+          coverage: { anime: "954-955", manga: "968-969" },
           length: "TBD",
         },
         {
           id: 31,
           title: "Wano 31",
+          altTitle: "Oden's Dance and Final Hour",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "950-951", manga: "939" },
+            "The tragic conclusion of Oden's story unfolds. Tricked by Orochi's manipulations, Oden endured years of public humiliation to protect his people. When the final betrayal comes, he faces his execution with breathtaking courage — his last act a declaration of hope that echoes through the twenty years leading to the present day.",
+          coverage: { anime: "956", manga: "970-971" },
           length: "TBD",
         },
         {
           id: 32,
           title: "Wano 32",
+          altTitle: "The Scabbards' Twenty Years",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "952-953", manga: "940" },
+            "The Nine Red Scabbards, Oden's loyal retainers, are sent twenty years into the future by Kozuki Toki's mysterious power. Arriving in the present, they find Wano still under Kaido's thumb — exactly as they feared. The full scope of their sacrifice, and the promise they carry forward in Oden's name, comes into focus.",
+          coverage: { anime: "957", manga: "972-975" },
           length: "TBD",
         },
         {
           id: 33,
           title: "Wano 33",
+          altTitle: "To Onigashima",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "954-955", manga: "941" },
+            "The alliance sets sail for Onigashima under the cover of the Fire Festival. Despite having far fewer troops than planned, the spirit of the fighters is unbroken. The fleet moves through the night toward Kaido's stronghold, each member carrying the weight of everything Wano has suffered — and everything it deserves to become.",
+          coverage: { anime: "958-959", manga: "974-975" },
           length: "TBD",
         },
         {
           id: 34,
           title: "Wano 34",
+          altTitle: "Storming the Island",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "956-957", manga: "942" },
+            "The raid on Onigashima begins. The alliance infiltrates the island during the chaos of the Festival celebration, disguising themselves among Kaido's forces. Tensions are sky-high as they navigate the enemy stronghold. The plan hinges on silence and speed — but the island is crawling with some of the most dangerous fighters in the world.",
+          coverage: { anime: "960-961", manga: "976-977" },
           length: "TBD",
         },
         {
           id: 35,
           title: "Wano 35",
+          altTitle: "Inside the Beast Pirates' Fortress",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "958-959", manga: "943" },
+            "Deep inside Onigashima's castle, the alliance must maintain their disguises while surrounded by enemy forces attending the Festival. Small slip-ups threaten to unravel everything. The Straw Hats and samurai push their luck further, getting closer to Kaido's inner sanctum while avoiding detection from the Tobi Roppo and All-Stars.",
+          coverage: { anime: "962-963", manga: "978-979" },
           length: "TBD",
         },
         {
           id: 36,
           title: "Wano 36",
+          altTitle: "The Tobi Roppo's Challenge",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "960-961", manga: "944" },
+            "The six Flying Six — the Tobi Roppo, Kaido's most powerful subordinates beneath his All-Stars — are summoned for a mysterious meeting. Their internal politics and rivalry with one another hint at cracks in the Beast Pirates' otherwise iron hierarchy. The alliance's presence on the island edges closer to being discovered.",
+          coverage: { anime: "964-965", manga: "980-981" },
           length: "TBD",
         },
         {
           id: 37,
           title: "Wano 37",
+          altTitle: "Chaos Erupts",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "962-963", manga: "945" },
+            "The uneasy calm shatters as chaos breaks out across Onigashima. The alliance's cover is blown and all-out war begins. Luffy, Zoro, and the others throw off their disguises and launch into battle, their war cries signaling the start of the raid everyone has been preparing for. The liberation of Wano has officially begun.",
+          coverage: { anime: "965-966", manga: "982-983" },
           length: "TBD",
         },
         {
           id: 38,
           title: "Wano 38",
+          altTitle: "The Nine Red Scabbards Attack",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "964-965", manga: "946" },
+            "The Nine Red Scabbards break away from the main battle to confront Kaido directly. United by twenty years of grief, rage, and love for their fallen lord Oden, they launch a coordinated assault on the Emperor. What happens next is one of the most emotionally charged confrontations in the entire arc.",
+          coverage: { anime: "967", manga: "984-985" },
           length: "TBD",
         },
         {
           id: 39,
           title: "Wano 39",
+          altTitle: "Scabbards vs. Kaido",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "966-967", manga: "947" },
+            "The Nine Red Scabbards fight Kaido with everything they have, landing blows that genuinely wound the seemingly invincible Emperor. The sight of Kaido bleeding shocks the Beast Pirates who believed their master to be beyond harm. The scabbards' determination — fueled by Oden's memory — briefly makes the impossible seem achievable.",
+          coverage: { anime: "968-969", manga: "986-987" },
           length: "TBD",
         },
         {
           id: 40,
           title: "Wano 40",
+          altTitle: "Luffy Reaches the Roof",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "968-969", manga: "948" },
+            "Luffy fights his way through wave after wave of Beast Pirates to reach the roof of Onigashima — the Skull Dome — where Kaido is battling the Scabbards. His arrival is triumphant and electric, as the alliance's greatest hope finally comes face to face with its greatest obstacle. The real fight for Wano's future is about to begin.",
+          coverage: { anime: "970-972", manga: "988-989" },
           length: "TBD",
         },
         {
           id: 41,
           title: "Wano 41",
+          altTitle: "The Worst Generation Unites",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "970-971", manga: "949" },
+            "Luffy, Kid, and Law — three of the Worst Generation's most powerful captains — stand together against Kaido and Big Mom on the Skull Dome roof. The four-on-two battle of emperors versus supernovas begins. The sheer scale of power on display is unlike anything the New World has seen, and the outcome feels genuinely uncertain.",
+          coverage: { anime: "972-974", manga: "990-991" },
           length: "TBD",
         },
         {
           id: 42,
           title: "Wano 42",
+          altTitle: "Roof Piece Begins",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "972-973", manga: "950" },
+            "The epic battle on the Skull Dome roof — known among fans as 'Roof Piece' — reaches a fever pitch. Luffy, Zoro, Killer, Kid, and Law unleash their full arsenals against Kaido and Big Mom. Each fighter pushes their limits, and the clash of Conqueror's Haki shakes the entire island. The era of the Worst Generation is being written in real time.",
+          coverage: { anime: "975-976", manga: "992-993" },
           length: "TBD",
         },
         {
           id: 43,
           title: "Wano 43",
+          altTitle: "Zoro's Conqueror's Haki",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "974-975", manga: "951" },
+            "Zoro awakens a power long hinted at but never confirmed — Conqueror's Haki — during his desperate battle against King. Meanwhile across the island, individual battles between the alliance and the Beast Pirates' top fighters intensify. Chopper battles to stop the spread of a deadly virus Queen has unleashed on the live floor.",
+          coverage: { anime: "977-978", manga: "994-995" },
           length: "TBD",
         },
         {
           id: 44,
           title: "Wano 44",
+          altTitle: "Queen's Plague",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "976-977", manga: "952-953" },
+            "Queen unleashes the Ice Oni plague upon the Live Floor, infecting both his own men and the alliance fighters. The race to find an antidote becomes as urgent as the battle itself. Chopper steps forward as the one person capable of developing a cure, putting his medical genius to the ultimate test under battlefield conditions.",
+          coverage: { anime: "978-979", manga: "996-997" },
           length: "TBD",
         },
         {
           id: 45,
           title: "Wano 45",
+          altTitle: "Yamato's Resolve",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "978-979", manga: "954-955" },
+            "Yamato, Kaido's own child who has long idolized Kozuki Oden, breaks free and fights against the Beast Pirates to protect the alliance. Yamato's deep personal connection to Oden's journals and ideals — and the conflict of opposing their own father — drives one of the most emotionally complex character arcs of the entire raid.",
+          coverage: { anime: "980-981", manga: "998-999" },
           length: "TBD",
         },
         {
           id: 46,
           title: "Wano 46",
+          altTitle: "Luffy vs. Kaido, Round Two",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "980-981", manga: "956-957" },
+            "After the Worst Generation separates the two Emperors, Luffy faces Kaido in a more direct rematch. Drawing on everything he has learned, Luffy pushes to new extremes of power and endurance. The gap between them still seems enormous, but Luffy's unbreakable will refuses to let him stay down.",
+          coverage: { anime: "982-983", manga: "1000-1001" },
           length: "TBD",
         },
         {
           id: 47,
           title: "Wano 47",
+          altTitle: "The Voice of All Things",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "982-983", manga: "958-959" },
+            "Luffy taps into a deeper level of his abilities as the battle on Onigashima reaches a critical turning point. A new understanding of his own Devil Fruit begins to stir, hinting at a power that goes far beyond what anyone — including Luffy himself — expected. The nature of his ability may be something the world has not seen in centuries.",
+          coverage: { anime: "984-985", manga: "1002-1003" },
           length: "TBD",
         },
         {
           id: 48,
           title: "Wano 48",
+          altTitle: "Advanced Conqueror's Haki",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "984-985", manga: "960-961" },
+            "Kaido demonstrates the most advanced application of Conqueror's Haki — coating his attacks in it to devastating effect. Luffy observes and begins to grasp this technique instinctively during battle. The fight evolves into a high-level Haki clash, each exchange a lesson in power that Luffy absorbs on the fly.",
+          coverage: { anime: "986-987", manga: "1004-1005" },
           length: "TBD",
         },
         {
           id: 49,
           title: "Wano 49",
+          altTitle: "Luffy's Awakening",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "986-987", manga: "962-963" },
+            "After being defeated and thrown from the island, Luffy awakens his true power. His Devil Fruit transforms in a way that shocks everyone who witnesses it — a revelation that recontextualizes everything about his journey. Reborn with a grin and a new name on his power, Luffy returns to face Kaido one final time.",
+          coverage: { anime: "988-989", manga: "1006-1007" },
           length: "TBD",
         },
         {
           id: 50,
           title: "Wano 50",
+          altTitle: "Gear Five",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "988-989", manga: "964-965" },
+            "Luffy's awakened form — Gear Five — is fully unleashed against Kaido. Powered by the Mythical Zoan fruit of the Sun God Nika, Luffy fights with a freedom and joy unlike anything seen before, bending the world around him like rubber. The battle becomes something transcendent, and Kaido himself is shaken to his core.",
+          coverage: { anime: "990-991", manga: "1008-1009" },
           length: "TBD",
         },
         {
           id: 51,
           title: "Wano 51",
+          altTitle: "The Final Clash",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "990-991", manga: "966-967" },
+            "The battle between Luffy and Kaido reaches its climactic conclusion. Both fighters pour every last ounce of strength into their final exchange. Across the island, the allied forces hold on desperately, their fate tied to whether their captain can do what no one else has been able to — bring down an Emperor of the Sea.",
+          coverage: { anime: "992-993", manga: "1010-1011" },
           length: "TBD",
         },
         {
           id: 52,
           title: "Wano 52",
+          altTitle: "Kaido Falls",
           description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "992-993", manga: "968-969" },
+            "Luffy defeats Kaido, and the shockwave of that victory reverberates through all of Onigashima and Wano Country. The island, which had been hovering above the capital, begins to fall — triggering a desperate race to save the people below. Twenty years of suffering and sacrifice have led to this single, shattering moment.",
+          coverage: { anime: "994-995", manga: "1012-1013" },
           length: "TBD",
         },
         {
           id: 53,
           title: "Wano 53",
+          altTitle: "Orochi's End",
           description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "994-995", manga: "970-971" },
+            "With Kaido defeated, the corrupt shogun Orochi faces his own reckoning. The man who betrayed Oden, enslaved the people of Wano, and poisoned the land for decades is finally brought to justice. His fall is less heroic than Kaido's — fitting for a villain defined entirely by cowardice, cruelty, and manipulation.",
+          coverage: { anime: "996-997", manga: "1014-1015" },
           length: "TBD",
         },
         {
           id: 54,
           title: "Wano 54",
+          altTitle: "Dawn of the New Wano",
           description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "996-997", manga: "972-973" },
+            "The dust begins to settle over Wano Country. The people — many of whom had never known freedom in their lifetimes — emerge into a world without Kaido and Orochi. Tears, celebrations, and quiet grief mix together. The scabbards, Hiyori, and the surviving fighters reckon with what was lost and what has finally, impossibly, been won.",
+          coverage: { anime: "998-999", manga: "1016-1017" },
           length: "TBD",
         },
         {
           id: 55,
           title: "Wano 55",
+          altTitle: "Chapter 1000: Straw Hat Luffy",
           description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "998-999", manga: "974-975" },
+            "The landmark 1000th chapter of One Piece is adapted in an extended episode celebrating Luffy's journey. A moment of profound reflection on how far Luffy and his crew have come since East Blue, set against the backdrop of Wano's liberation. The Straw Hats stand at the peak of a new era, the name of its king already decided in their hearts.",
+          coverage: { anime: "1000", manga: "1000" },
           length: "TBD",
         },
         {
           id: 56,
           title: "Wano 56",
+          altTitle: "The Warlords' Bounties",
           description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1000-1001", manga: "976-977" },
+            "The aftermath of the Onigashima raid continues to unfold across Wano. New bounties and titles are distributed reflecting the seismic shifts in the world's power balance. The Five Elders and the World Government begin to grapple with the implications of Kaido's fall and the rise of a new Emperor.",
+          coverage: { anime: "1001-1002", manga: "1051-1052" },
           length: "TBD",
         },
         {
           id: 57,
           title: "Wano 57",
+          altTitle: "Luffy's New Title",
           description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "1002-1003", manga: "978-979" },
+            "The world officially acknowledges Luffy's role in defeating Kaido. The title of Emperor — Yonko — is bestowed upon him, a recognition that the balance of power in the world has fundamentally changed. Luffy's reaction to the title is exactly what you'd expect from him, and it's perfect.",
+          coverage: { anime: "1003-1004", manga: "1053-1054" },
           length: "TBD",
         },
         {
           id: 58,
           title: "Wano 58",
+          altTitle: "Leaving Wano",
           description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "1004-1005", manga: "980-981" },
+            "As Wano begins its long road to recovery, the Straw Hats prepare to depart. Emotional farewells are exchanged with the people and allies who fought alongside them. Wano's borders, sealed for centuries, are now open to the world. The crew sails away from a country forever changed, toward the next chapter of their journey.",
+          coverage: { anime: "1005-1006", manga: "1055-1056" },
           length: "TBD",
         },
         {
           id: 59,
           title: "Wano 59",
+          altTitle: "Toward the Final Sea",
           description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "1006-1007", manga: "982-983" },
+            "The Wano arc reaches its conclusion as the Straw Hats set their sights on the horizon. The events of Wano — the battles, the losses, the history uncovered — have pushed every member of the crew closer to who they need to be for what lies ahead. The final sea, and the One Piece itself, feels closer than ever.",
+          coverage: { anime: "1007-1008", manga: "1057" },
           length: "TBD",
         },
         {
           id: 60,
           title: "Wano 60",
-          description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "1008-1009", manga: "984-985" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 61,
           title: "Wano 61",
-          description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "1010-1011", manga: "986-987" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 62,
           title: "Wano 62",
-          description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "1012-1013", manga: "988-989" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 63,
           title: "Wano 63",
-          description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "1014-1015", manga: "990-991" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 64,
           title: "Wano 64",
-          description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1016-1017", manga: "992-993" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 65,
           title: "Wano 65",
-          description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "1018-1019", manga: "994-995" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 66,
           title: "Wano 66",
-          description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "1020-1021", manga: "996-997" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 67,
           title: "Wano 67",
-          description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "1022-1023", manga: "998-999" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 68,
           title: "Wano 68",
-          description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "1024-1025", manga: "1000-1001" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 69,
           title: "Wano 69",
-          description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "1026-1027", manga: "1002-1003" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 70,
           title: "Wano 70",
-          description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "1028-1029", manga: "1004-1005" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 71,
           title: "Wano 71",
-          description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "1030-1031", manga: "1006-1007" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 72,
           title: "Wano 72",
-          description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1032-1033", manga: "1008-1009" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 73,
           title: "Wano 73",
-          description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "1034-1035", manga: "1010-1011" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 74,
           title: "Wano 74",
-          description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "1036-1037", manga: "1012-1013" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 75,
           title: "Wano 75",
-          description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "1038-1039", manga: "1014-1015" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 76,
           title: "Wano 76",
-          description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "1040-1041", manga: "1016-1017" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 77,
           title: "Wano 77",
-          description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "1042-1043", manga: "1018-1019" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 78,
           title: "Wano 78",
-          description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "1044-1045", manga: "1020-1021" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 79,
           title: "Wano 79",
-          description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "1046-1047", manga: "1022-1023" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 80,
           title: "Wano 80",
-          description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1048-1049", manga: "1024-1025" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 81,
           title: "Wano 81",
-          description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "1050-1051", manga: "1026-1027" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 82,
           title: "Wano 82",
-          description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "1052-1053", manga: "1028-1029" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 83,
           title: "Wano 83",
-          description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "1054-1055", manga: "1030-1031" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 84,
           title: "Wano 84",
-          description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "1056-1057", manga: "1032-1033" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 85,
           title: "Wano 85",
-          description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "1058-1059", manga: "1034-1035" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 86,
           title: "Wano 86",
-          description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "1060-1061", manga: "1036-1037" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
         {
           id: 87,
           title: "Wano 87",
-          description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "1062-1063", manga: "1038-1039" },
-          length: "TBD",
-        },
-        {
-          id: 88,
-          title: "Wano 88",
-          description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1064-1065", manga: "1040-1041" },
-          length: "TBD",
-        },
-        {
-          id: 89,
-          title: "Wano 89",
-          description:
-            "Wano’s layered politics surface as lords, outsiders, and hidden armies test who truly owns the country’s future.",
-          coverage: { anime: "1066-1067", manga: "1042-1043" },
-          length: "TBD",
-        },
-        {
-          id: 90,
-          title: "Wano 90",
-          description:
-            "Kozuki’s retainers and scattered allies tighten plans while surveillance turns friendly towns into minefields.",
-          coverage: { anime: "1068-1069", manga: "1044-1045" },
-          length: "TBD",
-        },
-        {
-          id: 91,
-          title: "Wano 91",
-          description:
-            "Luffy and allies push deeper into Wano’s heartland where smiles, factories, and fear share the same supply chain.",
-          coverage: { anime: "1070-1071", manga: "1046-1047" },
-          length: "TBD",
-        },
-        {
-          id: 92,
-          title: "Wano 92",
-          description:
-            "Ancient oaths meet modern cruelty as Kaido’s grip shows what a conquered nation looks like up close.",
-          coverage: { anime: "1072-1073", manga: "1048-1049" },
-          length: "TBD",
-        },
-        {
-          id: 93,
-          title: "Wano 93",
-          description:
-            "The raid’s scale grows as fronts multiply across Onigashima and the mainland, each with its own clock.",
-          coverage: { anime: "1074-1075", manga: "1050-1051" },
-          length: "TBD",
-        },
-        {
-          id: 94,
-          title: "Wano 94",
-          description:
-            "Haki, steel, and resolve clash in duels where the winner may change Wano—but not erase its scars.",
-          coverage: { anime: "1076-1077", manga: "1052-1053" },
-          length: "TBD",
-        },
-        {
-          id: 95,
-          title: "Wano 95",
-          description:
-            "Emperor-level threats force impossible gambles as friends trade safety for a single opening to strike back.",
-          coverage: { anime: "1078-1079", manga: "1054-1055" },
-          length: "TBD",
-        },
-        {
-          id: 96,
-          title: "Wano 96",
-          description:
-            "Wano’s arc beats toward closure as dawn, duty, and defiance become more than metaphors on a battlefield.",
-          coverage: { anime: "1080-1081", manga: "1056-1057" },
+          altTitle: null,
+          description: "coming soon",
+          coverage: { anime: "TBD", manga: "TBD" },
           length: "TBD",
         },
       ],
     },
     {
       id: 36,
-      showId: "8c17ed0001ac69927694a1e1ec326f59",
+      showId: "1bb1e6e9ba46d54ff30f00f1e8aba87b",
       title: "Egghead",
       image: "https://onepace.co/wp-content/uploads/2024/09/one-pace-logo.png",
       altImage:
