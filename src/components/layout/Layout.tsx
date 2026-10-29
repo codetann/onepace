@@ -43,7 +43,7 @@ export default function Layout({
 
 function Header() {
   const { theme, toggleTheme } = useTheme();
-  const { getContinueWatchingTarget } = useDataContext();
+  const { user, getContinueWatchingTarget } = useDataContext();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const handleOpen = () => setIsOpen(true);
@@ -78,23 +78,25 @@ function Header() {
         </div>
 
         <div className="flex items-center gap-2 flex-1 justify-end">
-          <Tooltip delay={300}>
-            <Tooltip.Trigger>
-              <Button
-                variant="secondary"
-                size="sm"
-                className="cursor-pointer flex items-center gap-1.5 text-xs font-semibold px-2.5 h-8 rounded-lg shadow-sm border border-default-200 hover:bg-default-100"
-                onPress={handleContinueWatching}
-                aria-label={continueTooltip}
-              >
-                <BiPlayCircle className="size-4 text-accent" />
-                <span className="hidden sm:inline">Continue Watching</span>
-              </Button>
-            </Tooltip.Trigger>
-            <Tooltip.Content placement="bottom">
-              {continueTooltip}
-            </Tooltip.Content>
-          </Tooltip>
+          {user && (
+            <Tooltip delay={300}>
+              <Tooltip.Trigger>
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="cursor-pointer flex items-center gap-1.5 text-xs font-semibold px-2.5 h-8 rounded-lg shadow-sm border border-default-200 hover:bg-default-100"
+                  onPress={handleContinueWatching}
+                  aria-label={continueTooltip}
+                >
+                  <BiPlayCircle className="size-4 text-accent" />
+                  <span className="hidden sm:inline">Continue Watching</span>
+                </Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content placement="bottom">
+                {continueTooltip}
+              </Tooltip.Content>
+            </Tooltip>
+          )}
 
           <Button isIconOnly variant="tertiary" onPress={toggleTheme}>
             {theme === "light" ? <BiSun /> : <BiMoon />}

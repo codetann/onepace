@@ -30,8 +30,8 @@ export default function SettingsModal({
   const { user, login, logout, refreshData, userDataMap } = useDataContext();
   const { theme, toggleTheme } = useTheme();
 
-  const [activeSection, setActiveSection] = useState<"preferences" | "account">(
-    "preferences",
+  const [activeSection, setActiveSection] = useState<"account" | "preferences">(
+    "account",
   );
 
   // Login form state (for logged out user)
@@ -188,19 +188,6 @@ export default function SettingsModal({
               <div className="w-full sm:w-40 shrink-0 px-1.5 pt-1 pb-1.5 sm:px-2 sm:pt-1.5 sm:pb-3 border-b sm:border-b-0 sm:border-r border-default-100 bg-default-50/50 flex flex-row sm:flex-col gap-0.5">
                 <button
                   type="button"
-                  onClick={() => setActiveSection("preferences")}
-                  className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer text-left ${
-                    activeSection === "preferences"
-                      ? "bg-accent text-accent-foreground font-semibold shadow-xs"
-                      : "text-muted hover:text-foreground hover:bg-default-100/70"
-                  }`}
-                >
-                  <BiCog className="size-4 shrink-0" />
-                  <span>Preferences</span>
-                </button>
-
-                <button
-                  type="button"
                   onClick={() => setActiveSection("account")}
                   className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer text-left ${
                     activeSection === "account"
@@ -211,68 +198,24 @@ export default function SettingsModal({
                   <BiUser className="size-4 shrink-0" />
                   <span>Account</span>
                 </button>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveSection("preferences")}
+                  className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer text-left ${
+                    activeSection === "preferences"
+                      ? "bg-accent text-accent-foreground font-semibold shadow-xs"
+                      : "text-muted hover:text-foreground hover:bg-default-100/70"
+                  }`}
+                >
+                  <BiCog className="size-4 shrink-0" />
+                  <span>Preferences</span>
+                </button>
               </div>
 
               {/* ── Right Content Pane (Flat rows, no card borders) ── */}
               <div className="flex-1 h-full min-h-0 overflow-y-auto px-4 py-3 sm:px-5 sm:py-4">
-                {activeSection === "preferences" ? (
-                  /* ── PREFERENCES SECTION ── */
-                  <div className="flex flex-col gap-4">
-                    <div className="pb-2 border-b border-default-100">
-                      <h4 className="text-sm font-semibold text-foreground">
-                        Preferences
-                      </h4>
-                      <p className="text-xs text-muted">
-                        Configure interface appearance and playback options.
-                      </p>
-                    </div>
-
-                    <div className="divide-y divide-default-100">
-                      {/* Theme Row */}
-                      <div className="py-3 flex items-center justify-between gap-4">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium text-foreground">
-                            Theme
-                          </span>
-                          <span className="text-xs text-muted">
-                            Switch between light and dark mode
-                          </span>
-                        </div>
-                        <Button
-                          variant="secondary"
-                          size="sm"
-                          className="cursor-pointer shrink-0 flex items-center gap-1.5 text-xs"
-                          onPress={toggleTheme}
-                        >
-                          {theme === "light" ? (
-                            <>
-                              <BiSun className="text-amber-500" /> Light
-                            </>
-                          ) : (
-                            <>
-                              <BiMoon className="text-indigo-400" /> Dark
-                            </>
-                          )}
-                        </Button>
-                      </div>
-
-                      {/* Audio Language Row */}
-                      <div className="py-3 flex items-center justify-between gap-4">
-                        <div className="flex flex-col">
-                          <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
-                            <BiVolumeFull className="text-muted" /> Audio Language
-                          </span>
-                          <span className="text-xs text-muted">
-                            Default audio track preference
-                          </span>
-                        </div>
-                        <Chip size="sm" variant="secondary" className="shrink-0 text-xs">
-                          Dubbed (Default)
-                        </Chip>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
+                {activeSection === "account" ? (
                   /* ── ACCOUNT SECTION ── */
                   <div className="flex flex-col gap-4">
                     <div className="pb-2 border-b border-default-100">
@@ -537,6 +480,63 @@ export default function SettingsModal({
                         </form>
                       </div>
                     )}
+                  </div>
+                ) : (
+                  /* ── PREFERENCES SECTION ── */
+                  <div className="flex flex-col gap-4">
+                    <div className="pb-2 border-b border-default-100">
+                      <h4 className="text-sm font-semibold text-foreground">
+                        Preferences
+                      </h4>
+                      <p className="text-xs text-muted">
+                        Configure interface appearance and playback options.
+                      </p>
+                    </div>
+
+                    <div className="divide-y divide-default-100">
+                      {/* Theme Row */}
+                      <div className="py-3 flex items-center justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-foreground">
+                            Theme
+                          </span>
+                          <span className="text-xs text-muted">
+                            Switch between light and dark mode
+                          </span>
+                        </div>
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          className="cursor-pointer shrink-0 flex items-center gap-1.5 text-xs"
+                          onPress={toggleTheme}
+                        >
+                          {theme === "light" ? (
+                            <>
+                              <BiSun className="text-amber-500" /> Light
+                            </>
+                          ) : (
+                            <>
+                              <BiMoon className="text-indigo-400" /> Dark
+                            </>
+                          )}
+                        </Button>
+                      </div>
+
+                      {/* Audio Language Row */}
+                      <div className="py-3 flex items-center justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                            <BiVolumeFull className="text-muted" /> Audio Language
+                          </span>
+                          <span className="text-xs text-muted">
+                            Default audio track preference
+                          </span>
+                        </div>
+                        <Chip size="sm" variant="secondary" className="shrink-0 text-xs">
+                          Dubbed (Default)
+                        </Chip>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
