@@ -11,6 +11,8 @@ import {
   BiLogIn,
   BiVolumeFull,
   BiShield,
+  BiHistory,
+  BiTrash,
 } from "react-icons/bi";
 import { useDataContext } from "@/context/DataContext";
 import { useTheme } from "@/hooks";
@@ -25,8 +27,12 @@ export default function SettingsModal({
   isOpen,
   onOpenChange,
 }: SettingsModalProps) {
-  const { user, login, logout, refreshData } = useDataContext();
+  const { user, login, logout, refreshData, userDataMap } = useDataContext();
   const { theme, toggleTheme } = useTheme();
+
+  const [activeSection, setActiveSection] = useState<"preferences" | "account">(
+    "preferences",
+  );
 
   // Login form state (for logged out user)
   const [loginUsername, setLoginUsername] = useState("");
@@ -40,6 +46,14 @@ export default function SettingsModal({
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
+
+  // Reset watch history state
+  const [confirmReset, setConfirmReset] = useState(false);
+  const [isResettingHistory, setIsResettingHistory] = useState(false);
+  const [historyMessage, setHistoryMessage] = useState<{
     type: "success" | "error";
     text: string;
   } | null>(null);
@@ -108,6 +122,42 @@ export default function SettingsModal({
     }
   };
 
+  const handleResetWatchHistory = async () => {
+    setIsResettingHistory(true);
+    setHistoryMessage(null);
+    try {
+      localStorage.removeItem("onepace:continueWatching");
+
+      // Unmark any watched items in Jellyfin if user is signed in
+      const playedItemIds = Object.values(userDataMap)
+        .filter((entry) => entry.played && entry.itemId)
+        .map((entry) => entry.itemId as string);
+
+      if (playedItemIds.length > 0) {
+        await Promise.allSettled(
+          playedItemIds.map((id) => jellyfinClient.unmarkPlayedItem(id)),
+        );
+      }
+
+      await refreshData();
+      setHistoryMessage({
+        type: "success",
+        text: "Watch history and resume points have been reset.",
+      });
+      setConfirmReset(false);
+    } catch (err: unknown) {
+      setHistoryMessage({
+        type: "error",
+        text:
+          err instanceof Error
+            ? err.message
+            : "Failed to reset watch history",
+      });
+    } finally {
+      setIsResettingHistory(false);
+    }
+  };
+
   const handleLogout = () => {
     logout();
     onOpenChange(false);
@@ -117,257 +167,390 @@ export default function SettingsModal({
     <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
       <Modal.Backdrop>
         <Modal.Container placement="center" size="lg">
-          <Modal.Dialog className="max-w-md w-full">
-            <Modal.Header className="flex flex-col gap-1 pb-2">
-              <Modal.Heading className="text-xl font-bold flex items-center justify-between">
+          <Modal.Dialog className="max-w-2xl w-full h-[600px] max-h-[90vh] flex flex-col overflow-hidden !p-0 p-0">
+            <Modal.Header className="px-4 sm:px-5 py-2.5 sm:py-3 border-b border-default-100 flex items-center justify-between shrink-0">
+              <Modal.Heading className="text-lg font-bold flex items-center justify-between w-full pr-6">
                 <span>Settings</span>
                 {user ? (
-                  <Chip size="sm" color="success" className="gap-1">
+                  <Chip size="sm" color="success" className="gap-1 text-xs">
                     <BiCheck /> Connected
                   </Chip>
                 ) : (
-                  <Chip size="sm" color="warning" className="gap-1">
+                  <Chip size="sm" color="warning" className="gap-1 text-xs">
                     Signed Out
                   </Chip>
                 )}
               </Modal.Heading>
             </Modal.Header>
 
-            <Modal.Body className="py-2 max-h-[75vh] overflow-y-auto space-y-5">
-              {/* Account Section */}
-              <div className="flex flex-col gap-3">
-                <span className="text-xs font-semibold uppercase tracking-wider text-muted flex items-center gap-1.5">
-                  <BiUser className="size-4" /> Account
-                </span>
+            <Modal.Body className="!p-0 p-0 flex-1 min-h-0 overflow-hidden flex flex-col sm:flex-row">
+              {/* ── Compact Left Sidebar Menu ── */}
+              <div className="w-full sm:w-40 shrink-0 px-1.5 pt-1 pb-1.5 sm:px-2 sm:pt-1.5 sm:pb-3 border-b sm:border-b-0 sm:border-r border-default-100 bg-default-50/50 flex flex-row sm:flex-col gap-0.5">
+                <button
+                  type="button"
+                  onClick={() => setActiveSection("preferences")}
+                  className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer text-left ${
+                    activeSection === "preferences"
+                      ? "bg-accent text-accent-foreground font-semibold shadow-xs"
+                      : "text-muted hover:text-foreground hover:bg-default-100/70"
+                  }`}
+                >
+                  <BiCog className="size-4 shrink-0" />
+                  <span>Preferences</span>
+                </button>
 
-                {user ? (
-                  <div className="flex flex-col gap-3">
-                    {/* User Info Card */}
-                    <div className="flex items-center gap-3 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                      <div className="w-11 h-11 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-base shrink-0">
-                        {user.Name?.[0]?.toUpperCase() || "U"}
-                      </div>
-                      <div className="flex flex-col flex-1 min-w-0">
-                        <span className="font-semibold text-sm flex items-center gap-2 truncate">
-                          {user.Name}
-                          {user.Policy?.IsAdministrator && (
-                            <Chip
-                              size="sm"
-                              color="accent"
-                              className="text-[10px]"
-                            >
-                              <BiShield /> Admin
-                            </Chip>
-                          )}
-                        </span>
-                        <span className="text-xs text-muted truncate">
-                          ID: {user.Id}
-                        </span>
-                      </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveSection("account")}
+                  className={`w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-colors cursor-pointer text-left ${
+                    activeSection === "account"
+                      ? "bg-accent text-accent-foreground font-semibold shadow-xs"
+                      : "text-muted hover:text-foreground hover:bg-default-100/70"
+                  }`}
+                >
+                  <BiUser className="size-4 shrink-0" />
+                  <span>Account</span>
+                </button>
+              </div>
+
+              {/* ── Right Content Pane (Flat rows, no card borders) ── */}
+              <div className="flex-1 h-full min-h-0 overflow-y-auto px-4 py-3 sm:px-5 sm:py-4">
+                {activeSection === "preferences" ? (
+                  /* ── PREFERENCES SECTION ── */
+                  <div className="flex flex-col gap-4">
+                    <div className="pb-2 border-b border-default-100">
+                      <h4 className="text-sm font-semibold text-foreground">
+                        Preferences
+                      </h4>
+                      <p className="text-xs text-muted">
+                        Configure interface appearance and playback options.
+                      </p>
                     </div>
 
-                    {/* Change Password Form */}
-                    <form
-                      onSubmit={handleUpdatePassword}
-                      className="flex flex-col gap-2 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200"
-                    >
-                      <h4 className="text-xs font-semibold flex items-center gap-1 text-default-700">
-                        <BiLock className="size-3.5" /> Change Password
-                      </h4>
-
-                      {passwordMessage && (
-                        <div
-                          className={`text-xs p-2 rounded-lg ${
-                            passwordMessage.type === "success"
-                              ? "bg-success/15 text-success border border-success/30"
-                              : "bg-danger/15 text-danger border border-danger/30"
-                          }`}
-                        >
-                          {passwordMessage.text}
+                    <div className="divide-y divide-default-100">
+                      {/* Theme Row */}
+                      <div className="py-3 flex items-center justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-foreground">
+                            Theme
+                          </span>
+                          <span className="text-xs text-muted">
+                            Switch between light and dark mode
+                          </span>
                         </div>
-                      )}
+                        <Button
+                          variant="secondary"
+                          size="sm"
+                          className="cursor-pointer shrink-0 flex items-center gap-1.5 text-xs"
+                          onPress={toggleTheme}
+                        >
+                          {theme === "light" ? (
+                            <>
+                              <BiSun className="text-amber-500" /> Light
+                            </>
+                          ) : (
+                            <>
+                              <BiMoon className="text-indigo-400" /> Dark
+                            </>
+                          )}
+                        </Button>
+                      </div>
 
-                      <Label htmlFor="current-pw" className="text-xs">
-                        Current Password
-                      </Label>
-                      <Input
-                        id="current-pw"
-                        variant="secondary"
-                        type="password"
-                        placeholder="Current password"
-                        className="w-full"
-                        value={currentPassword}
-                        onChange={(e) => setCurrentPassword(e.target.value)}
-                      />
-
-                      <Label htmlFor="new-pw" className="text-xs">
-                        New Password
-                      </Label>
-                      <Input
-                        id="new-pw"
-                        variant="secondary"
-                        type="password"
-                        placeholder="New password"
-                        className="w-full"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                      />
-
-                      <Label htmlFor="confirm-pw" className="text-xs">
-                        Confirm New Password
-                      </Label>
-                      <Input
-                        id="confirm-pw"
-                        variant="secondary"
-                        type="password"
-                        placeholder="Confirm new password"
-                        className="w-full"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                      />
-
-                      <Button
-                        type="submit"
-                        variant="secondary"
-                        size="sm"
-                        className="mt-1 w-full cursor-pointer"
-                        isDisabled={isUpdatingPassword || !newPassword}
-                      >
-                        {isUpdatingPassword ? "Updating..." : "Update Password"}
-                      </Button>
-                    </form>
+                      {/* Audio Language Row */}
+                      <div className="py-3 flex items-center justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                            <BiVolumeFull className="text-muted" /> Audio Language
+                          </span>
+                          <span className="text-xs text-muted">
+                            Default audio track preference
+                          </span>
+                        </div>
+                        <Chip size="sm" variant="secondary" className="shrink-0 text-xs">
+                          Dubbed (Default)
+                        </Chip>
+                      </div>
+                    </div>
                   </div>
                 ) : (
-                  /* Logged Out View */
-                  <div className="flex flex-col gap-3">
-                    <div className="p-3 rounded-xl bg-warning/10 border border-warning/20 text-xs text-warning-700 dark:text-warning-300">
-                      Sign in with your Jellyfin account to sync watched
-                      episodes, track playback progress, and save resume points
-                      across devices.
+                  /* ── ACCOUNT SECTION ── */
+                  <div className="flex flex-col gap-4">
+                    <div className="pb-2 border-b border-default-100">
+                      <h4 className="text-sm font-semibold text-foreground">
+                        Account
+                      </h4>
+                      <p className="text-xs text-muted">
+                        Manage user profile, watch history, and authentication.
+                      </p>
                     </div>
 
-                    <form
-                      onSubmit={handleLogin}
-                      className="flex flex-col gap-2 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200"
-                    >
-                      {loginError && (
-                        <div className="text-xs p-2 rounded-lg bg-danger/15 text-danger border border-danger/30">
-                          {loginError}
+                    {user ? (
+                      <div className="divide-y divide-default-100">
+                        {/* Profile Row */}
+                        <div className="py-3 flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className="w-10 h-10 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-sm shrink-0">
+                              {user.Name?.[0]?.toUpperCase() || "U"}
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                              <span className="font-semibold text-sm flex items-center gap-2 truncate">
+                                {user.Name}
+                                {user.Policy?.IsAdministrator && (
+                                  <Chip
+                                    size="sm"
+                                    color="accent"
+                                    className="text-[10px] h-5"
+                                  >
+                                    <BiShield /> Admin
+                                  </Chip>
+                                )}
+                              </span>
+                              <span className="text-xs text-muted truncate">
+                                ID: {user.Id}
+                              </span>
+                            </div>
+                          </div>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="text-danger hover:bg-danger/10 cursor-pointer shrink-0 text-xs flex items-center gap-1"
+                            onPress={handleLogout}
+                          >
+                            <BiLogOut className="size-3.5" /> Sign Out
+                          </Button>
                         </div>
-                      )}
 
-                      <Label htmlFor="login-username" className="text-xs">
-                        Username
-                      </Label>
-                      <Input
-                        id="login-username"
-                        variant="secondary"
-                        type="text"
-                        placeholder="Jellyfin username"
-                        className="w-full"
-                        value={loginUsername}
-                        onChange={(e) => setLoginUsername(e.target.value)}
-                      />
+                        {/* Watch History Row */}
+                        <div className="py-3 flex flex-col gap-2">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex flex-col">
+                              <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                                <BiHistory className="size-4 text-accent" /> Watch History
+                              </span>
+                              <span className="text-xs text-muted">
+                                Reset watched markers and clear your continue watching bookmark.
+                              </span>
+                            </div>
 
-                      <Label htmlFor="login-password" className="text-xs">
-                        Password
-                      </Label>
-                      <Input
-                        id="login-password"
-                        variant="secondary"
-                        type="password"
-                        placeholder="Password"
-                        className="w-full"
-                        value={loginPassword}
-                        onChange={(e) => setLoginPassword(e.target.value)}
-                      />
+                            {!confirmReset && (
+                              <Button
+                                variant="secondary"
+                                size="sm"
+                                className="text-danger hover:bg-danger/10 border-danger/20 cursor-pointer shrink-0 text-xs flex items-center gap-1"
+                                onPress={() => setConfirmReset(true)}
+                              >
+                                <BiTrash className="size-3.5" /> Reset History
+                              </Button>
+                            )}
+                          </div>
 
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        className="mt-2 w-full cursor-pointer"
-                        isDisabled={isLoggingIn || !loginUsername}
-                      >
-                        {isLoggingIn ? (
-                          "Signing in..."
-                        ) : (
-                          <span className="flex items-center justify-center gap-1">
-                            <BiLogIn className="size-4" /> Sign In
-                          </span>
+                          {historyMessage && (
+                            <div
+                              className={`text-xs p-2 rounded-md ${
+                                historyMessage.type === "success"
+                                  ? "bg-success/15 text-success"
+                                  : "bg-danger/15 text-danger"
+                              }`}
+                            >
+                              {historyMessage.text}
+                            </div>
+                          )}
+
+                          {confirmReset && (
+                            <div className="flex items-center gap-2 pt-1">
+                              <Button
+                                variant="primary"
+                                size="sm"
+                                className="bg-danger text-white cursor-pointer text-xs"
+                                onPress={handleResetWatchHistory}
+                                isDisabled={isResettingHistory}
+                              >
+                                {isResettingHistory
+                                  ? "Resetting..."
+                                  : "Yes, Reset All History"}
+                              </Button>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="cursor-pointer text-xs"
+                                onPress={() => setConfirmReset(false)}
+                              >
+                                Cancel
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Change Password Row */}
+                        <div className="py-3">
+                          <form
+                            onSubmit={handleUpdatePassword}
+                            className="flex flex-col gap-2.5"
+                          >
+                            <div className="flex flex-col">
+                              <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                                <BiLock className="size-4 text-accent" /> Change Password
+                              </span>
+                              <span className="text-xs text-muted">
+                                Update your Jellyfin account password.
+                              </span>
+                            </div>
+
+                            {passwordMessage && (
+                              <div
+                                className={`text-xs p-2 rounded-md ${
+                                  passwordMessage.type === "success"
+                                    ? "bg-success/15 text-success"
+                                    : "bg-danger/15 text-danger"
+                                }`}
+                              >
+                                {passwordMessage.text}
+                              </div>
+                            )}
+
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-1">
+                              <div className="flex flex-col gap-1">
+                                <Label htmlFor="current-pw" className="text-[11px] text-muted">
+                                  Current Password
+                                </Label>
+                                <Input
+                                  id="current-pw"
+                                  variant="secondary"
+                                  type="password"
+                                  placeholder="Current password"
+                                  className="w-full text-xs"
+                                  value={currentPassword}
+                                  onChange={(e) => setCurrentPassword(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="flex flex-col gap-1">
+                                <Label htmlFor="new-pw" className="text-[11px] text-muted">
+                                  New Password
+                                </Label>
+                                <Input
+                                  id="new-pw"
+                                  variant="secondary"
+                                  type="password"
+                                  placeholder="New password"
+                                  className="w-full text-xs"
+                                  value={newPassword}
+                                  onChange={(e) => setNewPassword(e.target.value)}
+                                />
+                              </div>
+
+                              <div className="flex flex-col gap-1">
+                                <Label htmlFor="confirm-pw" className="text-[11px] text-muted">
+                                  Confirm New Password
+                                </Label>
+                                <Input
+                                  id="confirm-pw"
+                                  variant="secondary"
+                                  type="password"
+                                  placeholder="Confirm password"
+                                  className="w-full text-xs"
+                                  value={confirmPassword}
+                                  onChange={(e) => setConfirmPassword(e.target.value)}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="flex justify-end pt-1">
+                              <Button
+                                type="submit"
+                                variant="secondary"
+                                size="sm"
+                                className="cursor-pointer text-xs"
+                                isDisabled={isUpdatingPassword || !newPassword}
+                              >
+                                {isUpdatingPassword
+                                  ? "Updating..."
+                                  : "Update Password"}
+                              </Button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    ) : (
+                      /* Logged Out View */
+                      <div className="flex flex-col gap-3 py-1">
+                        <p className="text-xs text-muted">
+                          Sign in with your Jellyfin account to sync watched episodes, track
+                          playback progress, and save resume points across devices.
+                        </p>
+
+                        {loginError && (
+                          <div className="text-xs p-2 rounded-md bg-danger/15 text-danger">
+                            {loginError}
+                          </div>
                         )}
-                      </Button>
-                    </form>
+
+                        <form
+                          onSubmit={handleLogin}
+                          className="flex flex-col gap-2.5 max-w-sm"
+                        >
+                          <div className="flex flex-col gap-1">
+                            <Label htmlFor="login-username" className="text-xs">
+                              Username
+                            </Label>
+                            <Input
+                              id="login-username"
+                              variant="secondary"
+                              type="text"
+                              placeholder="Jellyfin username"
+                              className="w-full text-xs"
+                              value={loginUsername}
+                              onChange={(e) => setLoginUsername(e.target.value)}
+                            />
+                          </div>
+
+                          <div className="flex flex-col gap-1">
+                            <Label htmlFor="login-password" className="text-xs">
+                              Password
+                            </Label>
+                            <Input
+                              id="login-password"
+                              variant="secondary"
+                              type="password"
+                              placeholder="Password"
+                              className="w-full text-xs"
+                              value={loginPassword}
+                              onChange={(e) => setLoginPassword(e.target.value)}
+                            />
+                          </div>
+
+                          <Button
+                            type="submit"
+                            variant="primary"
+                            size="sm"
+                            className="mt-2 w-fit cursor-pointer text-xs"
+                            isDisabled={isLoggingIn || !loginUsername}
+                          >
+                            {isLoggingIn ? (
+                              "Signing in..."
+                            ) : (
+                              <span className="flex items-center gap-1.5">
+                                <BiLogIn className="size-4" /> Sign In
+                              </span>
+                            )}
+                          </Button>
+                        </form>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
-
-              {/* Preferences Section */}
-              <div className="flex flex-col gap-2.5 pt-2 border-t border-default-200">
-                <span className="text-xs font-semibold uppercase tracking-wider text-muted flex items-center gap-1.5">
-                  <BiCog className="size-4" /> Preferences
-                </span>
-
-                {/* Theme Toggle */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold">Theme</span>
-                    <span className="text-xs text-muted">
-                      Switch between light and dark mode
-                    </span>
-                  </div>
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="cursor-pointer flex items-center gap-1.5"
-                    onPress={toggleTheme}
-                  >
-                    {theme === "light" ? (
-                      <>
-                        <BiSun className="text-amber-500" /> Light
-                      </>
-                    ) : (
-                      <>
-                        <BiMoon className="text-indigo-400" /> Dark
-                      </>
-                    )}
-                  </Button>
-                </div>
-
-                {/* Audio Preference */}
-                <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                  <div className="flex flex-col">
-                    <span className="text-sm font-semibold flex items-center gap-1.5">
-                      <BiVolumeFull /> Audio Language
-                    </span>
-                    <span className="text-xs text-muted">
-                      Default audio preference
-                    </span>
-                  </div>
-                  <Chip size="sm" color="accent" variant="secondary">
-                    Dubbed (Default)
-                  </Chip>
-                </div>
-              </div>
             </Modal.Body>
 
-            <Modal.Footer className="pt-2">
-              {user ? (
-                <Button
-                  variant="ghost"
-                  className="w-full text-danger hover:bg-danger/10 cursor-pointer flex items-center justify-center gap-1.5"
-                  onPress={handleLogout}
-                >
-                  <BiLogOut className="size-4" /> Sign Out
-                </Button>
-              ) : (
-                <Button
-                  variant="ghost"
-                  className="w-full cursor-pointer"
-                  onPress={() => onOpenChange(false)}
-                >
-                  Close
-                </Button>
-              )}
+            <Modal.Footer className="px-4 sm:px-5 py-2 border-t border-default-100 flex items-center justify-end shrink-0">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="cursor-pointer text-xs"
+                onPress={() => onOpenChange(false)}
+              >
+                Close
+              </Button>
             </Modal.Footer>
           </Modal.Dialog>
         </Modal.Container>

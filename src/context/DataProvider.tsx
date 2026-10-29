@@ -3,7 +3,9 @@ import { DATA } from "@/data/data";
 import { Outlet, useNavigate, useParams } from "react-router";
 import { jellyfinClient, type JellyfinUser } from "@/api/jellyfin";
 import type { Arc, Episode } from "@/typings";
-import { DataContext, type EpisodeProgressData } from "./DataContext";
+import { DataContext, type EpisodeProgressData, type ContinueWatchingTarget } from "./DataContext";
+
+const CONTINUE_KEY = "onepace:continueWatching";
 
 const readStoredUser = (): JellyfinUser | null => {
   try {
@@ -98,12 +100,18 @@ export const DataProvider = () => {
     localStorage.setItem("user", JSON.stringify(auth));
   };
 
-  const logout = () => {
+  const logout = useCallback(() => {
     setUser(null);
     setUserDataMap({});
     localStorage.removeItem("user");
     navigate("/login");
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    return jellyfinClient.onUnauthorized(() => {
+      logout();
+    });
+  }, [logout]);
 
   const refreshData = useCallback(async () => {
     void loadAllUserData();
@@ -396,6 +404,110 @@ export const DataProvider = () => {
     );
   }, [arc, arcId, episode, episodeId]);
 
+  useEffect(() => {
+    if (arcId && episodeId) {
+      const aId = parseInt(arcId, 10);
+      const eId = parseInt(episodeId, 10);
+      if (!isNaN(aId) && !isNaN(eId) && aId > 0 && eId > 0) {
+        const foundArc = DATA.arcs.find((a) => a.id === aId);
+        const foundEp = foundArc?.episodes.find((e) => e.id === eId);
+        const data = {
+          arcId: aId,
+          episodeId: eId,
+          arcTitle: foundArc?.title,
+          episodeTitle: foundEp?.title || `Episode ${eId}`,
+          updatedAt: Date.now(),
+        };
+        try {
+          localStorage.setItem(CONTINUE_KEY, JSON.stringify(data));
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+  }, [arcId, episodeId]);
+
+  const getContinueWatchingTarget = useCallback((): ContinueWatchingTarget => {
+    try {
+      const raw = localStorage.getItem(CONTINUE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed?.arcId && parsed?.episodeId) {
+          const aId = Number(parsed.arcId);
+          const eId = Number(parsed.episodeId);
+          const arcObj = DATA.arcs.find((a) => a.id === aId);
+          const epObj = arcObj?.episodes.find((e) => e.id === eId);
+          if (arcObj && epObj) {
+            const isPlayed = isEpisodePlayed(aId, eId);
+            if (!isPlayed) {
+              return {
+                arcId: aId,
+                episodeId: eId,
+                arcTitle: arcObj.title,
+                episodeTitle: epObj.title || `Episode ${eId}`,
+              };
+            }
+            const nextEp = arcObj.episodes.find((e) => e.id === eId + 1);
+            if (nextEp) {
+              return {
+                arcId: aId,
+                episodeId: nextEp.id,
+                arcTitle: arcObj.title,
+                episodeTitle: nextEp.title || `Episode ${nextEp.id}`,
+              };
+            }
+            const nextArcObj = DATA.arcs.find((a) => a.id === aId + 1);
+            if (nextArcObj && nextArcObj.episodes.length > 0) {
+              return {
+                arcId: nextArcObj.id,
+                episodeId: 1,
+                arcTitle: nextArcObj.title,
+                episodeTitle: nextArcObj.episodes[0]?.title || "Episode 1",
+              };
+            }
+          }
+        }
+      }
+    } catch {
+      /* ignore */
+    }
+
+    for (const arcItem of DATA.arcs) {
+      for (const ep of arcItem.episodes) {
+        const prog = getEpisodeProgress(arcItem.id, ep.id);
+        if (prog.ticks > 0 && !prog.played) {
+          return {
+            arcId: arcItem.id,
+            episodeId: ep.id,
+            arcTitle: arcItem.title,
+            episodeTitle: ep.title || `Episode ${ep.id}`,
+          };
+        }
+      }
+    }
+
+    for (const arcItem of DATA.arcs) {
+      for (const ep of arcItem.episodes) {
+        const played = isEpisodePlayed(arcItem.id, ep.id);
+        if (!played) {
+          return {
+            arcId: arcItem.id,
+            episodeId: ep.id,
+            arcTitle: arcItem.title,
+            episodeTitle: ep.title || `Episode ${ep.id}`,
+          };
+        }
+      }
+    }
+
+    return {
+      arcId: 1,
+      episodeId: 1,
+      arcTitle: DATA.arcs[0]?.title || "Romance Dawn",
+      episodeTitle: DATA.arcs[0]?.episodes[0]?.title || "Episode 1",
+    };
+  }, [isEpisodePlayed, getEpisodeProgress]);
+
   return (
     <DataContext.Provider
       value={{
@@ -415,6 +527,7 @@ export const DataProvider = () => {
         isEpisodePlayed,
         getEpisodeProgress,
         toggleEpisodePlayed,
+        getContinueWatchingTarget,
         isLoadingArc,
         isLoadingEpisode,
       }}

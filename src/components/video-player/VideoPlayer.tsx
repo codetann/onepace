@@ -26,6 +26,7 @@ import {
   BiVolumeLow,
   BiVolumeMute,
   BiWindows,
+  BiX,
 } from "react-icons/bi";
 
 // ─── Inline SVG icons (no extra icon-package dep) ────────────────────────────
@@ -79,6 +80,10 @@ export interface VideoPlayerProps {
    * Otherwise resume position is loaded via `getItem(…, { Fields: "UserData" })` when `jellyfinItemId` is set.
    */
   initialPlaybackPositionTicks?: number;
+  /** Callback triggered when countdown finishes or user clicks start next */
+  onNextEpisode?: () => void;
+  /** Title for the next episode in the auto-advance countdown card */
+  nextEpisodeTitle?: string;
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -96,6 +101,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   jellyfinItemId,
   playbackProgressIntervalMs = 10_000,
   initialPlaybackPositionTicks,
+  onNextEpisode,
+  nextEpisodeTitle,
 }) => {
   const jellyfinMediaSourceId = playbackInfo?.MediaSources?.[0]?.Id;
 
@@ -139,6 +146,14 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
   const [dragTime, setDragTime] = useState<number | null>(null);
+
+  const [isNextCancelled, setIsNextCancelled] = useState(false);
+  const nextTriggeredRef = useRef(false);
+
+  useEffect(() => {
+    setIsNextCancelled(false);
+    nextTriggeredRef.current = false;
+  }, [src, jellyfinItemId]);
 
   // ── Play / pause ──────────────────────────────────────────────────────────
 
@@ -613,6 +628,18 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       }
       jellyfinLastProgressAtRef.current = now;
       sendProgress();
+
+      // Auto-advance when reaching the end of the video (<0.4s left)
+      if (
+        onNextEpisode &&
+        !isNextCancelled &&
+        !nextTriggeredRef.current &&
+        v.duration > 15 &&
+        v.duration - v.currentTime <= 0.4
+      ) {
+        nextTriggeredRef.current = true;
+        onNextEpisode();
+      }
     };
 
     const onSeeked = () => {
@@ -626,6 +653,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const onEnded = () => {
       jellyfinLastProgressAtRef.current = Date.now();
       finalizeStop(true);
+      if (onNextEpisode && !isNextCancelled && !nextTriggeredRef.current) {
+        nextTriggeredRef.current = true;
+        onNextEpisode();
+      }
     };
 
     const onLoaded = () => {
@@ -736,6 +767,28 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     isDraggingTimeline && dragTime !== null ? dragTime : (currentTime ?? 0);
   const progressPct = duration ? (displayTime / duration) * 100 : 0;
   const bufferedPct = duration ? (buffered / duration) * 100 : 0;
+
+  // ── Auto-advance countdown (10s remaining) ─────────────────────────────────
+
+  const timeLeft = duration > 0 ? duration - (currentTime ?? 0) : 999;
+  const isWithinNextWindow =
+    Boolean(onNextEpisode) &&
+    duration > 15 &&
+    timeLeft <= 10 &&
+    timeLeft >= 0;
+  const showNextPopup = isWithinNextWindow && !isNextCancelled;
+  const secondsLeft = Math.max(0, Math.ceil(timeLeft));
+
+  const handleTriggerNext = useCallback(() => {
+    if (onNextEpisode && !nextTriggeredRef.current) {
+      nextTriggeredRef.current = true;
+      onNextEpisode();
+    }
+  }, [onNextEpisode]);
+
+  const handleCancelNext = useCallback(() => {
+    setIsNextCancelled(true);
+  }, []);
 
   const rates = [0.5, 0.75, 1, 1.25, 1.5, 2];
   const containerClasses = fullscreen
@@ -1116,6 +1169,69 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 </Tooltip.Content>
               </Tooltip>
             </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Auto-advance Next Video Popup (final 10 seconds) ── */}
+        <AnimatePresence>
+          {showNextPopup && (
+            <motion.div
+              initial={{ opacity: 0, y: 16, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 16, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute bottom-16 sm:bottom-20 right-3 sm:right-5 z-40 max-w-[calc(100%-1.5rem)] sm:max-w-xs w-80 rounded-2xl border border-white/20 bg-zinc-950/90 p-4 shadow-2xl backdrop-blur-md text-white select-none"
+            >
+              <div className="flex items-start justify-between gap-2 mb-2">
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-accent flex items-center gap-1.5 mb-0.5">
+                    <span className="size-2 rounded-full bg-accent animate-pulse" />
+                    Up Next in {secondsLeft}s
+                  </span>
+                  <h5 className="text-sm font-bold truncate">
+                    {nextEpisodeTitle || "Next Video"}
+                  </h5>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCancelNext}
+                  className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors cursor-pointer shrink-0"
+                  aria-label="Cancel next video"
+                  title="Cancel auto-play"
+                >
+                  <BiX className="size-5" />
+                </button>
+              </div>
+
+              {/* Countdown Progress Bar */}
+              <div className="w-full h-1 bg-white/15 rounded-full overflow-hidden mb-3">
+                <div
+                  className="h-full bg-accent transition-[width] duration-300 ease-linear rounded-full"
+                  style={{
+                    width: `${Math.max(0, Math.min(100, ((10 - timeLeft) / 10) * 100))}%`,
+                  }}
+                />
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Button
+                  size="sm"
+                  variant="primary"
+                  className="flex-1 font-semibold flex items-center justify-center gap-1.5 cursor-pointer text-xs"
+                  onPress={handleTriggerNext}
+                >
+                  <BiPlay className="size-4" /> Start Next Video
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="text-white/70 hover:text-white cursor-pointer text-xs"
+                  onPress={handleCancelNext}
+                >
+                  Cancel
+                </Button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

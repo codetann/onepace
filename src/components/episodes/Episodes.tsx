@@ -30,10 +30,12 @@ export default function Episodes({ data }: EpisodesProps) {
   }
 
   const handleJumpToEpisode = (targetEpisodeId: string) => {
-    document.getElementById("content")?.scrollTo({
-      top: document.getElementById(targetEpisodeId)?.offsetTop,
-      behavior: "smooth",
-    });
+    const el =
+      document.getElementById(`episode-${targetEpisodeId}`) ||
+      document.getElementById(targetEpisodeId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
   };
 
   return (
@@ -129,8 +131,12 @@ function EpisodeCard({
   return (
     <div
       key={episode.metadata?.Id || episode.id}
-      id={episode.id.toString()}
-      className="flex items-start gap-4 rounded-2xl px-2 py-2 hover:bg-default/10 xl:flex-row sm:items-start flex-col w-full"
+      id={`episode-${episode.id}`}
+      className={`flex items-start gap-4 rounded-2xl px-2.5 py-2.5 transition-colors xl:flex-row sm:items-start flex-col w-full ${
+        isWatching
+          ? "bg-accent/10 border border-accent/30"
+          : "hover:bg-default/10"
+      }`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >

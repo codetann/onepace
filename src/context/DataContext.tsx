@@ -10,6 +10,13 @@ export interface EpisodeProgressData {
   itemId?: string;
 }
 
+export interface ContinueWatchingTarget {
+  arcId: number;
+  episodeId: number;
+  arcTitle?: string;
+  episodeTitle?: string;
+}
+
 export const DataContext = createContext({
   user: null,
   arc: null,
@@ -30,6 +37,7 @@ export const DataContext = createContext({
     episodeId: number,
   ) => EpisodeProgressData,
   toggleEpisodePlayed: (async () => {}) as (arcId: number, episodeId: number) => Promise<void>,
+  getContinueWatchingTarget: (() => ({ arcId: 1, episodeId: 1 })) as () => ContinueWatchingTarget,
   isLoadingArc: false,
   isLoadingEpisode: false,
 } as {
@@ -49,6 +57,7 @@ export const DataContext = createContext({
   isEpisodePlayed: (arcId: number, episodeId: number) => boolean;
   getEpisodeProgress: (arcId: number, episodeId: number) => EpisodeProgressData;
   toggleEpisodePlayed: (arcId: number, episodeId: number) => Promise<void>;
+  getContinueWatchingTarget: () => ContinueWatchingTarget;
   isLoadingArc: boolean;
   isLoadingEpisode: boolean;
 });

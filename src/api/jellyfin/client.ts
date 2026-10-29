@@ -109,6 +109,35 @@ const authFetchHeaders = (options: RequestInit = {}): HeadersInit => {
   return headers;
 };
 
+type UnauthorizedListener = () => void;
+const unauthorizedListeners = new Set<UnauthorizedListener>();
+
+let lastUnauthorizedNotification = 0;
+const notifyUnauthorized = () => {
+  const now = Date.now();
+  // Throttle notifications to at most once per second
+  if (now - lastUnauthorizedNotification < 1000) return;
+  lastUnauthorizedNotification = now;
+
+  try {
+    localStorage.removeItem("user");
+  } catch {
+    /* ignore */
+  }
+
+  unauthorizedListeners.forEach((listener) => {
+    try {
+      listener();
+    } catch (e) {
+      console.error("Error in onUnauthorized listener:", e);
+    }
+  });
+
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("jellyfin:unauthorized"));
+  }
+};
+
 const request = async <T>(
   path: string,
   options: RequestInit = {},
@@ -120,6 +149,9 @@ const request = async <T>(
   });
 
   if (!response.ok) {
+    if (response.status === 401 && !path.includes("/AuthenticateByName")) {
+      notifyUnauthorized();
+    }
     const text = await response.text();
     throw new Error(
       `Jellyfin request failed (${response.status} ${response.statusText}): ${text}`,
@@ -140,6 +172,9 @@ const requestNoContent = async (
   });
 
   if (!response.ok) {
+    if (response.status === 401 && !path.includes("/AuthenticateByName")) {
+      notifyUnauthorized();
+    }
     const text = await response.text();
     throw new Error(
       `Jellyfin request failed (${response.status} ${response.statusText}): ${text}`,
@@ -153,6 +188,17 @@ export const jellyfinSecondsToTicks = (seconds: number): number =>
 
 export const jellyfinClient = {
   baseUrl: BASE_URL,
+
+  /**
+   * Subscribe to 401 Unauthorized responses to automatically log out the user.
+   * Returns an unsubscribe function.
+   */
+  onUnauthorized(callback: UnauthorizedListener): () => void {
+    unauthorizedListeners.add(callback);
+    return () => {
+      unauthorizedListeners.delete(callback);
+    };
+  },
 
   /**
    * Jellyfin: `POST /Users/AuthenticateByName`
@@ -594,6 +640,9 @@ export const jellyfinClient = {
     const url = this.getItemImageUrl(itemId, imageType, options);
     const response = await fetch(url, { headers: authFetchHeaders({}) });
     if (!response.ok) {
+      if (response.status === 401) {
+        notifyUnauthorized();
+      }
       const text = await response.text();
       throw new Error(
         `Jellyfin image request failed (${response.status} ${response.statusText}): ${text}`,

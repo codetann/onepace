@@ -39,6 +39,12 @@ export default function EpisodePage() {
   const currentEpisode: Episode | undefined =
     episode && episode.id === parsedEpisodeId ? episode : targetEpisode;
 
+  const nextTargetTitle = nextEpisode
+    ? `${currentArc?.title} Episode ${nextEpisode.id}`
+    : nextArc
+      ? `${nextArc.title} Episode 1`
+      : undefined;
+
   const handlePreviousEpisode = () => {
     if (previousEpisode) {
       return navigate(`/${currentArc?.id}/${previousEpisode.id}`);
@@ -107,7 +113,7 @@ export default function EpisodePage() {
   return (
     <Layout>
       <div id="episode" className=" flex w-full flex-col gap-6">
-        <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+        <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between pt-3 sm:pt-4 px-4 sm:px-2">
           <div>
             <Breadcrumbs>
               <Breadcrumbs.Item href={`/${currentArc.id}`}>
@@ -137,6 +143,8 @@ export default function EpisodePage() {
                     ? jellyfinClient.getItemImageUrl(episode.metadata.Id)
                     : undefined
                 }
+                onNextEpisode={nextTargetTitle ? handleNextEpisode : undefined}
+                nextEpisodeTitle={nextTargetTitle}
               />
             ) : (
               <div className="relative w-full aspect-video bg-zinc-950 flex flex-col items-center justify-center gap-3">
@@ -148,7 +156,7 @@ export default function EpisodePage() {
             )}
           </div>
 
-          <div className="w-full pt-6 pb-6 flex justify-between items-start flex-row">
+          <div className="w-full pt-6 pb-6 flex justify-between items-start flex-row px-4 sm:px-6">
             <div className="flex flex-col gap-2 pb-4">
               <div className="flex flex-row gap-4">
                 <div className="flex flex-col gap-2 justify-end w-full">
