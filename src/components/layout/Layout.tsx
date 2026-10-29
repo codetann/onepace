@@ -43,14 +43,23 @@ export default function Layout({
 function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
   return (
     <>
       <nav className="w-full min-h-16 border-b border-default-100 flex items-center justify-between px-4">
-        <span>
-          <h4 className="text-2xl font-bold flex-1">One Pace</h4>
-        </span>
+        <div
+          className="flex items-center gap-2.5 cursor-pointer select-none"
+          onClick={() => navigate("/1")}
+        >
+          <img
+            src="/straw-hat-logo.png"
+            alt="One Pace Logo"
+            className="w-9 h-9 object-contain"
+          />
+          <h4 className="text-2xl font-bold tracking-tight">One Pace</h4>
+        </div>
 
         <div className="flex items-center gap-2 flex-1 justify-end">
           <Button isIconOnly variant="tertiary" onPress={toggleTheme}>
@@ -67,7 +76,14 @@ function Header() {
               <Drawer.Content placement="left" className="max-w-xs">
                 <Drawer.Dialog className="px-2 pb-2">
                   <Drawer.Header>
-                    <Drawer.Heading>Drawer Title</Drawer.Heading>
+                    <Drawer.Heading className="flex items-center gap-2">
+                      <img
+                        src="/straw-hat-logo.png"
+                        alt="One Pace Logo"
+                        className="w-6 h-6 object-contain"
+                      />
+                      One Pace
+                    </Drawer.Heading>
                   </Drawer.Header>
                   <Drawer.Body>
                     <Navigation />

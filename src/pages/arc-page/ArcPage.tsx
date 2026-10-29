@@ -88,7 +88,7 @@ export default function ArcPage() {
                     {currentArc.title}
                   </h3>
 
-                  <p className="text-muted text-sm max-w-xl leading-relaxed">
+                  <p className="text-white/85 text-sm max-w-xl leading-relaxed">
                     {currentArc.description}
                   </p>
                   <div className="flex justify-end items-center gap-2 w-full pt-2">

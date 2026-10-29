@@ -12,7 +12,7 @@
  */
 
 import React, { useRef, useState, useCallback, useEffect } from "react";
-import type { MouseEvent as RMouseEvent, PointerEvent as RPointerEvent } from "react";
+import type { PointerEvent as RPointerEvent } from "react";
 import { Button, Chip, Tooltip } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { JellyfinPlaybackInfoResponse } from "@/api/jellyfin/types";
@@ -135,6 +135,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
   const [pipActive, setPipActive] = useState(false);
+
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
+  const [dragTime, setDragTime] = useState<number | null>(null);
 
   // ── Play / pause ──────────────────────────────────────────────────────────
 
@@ -669,15 +673,68 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps -- stable Jellyfin handlers + resume apply
   }, [tryApplyPendingResume]);
 
-  // ── Click-to-seek on the raw timeline bar ─────────────────────────────────
+  // ── Seek & Timeline Dragging ──────────────────────────────────────────────
 
-  const handleTimelineClick = (e: RMouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const ratio = (e.clientX - rect.left) / rect.width;
-    handleSeek(ratio * duration);
+  const getTimeFromPointer = useCallback(
+    (clientX: number) => {
+      if (!timelineRef.current || !duration) return 0;
+      const rect = timelineRef.current.getBoundingClientRect();
+      if (rect.width <= 0) return 0;
+      const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      return ratio * duration;
+    },
+    [duration],
+  );
+
+  const onTimelinePointerDown = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!duration) return;
+    e.stopPropagation();
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+    setIsDraggingTimeline(true);
+    const newTime = getTimeFromPointer(e.clientX);
+    setDragTime(newTime);
+    const v = videoRef.current;
+    if (v) {
+      v.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
   };
 
-  const progressPct = duration ? ((currentTime ?? 0) / duration) * 100 : 0;
+  const onTimelinePointerMove = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!isDraggingTimeline || !duration) return;
+    e.stopPropagation();
+    const newTime = getTimeFromPointer(e.clientX);
+    setDragTime(newTime);
+    const v = videoRef.current;
+    if (v) {
+      v.currentTime = newTime;
+      setCurrentTime(newTime);
+    }
+  };
+
+  const onTimelinePointerUp = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!isDraggingTimeline) return;
+    e.stopPropagation();
+    try {
+      if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      }
+    } catch {
+      /* ignore */
+    }
+    const finalTime = dragTime ?? getTimeFromPointer(e.clientX);
+    handleSeek(finalTime);
+    setIsDraggingTimeline(false);
+    setDragTime(null);
+  };
+
+  const displayTime =
+    isDraggingTimeline && dragTime !== null ? dragTime : (currentTime ?? 0);
+  const progressPct = duration ? (displayTime / duration) * 100 : 0;
   const bufferedPct = duration ? (buffered / duration) * 100 : 0;
 
   const rates = [0.5, 0.75, 1, 1.25, 1.5, 2];
@@ -847,23 +904,37 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
               transition={{ duration: 0.2 }}
               className="absolute z-30 bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 pt-10 pb-3"
             >
-            {/* ── Seekable timeline (custom bar — richer appearance than plain Slider) ── */}
+            {/* ── Seekable timeline (smooth dragging & clickable) ── */}
             <div
-              className="relative w-full h-1.5 rounded-full bg-white/20 cursor-pointer mb-3 group/bar"
-              onClick={handleTimelineClick}
+              ref={timelineRef}
+              className="relative w-full py-2 -my-2 flex items-center cursor-pointer mb-2 group/bar touch-none select-none"
+              onPointerDown={onTimelinePointerDown}
+              onPointerMove={onTimelinePointerMove}
+              onPointerUp={onTimelinePointerUp}
+              onPointerCancel={onTimelinePointerUp}
             >
+              {/* Track Background */}
+              <div className="relative w-full h-1.5 group-hover/bar:h-2 rounded-full bg-white/20 transition-all overflow-hidden">
+                <div
+                  className="absolute inset-y-0 left-0 rounded-full bg-white/30 transition-[width]"
+                  style={{ width: `${bufferedPct}%` }}
+                />
+                <div
+                  className={`absolute inset-y-0 left-0 rounded-full bg-white ${
+                    isDraggingTimeline ? "" : "transition-[width] duration-75"
+                  }`}
+                  style={{ width: `${progressPct}%` }}
+                />
+              </div>
+
+              {/* Scrubber Thumb */}
               <div
-                className="absolute inset-y-0 left-0 rounded-full bg-white/30 transition-[width]"
-                style={{ width: `${bufferedPct}%` }}
-              />
-              <div
-                className="absolute inset-y-0 left-0 rounded-full bg-white transition-[width]"
-                style={{ width: `${progressPct}%` }}
-              />
-              {/* Hover thumb */}
-              <div
-                className="absolute top-1/2 -translate-y-1/2 size-3.5 rounded-full bg-white shadow-lg opacity-0 group-hover/bar:opacity-100 transition-opacity"
-                style={{ left: `calc(${progressPct}% - 7px)` }}
+                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 size-3.5 rounded-full bg-white shadow-lg pointer-events-none transition-transform ${
+                  isDraggingTimeline
+                    ? "opacity-100 scale-125 ring-2 ring-white/50"
+                    : "opacity-0 group-hover/bar:opacity-100 group-hover/bar:scale-100"
+                }`}
+                style={{ left: `${progressPct}%` }}
               />
             </div>
 
@@ -940,7 +1011,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
               {/* Timestamp */}
               <span className="text-white/70 text-xs tabular-nums ml-1 shrink-0">
-                {fmt(currentTime)}{" "}
+                {fmt(displayTime)}{" "}
                 <span className="text-white/40">/ {fmt(duration)}</span>
               </span>
 

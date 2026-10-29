@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Tabs, Label, Input, Chip } from "@heroui/react";
+import { Modal, Button, Label, Input, Chip } from "@heroui/react";
 import {
   BiUser,
   BiCog,
@@ -9,7 +9,6 @@ import {
   BiCheck,
   BiLogOut,
   BiLogIn,
-  BiServer,
   BiVolumeFull,
   BiShield,
 } from "react-icons/bi";
@@ -28,8 +27,6 @@ export default function SettingsModal({
 }: SettingsModalProps) {
   const { user, login, logout, refreshData } = useDataContext();
   const { theme, toggleTheme } = useTheme();
-
-  const [activeTab, setActiveTab] = useState("account");
 
   // Login form state (for logged out user)
   const [loginUsername, setLoginUsername] = useState("");
@@ -61,7 +58,9 @@ export default function SettingsModal({
       setLoginPassword("");
       await refreshData();
     } catch (err: unknown) {
-      setLoginError(err instanceof Error ? err.message : "Invalid username or password");
+      setLoginError(
+        err instanceof Error ? err.message : "Invalid username or password",
+      );
     } finally {
       setIsLoggingIn(false);
     }
@@ -134,257 +133,221 @@ export default function SettingsModal({
               </Modal.Heading>
             </Modal.Header>
 
-            <Modal.Body className="py-2">
-              <Tabs
-                className="w-full"
-                selectedKey={activeTab}
-                onSelectionChange={(key) => setActiveTab(String(key))}
-              >
-                <Tabs.ListContainer>
-                  <Tabs.List
-                    aria-label="Settings Tabs"
-                    className="w-full flex border-b border-default-100 mb-4"
-                  >
-                    <Tabs.Tab
-                      id="account"
-                      className="flex-1 py-2 text-sm font-medium cursor-pointer"
-                    >
-                      <span className="flex items-center justify-center gap-1.5">
-                        <BiUser className="size-4" /> Account
-                      </span>
-                      <Tabs.Indicator className="bg-accent" />
-                    </Tabs.Tab>
+            <Modal.Body className="py-2 max-h-[75vh] overflow-y-auto space-y-5">
+              {/* Account Section */}
+              <div className="flex flex-col gap-3">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted flex items-center gap-1.5">
+                  <BiUser className="size-4" /> Account
+                </span>
 
-                    <Tabs.Tab
-                      id="preferences"
-                      className="flex-1 py-2 text-sm font-medium cursor-pointer"
-                    >
-                      <span className="flex items-center justify-center gap-1.5">
-                        <BiCog className="size-4" /> Preferences
-                      </span>
-                      <Tabs.Indicator className="bg-accent" />
-                    </Tabs.Tab>
-                  </Tabs.List>
-                </Tabs.ListContainer>
-
-                {/* ACCOUNT TAB */}
-                <Tabs.Panel id="account">
-                  {user ? (
-                    <div className="flex flex-col gap-4">
-                      {/* User Info Card */}
-                      <div className="flex items-center gap-3 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                        <div className="w-12 h-12 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-lg">
-                          {user.Name?.[0]?.toUpperCase() || "U"}
-                        </div>
-                        <div className="flex flex-col flex-1">
-                          <span className="font-semibold text-base flex items-center gap-2">
-                            {user.Name}
-                            {user.Policy?.IsAdministrator && (
-                              <Chip size="sm" color="accent" className="text-xs">
-                                <BiShield /> Admin
-                              </Chip>
-                            )}
-                          </span>
-                          <span className="text-xs text-muted truncate">
-                            ID: {user.Id}
-                          </span>
-                        </div>
+                {user ? (
+                  <div className="flex flex-col gap-3">
+                    {/* User Info Card */}
+                    <div className="flex items-center gap-3 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
+                      <div className="w-11 h-11 rounded-full bg-accent/20 text-accent flex items-center justify-center font-bold text-base shrink-0">
+                        {user.Name?.[0]?.toUpperCase() || "U"}
                       </div>
-
-                      {/* Change Password Form */}
-                      <form
-                        onSubmit={handleUpdatePassword}
-                        className="flex flex-col gap-2 pt-2 border-t border-default-100"
-                      >
-                        <h4 className="text-sm font-semibold flex items-center gap-1 text-default-700">
-                          <BiLock className="size-4" /> Change Password
-                        </h4>
-
-                        {passwordMessage && (
-                          <div
-                            className={`text-xs p-2 rounded-lg ${
-                              passwordMessage.type === "success"
-                                ? "bg-success/15 text-success border border-success/30"
-                                : "bg-danger/15 text-danger border border-danger/30"
-                            }`}
-                          >
-                            {passwordMessage.text}
-                          </div>
-                        )}
-
-                        <Label htmlFor="current-pw" className="text-xs">
-                          Current Password
-                        </Label>
-                        <Input
-                          id="current-pw"
-                          variant="secondary"
-                          type="password"
-                          placeholder="Current password"
-                          className="w-full"
-                          value={currentPassword}
-                          onChange={(e) => setCurrentPassword(e.target.value)}
-                        />
-
-                        <Label htmlFor="new-pw" className="text-xs">
-                          New Password
-                        </Label>
-                        <Input
-                          id="new-pw"
-                          variant="secondary"
-                          type="password"
-                          placeholder="New password"
-                          className="w-full"
-                          value={newPassword}
-                          onChange={(e) => setNewPassword(e.target.value)}
-                        />
-
-                        <Label htmlFor="confirm-pw" className="text-xs">
-                          Confirm New Password
-                        </Label>
-                        <Input
-                          id="confirm-pw"
-                          variant="secondary"
-                          type="password"
-                          placeholder="Confirm new password"
-                          className="w-full"
-                          value={confirmPassword}
-                          onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
-
-                        <Button
-                          type="submit"
-                          variant="secondary"
-                          className="mt-2 w-full cursor-pointer"
-                          isDisabled={isUpdatingPassword || !newPassword}
-                        >
-                          {isUpdatingPassword
-                            ? "Updating..."
-                            : "Update Password"}
-                        </Button>
-                      </form>
-                    </div>
-                  ) : (
-                    /* Logged Out View */
-                    <div className="flex flex-col gap-3">
-                      <div className="p-3 rounded-xl bg-warning/10 border border-warning/20 text-xs text-warning-700 dark:text-warning-300">
-                        Sign in with your Jellyfin account to sync watched episodes, track playback progress, and save resume points across devices.
-                      </div>
-
-                      <form
-                        onSubmit={handleLogin}
-                        className="flex flex-col gap-2 pt-1"
-                      >
-                        {loginError && (
-                          <div className="text-xs p-2 rounded-lg bg-danger/15 text-danger border border-danger/30">
-                            {loginError}
-                          </div>
-                        )}
-
-                        <Label htmlFor="login-username" className="text-xs">
-                          Username
-                        </Label>
-                        <Input
-                          id="login-username"
-                          variant="secondary"
-                          type="text"
-                          placeholder="Jellyfin username"
-                          className="w-full"
-                          value={loginUsername}
-                          onChange={(e) => setLoginUsername(e.target.value)}
-                        />
-
-                        <Label htmlFor="login-password" className="text-xs">
-                          Password
-                        </Label>
-                        <Input
-                          id="login-password"
-                          variant="secondary"
-                          type="password"
-                          placeholder="Password"
-                          className="w-full"
-                          value={loginPassword}
-                          onChange={(e) => setLoginPassword(e.target.value)}
-                        />
-
-                        <Button
-                          type="submit"
-                          variant="primary"
-                          className="mt-3 w-full cursor-pointer"
-                          isDisabled={isLoggingIn || !loginUsername}
-                        >
-                          {isLoggingIn ? (
-                            "Signing in..."
-                          ) : (
-                            <span className="flex items-center justify-center gap-1">
-                              <BiLogIn className="size-4" /> Sign In
-                            </span>
+                      <div className="flex flex-col flex-1 min-w-0">
+                        <span className="font-semibold text-sm flex items-center gap-2 truncate">
+                          {user.Name}
+                          {user.Policy?.IsAdministrator && (
+                            <Chip
+                              size="sm"
+                              color="accent"
+                              className="text-[10px]"
+                            >
+                              <BiShield /> Admin
+                            </Chip>
                           )}
-                        </Button>
-                      </form>
-                    </div>
-                  )}
-                </Tabs.Panel>
-
-                {/* PREFERENCES TAB */}
-                <Tabs.Panel id="preferences">
-                  <div className="flex flex-col gap-4">
-                    {/* Theme Toggle */}
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold">Theme</span>
-                        <span className="text-xs text-muted">
-                          Switch between light and dark mode
+                        </span>
+                        <span className="text-xs text-muted truncate">
+                          ID: {user.Id}
                         </span>
                       </div>
+                    </div>
+
+                    {/* Change Password Form */}
+                    <form
+                      onSubmit={handleUpdatePassword}
+                      className="flex flex-col gap-2 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200"
+                    >
+                      <h4 className="text-xs font-semibold flex items-center gap-1 text-default-700">
+                        <BiLock className="size-3.5" /> Change Password
+                      </h4>
+
+                      {passwordMessage && (
+                        <div
+                          className={`text-xs p-2 rounded-lg ${
+                            passwordMessage.type === "success"
+                              ? "bg-success/15 text-success border border-success/30"
+                              : "bg-danger/15 text-danger border border-danger/30"
+                          }`}
+                        >
+                          {passwordMessage.text}
+                        </div>
+                      )}
+
+                      <Label htmlFor="current-pw" className="text-xs">
+                        Current Password
+                      </Label>
+                      <Input
+                        id="current-pw"
+                        variant="secondary"
+                        type="password"
+                        placeholder="Current password"
+                        className="w-full"
+                        value={currentPassword}
+                        onChange={(e) => setCurrentPassword(e.target.value)}
+                      />
+
+                      <Label htmlFor="new-pw" className="text-xs">
+                        New Password
+                      </Label>
+                      <Input
+                        id="new-pw"
+                        variant="secondary"
+                        type="password"
+                        placeholder="New password"
+                        className="w-full"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                      />
+
+                      <Label htmlFor="confirm-pw" className="text-xs">
+                        Confirm New Password
+                      </Label>
+                      <Input
+                        id="confirm-pw"
+                        variant="secondary"
+                        type="password"
+                        placeholder="Confirm new password"
+                        className="w-full"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                      />
+
                       <Button
+                        type="submit"
                         variant="secondary"
                         size="sm"
-                        className="cursor-pointer flex items-center gap-1.5"
-                        onPress={toggleTheme}
+                        className="mt-1 w-full cursor-pointer"
+                        isDisabled={isUpdatingPassword || !newPassword}
                       >
-                        {theme === "light" ? (
-                          <>
-                            <BiSun className="text-amber-500" /> Light
-                          </>
+                        {isUpdatingPassword ? "Updating..." : "Update Password"}
+                      </Button>
+                    </form>
+                  </div>
+                ) : (
+                  /* Logged Out View */
+                  <div className="flex flex-col gap-3">
+                    <div className="p-3 rounded-xl bg-warning/10 border border-warning/20 text-xs text-warning-700 dark:text-warning-300">
+                      Sign in with your Jellyfin account to sync watched
+                      episodes, track playback progress, and save resume points
+                      across devices.
+                    </div>
+
+                    <form
+                      onSubmit={handleLogin}
+                      className="flex flex-col gap-2 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200"
+                    >
+                      {loginError && (
+                        <div className="text-xs p-2 rounded-lg bg-danger/15 text-danger border border-danger/30">
+                          {loginError}
+                        </div>
+                      )}
+
+                      <Label htmlFor="login-username" className="text-xs">
+                        Username
+                      </Label>
+                      <Input
+                        id="login-username"
+                        variant="secondary"
+                        type="text"
+                        placeholder="Jellyfin username"
+                        className="w-full"
+                        value={loginUsername}
+                        onChange={(e) => setLoginUsername(e.target.value)}
+                      />
+
+                      <Label htmlFor="login-password" className="text-xs">
+                        Password
+                      </Label>
+                      <Input
+                        id="login-password"
+                        variant="secondary"
+                        type="password"
+                        placeholder="Password"
+                        className="w-full"
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                      />
+
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="mt-2 w-full cursor-pointer"
+                        isDisabled={isLoggingIn || !loginUsername}
+                      >
+                        {isLoggingIn ? (
+                          "Signing in..."
                         ) : (
-                          <>
-                            <BiMoon className="text-indigo-400" /> Dark
-                          </>
+                          <span className="flex items-center justify-center gap-1">
+                            <BiLogIn className="size-4" /> Sign In
+                          </span>
                         )}
                       </Button>
-                    </div>
-
-                    {/* Audio Preference */}
-                    <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold flex items-center gap-1.5">
-                          <BiVolumeFull /> Audio Language
-                        </span>
-                        <span className="text-xs text-muted">
-                          Default audio preference
-                        </span>
-                      </div>
-                      <Chip size="sm" color="accent" variant="secondary">
-                        Dubbed (Default)
-                      </Chip>
-                    </div>
-
-                    {/* Server Info */}
-                    <div className="flex flex-col gap-1.5 p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
-                      <span className="text-sm font-semibold flex items-center gap-1.5">
-                        <BiServer /> Jellyfin Server
-                      </span>
-                      <span className="text-xs font-mono text-muted break-all">
-                        {jellyfinClient.baseUrl}
-                      </span>
-                      <div className="flex items-center gap-1.5 pt-1 text-xs text-success">
-                        <span className="w-2 h-2 rounded-full bg-success inline-block animate-pulse" />
-                        Online & Configured
-                      </div>
-                    </div>
+                    </form>
                   </div>
-                </Tabs.Panel>
-              </Tabs>
+                )}
+              </div>
+
+              {/* Preferences Section */}
+              <div className="flex flex-col gap-2.5 pt-2 border-t border-default-200">
+                <span className="text-xs font-semibold uppercase tracking-wider text-muted flex items-center gap-1.5">
+                  <BiCog className="size-4" /> Preferences
+                </span>
+
+                {/* Theme Toggle */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold">Theme</span>
+                    <span className="text-xs text-muted">
+                      Switch between light and dark mode
+                    </span>
+                  </div>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="cursor-pointer flex items-center gap-1.5"
+                    onPress={toggleTheme}
+                  >
+                    {theme === "light" ? (
+                      <>
+                        <BiSun className="text-amber-500" /> Light
+                      </>
+                    ) : (
+                      <>
+                        <BiMoon className="text-indigo-400" /> Dark
+                      </>
+                    )}
+                  </Button>
+                </div>
+
+                {/* Audio Preference */}
+                <div className="flex items-center justify-between p-3 rounded-xl bg-default-100 dark:bg-default-50 border border-default-200">
+                  <div className="flex flex-col">
+                    <span className="text-sm font-semibold flex items-center gap-1.5">
+                      <BiVolumeFull /> Audio Language
+                    </span>
+                    <span className="text-xs text-muted">
+                      Default audio preference
+                    </span>
+                  </div>
+                  <Chip size="sm" color="accent" variant="secondary">
+                    Dubbed (Default)
+                  </Chip>
+                </div>
+              </div>
             </Modal.Body>
 
             <Modal.Footer className="pt-2">
