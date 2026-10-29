@@ -141,7 +141,10 @@ function EpisodeCard({
       onMouseLeave={() => setIsHovering(false)}
     >
       <div
-        className={`relative xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center brightness-90 hover:brightness-100 transition-all duration-300 ${isHovering ? "brightness-100" : "brightness-90"}`}
+        onClick={() => handleNavigate(episode.id)}
+        className={`relative xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center cursor-pointer transition-all duration-300 group ${
+          isHovering ? "brightness-100 scale-[1.01]" : "brightness-90"
+        }`}
         style={{
           aspectRatio: "16 / 9",
           backgroundImage: episode.metadata?.Id
@@ -153,16 +156,13 @@ function EpisodeCard({
           backgroundRepeat: "no-repeat",
         }}
       >
-        {isHovering && (
-          <Button
-            variant="tertiary"
-            isIconOnly
-            className="rounded-full mx-4 text-sm p-2 shadow-lg"
-            onPress={() => handleNavigate(episode.id)}
-          >
-            <BiPlay size={24} />
-          </Button>
-        )}
+        <div
+          className={`rounded-full p-2.5 bg-black/60 text-white shadow-lg transition-transform duration-200 pointer-events-none ${
+            isHovering ? "scale-110 opacity-100" : "opacity-0 sm:group-hover:opacity-100"
+          }`}
+        >
+          <BiPlay size={24} />
+        </div>
 
         {/* Runtime Badge */}
         {runtimeTicks > 0 && (

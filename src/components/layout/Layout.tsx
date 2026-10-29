@@ -45,6 +45,7 @@ function Header() {
   const { theme, toggleTheme } = useTheme();
   const { user, getContinueWatchingTarget } = useDataContext();
   const [isOpen, setIsOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
@@ -104,8 +105,12 @@ function Header() {
           <Button isIconOnly variant="tertiary" onPress={handleOpen}>
             <BiCog />
           </Button>
-          <Drawer>
-            <Button isIconOnly className="lg:hidden">
+          <Drawer isOpen={isDrawerOpen} onOpenChange={setIsDrawerOpen}>
+            <Button
+              isIconOnly
+              className="lg:hidden cursor-pointer"
+              onPress={() => setIsDrawerOpen(true)}
+            >
               <BiMenu />
             </Button>
             <Drawer.Backdrop>
@@ -122,7 +127,7 @@ function Header() {
                     </Drawer.Heading>
                   </Drawer.Header>
                   <Drawer.Body>
-                    <Navigation />
+                    <Navigation onNavigate={() => setIsDrawerOpen(false)} />
                   </Drawer.Body>
                 </Drawer.Dialog>
               </Drawer.Content>
@@ -146,14 +151,20 @@ function SideMenu() {
   );
 }
 
-function Navigation() {
+interface NavigationProps {
+  onNavigate?: () => void;
+}
+
+function Navigation({ onNavigate }: NavigationProps) {
   const { arcs, isEpisodePlayed, toggleEpisodePlayed } = useDataContext();
   const [openTab, setOpenTab] = useState<number | null>(null);
   const navigate = useNavigate();
   const handleNavigate = useCallback(
-    (arcId: string, episodeId?: string) =>
-      navigate(`/${arcId}${episodeId ? `/${episodeId}` : ""}`),
-    [navigate],
+    (arcId: string, episodeId?: string) => {
+      navigate(`/${arcId}${episodeId ? `/${episodeId}` : ""}`);
+      onNavigate?.();
+    },
+    [navigate, onNavigate],
   );
 
   const handleJumpToArc = (arcId: string) => {
@@ -218,9 +229,13 @@ function Navigation() {
               <img
                 src={item.altImage || item.image}
                 alt={item.title}
-                className=" rounded-lg mb-2 w-full h-auto"
+                className="rounded-lg mb-2 w-full h-auto cursor-pointer transition-opacity hover:opacity-90 active:scale-[0.99]"
+                onClick={() => handleNavigate(item.id.toString())}
               />
-              <h3 className=" text-2xl font-semibold dark:text-white text-black">
+              <h3
+                className="text-2xl font-semibold dark:text-white text-black cursor-pointer hover:underline"
+                onClick={() => handleNavigate(item.id.toString())}
+              >
                 {item.title}
               </h3>
               <span className="flex justify-between items-center w-full ">

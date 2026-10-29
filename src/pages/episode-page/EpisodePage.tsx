@@ -172,7 +172,7 @@ export default function EpisodePage() {
                       {previousEpisode
                         ? "Previous Episode"
                         : previousArc
-                          ? `Arc ${previousArc.id}`
+                          ? previousArc.title
                           : "Previous"}
                     </Button>
                     <Button
@@ -188,7 +188,7 @@ export default function EpisodePage() {
                       {nextEpisode
                         ? "Next Episode"
                         : nextArc
-                          ? `Arc ${nextArc.id}`
+                          ? nextArc.title
                           : "Next"}{" "}
                       <BiChevronRight />
                     </Button>
@@ -250,7 +250,7 @@ export default function EpisodePage() {
                 {previousEpisode
                   ? "Previous Episode"
                   : previousArc
-                    ? `Arc ${previousArc.id}`
+                    ? previousArc.title
                     : "Previous"}
               </Button>
               <Button
@@ -266,7 +266,7 @@ export default function EpisodePage() {
                 {nextEpisode
                   ? "Next Episode"
                   : nextArc
-                    ? `Arc ${nextArc.id}`
+                    ? nextArc.title
                     : "Next"}{" "}
                 <BiChevronRight />
               </Button>

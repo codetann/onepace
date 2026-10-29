@@ -48,16 +48,16 @@ export default function ArcPage() {
 
   return (
     <Layout>
-      <div className=" flex w-full  flex-col ">
+      <div className="flex w-full flex-col">
         <section className="flex flex-col gap-3 relative justify-center items-center">
-          <div className="w-full pt-2 flex justify-between items-start flex-row relative z-20">
-            <div className="flex flex-col gap-2  z-20  sm:px-3 sm:py-2 sm:pb-5 px-2 w-full">
-              <div className="flex flex-col sm:flex-row gap-4 w-full ">
+          <div className="w-full flex justify-between items-start flex-row relative z-20 overflow-hidden rounded-2xl">
+            <div className="flex flex-col gap-3 z-20 p-4 sm:p-6 pb-6 sm:pb-7 w-full">
+              <div className="flex flex-col sm:flex-row gap-5 w-full">
                 <AnimatePresence>
                   <motion.img
                     key={currentArc.altImage}
                     src={currentArc.altImage}
-                    className="w-full sm:w-76 rounded-md shrink-0 "
+                    className="w-full sm:w-72 rounded-xl shrink-0 object-cover shadow-lg"
                     alt={currentArc.title}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -65,11 +65,11 @@ export default function ArcPage() {
                   />
                 </AnimatePresence>
 
-                <div className="flex flex-col gap-2  w-full justify-end">
-                  <p className="text-white/90 text-sm ">
+                <div className="flex flex-col gap-2.5 w-full justify-end">
+                  <p className="text-white/90 text-sm">
                     {currentArc.episodes?.length} Episodes
                   </p>
-                  <span className="flex items-center gap-1 ">
+                  <span className="flex items-center gap-1.5 flex-wrap">
                     <Chip color="warning">
                       <BiStar className="size-4" />
                       {currentArc.averageRating}
@@ -84,27 +84,29 @@ export default function ArcPage() {
                       {currentArc.coverage?.anime}
                     </Chip>
                   </span>
-                  <h3 className="text-4xl font-semibold text-white pb-1">
+                  <h3 className="text-3xl sm:text-4xl font-semibold text-white pb-0.5">
                     {currentArc.title}
                   </h3>
 
                   <p className="text-white/85 text-sm max-w-xl leading-relaxed">
                     {currentArc.description}
                   </p>
-                  <div className="flex justify-end items-center gap-2 w-full pt-2">
-                    {previousArc && (
+                  <div className="flex items-center justify-between sm:justify-end gap-3 w-full pt-4 pb-1">
+                    {previousArc ? (
                       <Button
                         variant="ghost"
                         onPress={() => navigate(`/${previousArc.id}`)}
-                        className="text-white rounded-lg"
+                        className="text-white rounded-lg cursor-pointer"
                       >
                         <BiChevronLeft className="size-4" />
                         {previousArc.title}
                       </Button>
+                    ) : (
+                      <div />
                     )}
                     {nextArc && (
                       <Button
-                        className="rounded-lg"
+                        className="rounded-lg cursor-pointer"
                         variant="primary"
                         onPress={() => navigate(`/${nextArc.id}`)}
                       >
@@ -117,10 +119,10 @@ export default function ArcPage() {
               </div>
             </div>
             {/* dark overlay gradient */}
-            <div className="w-full absolute left-0 top-0 h-full bg-gradient-to-b from-transparent to-black/90 z-10  rounded-lg" />
+            <div className="w-full absolute left-0 top-0 h-full bg-gradient-to-b from-transparent to-black/90 z-10 rounded-2xl" />
             <AnimatePresence>
               <motion.div
-                className="w-full absolute left-0 top-0 h-full rounded-lg "
+                className="w-full absolute left-0 top-0 h-full rounded-2xl"
                 style={{
                   backgroundImage:
                     // "url(https://e0.pxfuel.com/wallpapers/634/129/desktop-wallpaper-one-piece-one-piece-going-merry.jpg)",
