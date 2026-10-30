@@ -149,7 +149,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   poster,
   title,
   subtitle,
-  autoPlay = false,
+  autoPlay = true,
   loop = false,
   aspectRatio = "aspect-video",
   className = "",
@@ -193,7 +193,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [buffered, setBuffered] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
   const [showControls, setShowControls] = useState(true);
-  const [hasStarted, setHasStarted] = useState(false);
+  const [hasStarted, setHasStarted] = useState(autoPlay);
   const [showCenterFlash, setShowCenterFlash] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
@@ -239,7 +239,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   useEffect(() => {
     setIsNextCancelled(false);
     nextTriggeredRef.current = false;
-  }, [src, jellyfinItemId]);
+    if (autoPlay) {
+      setHasStarted(true);
+    }
+  }, [src, jellyfinItemId, autoPlay]);
 
   // ── Play / pause ──────────────────────────────────────────────────────────
 
@@ -975,6 +978,15 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     };
     const onCanPlay = () => {
       tryApplyPendingResume();
+      if (autoPlay && v.paused) {
+        v.play().catch(() => {
+          v.muted = true;
+          setMuted(true);
+          v.play().catch(() => {
+            setHasStarted(false);
+          });
+        });
+      }
     };
     const onFsChange = () => {
       const doc = document as FullscreenDocument;
@@ -1011,7 +1023,15 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
     v.volume = volume;
     tryApplyPendingResume();
-    if (autoPlay) v.play().catch(() => {});
+    if (autoPlay) {
+      v.play().catch(() => {
+        v.muted = true;
+        setMuted(true);
+        v.play().catch(() => {
+          setHasStarted(false);
+        });
+      });
+    }
 
     return () => {
       v.removeEventListener("play", onPlay);
@@ -1180,9 +1200,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           src={src}
           poster={poster}
           loop={loop}
+          autoPlay={autoPlay}
           playsInline
           controls={useNativeControls}
-          preload="metadata"
+          preload="auto"
           className="w-full h-full object-cover cursor-pointer"
           // onTimeUpdate={handleTimeUpdate}
         />

@@ -130,11 +130,13 @@ export default function EpisodePage() {
           <div className="border-default-100 bg-default-50 relative z-0 w-full overflow-hidden rounded-xl border shadow-sm">
             {isVideoReady && episode ? (
               <VideoPlayer
+                key={`${currentArc.id}-${currentEpisode.id}`}
                 src={episode.video?.url || ""}
                 playbackInfo={episode.video?.info}
                 jellyfinItemId={episode.metadata?.Id}
                 title={`${currentArc.title} Episode ${currentEpisode.id}`}
                 subtitle={currentArc.title}
+                autoPlay
                 initialPlaybackPositionTicks={
                   episode.metadata?.UserData?.PlaybackPositionTicks
                 }
