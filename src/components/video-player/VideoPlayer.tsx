@@ -28,6 +28,7 @@ import {
   BiWindows,
   BiX,
 } from "react-icons/bi";
+import { MdAirplay, MdCast, MdCastConnected } from "react-icons/md";
 
 // ─── Inline SVG icons (no extra icon-package dep) ────────────────────────────
 
@@ -48,6 +49,30 @@ const SettingsIcon = () => <BiCog />;
 /** Picture-in-picture / “pop out” mini player */
 const PopOutIcon = () => <BiWindows className="size-5" />;
 
+const AirplayIcon = () => <MdAirplay className="size-5" />;
+
+const CastIcon = ({ connected = false }: { connected?: boolean }) =>
+  connected ? (
+    <MdCastConnected className="size-5 text-accent" />
+  ) : (
+    <MdCast className="size-5" />
+  );
+
+// ─── Device detection helpers ────────────────────────────────────────────────
+
+const isIPhoneDevice = (): boolean => {
+  if (typeof navigator === "undefined") return false;
+  return /iPhone|iPod/i.test(navigator.userAgent);
+};
+
+const isAppleDevice = (): boolean => {
+  if (typeof navigator === "undefined") return false;
+  return (
+    /iPad|iPhone|iPod|Macintosh/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+  );
+};
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const fmt = (s: number): string => {
@@ -58,6 +83,37 @@ const fmt = (s: number): string => {
 };
 
 // ─── Types ───────────────────────────────────────────────────────────────────
+
+export interface WebKitVideoElement extends HTMLVideoElement {
+  webkitEnterFullscreen?: () => void;
+  webkitEnterFullScreen?: () => void;
+  webkitExitFullscreen?: () => void;
+  webkitExitFullScreen?: () => void;
+  webkitDisplayingFullscreen?: boolean;
+  webkitSupportsFullscreen?: boolean;
+  webkitRequestFullscreen?: () => Promise<void> | void;
+  webkitShowPlaybackTargetPicker?: () => void;
+  webkitCurrentPlaybackTargetIsWireless?: boolean;
+}
+
+export interface FullscreenDocument extends Document {
+  webkitFullscreenElement?: Element | null;
+  mozFullScreenElement?: Element | null;
+  msFullscreenElement?: Element | null;
+  webkitExitFullscreen?: () => Promise<void> | void;
+}
+
+export interface FullscreenHTMLElement extends HTMLElement {
+  webkitRequestFullscreen?: () => Promise<void> | void;
+}
+
+export interface TargetAvailabilityEvent extends Event {
+  availability?: "available" | "not-available";
+}
+
+export interface WindowWithAirPlay extends Window {
+  WebKitPlaybackTargetAvailabilityEvent?: unknown;
+}
 
 export interface VideoPlayerProps {
   src: string;
@@ -106,7 +162,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 }) => {
   const jellyfinMediaSourceId = playbackInfo?.MediaSources?.[0]?.Id;
 
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<WebKitVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -146,6 +202,36 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
   const [dragTime, setDragTime] = useState<number | null>(null);
+
+  const [isAirPlayAvailable, setIsAirPlayAvailable] = useState(false);
+  const [isAirPlayConnected, setIsAirPlayConnected] = useState(false);
+  const [isCastAvailable, setIsCastAvailable] = useState(false);
+  const [isCastConnected, setIsCastConnected] = useState(false);
+
+  const [useNativeControls, setUseNativeControls] = useState<boolean>(() => {
+    try {
+      return localStorage.getItem("onepace_native_player") === "true";
+    } catch {
+      return false;
+    }
+  });
+  const useNativeControlsRef = useRef(useNativeControls);
+  useNativeControlsRef.current = useNativeControls;
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(
+        "onepace_native_player",
+        useNativeControls ? "true" : "false",
+      );
+    } catch {
+      /* ignore */
+    }
+    const v = videoRef.current;
+    if (v && !v.webkitDisplayingFullscreen) {
+      v.controls = useNativeControls;
+    }
+  }, [useNativeControls]);
 
   const [isNextCancelled, setIsNextCancelled] = useState(false);
   const nextTriggeredRef = useRef(false);
@@ -380,12 +466,236 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   // ── Fullscreen ────────────────────────────────────────────────────────────
 
   const toggleFullscreen = useCallback(async () => {
-    const el = containerRef.current;
-    if (!el) return;
-    if (!document.fullscreenElement) {
-      await el.requestFullscreen();
-    } else {
-      await document.exitFullscreen();
+    const container = containerRef.current as FullscreenHTMLElement | null;
+    const v = videoRef.current;
+
+    if (!container && !v) return;
+
+    const doc = document as FullscreenDocument;
+    const isStandardFs = Boolean(
+      doc.fullscreenElement ||
+        doc.webkitFullscreenElement ||
+        doc.mozFullScreenElement ||
+        doc.msFullscreenElement,
+    );
+    const isVideoFs = Boolean(v?.webkitDisplayingFullscreen);
+
+    // 1. Exit fullscreen if already in fullscreen
+    if (isStandardFs || isVideoFs) {
+      if (isVideoFs) {
+        if (typeof v?.webkitExitFullscreen === "function") {
+          v.webkitExitFullscreen();
+          return;
+        }
+        if (typeof v?.webkitExitFullScreen === "function") {
+          v.webkitExitFullScreen();
+          return;
+        }
+      }
+      if (doc.exitFullscreen) {
+        await doc.exitFullscreen().catch(() => {});
+        return;
+      }
+      if (doc.webkitExitFullscreen) {
+        doc.webkitExitFullscreen();
+        return;
+      }
+      return;
+    }
+
+    // 2. Entering fullscreen:
+    // On iPhone/iPod, HTML div fullscreen is not supported by WebKit.
+    // Use the native video element player which iOS opens in fullscreen.
+    const isIPhone = isIPhoneDevice();
+
+    if (!isIPhone && container) {
+      try {
+        if (typeof container.requestFullscreen === "function") {
+          await container.requestFullscreen();
+          return;
+        }
+        if (typeof container.webkitRequestFullscreen === "function") {
+          container.webkitRequestFullscreen();
+          return;
+        }
+      } catch (err) {
+        console.warn(
+          "Container requestFullscreen failed, falling back to native video player:",
+          err,
+        );
+      }
+    }
+
+    // 3. iPhone or fallback to native video player fullscreen
+    if (v) {
+      try {
+        v.controls = true;
+        if (typeof v.webkitEnterFullscreen === "function") {
+          v.webkitEnterFullscreen();
+          return;
+        }
+        if (typeof v.webkitEnterFullScreen === "function") {
+          v.webkitEnterFullScreen();
+          return;
+        }
+        if (typeof v.requestFullscreen === "function") {
+          await v.requestFullscreen();
+          return;
+        }
+        if (typeof v.webkitRequestFullscreen === "function") {
+          v.webkitRequestFullscreen();
+          return;
+        }
+      } catch (err) {
+        console.warn("Native video fullscreen failed:", err);
+      }
+    }
+  }, []);
+
+  // ── AirPlay & Cast ────────────────────────────────────────────────────────
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    try {
+      v.setAttribute("x-webkit-airplay", "allow");
+      v.setAttribute("webkit-playsinline", "true");
+    } catch {
+      /* ignore */
+    }
+
+    const hasAirPlayPicker =
+      typeof v.webkitShowPlaybackTargetPicker === "function";
+    const win =
+      typeof window !== "undefined"
+        ? (window as WindowWithAirPlay)
+        : undefined;
+    const hasAvailabilityEvent =
+      typeof win?.WebKitPlaybackTargetAvailabilityEvent !== "undefined";
+
+    if (hasAirPlayPicker || hasAvailabilityEvent || isAppleDevice()) {
+      if (hasAirPlayPicker || isAppleDevice()) {
+        setIsAirPlayAvailable(true);
+      }
+
+      if (hasAvailabilityEvent) {
+        const onAvailability = (e: Event) => {
+          const targetEvent = e as TargetAvailabilityEvent;
+          setIsAirPlayAvailable(targetEvent.availability === "available");
+        };
+        const onWirelessChange = () => {
+          setIsAirPlayConnected(
+            Boolean(v.webkitCurrentPlaybackTargetIsWireless),
+          );
+        };
+        v.addEventListener(
+          "webkitplaybacktargetavailabilitychanged",
+          onAvailability,
+        );
+        v.addEventListener(
+          "webkitcurrentplaybacktargetiswirelesschanged",
+          onWirelessChange,
+        );
+        return () => {
+          v.removeEventListener(
+            "webkitplaybacktargetavailabilitychanged",
+            onAvailability,
+          );
+          v.removeEventListener(
+            "webkitcurrentplaybacktargetiswirelesschanged",
+            onWirelessChange,
+          );
+        };
+      }
+    }
+  }, [src]);
+
+  const handleAirPlay = useCallback(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    try {
+      if (typeof v.webkitShowPlaybackTargetPicker === "function") {
+        v.webkitShowPlaybackTargetPicker();
+      } else if (v.remote && typeof v.remote.prompt === "function") {
+        v.remote.prompt().catch(() => {});
+      }
+    } catch (e) {
+      console.warn("AirPlay failed:", e);
+    }
+  }, []);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+
+    const remote = v.remote;
+    if (
+      !remote ||
+      typeof window === "undefined" ||
+      !("RemotePlayback" in window)
+    ) {
+      return;
+    }
+
+    const win = window as WindowWithAirPlay;
+    const isSafari =
+      typeof win.WebKitPlaybackTargetAvailabilityEvent !== "undefined" ||
+      (typeof v.webkitShowPlaybackTargetPicker === "function" &&
+        isAppleDevice());
+
+    if (isSafari) return;
+
+    let watchId: number | null = null;
+    let cancelled = false;
+
+    if (typeof remote.watchAvailability === "function") {
+      remote
+        .watchAvailability((available: boolean) => {
+          if (!cancelled) {
+            setIsCastAvailable(available);
+          }
+        })
+        .then((id: number) => {
+          watchId = id;
+        })
+        .catch(() => {
+          if (!cancelled && typeof remote.prompt === "function") {
+            setIsCastAvailable(true);
+          }
+        });
+    } else if (typeof remote.prompt === "function") {
+      setIsCastAvailable(true);
+    }
+
+    const onConnect = () => setIsCastConnected(true);
+    const onDisconnect = () => setIsCastConnected(false);
+
+    remote.addEventListener?.("connect", onConnect);
+    remote.addEventListener?.("disconnect", onDisconnect);
+
+    return () => {
+      cancelled = true;
+      if (
+        watchId !== null &&
+        typeof remote.cancelWatchAvailability === "function"
+      ) {
+        remote.cancelWatchAvailability(watchId).catch(() => {});
+      }
+      remote.removeEventListener?.("connect", onConnect);
+      remote.removeEventListener?.("disconnect", onDisconnect);
+    };
+  }, [src]);
+
+  const handleCast = useCallback(async () => {
+    const v = videoRef.current;
+    if (!v || !v.remote) return;
+    try {
+      if (typeof v.remote.prompt === "function") {
+        await v.remote.prompt();
+      }
+    } catch {
+      /* user dismissed cast prompt */
     }
   }, []);
 
@@ -666,7 +976,26 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     const onCanPlay = () => {
       tryApplyPendingResume();
     };
-    const onFs = () => setFullscreen(!!document.fullscreenElement);
+    const onFsChange = () => {
+      const doc = document as FullscreenDocument;
+      const isFs = Boolean(
+        doc.fullscreenElement ||
+          doc.webkitFullscreenElement ||
+          v.webkitDisplayingFullscreen,
+      );
+      setFullscreen(isFs);
+    };
+
+    const onWebkitBeginFs = () => {
+      setFullscreen(true);
+      setShowControls(true);
+      v.controls = true;
+    };
+
+    const onWebkitEndFs = () => {
+      setFullscreen(false);
+      v.controls = useNativeControlsRef.current;
+    };
 
     v.addEventListener("play", onPlay);
     v.addEventListener("pause", onPause);
@@ -675,7 +1004,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     v.addEventListener("ended", onEnded);
     v.addEventListener("loadedmetadata", onLoaded);
     v.addEventListener("canplay", onCanPlay);
-    document.addEventListener("fullscreenchange", onFs);
+    document.addEventListener("fullscreenchange", onFsChange);
+    document.addEventListener("webkitfullscreenchange", onFsChange);
+    v.addEventListener("webkitbeginfullscreen", onWebkitBeginFs);
+    v.addEventListener("webkitendfullscreen", onWebkitEndFs);
 
     v.volume = volume;
     tryApplyPendingResume();
@@ -689,7 +1021,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       v.removeEventListener("ended", onEnded);
       v.removeEventListener("loadedmetadata", onLoaded);
       v.removeEventListener("canplay", onCanPlay);
-      document.removeEventListener("fullscreenchange", onFs);
+      document.removeEventListener("fullscreenchange", onFsChange);
+      document.removeEventListener("webkitfullscreenchange", onFsChange);
+      v.removeEventListener("webkitbeginfullscreen", onWebkitBeginFs);
+      v.removeEventListener("webkitendfullscreen", onWebkitEndFs);
       if (hideTimer.current) clearTimeout(hideTimer.current);
 
       const played =
@@ -846,11 +1181,26 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           poster={poster}
           loop={loop}
           playsInline
+          controls={useNativeControls}
+          preload="metadata"
           className="w-full h-full object-cover cursor-pointer"
           // onTimeUpdate={handleTimeUpdate}
         />
 
-        {hasStarted ? (
+        {useNativeControls && (
+          <div className="absolute top-3 right-3 z-30">
+            <Button
+              size="sm"
+              variant="primary"
+              className="text-xs bg-black/75 hover:bg-black/90 text-white backdrop-blur-md border border-white/20 rounded-full px-3 py-1 shadow-lg cursor-pointer"
+              onPress={() => setUseNativeControls(false)}
+            >
+              Use Custom Player
+            </Button>
+          </div>
+        )}
+
+        {hasStarted && !useNativeControls ? (
           <div
             className="absolute inset-0 z-10 pointer-events-auto"
             onPointerUp={handleInteractionTap}
@@ -858,7 +1208,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           />
         ) : null}
 
-        {!hasStarted && (
+        {!hasStarted && !useNativeControls && (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/55">
             <Button
               variant="primary"
@@ -878,7 +1228,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
         {/* ── Centre flash on play/pause ── */}
         <AnimatePresence>
-          {showCenterFlash && hasStarted && (
+          {showCenterFlash && hasStarted && !useNativeControls && (
             <motion.div
               key="flash"
               initial={{ scale: 0.6, opacity: 0.8 }}
@@ -895,7 +1245,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         </AnimatePresence>
 
         <AnimatePresence>
-          {hasStarted && showControls && (
+          {hasStarted && showControls && !useNativeControls && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -919,7 +1269,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
         {/* ── Top metadata bar ── */}
         <AnimatePresence>
-          {hasStarted && showControls && (title || subtitle) && (
+          {hasStarted && showControls && !useNativeControls && (title || subtitle) && (
             <motion.div
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
@@ -949,7 +1299,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
         {/* ── Bottom controls overlay ── */}
         <AnimatePresence>
-          {hasStarted && showControls && (
+          {hasStarted && showControls && !useNativeControls && (
             <motion.div
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
@@ -1070,7 +1420,61 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
               <div className="flex-1" />
 
-              {/* Playback speed */}
+              {/* AirPlay (Apple / iOS / Safari) */}
+              {isAirPlayAvailable ? (
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={handleAirPlay}
+                      className={`rounded-lg transition-colors ${
+                        isAirPlayConnected
+                          ? "text-blue-400 hover:bg-blue-400/20"
+                          : "text-white hover:bg-white/10"
+                      }`}
+                      aria-label={
+                        isAirPlayConnected ? "Connected to AirPlay" : "AirPlay"
+                      }
+                    >
+                      <AirplayIcon />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    {isAirPlayConnected ? "AirPlay (Connected)" : "AirPlay"}
+                  </Tooltip.Content>
+                </Tooltip>
+              ) : null}
+
+              {/* Cast (Chromecast / Google Cast / Remote Playback) */}
+              {isCastAvailable ? (
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={() => void handleCast()}
+                      className={`rounded-lg transition-colors ${
+                        isCastConnected
+                          ? "text-blue-400 hover:bg-blue-400/20"
+                          : "text-white hover:bg-white/10"
+                      }`}
+                      aria-label={
+                        isCastConnected ? "Connected to Cast" : "Cast to screen"
+                      }
+                    >
+                      <CastIcon connected={isCastConnected} />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    {isCastConnected ? "Cast (Connected)" : "Cast"}
+                  </Tooltip.Content>
+                </Tooltip>
+              ) : null}
+
+              {/* Playback speed & player mode settings */}
               <div className="relative">
                 <Tooltip delay={400}>
                   <Tooltip.Trigger>
@@ -1079,12 +1483,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                       isIconOnly
                       onPress={() => setShowSettings((s) => !s)}
                       className="text-white hover:bg-white/10 rounded-lg"
-                      aria-label="Playback speed"
+                      aria-label="Player settings"
                     >
                       <SettingsIcon />
                     </Button>
                   </Tooltip.Trigger>
-                  <Tooltip.Content placement="top">Speed</Tooltip.Content>
+                  <Tooltip.Content placement="top">Settings</Tooltip.Content>
                 </Tooltip>
 
                 <AnimatePresence>
@@ -1094,32 +1498,60 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.92, y: 6 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute bottom-10 right-0 z-50 min-w-[112px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
+                      className="absolute bottom-10 right-0 z-50 min-w-[130px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
                     >
-                      <div className="space-y-1 px-1 w-36">
-                        <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
-                          Speed
-                        </p>
-                        <select
-                          aria-label="Playback speed"
-                          value={String(playbackRate)}
-                          onChange={(e) => {
-                            const key = e.target.value;
-                            const rate = key ? parseFloat(key) : 1;
-                            applyRate(rate);
-                          }}
-                          className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
-                        >
-                          {rates.map((r) => (
-                            <option
-                              key={String(r)}
-                              value={String(r)}
-                              className="bg-zinc-900"
+                      <div className="space-y-2 px-1 w-40">
+                        <div className="space-y-1">
+                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                            Speed
+                          </p>
+                          <select
+                            aria-label="Playback speed"
+                            value={String(playbackRate)}
+                            onChange={(e) => {
+                              const key = e.target.value;
+                              const rate = key ? parseFloat(key) : 1;
+                              applyRate(rate);
+                            }}
+                            className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
+                          >
+                            {rates.map((r) => (
+                              <option
+                                key={String(r)}
+                                value={String(r)}
+                                className="bg-zinc-900"
+                              >
+                                {r === 1 ? "Normal" : `${r}×`}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {/* Native player toggle */}
+                        <div className="pt-2 border-t border-white/10 space-y-1">
+                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                            Player Mode
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setUseNativeControls((prev) => !prev);
+                              setShowSettings(false);
+                            }}
+                            className="w-full text-left text-xs px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors flex items-center justify-between text-white cursor-pointer"
+                          >
+                            <span>Default Player</span>
+                            <span
+                              className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                                useNativeControls
+                                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                                  : "bg-white/10 text-white/50"
+                              }`}
                             >
-                              {r === 1 ? "Normal" : `${r}×`}
-                            </option>
-                          ))}
-                        </select>
+                              {useNativeControls ? "ON" : "OFF"}
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     </motion.div>
                   )}
