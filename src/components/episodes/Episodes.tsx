@@ -18,7 +18,8 @@ interface EpisodesProps {
 
 export default function Episodes({ data }: EpisodesProps) {
   const { episodeId } = useParams();
-  const { isEpisodePlayed, getEpisodeProgress } = useDataContext();
+  const { isEpisodePlayed, getEpisodeProgress, isArcFinished, toggleArcPlayed } =
+    useDataContext();
 
   if (!data) {
     return (
@@ -28,6 +29,8 @@ export default function Episodes({ data }: EpisodesProps) {
       </div>
     );
   }
+
+  const isFinished = isArcFinished(data.id);
 
   const handleJumpToEpisode = (targetEpisodeId: string) => {
     const el =
@@ -40,18 +43,39 @@ export default function Episodes({ data }: EpisodesProps) {
 
   return (
     <div className="flex flex-col gap-2 w-full pt-2">
-      <div className="flex items-center gap-2 w-full justify-between">
+      <div className="flex items-center gap-2 w-full justify-between flex-wrap pb-1">
         <h3 className="text-md font-semibold px-2">All Episodes</h3>
-        {episodeId && (
+        <div className="flex items-center gap-2 flex-wrap">
           <Button
-            variant="tertiary"
             size="sm"
-            onPress={() => handleJumpToEpisode(episodeId || "")}
+            variant="ghost"
+            className={`text-xs h-7 px-2.5 rounded-lg flex items-center gap-1.5 cursor-pointer transition-colors ${
+              isFinished
+                ? "text-green-500 hover:text-red-400 hover:bg-red-500/10"
+                : "text-muted hover:text-green-400 hover:bg-green-500/10"
+            }`}
+            onPress={() => toggleArcPlayed(data.id)}
+            aria-label={
+              isFinished
+                ? "Mark season as unplayed"
+                : "Mark all episodes in this season as complete"
+            }
           >
-            <BiChevronDown />
-            Jump to episode {episodeId}
+            <BiCheck className="size-4" />
+            {isFinished ? "Season Completed" : "Mark Season Complete"}
           </Button>
-        )}
+
+          {episodeId && (
+            <Button
+              variant="tertiary"
+              size="sm"
+              onPress={() => handleJumpToEpisode(episodeId || "")}
+            >
+              <BiChevronDown />
+              Jump to episode {episodeId}
+            </Button>
+          )}
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">

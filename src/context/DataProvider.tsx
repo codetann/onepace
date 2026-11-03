@@ -1,11 +1,30 @@
 import { useMemo, useEffect, useState, useCallback } from "react";
 import { DATA } from "@/data/data";
 import { Outlet, useNavigate, useParams } from "react-router";
-import { jellyfinClient, type JellyfinUser } from "@/api/jellyfin";
+import { jellyfinClient, type JellyfinUser, type JellyfinItem } from "@/api/jellyfin";
 import type { Arc, Episode } from "@/typings";
 import { DataContext, type EpisodeProgressData, type ContinueWatchingTarget } from "./DataContext";
 
 const CONTINUE_KEY = "onepace:continueWatching";
+
+const matchEpisodeItem = (
+  episodes: JellyfinItem[],
+  targetEpisodeId: number,
+  index?: number,
+  totalEpisodes?: number,
+): JellyfinItem | undefined => {
+  return (
+    episodes.find((item) => item.IndexNumber === targetEpisodeId) ??
+    episodes.find((item) => {
+      if (!item.Name) return false;
+      const m = item.Name.match(/(\d+)\s*$/);
+      return m ? parseInt(m[1], 10) === targetEpisodeId : false;
+    }) ??
+    (totalEpisodes === 1 && episodes.length === 1
+      ? episodes[0]
+      : (typeof index === "number" && episodes[index]) || episodes[targetEpisodeId - 1])
+  );
+};
 
 const readStoredUser = (): JellyfinUser | null => {
   try {
@@ -55,7 +74,20 @@ export const DataProvider = () => {
       const map: Record<string, EpisodeProgressData> = {};
       response.Items.forEach((item) => {
         const seasonId = item.SeasonId || item.ParentId;
-        const indexNumber = item.IndexNumber;
+        let indexNumber = item.IndexNumber;
+        if (indexNumber === undefined && item.Name) {
+          const match = item.Name.match(/(\d+)\s*$/);
+          if (match) {
+            indexNumber = parseInt(match[1], 10);
+          }
+        }
+        if (indexNumber === undefined && seasonId) {
+          const matchingArc = DATA.arcs.find((a) => a.showId === seasonId);
+          if (matchingArc && matchingArc.episodes.length === 1) {
+            indexNumber = 1;
+          }
+        }
+
         const ticks = item.UserData?.PlaybackPositionTicks || 0;
         const runtime = item.RunTimeTicks || 0;
         const played = Boolean(item.UserData?.Played);
@@ -73,8 +105,13 @@ export const DataProvider = () => {
         if (item.Id) {
           map[item.Id] = data;
         }
-        if (seasonId !== undefined && indexNumber !== undefined) {
-          map[`${seasonId}-${indexNumber}`] = data;
+        if (seasonId !== undefined) {
+          if (indexNumber !== undefined) {
+            map[`${seasonId}-${indexNumber}`] = data;
+          }
+          if (item.IndexNumber !== undefined && item.IndexNumber !== indexNumber) {
+            map[`${seasonId}-${item.IndexNumber}`] = data;
+          }
         }
       });
 
@@ -114,7 +151,7 @@ export const DataProvider = () => {
   }, [logout]);
 
   const refreshData = useCallback(async () => {
-    void loadAllUserData();
+    await loadAllUserData();
     const currentArc = DATA.arcs.find((a) => a.id === parseInt(arcId || "0", 10));
     if (!currentArc) return null;
     try {
@@ -126,9 +163,12 @@ export const DataProvider = () => {
         ...currentArc,
         metadata: arcResponse,
         episodes: currentArc.episodes.map((ep, index) => {
-          const meta =
-            episodesResponse.find((item) => item.IndexNumber === ep.id) ??
-            episodesResponse[index];
+          const meta = matchEpisodeItem(
+            episodesResponse,
+            ep.id,
+            index,
+            currentArc.episodes.length,
+          );
           return {
             ...ep,
             metadata: meta,
@@ -161,6 +201,9 @@ export const DataProvider = () => {
       // Fallback to currently loaded arc episodes if in view
       if (arc?.id === targetArcId) {
         const ep = arc.episodes.find((e) => e.id === targetEpisodeId);
+        if (ep?.metadata?.Id && userDataMap[ep.metadata.Id]) {
+          return userDataMap[ep.metadata.Id].played;
+        }
         if (ep?.metadata?.UserData) {
           return Boolean(ep.metadata.UserData.Played);
         }
@@ -186,6 +229,9 @@ export const DataProvider = () => {
       }
       if (arc?.id === targetArcId) {
         const ep = arc.episodes.find((e) => e.id === targetEpisodeId);
+        if (ep?.metadata?.Id && userDataMap[ep.metadata.Id]) {
+          return userDataMap[ep.metadata.Id];
+        }
         const ud = ep?.metadata?.UserData;
         const runtime = ep?.metadata?.RunTimeTicks || 0;
         const ticks = ud?.PlaybackPositionTicks || 0;
@@ -220,7 +266,12 @@ export const DataProvider = () => {
       if (!itemId) {
         // Resolve from jellyfin if needed
         const eps = await jellyfinClient.getEpisodesForSeason(targetArc.showId);
-        const matched = eps.find((e) => e.IndexNumber === targetEpisodeId);
+        const matched = matchEpisodeItem(
+          eps,
+          targetEpisodeId,
+          targetEpisodeId - 1,
+          targetArc.episodes.length,
+        );
         itemId = matched?.Id;
       }
 
@@ -235,6 +286,144 @@ export const DataProvider = () => {
       await refreshData();
     },
     [arc, isEpisodePlayed, userDataMap, refreshData],
+  );
+
+  const isArcFinished = useCallback(
+    (targetArcIdOrArc: number | Arc) => {
+      const arcObj =
+        typeof targetArcIdOrArc === "number"
+          ? DATA.arcs.find((a) => a.id === targetArcIdOrArc)
+          : targetArcIdOrArc;
+      if (!arcObj || !arcObj.episodes || arcObj.episodes.length === 0) return false;
+      return arcObj.episodes.every((ep) => isEpisodePlayed(arcObj.id, ep.id));
+    },
+    [isEpisodePlayed],
+  );
+
+  const toggleArcPlayed = useCallback(
+    async (targetArcId: number, forcePlayed?: boolean) => {
+      const targetArc = DATA.arcs.find((a) => a.id === targetArcId);
+      if (!targetArc) return;
+
+      const currentlyFinished = isArcFinished(targetArcId);
+      const shouldMarkPlayed =
+        typeof forcePlayed === "boolean" ? forcePlayed : !currentlyFinished;
+
+      // 1. Optimistically update local userDataMap for instant UI feedback
+      setUserDataMap((prev) => {
+        const next = { ...prev };
+        targetArc.episodes.forEach((ep) => {
+          const key = targetArc.showId ? `${targetArc.showId}-${ep.id}` : undefined;
+          const loadedEp =
+            arc?.id === targetArcId
+              ? arc.episodes.find((e) => e.id === ep.id)
+              : undefined;
+          const existing =
+            (key && prev[key]) ||
+            (loadedEp?.metadata?.Id && prev[loadedEp.metadata.Id]) ||
+            undefined;
+          const resolvedItemId = existing?.itemId || loadedEp?.metadata?.Id;
+          const updated: EpisodeProgressData = {
+            played: shouldMarkPlayed,
+            ticks: shouldMarkPlayed ? (existing?.runtime || 1) : 0,
+            runtime: existing?.runtime || 0,
+            percent: shouldMarkPlayed ? 100 : 0,
+            itemId: resolvedItemId,
+          };
+          if (key) {
+            next[key] = updated;
+          }
+          if (resolvedItemId) {
+            next[resolvedItemId] = updated;
+          }
+        });
+        return next;
+      });
+
+      // Also update currently loaded arc if it matches targetArcId
+      if (arc?.id === targetArcId) {
+        setArc((prev) => {
+          if (!prev) return prev;
+          return {
+            ...prev,
+            episodes: prev.episodes.map((ep) => ({
+              ...ep,
+              metadata: ep.metadata
+                ? {
+                    ...ep.metadata,
+                    UserData: {
+                      ...ep.metadata.UserData,
+                      Played: shouldMarkPlayed,
+                    },
+                  }
+                : ep.metadata,
+            })),
+          };
+        });
+      }
+
+      // 2. Perform Jellyfin API calls
+      try {
+        const episodeItemIds: string[] = [];
+
+        // Collect existing known episode item IDs
+        targetArc.episodes.forEach((ep) => {
+          const key = targetArc.showId ? `${targetArc.showId}-${ep.id}` : "";
+          const id =
+            userDataMap[key]?.itemId ||
+            (arc?.id === targetArcId
+              ? arc.episodes.find((e) => e.id === ep.id)?.metadata?.Id
+              : undefined);
+          if (id && !episodeItemIds.includes(id)) {
+            episodeItemIds.push(id);
+          }
+        });
+
+        // If some episode item IDs are missing and we have showId, fetch season episodes
+        if (
+          episodeItemIds.length < targetArc.episodes.length &&
+          targetArc.showId
+        ) {
+          try {
+            const eps = await jellyfinClient.getEpisodesForSeason(targetArc.showId);
+            eps.forEach((e) => {
+              if (e.Id && !episodeItemIds.includes(e.Id)) {
+                episodeItemIds.push(e.Id);
+              }
+            });
+          } catch (e) {
+            console.warn("Could not fetch season episodes for bulk update:", e);
+          }
+        }
+
+        const tasks: Promise<void>[] = [];
+
+        // Mark the season item in Jellyfin
+        if (targetArc.showId) {
+          tasks.push(
+            shouldMarkPlayed
+              ? jellyfinClient.markPlayedItem(targetArc.showId)
+              : jellyfinClient.unmarkPlayedItem(targetArc.showId),
+          );
+        }
+
+        // Mark each episode item in Jellyfin
+        episodeItemIds.forEach((id) => {
+          tasks.push(
+            shouldMarkPlayed
+              ? jellyfinClient.markPlayedItem(id)
+              : jellyfinClient.unmarkPlayedItem(id),
+          );
+        });
+
+        await Promise.allSettled(tasks);
+      } catch (err) {
+        console.error("Failed to toggle arc played in Jellyfin:", err);
+      } finally {
+        await refreshData();
+      }
+    },
+    [arc, isArcFinished, userDataMap, refreshData],
   );
 
   // handle setting the arc when the arcId changes
@@ -272,9 +461,12 @@ export const DataProvider = () => {
           ...targetArc,
           metadata: arcResponse,
           episodes: targetArc.episodes.map((ep, index) => {
-            const meta =
-              episodesResponse.find((item) => item.IndexNumber === ep.id) ??
-              episodesResponse[index];
+            const meta = matchEpisodeItem(
+              episodesResponse,
+              ep.id,
+              index,
+              targetArc.episodes.length,
+            );
             return {
               ...ep,
               metadata: meta,
@@ -334,8 +526,11 @@ export const DataProvider = () => {
           const seasonEpisodes = await jellyfinClient.getEpisodesForSeason(
             targetArc.showId,
           );
-          meta = seasonEpisodes.find(
-            (item) => item.IndexNumber === parsedEpisodeId,
+          meta = matchEpisodeItem(
+            seasonEpisodes,
+            parsedEpisodeId,
+            parsedEpisodeId - 1,
+            targetArc.episodes.length,
           );
           itemId = meta?.Id;
         }
@@ -527,6 +722,8 @@ export const DataProvider = () => {
         isEpisodePlayed,
         getEpisodeProgress,
         toggleEpisodePlayed,
+        isArcFinished,
+        toggleArcPlayed,
         getContinueWatchingTarget,
         isLoadingArc,
         isLoadingEpisode,

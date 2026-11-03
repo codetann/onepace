@@ -156,7 +156,8 @@ interface NavigationProps {
 }
 
 function Navigation({ onNavigate }: NavigationProps) {
-  const { arcs, isEpisodePlayed, toggleEpisodePlayed } = useDataContext();
+  const { arcs, isEpisodePlayed, toggleEpisodePlayed, isArcFinished, toggleArcPlayed } =
+    useDataContext();
   const [openTab, setOpenTab] = useState<number | null>(null);
   const navigate = useNavigate();
   const handleNavigate = useCallback(
@@ -173,16 +174,6 @@ function Navigation({ onNavigate }: NavigationProps) {
       behavior: "smooth",
     });
   };
-
-  const isArcFinished = useCallback(
-    (arcItem: (typeof arcs)[0]) => {
-      return (
-        arcItem.episodes.length > 0 &&
-        arcItem.episodes.every((ep) => isEpisodePlayed(arcItem.id, ep.id))
-      );
-    },
-    [isEpisodePlayed],
-  );
 
   const AccordionItems = useMemo(() => {
     return arcs?.map((item, index) => {
@@ -266,6 +257,30 @@ function Navigation({ onNavigate }: NavigationProps) {
               </span>
               <p className="pb-3 pt-2 ">{item.description}</p>
 
+              <div className="flex items-center justify-between pb-2 pt-1 border-t border-default-100">
+                <span className="text-xs text-muted font-medium">
+                  Episodes ({item.episodes.length})
+                </span>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className={`text-xs h-7 px-2.5 rounded-lg flex items-center gap-1.5 cursor-pointer transition-colors ${
+                    arcFinished
+                      ? "text-green-500 hover:text-red-400 hover:bg-red-500/10"
+                      : "text-muted hover:text-green-400 hover:bg-green-500/10"
+                  }`}
+                  onPress={() => toggleArcPlayed(item.id)}
+                  aria-label={
+                    arcFinished
+                      ? "Mark season as unplayed"
+                      : "Mark season as complete"
+                  }
+                >
+                  <BiCheck className="size-4" />
+                  {arcFinished ? "Season Completed" : "Mark Season Complete"}
+                </Button>
+              </div>
+
               <div className="flex flex-col gap-2">
                 {openTab === index &&
                   item.episodes.map((episode, epIndex) => {
@@ -314,7 +329,15 @@ function Navigation({ onNavigate }: NavigationProps) {
         </Accordion.Item>
       );
     });
-  }, [openTab, arcs, isEpisodePlayed, toggleEpisodePlayed, isArcFinished, handleNavigate]);
+  }, [
+    openTab,
+    arcs,
+    isEpisodePlayed,
+    toggleEpisodePlayed,
+    isArcFinished,
+    toggleArcPlayed,
+    handleNavigate,
+  ]);
 
   if (!arcs) return <div>Loading...</div>;
 

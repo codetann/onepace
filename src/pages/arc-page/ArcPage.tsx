@@ -6,6 +6,7 @@ import {
   BiBook,
   BiChevronLeft,
   BiChevronRight,
+  BiCheck,
 } from "react-icons/bi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDataContext } from "@/context";
@@ -14,12 +15,21 @@ import { DATA } from "@/data/data";
 import type { Arc } from "@/typings";
 
 export default function ArcPage() {
-  const { arc, nextArc, previousArc, navigate, isLoadingArc } = useDataContext();
+  const {
+    arc,
+    nextArc,
+    previousArc,
+    navigate,
+    isLoadingArc,
+    isArcFinished,
+    toggleArcPlayed,
+  } = useDataContext();
   const { arcId } = useParams();
 
   const parsedArcId = parseInt(arcId || "0", 10);
   const targetArc = DATA.arcs.find((a) => a.id === parsedArcId) as Arc | undefined;
   const currentArc = arc && arc.id === parsedArcId ? arc : targetArc;
+  const isFinished = currentArc ? isArcFinished(currentArc.id) : false;
 
   if (!currentArc) {
     if (isLoadingArc) {
@@ -66,9 +76,29 @@ export default function ArcPage() {
                 </AnimatePresence>
 
                 <div className="flex flex-col gap-2.5 w-full justify-end">
-                  <p className="text-white/90 text-sm">
-                    {currentArc.episodes?.length} Episodes
-                  </p>
+                  <div className="flex items-center justify-between gap-3 flex-wrap">
+                    <p className="text-white/90 text-sm">
+                      {currentArc.episodes?.length} Episodes
+                    </p>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className={`text-xs h-7 px-3 rounded-lg flex items-center gap-1.5 cursor-pointer transition-colors ${
+                        isFinished
+                          ? "bg-green-500/20 text-green-300 border border-green-500/30 hover:bg-red-500/20 hover:text-red-300"
+                          : "text-white/90 bg-white/10 hover:bg-green-500/20 hover:text-green-300 border border-white/15"
+                      }`}
+                      onPress={() => toggleArcPlayed(currentArc.id)}
+                      aria-label={
+                        isFinished
+                          ? "Click to mark season as unplayed"
+                          : "Mark all episodes in this season as complete"
+                      }
+                    >
+                      <BiCheck className="size-4" />
+                      {isFinished ? "Season Completed" : "Mark Season Complete"}
+                    </Button>
+                  </div>
                   <span className="flex items-center gap-1.5 flex-wrap">
                     <Chip color="warning">
                       <BiStar className="size-4" />
