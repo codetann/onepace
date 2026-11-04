@@ -438,7 +438,7 @@ export const DATA = {
       altImage:
         "https://media.themoviedb.org/t/p/w440_and_h660_face/6tGqdUP3UVHKajUTQlJ20HRe44e.jpg",
       description:
-        "This short side story follows Buggy's scattered crew after earlier defeats, showing how even smaller pirate crews scramble to recover and stay relevant in East Blue.",
+        "After defeat in Orange Town, a shriveled Buggy embarks on an unexpected solo trek to reunite with his crew. This quirky side adventure introduces new alliances and sets the stage for the clown's return.",
       coverage: {
         anime: "46-47",
         manga: "35-75",
@@ -448,8 +448,9 @@ export const DATA = {
         {
           id: 1,
           title: "The Adventures of Buggy's Crew 01",
+          altTitle: "The Great Adventure of the Little Buggy",
           description:
-            "Blasted across the sea by Luffy, a shrunken Buggy braves strange island creatures and forms an alliance with the beautiful Alvida. Together, they rescue Mohji, Cabaji, and the crew from a cannibalistic tribe and plot their revenge against the Straw Hats.",
+            "Blasted across the sea by Luffy, a miniature Buggy braves wild beasts and allies with the vengeful Alvida. Together, they rescue the captive Buggy Pirates from a cannibal tribe and plot their revenge on the Straw Hats.",
           coverage: {
             anime: "46-47",
             manga: "35-75",
@@ -467,7 +468,7 @@ export const DATA = {
       altImage:
         "https://media.themoviedb.org/t/p/w440_and_h660_face/6BuBQwmO1LoqoiIxv70QLpwNg2G.jpg",
       description:
-        "At the last stop before the Grand Line, the Straw Hats resupply, face old and new threats, and are pushed into one final East Blue turning point.",
+        "The Straw Hats make their final East Blue stop at the city where Gold Roger was born and executed. Amid new rivals and looming Marines, the crew marks a defining threshold before the Grand Line.",
       coverage: {
         anime: "45-53",
         manga: "96-100",
@@ -477,8 +478,9 @@ export const DATA = {
         {
           id: 1,
           title: "Loguetown 01",
+          altTitle: "The Town of the Beginning and the End",
           description:
-            "The Straw Hats dock at Loguetown, the legendary city where Gold Roger was born and executed. While exploring town, Zoro meets Marine swordswoman Tashigi and tests his luck against the cursed blade Sandai Kitetsu, earning both it and the heirloom Yubashiri.",
+            "The Straw Hats dock at Loguetown, the historic city where Pirate King Gold Roger was born and executed. While exploring the streets, Zoro tests his luck against the cursed blade Sandai Kitetsu and claims the heirloom Yubashiri.",
           coverage: {
             anime: "45-48",
             manga: "96-97",
@@ -488,8 +490,9 @@ export const DATA = {
         {
           id: 2,
           title: "Loguetown 02",
+          altTitle: "The Execution Scaffold: Smoker's Domain",
           description:
-            "Usopp wins a duel against North Blue gunslinger 'Daddy the Father' for sniper goggles, while Sanji secures an Elephant Bluefin Tuna in a local cooking showdown. Meanwhile, Luffy climbs the historic execution platform, drawing the attention of Marine Captain Smoker.",
+            "Usopp and Sanji secure new gear and ingredients through high-stakes duels across town. Meanwhile, Luffy climbs the legendary execution scaffold, drawing the scrutiny of relentless Marine Captain Smoker.",
           coverage: {
             anime: "48-51",
             manga: "98-99",
@@ -499,8 +502,9 @@ export const DATA = {
         {
           id: 3,
           title: "Loguetown 03",
+          altTitle: "The Legend Begins: Setting Sail for the Grand Line",
           description:
-            "Buggy and Alvida trap Luffy on the execution scaffold, but a freak lightning strike miraculously spares him before Smoker intervenes. Rescued from Smoker's smoke grasp by the mysterious Dragon, the Straw Hats reach the Going Merry and swear their dreams over a barrel.",
+            "Saved from Buggy and Alvida's execution scaffold by a freak lightning strike, Luffy races toward the harbor under Smoker's pursuit. Guided through a brewing storm by the enigmatic Dragon, the Straw Hats swear their vows over a barrel and enter the Grand Line.",
           coverage: {
             anime: "51-53",
             manga: "100",
@@ -518,7 +522,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/yxBW95jBV0kbIJvIfUP5cVRFJet.jpg",
       description:
-        "The Straw Hats officially enter the Grand Line and immediately learn how unpredictable this sea is through dangerous currents and emotional new encounters.",
+        "The Straw Hats officially enter the Grand Line, braving treacherous uphill currents and a stormy descent. At Twin Cape, a colossal whale and a solemn promise set the emotional tone for the vast voyage ahead.",
       coverage: {
         anime: "61-63",
         manga: "101-105",
@@ -528,24 +532,26 @@ export const DATA = {
         {
           id: 1,
           title: "Reverse Mountain 01",
+          altTitle: "Into the Grand Line: The Great Whale Laboon",
           description:
-            "The crew braves Reverse Mountain's violent route, navigating one of the Grand Line's first major environmental trials.",
+            "The Straw Hats ride violent uphill currents to scale Reverse Mountain, plunging directly into the foggy Grand Line. At the base, they narrowly avoid colliding with the island-sized whale Laboon, only to be swallowed into the bizarre stomach harbor of lighthouse keeper Crocus.",
           coverage: {
             anime: "61-62",
             manga: "101-103",
           },
-          length: "TBD",
+          length: "24m",
         },
         {
           id: 2,
           title: "Reverse Mountain 02",
+          altTitle: "A Promise to Laboon: Twin Cape and the Log Pose",
           description:
-            "At Twin Cape, a surprising ally and a heartfelt promise set the emotional tone for the journey ahead.",
+            "Crocus recounts Laboon's fifty-year vigil for a pirate crew that vanished, prompting Luffy to fight the whale to a draw and paint a vow on his forehead. Equipped with a vital Log Pose and accompanied by the suspicious Mr. 9 and Miss Wednesday, the crew sets sail for Whisky Peak.",
           coverage: {
             anime: "62-63",
             manga: "104-105",
           },
-          length: "TBD",
+          length: "24m",
         },
       ],
     },
@@ -558,7 +564,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/botSmvfxeQuROwliVR1MzOJIOi3.jpg",
       description:
-        "A seemingly friendly welcome at the Straw Hats' first Grand Line town hides a coordinated trap, forcing the crew to react quickly and trust their instincts.",
+        "Arriving at their first Grand Line island, the Straw Hats are welcomed with open arms and endless celebrations. Beneath the hospitality lies a deadly bounty hunter stronghold, revealing the shadowy syndicate Baroque Works.",
       coverage: {
         anime: "64-67",
         manga: "106-114",
@@ -568,24 +574,26 @@ export const DATA = {
         {
           id: 1,
           title: "Whisky Peak 01",
+          altTitle: "A Feast of Traps: Zoro vs. 100 Bounty Hunters",
           description:
-            "The crew is celebrated on arrival, but subtle warning signs reveal that Whisky Peak is far more dangerous than it looks.",
+            "Whisky Peak welcomes the crew with lavish banquets and endless toasts, lulling the exhausted Straw Hats to sleep. When the town is revealed as a Baroque Works frontier base, an alert Zoro draws his swords on the rooftops to face one hundred bounty hunters alone.",
           coverage: {
             anime: "64-65",
             manga: "106-110",
           },
-          length: "TBD",
+          length: "28m",
         },
         {
           id: 2,
           title: "Whisky Peak 02",
+          altTitle: "Princess Vivi's Secret: Miss All Sunday Arrives",
           description:
-            "The trap is exposed and the night erupts into battle, ending with major clues about the larger threats waiting ahead.",
+            "Baroque Works officers arrive to assassinate Princess Vivi of Alabasta, pulling the crew into an escalating desert conspiracy. After fending off the agents and surviving a comical brawl between Luffy and Zoro, the Straw Hats agree to escort Vivi home just as the mysterious Miss All Sunday intercepts them.",
           coverage: {
             anime: "65-67",
             manga: "111-114",
           },
-          length: "TBD",
+          length: "25m",
         },
       ],
     },
@@ -598,7 +606,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/8dBdoQlICkBiIhqCjFCbU4KAS8e.jpg",
       description:
-        "This short cover-story arc follows Koby and Helmeppo's Marine training journey, showing their discipline, growth, and determination away from the Straw Hats.",
+        "Separated from the Straw Hats, chore boys Koby and Helmeppo face grueling Marine discipline. When a hostage crisis tests their courage, their grit earns the mentorship of Vice Admiral Garp.",
       coverage: {
         anime: "68-69",
         manga: "83-119",
@@ -608,13 +616,14 @@ export const DATA = {
         {
           id: 1,
           title: "The Trials of Koby-Meppo 01",
+          altTitle: "Courage in the Line of Fire: Under Garp's Wing",
           description:
-            "Koby and Helmeppo begin a demanding Marine path, confronting strict training and proving they are serious about changing their futures.",
+            "While transferring prisoner Axe-Hand Morgan, Morgan takes Helmeppo hostage and escapes aboard a lifeboat. Risking court-martial, Koby shields the fleeing boat from cannon fire to save his friend, winning the respect of legendary Vice Admiral Garp, who recruits both boys for elite training at Marine Headquarters.",
           coverage: {
             anime: "68-69",
             manga: "83-119",
           },
-          length: "TBD",
+          length: "21m",
         },
       ],
     },
@@ -627,7 +636,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/fwuKwC8tI93TQpf0friD9ArtQW1.jpg",
       description:
-        "On a prehistoric island filled with giant wildlife and ancient rivalries, the Straw Hats face survival challenges while hidden enemies move behind the scenes.",
+        "The Straw Hats drop anchor at a prehistoric island frozen in time, where two giant warriors have dueled with honor for a century. Beneath the ancient clash, Baroque Works officers stage a lethal ambush to claim the warriors' bounties.",
       coverage: {
         anime: "70-77",
         manga: "115-129",
