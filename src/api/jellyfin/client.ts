@@ -7,6 +7,7 @@ import type {
   JellyfinItemImageUrlOptions,
   JellyfinItemListResponse,
   JellyfinItemUpdatePayload,
+  JellyfinMediaStream,
   JellyfinPlaybackInfoResponse,
   JellyfinPlaybackProgressInfo,
   JellyfinPlaybackStartInfo,
@@ -14,10 +15,11 @@ import type {
   JellyfinSystemInfo,
   JellyfinUpdatePasswordRequest,
   JellyfinUser,
+  SubtitleTrackInfo,
 } from "./types";
 
 const DEFAULT_BASE_URL = "https://jellyfin.tannerthomas.dev";
-const API_KEY = import.meta.env.VITE_JELLYFIN_API_KEY ?? "";
+const API_KEY = import.meta.env?.VITE_JELLYFIN_API_KEY ?? "";
 
 /**
  * Jellyfin auth for `X-Emby-Token` and `api_key` query (browser `<video>` / `<img>` cannot send headers).
@@ -41,7 +43,7 @@ const getEmbyToken = (): string => {
 /** User id for `/Users/{id}/…` paths — from stored auth or `VITE_JELLYFIN_USER_ID`. */
 const getResolvedUserId = (): string => {
   if (typeof localStorage === "undefined") {
-    return import.meta.env.VITE_JELLYFIN_USER_ID ?? "";
+    return import.meta.env?.VITE_JELLYFIN_USER_ID ?? "";
   }
   try {
     const raw = localStorage.getItem("user");
@@ -52,13 +54,13 @@ const getResolvedUserId = (): string => {
   } catch {
     /* ignore */
   }
-  return import.meta.env.VITE_JELLYFIN_USER_ID ?? "";
+  return import.meta.env?.VITE_JELLYFIN_USER_ID ?? "";
 };
 
 const normalizeBaseUrl = (url: string): string => url.replace(/\/+$/, "");
 
 const BASE_URL = normalizeBaseUrl(
-  import.meta.env.VITE_JELLYFIN_URL || DEFAULT_BASE_URL,
+  import.meta.env?.VITE_JELLYFIN_URL || DEFAULT_BASE_URL,
 );
 
 const buildUrl = (
@@ -394,7 +396,7 @@ export const jellyfinClient = {
       Recursive: false,
       SortBy: "SortName",
       SortOrder: "Ascending",
-      Fields: "UserData",
+      Fields: "UserData,MediaStreams",
       ...query,
     });
 
@@ -605,6 +607,81 @@ export const jellyfinClient = {
     return buildUrl(`/Videos/${itemId}/stream`, {
       static: true,
       MediaSourceId: mediaSourceId,
+    });
+  },
+
+  /**
+   * Endpoint to stream subtitle tracks as WebVTT for HTML5 video `<track>`.
+   */
+  getSubtitleStreamUrl(
+    itemId: string,
+    mediaSourceId: string,
+    streamIndex: number,
+    format: "vtt" | "srt" = "vtt",
+  ): string {
+    return buildUrl(
+      `/Videos/${itemId}/${mediaSourceId}/Subtitles/${streamIndex}/Stream.${format}`,
+    );
+  },
+
+  /**
+   * Resolves the WebVTT stream URL for a given subtitle MediaStream.
+   */
+  getSubtitleUrl(
+    itemId: string,
+    mediaSourceId: string,
+    stream: JellyfinMediaStream,
+  ): string {
+    if (stream.DeliveryUrl) {
+      // Force .vtt for browser <track> compatibility
+      const vttUrl = stream.DeliveryUrl.replace(/\.(srt|ass|sub)$/i, ".vtt");
+      return resolveTranscodingUrl(vttUrl);
+    }
+    return this.getSubtitleStreamUrl(
+      itemId,
+      mediaSourceId,
+      stream.Index,
+      "vtt",
+    );
+  },
+
+  /**
+   * Extracts subtitle tracks (sidecar external and internal subtitle streams) from playback info.
+   */
+  extractSubtitles(
+    playbackInfo?: JellyfinPlaybackInfoResponse,
+    itemId?: string,
+  ): SubtitleTrackInfo[] {
+    if (!playbackInfo?.MediaSources?.length) return [];
+    const mediaSource = playbackInfo.MediaSources[0];
+    const resolvedItemId = itemId || mediaSource.Id;
+    const streams = mediaSource.MediaStreams || [];
+
+    const subtitleStreams = streams.filter(
+      (s) => s.Type === "Subtitle" || s.Type?.toLowerCase() === "subtitle",
+    );
+
+    return subtitleStreams.map((s) => {
+      const label =
+        s.DisplayTitle ||
+        s.Title ||
+        (s.Language ? s.Language.toUpperCase() : `Subtitle ${s.Index}`);
+
+      return {
+        id: `${mediaSource.Id}-${s.Index}`,
+        index: s.Index,
+        label,
+        language: s.Language,
+        isDefault: Boolean(s.IsDefault),
+        isForced: Boolean(s.IsForced),
+        isExternal: Boolean(
+          s.IsExternal ||
+            s.DeliveryMethod === "External" ||
+            s.SupportsExternalStream,
+        ),
+        src: this.getSubtitleUrl(resolvedItemId, mediaSource.Id, s),
+        deliveryMethod: s.DeliveryMethod,
+      };
     });
   },
 

@@ -14,8 +14,9 @@ import {
   BiHistory,
   BiTrash,
 } from "react-icons/bi";
+import { MdSubtitles } from "react-icons/md";
 import { useDataContext } from "@/context/DataContext";
-import { useTheme } from "@/hooks";
+import { useTheme, useSubtitleSettings, type SubtitleSize } from "@/hooks";
 import { jellyfinClient } from "@/api/jellyfin";
 
 interface SettingsModalProps {
@@ -29,6 +30,8 @@ export default function SettingsModal({
 }: SettingsModalProps) {
   const { user, login, logout, refreshData, userDataMap } = useDataContext();
   const { theme, toggleTheme } = useTheme();
+  const { subtitleSize, setSubtitleSize, subtitleSizeOptions } =
+    useSubtitleSettings();
 
   const [activeSection, setActiveSection] = useState<"account" | "preferences">(
     "account",
@@ -535,6 +538,36 @@ export default function SettingsModal({
                         <Chip size="sm" variant="secondary" className="shrink-0 text-xs">
                           Dubbed (Default)
                         </Chip>
+                      </div>
+
+                      {/* Subtitle Size Row */}
+                      <div className="py-3 flex items-center justify-between gap-4">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
+                            <MdSubtitles className="text-muted size-4" /> Subtitle Size
+                          </span>
+                          <span className="text-xs text-muted">
+                            Adjust caption font size across all video playback
+                          </span>
+                        </div>
+                        <select
+                          aria-label="Subtitle Size"
+                          value={subtitleSize}
+                          onChange={(e) =>
+                            setSubtitleSize(e.target.value as SubtitleSize)
+                          }
+                          className="h-8 min-h-0 rounded-md border border-default-200 bg-default-100 px-2.5 text-xs text-foreground outline-none cursor-pointer"
+                        >
+                          {subtitleSizeOptions.map((opt) => (
+                            <option
+                              key={opt.id}
+                              value={opt.id}
+                              className="bg-default-50 text-foreground"
+                            >
+                              {opt.label} ({opt.desc})
+                            </option>
+                          ))}
+                        </select>
                       </div>
                     </div>
                   </div>

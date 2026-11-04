@@ -19,50 +19,50 @@ export const DATA = {
         {
           id: 1,
           title: "Romance Dawn 01",
-          altTitle: "Romance Dawn, the Dawn of an Adventure",
+          altTitle: "Dawn of the Adventure: Shanks and the Straw Hat",
           description:
-            "A young Monkey D. Luffy is inspired by the pirate Red-Haired Shanks and begins dreaming of becoming King of the Pirates. After gaining strange rubber powers, he sets his sights on one day setting sail for the Grand Line.",
+            "In Foosha Village, young Luffy accidentally eats the Gum-Gum Fruit, turning his body into rubber. When mountain bandits threaten his life, Red-Haired Shanks sacrifices his left arm to save him, entrusting Luffy with his straw hat before departing for the Grand Line.",
           coverage: {
             anime: "1",
             manga: "1",
           },
-          length: "TBD",
+          length: "18m",
         },
         {
           id: 2,
           title: "Romance Dawn 02",
-          altTitle: "They Call Him “Straw Hat” Luffy",
+          altTitle: "They Call Him 'Straw Hat' Luffy",
           description:
-            "Luffy’s journey begins when he emerges from a barrel aboard Alvida’s pirate ship. There he meets the timid cabin boy Koby, and the two quickly form an unlikely friendship built on shared dreams of freedom.",
+            "Emerging from a barrel on a raided passenger ship, Luffy befriends Koby, a timid boy forced into servitude by Iron Mace Alvida. After inspiring Koby to pursue his dream of joining the Marines, Luffy defeats Alvida and sets sail to find pirate hunter Roronoa Zoro.",
           coverage: {
             anime: "2",
             manga: "2",
           },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 3,
           title: "Romance Dawn 03",
-          altTitle: "The Pirate King and the Master Swordsman",
+          altTitle: "The Swordsman's Vow: Pirate Hunter Zoro",
           description:
-            "Arriving at Shells Town, Luffy searches for strong crewmates and learns of the feared bounty hunter Roronoa Zoro. While dealing with Helmeppo and the corrupt Marines, Luffy decides Zoro is exactly the kind of ally he needs.",
+            "Luffy and Koby arrive at Shells Town to find Roronoa Zoro tied to a post, enduring starvation to protect a local girl from Captain Morgan's spoiled son, Helmeppo. Learning Helmeppo plans to execute him anyway, Luffy storms the base to recover Zoro's swords as Zoro remembers his vow to Kuina.",
           coverage: {
             anime: "3-5",
             manga: "3-5",
           },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 4,
           title: "Romance Dawn 04",
-          altTitle: "The First",
+          altTitle: "The First Mate: Fall of Axe-Hand Morgan",
           description:
-            "Luffy works to free Zoro and challenge the tyrannical Captain Morgan. After a fierce first battle together, the Straw Hat Pirates officially gain their first swordsman and set sail for greater adventures.",
+            "Luffy saves Zoro from a firing squad, officially recruiting him as his first swordsman. Together, they topple the tyrannical Axe-Hand Morgan, and Luffy stages a brawl to ensure Koby can enlist in the Marines without suspicion before sailing toward the Grand Line.",
           coverage: {
             anime: "5-7",
             manga: "5-7",
           },
-          length: "TBD",
+          length: "17m",
         },
       ],
     },
@@ -74,8 +74,6 @@ export const DATA = {
         "https://onepace.co/wp-content/uploads/2025/09/Season-2-Orange-Town-ALT.jpg",
       altImage:
         "https://image.tmdb.org/t/p/original/xqSa0PYS3CIKkiIqooN5gPerpeE.jpg",
-      backgroundImage:
-        "https://static0.thegamerimages.com/wordpress/wp-content/uploads/2024/02/one-piece-luffy-looking-over-broken-nami-in-orange-town.jpg?q=50&fit=crop&w=825&dpr=1.5",
       description:
         "Luffy and Zoro arrive at a town under pirate control and cross paths with a crafty thief who knows the sea better than she lets on. Orange Town deepens the crew dynamic and raises the stakes of the early East Blue journey.",
       coverage: {
@@ -87,38 +85,38 @@ export const DATA = {
         {
           id: 1,
           title: "Orange Town 01",
-          altTitle: "The Town Under Siege",
+          altTitle: "The Cat Burglar and the Clown Pirate",
           description:
-            "Luffy and Zoro arrive at Orange Town, a village overrun by the clown pirate Buggy and his crew. While searching for supplies, they meet the crafty thief Nami, who has her own plans involving pirates and treasure.",
+            "Landing in Orange Town, Luffy meets the burglar Nami, who tricks him into capture by Buggy the Clown to steal a Grand Line map. When Nami refuses to execute Luffy, Zoro arrives to help, cutting Buggy to pieces before being blindsided by the clown's Chop-Chop Fruit powers.",
           coverage: {
             anime: "5-6",
             manga: "8-11",
           },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 2,
           title: "Orange Town 02",
-          altTitle: "Buggy the Clown",
+          altTitle: "A Treasure to Protect: The Legend of Chouchou",
           description:
-            "As Buggy reveals the strange powers of the Chop-Chop Fruit, Luffy and Zoro are pulled into a chaotic fight against his officers. Nami must decide whether to use the newcomers for her own gain or trust them.",
+            "Luffy avenges Chouchou, a loyal dog whose pet shop was burned by Buggy's beast tamer Mohji. As Mayor Boodle marches out to confront Buggy, Luffy and a wounded Zoro intervene to defeat acrobat Cabaji. When Buggy damages Luffy's straw hat, an enraged Luffy challenges him head-on.",
           coverage: {
             anime: "6-7",
             manga: "11-18",
           },
-          length: "TBD",
+          length: "36m",
         },
         {
           id: 3,
           title: "Orange Town 03",
-          altTitle: "A New Companion",
+          altTitle: "The Navigator's Pact: Blasting Buggy Away",
           description:
-            "The battle for Orange Town reaches its end as Luffy takes on Buggy directly. With the town freed and new bonds beginning to form, the Straw Hat crew leaves with greater momentum for the journey ahead.",
+            "Buggy reveals his shared history with Shanks as pirate apprentices, blaming him for accidentally swallowing his Devil Fruit. With Nami binding Buggy's detached limbs, Luffy launches the clown away with a Gum-Gum Bazooka, and Nami agrees to join the crew as their navigator.",
           coverage: {
             anime: "7-8",
             manga: "19-21",
           },
-          length: "TBD",
+          length: "21m",
         },
       ],
     },
@@ -130,8 +128,6 @@ export const DATA = {
         "https://onepace.co/wp-content/uploads/2025/09/Season-3-Syrup-Village-ALT.jpg",
       altImage:
         "https://image.tmdb.org/t/p/original/8GxO1KNOK2wwWwwtQqMMudSxaYI.jpg",
-      backgroundImage:
-        "https://m.media-amazon.com/images/M/MV5BY2QxYWI4MjctNzAyZC00ZjA0LTlmYzItZTNjMWYyZWJkN2Q5XkEyXkFqcGc@._V1_.jpg",
       description:
         "The crew arrives at a quiet island village where not everything is as peaceful as it appears. Syrup Village adds new allies, sharper strategy, and a bigger sense of what it means to protect people you care about.",
       coverage: {
@@ -143,65 +139,65 @@ export const DATA = {
         {
           id: 1,
           title: "Syrup Village 01",
-          altTitle: "The Liar of the Village",
+          altTitle: "The Tale of Captain Usopp",
           description:
-            "The Straw Hats arrive at Syrup Village and meet Usopp, a loud but kindhearted storyteller who dreams of adventure. His daily cries of “pirates are coming” hide deeper loneliness and bigger ambitions.",
+            "Seeking a proper ship, the Straw Hats arrive at Syrup Village and meet Usopp, the village liar who secretly visits the wealthy, bedridden Kaya with tall tales. When Kaya's strict caretaker Klahadore banishes Usopp from the estate, Klahadore secretly meets with the hypnotist Jango.",
           coverage: { anime: "9-10", manga: "22-24" },
-          length: "TBD",
+          length: "28m",
         },
         {
           id: 2,
           title: "Syrup Village 02",
-          altTitle: "Kaya and the Butler",
+          altTitle: "The Boy Who Cried Wolf: Kuro's Secret Plan",
           description:
-            "Usopp introduces the crew to Kaya, a wealthy young woman recovering from illness. At her mansion, the crew meets her stern caretaker Klahadore, whose calm demeanor hides suspicious intentions.",
+            "Luffy and Usopp discover Klahadore is actually the notorious pirate Captain Kuro, plotting to slaughter Kaya for her inheritance. Because of Usopp's history of lies, no one in the village believes his warnings, prompting the Straw Hats to join him in defending the town.",
           coverage: { anime: "10-11", manga: "25-27" },
-          length: "TBD",
+          length: "21m",
         },
         {
           id: 3,
           title: "Syrup Village 03",
-          altTitle: "A Hidden Plot",
+          altTitle: "Clash at the Northern Slope",
           description:
-            "Usopp uncovers the truth that Klahadore is actually the pirate Captain Kuro. Realizing Kaya and the village are in danger, he races to warn everyone before the planned attack begins.",
+            "Setting an ambush on the wrong slope, the defenders scramble to the northern shore, where Usopp and Nami stall the Black Cat Pirates until Luffy and Zoro arrive. As Jango's acrobatic Nyaban Brothers disarm Zoro, an enraged Captain Kuro arrives at the beach.",
           coverage: { anime: "11-12", manga: "28-30" },
-          length: "TBD",
+          length: "24m",
         },
         {
           id: 4,
           title: "Syrup Village 04",
-          altTitle: "No One Believes the Liar",
+          altTitle: "Kaya's Tears and Kuro's Cruelty",
           description:
-            "Because of Usopp’s history of tall tales, the villagers dismiss his warnings. Forced to face the threat seriously for the first time, Usopp resolves to fight even if no one stands beside him.",
+            "Zoro recovers his swords and cuts down the Nyaban Brothers. Realizing Usopp spoke the truth, Kaya confronts Kuro with a pistol to plead for her village, but Kuro coldly dismisses her. Disgusted by Kuro's betrayal of the girl who sheltered him, Luffy strikes him with a furious punch.",
           coverage: { anime: "12-14", manga: "31-33" },
-          length: "TBD",
+          length: "30m",
         },
         {
           id: 5,
           title: "Syrup Village 05",
-          altTitle: "Pirates at the Shore",
+          altTitle: "The Shakushi Frenzy: Kuro's Invisible Claws",
           description:
-            "Kuro’s crew lands at the coast and the battle begins. Luffy, Zoro, and Nami join Usopp to stop the invasion while protecting Kaya from Kuro’s larger scheme.",
+            "Kuro sends Jango into the forest to force Kaya to sign a will before killing her, while Zoro and a wounded Usopp give chase. On the beach, Kuro equips his ten-bladed Cat Claws and unleashes 'Shakushi,' an invisible killing sprint that slashes enemies and crewmates alike.",
           coverage: { anime: "14-15", manga: "34-36" },
-          length: "TBD",
+          length: "22m",
         },
         {
           id: 6,
           title: "Syrup Village 06",
-          altTitle: "Clash with Captain Kuro",
+          altTitle: "A Sniper's Pride: The Bell of Victory",
           description:
-            "The fighting intensifies as Captain Kuro reveals his speed and deadly skill. Each Straw Hat is pushed into battle while Usopp struggles to prove his courage through action.",
+            "Luffy halts Kuro's blinding frenzy and headbutts him into defeat with a Gum-Gum Bell. In the forest, Usopp snipes Jango to save Kaya and the young Usopp Pirates, before swearing everyone to secrecy so the village can continue living in peace.",
           coverage: { anime: "15-17", manga: "37-39" },
-          length: "TBD",
+          length: "16m",
         },
         {
           id: 7,
           title: "Syrup Village 07",
-          altTitle: "Departure",
+          altTitle: "Farewell to the Usopp Pirates: Setting Sail on the Merry",
           description:
-            "With Kuro defeated, peace returns to the village. In gratitude, Kaya gifts the crew a ship called the Going Merry, and Usopp leaves home to begin life as a pirate.",
+            "A grateful Kaya rewards the Straw Hats with the caravel Going Merry. After tearfully disbanding his three-man pirate crew and preparing to sail alone, Usopp is invited by Luffy and Zoro to officially join the Straw Hats as their sniper.",
           coverage: { anime: "17-18", manga: "40-41" },
-          length: "TBD",
+          length: "18m",
         },
       ],
     },
@@ -224,14 +220,14 @@ export const DATA = {
         {
           id: 1,
           title: "Gaimon 01",
-          altTitle: "The Strange Creature of the Island",
+          altTitle: "The Man in the Treasure Chest",
           description:
-            "While sailing toward Baratie, the Straw Hats stop at an isolated island inhabited by rare animals and meet Gaimon, a man stranded for years inside a treasure chest. After helping him chase the treasure he once dedicated his life to, the crew learns that some things become more valuable than gold. With a heartfelt farewell, they continue their journey across the East Blue.",
+            "The Straw Hats explore the Island of Rare Animals and meet Gaimon, an eccentric pirate stuck inside a treasure chest for twenty years. When Luffy discovers the cliffside chests Gaimon guarded all his life are empty, he offers him closure, and Gaimon chooses to remain with his animal friends.",
           coverage: {
             anime: "18",
             manga: "22",
           },
-          length: "TBD",
+          length: "20m",
         },
       ],
     },
@@ -254,74 +250,74 @@ export const DATA = {
         {
           id: 1,
           title: "Baratie 01",
-          altTitle: "The Sea Restaurant",
+          altTitle: "The Ocean Restaurant and the Kindhearted Cook",
           description:
-            "The Straw Hats arrive at the floating restaurant Baratie while searching for a cook. There they meet Sanji, a talented chef whose calm attitude and fierce kicks quickly make an impression.",
+            "After accidentally damaging the ocean restaurant Baratie, Luffy is forced by head chef Zeff into one year of chore duty. Zoro reunites with bounty hunters Johnny and Yosaku, while Luffy resolves to recruit sous-chef Sanji after witnessing him feed the starving pirate Gin without hesitation.",
           coverage: { anime: "19-20", manga: "42-45" },
-          length: "TBD",
+          length: "29m",
         },
         {
           id: 2,
           title: "Baratie 02",
-          altTitle: "A Cook’s Pride",
+          altTitle: "Don Krieg's Betrayal: Terror from the Grand Line",
           description:
-            "After a naval accident leaves trouble at the restaurant, Sanji’s compassion for the hungry is revealed. Luffy becomes convinced Sanji belongs on his crew, though Sanji has reasons to stay behind.",
+            "Gin returns with his starving captain, Don Krieg, whose armada was wiped out in the Grand Line. Despite Sanji feeding him, Krieg betrays the restaurant to seize Baratie as his new flagship, revealing his fleet was decimated by a single swordsman with hawk eyes.",
           coverage: { anime: "20-21", manga: "46-49" },
-          length: "TBD",
+          length: "30m",
         },
         {
           id: 3,
           title: "Baratie 03",
-          altTitle: "Hawk-Eye Mihawk",
+          altTitle: "Zoro's Vow: The World's Greatest Swordsman",
           description:
-            "The world’s greatest swordsman, Dracule Mihawk, suddenly appears at Baratie. Zoro challenges him to a duel, determined to test his strength and honor his dream.",
+            "Dracule Mihawk cleaves Krieg's flagship in half and accepts Zoro's duel, easily defeating him with a toy dagger before slashing his chest with his Black Blade. Zoro swears to Luffy never to lose again, while Nami secretly steals the Going Merry and flees toward Arlong Park.",
           coverage: { anime: "22-23", manga: "50-53" },
-          length: "TBD",
+          length: "37m",
         },
         {
           id: 4,
           title: "Baratie 04",
-          altTitle: "The Greatest Swordsman",
+          altTitle: "The Battle Fins: Iron Wall Pearl Ignites",
           description:
-            "Zoro faces overwhelming power in a battle that changes him forever. Though defeated, his resolve only grows stronger as he renews his promise to never lose again.",
+            "Zoro and Usopp set off in a rowboat to pursue Nami, while Luffy agrees to drive Krieg away to clear his debt. Baratie deploys its floating combat fins, but the chefs are pushed back when Krieg's shield-wielding, flame-throwing brute Pearl enters the fray.",
           coverage: { anime: "23-24", manga: "54-57" },
-          length: "TBD",
+          length: "19m",
         },
         {
           id: 5,
           title: "Baratie 05",
-          altTitle: "Don Krieg Arrives",
+          altTitle: "Eighty-Five Days: Zeff, Sanji, and the All Blue",
           description:
-            "The pirate admiral Don Krieg reaches Baratie after suffering a crushing defeat at sea. Desperate and ruthless, he sets his sights on taking the restaurant for himself.",
+            "Sanji dominates Pearl until Gin takes Zeff hostage, forcing Sanji to take a beating. A flashback reveals how Zeff lost his leg and gave young Sanji all their food while stranded on a barren rock for 85 days, united by their shared dream of finding the All Blue.",
           coverage: { anime: "24-26", manga: "58-61" },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 6,
           title: "Baratie 06",
-          altTitle: "Battle at Baratie",
+          altTitle: "Gin's Gratitude: The Deadly Poison MH5",
           description:
-            "Krieg’s forces invade the restaurant, forcing the cooks and Straw Hats into battle. Sanji fights to defend the place that gave him a home.",
+            "Gin shatters Pearl's shields and duels Sanji, but refuses to kill the chef who saved his life. An enraged Krieg launches his lethal poison gas bomb MH5, forcing Gin to sacrifice his gas mask for Sanji and Luffy as Luffy charges into Krieg's arsenal.",
           coverage: { anime: "26-28", manga: "62-64" },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 7,
           title: "Baratie 07",
-          altTitle: "Sanji’s Resolve",
+          altTitle: "Rubber vs. Armor: The Great Battle Spear Falls",
           description:
-            "As the conflict escalates, Sanji’s past with Baratie’s owner Zeff is revealed. Their shared history explains Sanji’s loyalty and the code he lives by.",
+            "Luffy battles through Krieg's flamethrowers, shrapnel, and explosive Great Battle Spear, shattering his armor with bare-fisted strikes and hurling him into the sea with a Gum-Gum Bazooka. A poisoned Gin departs with his defeated captain, hoping to meet Luffy again in the Grand Line.",
           coverage: { anime: "28-29", manga: "65-67" },
-          length: "TBD",
+          length: "26m",
         },
         {
           id: 8,
           title: "Baratie 08",
-          altTitle: "Farewell, Baratie",
+          altTitle: "Owner Zeff: A Tearful Farewell to Baratie",
           description:
-            "Luffy defeats Don Krieg and ends the threat to the restaurant. After an emotional goodbye, Sanji finally accepts Luffy’s invitation and joins the Straw Hat crew.",
+            "Sanji shares his dream of the All Blue with Luffy. Knowing Sanji belongs on the sea, Zeff and the cooks stage a feud to push him to leave. Overwhelmed with gratitude, Sanji tearfully bids farewell to Zeff and joins the Straw Hats as their official cook.",
           coverage: { anime: "29-30", manga: "68" },
-          length: "TBD",
+          length: "17m",
         },
       ],
     },
@@ -344,92 +340,92 @@ export const DATA = {
         {
           id: 1,
           title: "Arlong Park 01",
-          altTitle: "Maps, Money, and Betrayal",
+          altTitle: "The Conomi Islands: Arlong's Reign of Terror",
           description:
-            "After leaving Baratie, the crew discovers Nami has stolen their ship and treasure. Following her trail to a distant island, they begin to realize her greed may hide a far more painful truth.",
+            "Following Nami to the Conomi Islands, Zoro and Usopp discover the region is terrorized by the Arlong Pirates. While Zoro is captured and brought to Arlong Park, Usopp learns of Arlong's brutal tribute taxes and the destruction of nearby Gosa.",
           coverage: { anime: "31-32", manga: "69-72" },
-          length: "TBD",
+          length: "29m",
         },
         {
           id: 2,
           title: "Arlong Park 02",
-          altTitle: "The Price of Freedom",
+          altTitle: "Zoro's Escape: The Price of Loyalty",
           description:
-            "Following Nami’s trail leads the crew toward Cocoyasi Village, where hints of her past begin to surface. Her cold behavior starts to feel less like greed—and more like survival..",
+            "At Arlong Park, Nami claims allegiance to the fishmen, but secretly saves Zoro after he tests her loyalty. Zoro escapes and defeats the remaining guards, while Usopp attacks Arlong in town to protect Genzo and gets captured.",
           coverage: { anime: "32-33", manga: "73-75" },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 3,
           title: "Arlong Park 03",
-          altTitle: "A Map Drawn in Pain",
+          altTitle: "Nami's Mask: A Dagger in the Blood",
           description:
-            "The Straw Hats learn of Arlong, a fish-man pirate ruling the area through fear and tribute. Nami’s connection to him becomes clearer, revealing a life bound by impossible conditions.",
+            "Nami fakes Usopp's execution to spare his life, but coldly orders the arriving Straw Hats to leave the island. As Zoro and Usopp regroup, Nojiko begins recounting the tragic truth of Nami's childhood just as corrupt Marine Captain Nezumi arrives.",
           coverage: { anime: "33-35", manga: "76-79" },
-          length: "TBD",
+          length: "23m",
         },
         {
           id: 4,
           title: "Arlong Park 04",
-          altTitle: "The Weight of Eight Years",
+          altTitle: "Bell-mère's Tangerine Orchard: Love Under Gunfire",
           description:
-            "Nami’s past under Arlong’s control is revealed, including the sacrifices she has made for her village. Her hatred for pirates—and her silent suffering—finally make sense.",
+            "A flashback reveals Nami and Nojiko's childhood with their adoptive mother Bell-mère, a former Marine living on a tangerine orchard. When Arlong's crew arrives demanding tribute, Bell-mère uses her last savings to save her daughters and is murdered before their eyes.",
           coverage: { anime: "35-36", manga: "80-82" },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 5,
           title: "Arlong Park 05",
-          altTitle: "I Can’t Ask for Help",
+          altTitle: "Luffy... Help Me: The March on Arlong Park",
           description:
-            "Trapped by her deal with Arlong, Nami struggles alone as the crew arrives in Cocoyasi Village. Her refusal to rely on others begins to crack under the weight of her reality.",
+            "Forced into cartography for Arlong, Nami spent eight years saving 100 million berries to buy her village's freedom, only for Captain Nezumi to seize it all on Arlong's orders. Driven to despair, Nami tearfully begs Luffy for help, and the Straw Hats march on Arlong Park.",
           coverage: { anime: "36-37", manga: "83-85" },
-          length: "TBD",
+          length: "30m",
         },
         {
           id: 6,
           title: "Arlong Park 06",
-          altTitle: "Walk of Resolve",
+          altTitle: "Six-Sword Hatchan vs. The Wounded Zoro",
           description:
-            "Nami finally breaks down and asks Luffy for help. Without hesitation, the Straw Hats head toward Arlong Park, united for the first time in full conviction.",
+            "The Straw Hats breach Arlong Park, and Luffy unleashes the sea beast Momoo before getting his feet trapped in the stone foundation. While Sanji dives to free Luffy from the pool, an injured Zoro takes on Hatchan's six-sword style and cuts him down.",
           coverage: { anime: "38-39", manga: "86-88" },
-          length: "TBD",
+          length: "25m",
         },
         {
           id: 7,
           title: "Arlong Park 07",
-          altTitle: "March of the Straw Hats",
+          altTitle: "The Cook's Flurry and the Brave Warrior Usopp",
           description:
-            "Major matchups unfold as the crew endures intense opposition and fights to maintain momentum.",
+            "Sanji withstands Kuroobi's aquatic martial arts and knocks out the fishman on land with a blazing flurry of kicks. In the woods, Usopp overcomes his fear, tricking Chew with alcohol before defeating him with his Hammer and Flaming Star.",
           coverage: { anime: "39-40", manga: "89-91" },
-          length: "TBD",
+          length: "26m",
         },
         {
           id: 8,
           title: "Arlong Park 08",
-          altTitle: "The Park Burns",
+          altTitle: "Arlong Unleashed: The Great Saw Kiribachi",
           description:
-            "The battle begins as each Straw Hat engages Arlong’s officers. Usopp is forced to confront fear head-on, while Zoro and Sanji push through overwhelming odds.",
+            "Genzo and Nojiko keep Luffy breathing underwater until Sanji breaks the stone, catapulting Luffy straight into combat with Arlong. Facing Arlong's lethal shark teeth and devastating water strikes, Luffy forces the ruthless pirate to draw his giant saw-sword.",
           coverage: { anime: "40-42", manga: "92-93" },
-          length: "TBD",
+          length: "29m",
         },
         {
           id: 9,
           title: "Arlong Park 09",
-          altTitle: "Shark Teeth and Broken Steel",
+          altTitle: "Tears in the Chart Room: Gum-Gum Battle Axe!",
           description:
-            "The fight intensifies across Arlong Park. Luffy, injured but unrelenting, begins his confrontation with Arlong as the rest of the crew holds the line.",
+            "The duel moves to the top tower, where Luffy witnesses the room where Nami spent eight years drawing charts in tears and captivity. Enraged, Luffy shatters Arlong's weapon and brings down Arlong Park with a colossal 'Gum-Gum Battle Axe.'",
           coverage: { anime: "42-43", manga: "94" },
-          length: "TBD",
+          length: "19m",
         },
         {
           id: 10,
           title: "Arlong Park 10",
-          altTitle: "Help Me, Luffy",
+          altTitle: "You Are My Navigator! The 30-Million-Berry Man",
           description:
-            "Nami’s plea becomes the turning point of everything. Luffy destroys Arlong Park’s legacy in a decisive final battle, freeing Cocoyasi Village and solidifying the Straw Hats as a true crew.",
+            "Emerging from the ruins, Luffy proclaims Nami his navigator, sparking an island-wide liberation festival. After the crew beats down Captain Nezumi, Luffy receives a 30-million-berry bounty, and Nami joins the Straw Hats as they set sail for the Grand Line.",
           coverage: { anime: "43-44", manga: "95" },
-          length: "TBD",
+          length: "21m",
         },
       ],
     },
@@ -453,12 +449,12 @@ export const DATA = {
           id: 1,
           title: "The Adventures of Buggy's Crew 01",
           description:
-            "Buggy's crew deals with the fallout of recent losses, regrouping through a chaotic mix of misfortune, stubborn loyalty, and comic survival.",
+            "Blasted across the sea by Luffy, a shrunken Buggy braves strange island creatures and forms an alliance with the beautiful Alvida. Together, they rescue Mohji, Cabaji, and the crew from a cannibalistic tribe and plot their revenge against the Straw Hats.",
           coverage: {
             anime: "46-47",
             manga: "35-75",
           },
-          length: "TBD",
+          length: "22m",
         },
       ],
     },
@@ -482,34 +478,34 @@ export const DATA = {
           id: 1,
           title: "Loguetown 01",
           description:
-            "The crew arrives in Loguetown to prepare for the Grand Line, but local Marine pressure and pirate interference quickly raise tensions.",
+            "The Straw Hats dock at Loguetown, the legendary city where Gold Roger was born and executed. While exploring town, Zoro meets Marine swordswoman Tashigi and tests his luck against the cursed blade Sandai Kitetsu, earning both it and the heirloom Yubashiri.",
           coverage: {
             anime: "45-48",
             manga: "96-97",
           },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 2,
           title: "Loguetown 02",
           description:
-            "As the crew scatters through town, unexpected confrontations and narrow escapes test their composure before departure.",
+            "Usopp wins a duel against North Blue gunslinger 'Daddy the Father' for sniper goggles, while Sanji secures an Elephant Bluefin Tuna in a local cooking showdown. Meanwhile, Luffy climbs the historic execution platform, drawing the attention of Marine Captain Smoker.",
           coverage: {
             anime: "48-51",
             manga: "98-99",
           },
-          length: "TBD",
+          length: "31m",
         },
         {
           id: 3,
           title: "Loguetown 03",
           description:
-            "Loguetown closes with a dramatic sendoff that propels the Straw Hats out of East Blue and into the Grand Line.",
+            "Buggy and Alvida trap Luffy on the execution scaffold, but a freak lightning strike miraculously spares him before Smoker intervenes. Rescued from Smoker's smoke grasp by the mysterious Dragon, the Straw Hats reach the Going Merry and swear their dreams over a barrel.",
           coverage: {
             anime: "51-53",
             manga: "100",
           },
-          length: "TBD",
+          length: "36m",
         },
       ],
     },
@@ -641,57 +637,62 @@ export const DATA = {
         {
           id: 1,
           title: "Little Garden 01",
+          altTitle: "Adventure on Little Garden",
           description:
-            "The crew lands on Little Garden and quickly discovers a dangerous island where massive creatures and old conflicts still rule.",
+            "The Straw Hats arrive at the prehistoric island of Little Garden, where the Log Pose takes a full year to set. While Zoro and Sanji hold a hunting contest, Luffy and Vivi befriend giant warrior Dorry, who resumes his century-long honor duel with Broggy when the volcano erupts.",
           coverage: {
             anime: "70-71",
             manga: "115-117",
           },
-          length: "TBD",
+          length: "28m",
         },
         {
           id: 2,
           title: "Little Garden 02",
+          altTitle: "The Great Duel",
           description:
-            "As the crew explores, rival giant warriors and environmental threats complicate what should have been a brief stop.",
+            "Inspired by the giants' warrior pride, Usopp vows to become a brave warrior of the sea. Meanwhile, Baroque Works officer Mr. 3 spikes Dorry's ale with explosives to claim the giants' bounties. Despite internal wounds, Dorry traps Luffy under a boulder and marches out to face Broggy.",
           coverage: {
             anime: "71-73",
             manga: "118-120",
           },
-          length: "TBD",
+          length: "25m",
         },
         {
           id: 3,
           title: "Little Garden 03",
+          altTitle: "Giant Candle Service Set",
           description:
-            "Baroque Works agents tighten their trap, turning the island's natural danger into a coordinated ambush.",
+            "Dorry collapses from his sabotage wounds during the duel and falls to Broggy's blade. Mr. 3 ambushes Broggy and traps Zoro, Nami, and Vivi on his spinning Giant Candle Service Set to turn them into wax statues. Zoro attempts to cut off his own feet to fight until Luffy and Usopp arrive.",
           coverage: {
             anime: "73-74",
             manga: "121-123",
           },
-          length: "TBD",
+          length: "27m",
         },
         {
           id: 4,
           title: "Little Garden 04",
+          altTitle: "Colors Trap",
           description:
-            "The Straw Hats split into critical matchups, each member handling a different threat as the plan around them unfolds.",
+            "Miss Goldenweek hypnotizes Luffy with her Colors Trap paints, but Usopp and Karoo trick Mr. 5 and ignite the candle tower to melt the wax. Freed, Zoro cuts down Mr. 5, Nami and Vivi defeat Miss Valentine, and Luffy crushes Mr. 3 while Sanji intercepts a call from Mr. 0.",
           coverage: {
             anime: "74-76",
             manga: "124-126",
           },
-          length: "TBD",
+          length: "33m",
         },
         {
           id: 5,
           title: "Little Garden 05",
+          altTitle: "Straight Ahead!",
           description:
-            "Little Garden closes with the crew escaping the island's final hazards and heading toward their next Grand Line destination.",
+            "Posing as Mr. 3, Sanji tricks Crocodile into believing the crew died and secures an Eternal Pose to Alabasta. Dorry survives his injuries, and as the Going Merry departs, Dorry and Broggy unleash their combined strike, 'Hakoku Sovereign,' to blast through the giant Island Eater goldfish.",
           coverage: {
             anime: "76-77",
             manga: "127-129",
           },
-          length: "TBD",
+          length: "25m",
         },
       ],
     },

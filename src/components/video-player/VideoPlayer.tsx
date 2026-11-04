@@ -11,13 +11,22 @@
  * HeroUI v3 needs NO provider wrapper — just import and use.
  */
 
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useCallback, useEffect, useMemo } from "react";
 import type { PointerEvent as RPointerEvent } from "react";
 import { Button, Chip, Tooltip } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { JellyfinPlaybackInfoResponse } from "@/api/jellyfin/types";
+import type {
+  JellyfinPlaybackInfoResponse,
+  SubtitleTrackInfo,
+} from "@/api/jellyfin/types";
 import { jellyfinClient, jellyfinSecondsToTicks } from "@/api/jellyfin";
 import {
+  useSubtitleSettings,
+  SUBTITLE_SIZE_VALUES,
+  type SubtitleSize,
+} from "@/hooks";
+import {
+  BiCheck,
   BiCog,
   BiFullscreen,
   BiPause,
@@ -28,7 +37,13 @@ import {
   BiWindows,
   BiX,
 } from "react-icons/bi";
-import { MdAirplay, MdCast, MdCastConnected } from "react-icons/md";
+import {
+  MdAirplay,
+  MdCast,
+  MdCastConnected,
+  MdSubtitles,
+  MdSubtitlesOff,
+} from "react-icons/md";
 
 // ─── Inline SVG icons (no extra icon-package dep) ────────────────────────────
 
@@ -140,6 +155,8 @@ export interface VideoPlayerProps {
   onNextEpisode?: () => void;
   /** Title for the next episode in the auto-advance countdown card */
   nextEpisodeTitle?: string;
+  /** Subtitle tracks (sidecar or embedded). If omitted, extracted automatically from playbackInfo. */
+  subtitles?: SubtitleTrackInfo[];
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -159,6 +176,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   initialPlaybackPositionTicks,
   onNextEpisode,
   nextEpisodeTitle,
+  subtitles,
 }) => {
   const jellyfinMediaSourceId = playbackInfo?.MediaSources?.[0]?.Id;
 
@@ -198,6 +216,204 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
   const [pipActive, setPipActive] = useState(false);
+
+  const availableSubtitles = useMemo<SubtitleTrackInfo[]>(() => {
+    if (subtitles && subtitles.length > 0) return subtitles;
+    return jellyfinClient.extractSubtitles(playbackInfo, jellyfinItemId);
+  }, [subtitles, playbackInfo, jellyfinItemId]);
+
+  const hasSubtitles = availableSubtitles.length > 0;
+
+  const [activeSubtitleIndex, setActiveSubtitleIndex] = useState<number | null>(
+    null,
+  );
+  const activeSubtitleIndexRef = useRef<number | null>(null);
+  activeSubtitleIndexRef.current = activeSubtitleIndex;
+
+  const [showSubtitleMenu, setShowSubtitleMenu] = useState(false);
+  const { subtitleSize, setSubtitleSize, subtitleSizeOptions } =
+    useSubtitleSettings();
+
+  // Sync preference with available subtitles
+  useEffect(() => {
+    if (!hasSubtitles) {
+      setActiveSubtitleIndex(null);
+      return;
+    }
+
+    try {
+      const enabledPref = localStorage.getItem("onepace_subtitles_enabled");
+      const langPref = localStorage.getItem("onepace_subtitles_language");
+
+      if (enabledPref === "false") {
+        setActiveSubtitleIndex(null);
+        return;
+      }
+
+      if (enabledPref === "true") {
+        const match =
+          (langPref
+            ? availableSubtitles.find((s) => s.language === langPref)
+            : null) ||
+          availableSubtitles.find((s) => s.isDefault) ||
+          availableSubtitles[0];
+
+        setActiveSubtitleIndex(match ? match.index : null);
+        return;
+      }
+
+      const defaultTrack = availableSubtitles.find((s) => s.isDefault);
+      if (defaultTrack) {
+        setActiveSubtitleIndex(defaultTrack.index);
+      } else {
+        setActiveSubtitleIndex(null);
+      }
+    } catch {
+      setActiveSubtitleIndex(null);
+    }
+  }, [availableSubtitles, hasSubtitles]);
+
+  const applySubtitleTrack = useCallback(
+    (index: number | null) => {
+      setActiveSubtitleIndex(index);
+      activeSubtitleIndexRef.current = index;
+
+      try {
+        if (index === null) {
+          localStorage.setItem("onepace_subtitles_enabled", "false");
+        } else {
+          localStorage.setItem("onepace_subtitles_enabled", "true");
+          const found = availableSubtitles.find((s) => s.index === index);
+          if (found?.language) {
+            localStorage.setItem("onepace_subtitles_language", found.language);
+          }
+        }
+      } catch {
+        /* ignore */
+      }
+
+      const v = videoRef.current;
+      if (!v || !v.textTracks) return;
+
+      for (let i = 0; i < v.textTracks.length; i++) {
+        const tt = v.textTracks[i];
+        const matchingSub = availableSubtitles[i];
+        const shouldShow =
+          index !== null &&
+          matchingSub &&
+          matchingSub.index === index;
+
+        tt.mode = shouldShow ? "showing" : "disabled";
+      }
+
+      const activeSession = activeJellyfinSessionRef.current;
+      if (activeSession) {
+        void jellyfinClient.reportPlaybackProgress({
+          PlaySessionId: activeSession.playSessionId,
+          ItemId: activeSession.itemId,
+          MediaSourceId: activeSession.mediaSourceId,
+          PositionTicks: jellyfinSecondsToTicks(v.currentTime),
+          IsPaused: v.paused,
+          IsMuted: v.muted,
+          VolumeLevel: Math.round(v.volume * 100),
+          CanSeek: Number.isFinite(v.duration) && v.duration > 0,
+          SubtitleStreamIndex: index,
+        });
+      }
+    },
+    [availableSubtitles],
+  );
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v || !v.textTracks) return;
+
+    const syncTracks = () => {
+      for (let i = 0; i < v.textTracks.length; i++) {
+        const tt = v.textTracks[i];
+        const matchingSub = availableSubtitles[i];
+        const shouldShow =
+          activeSubtitleIndex !== null &&
+          matchingSub &&
+          matchingSub.index === activeSubtitleIndex;
+        tt.mode = shouldShow ? "showing" : "disabled";
+      }
+    };
+
+    syncTracks();
+
+    const handleTrackChange = () => {
+      let showingIndex: number | null = null;
+      for (let i = 0; i < v.textTracks.length; i++) {
+        const tt = v.textTracks[i];
+        if (tt.mode === "showing") {
+          const matchingSub = availableSubtitles[i];
+          if (matchingSub) {
+            showingIndex = matchingSub.index;
+          }
+          break;
+        }
+      }
+
+      if (
+        showingIndex !== null &&
+        showingIndex !== activeSubtitleIndexRef.current
+      ) {
+        setActiveSubtitleIndex(showingIndex);
+        activeSubtitleIndexRef.current = showingIndex;
+        try {
+          localStorage.setItem("onepace_subtitles_enabled", "true");
+          const found = availableSubtitles.find((s) => s.index === showingIndex);
+          if (found?.language) {
+            localStorage.setItem("onepace_subtitles_language", found.language);
+          }
+        } catch {
+          /* ignore */
+        }
+      } else if (
+        showingIndex === null &&
+        activeSubtitleIndexRef.current !== null
+      ) {
+        setActiveSubtitleIndex(null);
+        activeSubtitleIndexRef.current = null;
+        try {
+          localStorage.setItem("onepace_subtitles_enabled", "false");
+        } catch {
+          /* ignore */
+        }
+      }
+    };
+
+    const textTracks = v.textTracks;
+    textTracks.addEventListener?.("change", handleTrackChange);
+    textTracks.addEventListener?.("addtrack", syncTracks);
+
+    return () => {
+      textTracks.removeEventListener?.("change", handleTrackChange);
+      textTracks.removeEventListener?.("addtrack", syncTracks);
+    };
+  }, [activeSubtitleIndex, availableSubtitles]);
+
+  const activeSubtitleLabel = useMemo(() => {
+    if (activeSubtitleIndex === null) return null;
+    return (
+      availableSubtitles.find((s) => s.index === activeSubtitleIndex)?.label ||
+      "On"
+    );
+  }, [availableSubtitles, activeSubtitleIndex]);
+
+  const handleSubtitleButtonClick = useCallback(() => {
+    if (availableSubtitles.length === 1) {
+      if (activeSubtitleIndex !== null) {
+        applySubtitleTrack(null);
+      } else {
+        applySubtitleTrack(availableSubtitles[0].index);
+      }
+    } else {
+      setShowSettings(false);
+      setShowSubtitleMenu((prev) => !prev);
+    }
+  }, [availableSubtitles, activeSubtitleIndex, applySubtitleTrack]);
 
   const timelineRef = useRef<HTMLDivElement>(null);
   const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
@@ -855,6 +1071,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         IsMuted: v.muted,
         VolumeLevel: Math.round(v.volume * 100),
         CanSeek: Number.isFinite(v.duration) && v.duration > 0,
+        SubtitleStreamIndex: activeSubtitleIndexRef.current,
       });
     };
 
@@ -875,6 +1092,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         IsMuted: v.muted,
         VolumeLevel: Math.round(v.volume * 100),
         CanSeek: Number.isFinite(v.duration) && v.duration > 0,
+        SubtitleStreamIndex: activeSubtitleIndexRef.current,
       });
     };
 
@@ -1178,6 +1396,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     lastTapRegionRef.current = region;
     tapTimerRef.current = setTimeout(() => {
       setShowControls(true);
+      setShowSettings(false);
+      setShowSubtitleMenu(false);
       resetHideTimer();
       tapTimerRef.current = null;
       lastTapRegionRef.current = null;
@@ -1189,6 +1409,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <div
       ref={containerRef}
+      data-subtitle-size={subtitleSize}
+      style={{
+        ["--subtitle-font-size" as string]: SUBTITLE_SIZE_VALUES[subtitleSize],
+      }}
       className={`relative select-none bg-blackmd overflow-hidden shadow-2xl ${containerClasses}`}
       onMouseMove={resetHideTimer}
       onMouseLeave={() => playing && setShowControls(false)}
@@ -1197,16 +1421,31 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         {/* ── Video element ── */}
         <video
           ref={videoRef}
+          data-subtitle-size={subtitleSize}
+          style={{
+            ["--subtitle-font-size" as string]: SUBTITLE_SIZE_VALUES[subtitleSize],
+          }}
           src={src}
           poster={poster}
           loop={loop}
           autoPlay={autoPlay}
           playsInline
+          crossOrigin="anonymous"
           controls={useNativeControls}
           preload="auto"
           className="w-full h-full object-cover cursor-pointer"
-          // onTimeUpdate={handleTimeUpdate}
-        />
+        >
+          {availableSubtitles.map((track) => (
+            <track
+              key={track.id}
+              kind="subtitles"
+              label={track.label}
+              srcLang={track.language || "und"}
+              src={track.src}
+              default={activeSubtitleIndex === track.index}
+            />
+          ))}
+        </video>
 
         {useNativeControls && (
           <div className="absolute top-3 right-3 z-30">
@@ -1495,6 +1734,124 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 </Tooltip>
               ) : null}
 
+              {/* Subtitles (CC) toggle / selection */}
+              {hasSubtitles && (
+                <div className="relative">
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        isIconOnly
+                        size="sm"
+                        onPress={handleSubtitleButtonClick}
+                        className={`rounded-lg transition-colors cursor-pointer ${
+                          activeSubtitleIndex !== null
+                            ? "text-accent hover:bg-accent/20"
+                            : "text-white hover:bg-white/10"
+                        }`}
+                        aria-label={
+                          activeSubtitleIndex !== null
+                            ? "Disable subtitles"
+                            : "Enable subtitles"
+                        }
+                      >
+                        {activeSubtitleIndex !== null ? (
+                          <MdSubtitles className="size-5" />
+                        ) : (
+                          <MdSubtitlesOff className="size-5" />
+                        )}
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">
+                      {activeSubtitleIndex !== null
+                        ? `Subtitles (${activeSubtitleLabel || "On"})`
+                        : "Subtitles (Off)"}
+                    </Tooltip.Content>
+                  </Tooltip>
+
+                  <AnimatePresence>
+                    {showSubtitleMenu && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.92, y: 6 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.92, y: 6 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute bottom-10 right-0 z-50 min-w-[140px] max-w-[220px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
+                      >
+                        <div className="space-y-1 px-1">
+                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1.5">
+                            Subtitles
+                          </p>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              applySubtitleTrack(null);
+                              setShowSubtitleMenu(false);
+                            }}
+                            className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
+                              activeSubtitleIndex === null
+                                ? "bg-white/15 text-white font-medium"
+                                : "text-white/70 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            <span>Off</span>
+                            {activeSubtitleIndex === null && (
+                              <BiCheck className="size-4 text-accent shrink-0" />
+                            )}
+                          </button>
+                          {availableSubtitles.map((track) => (
+                            <button
+                              key={track.id}
+                              type="button"
+                              onClick={() => {
+                                applySubtitleTrack(track.index);
+                                setShowSubtitleMenu(false);
+                              }}
+                              className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
+                                activeSubtitleIndex === track.index
+                                  ? "bg-white/15 text-white font-medium"
+                                  : "text-white/70 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              <span className="truncate mr-2">
+                                {track.label}
+                              </span>
+                              {activeSubtitleIndex === track.index && (
+                                <BiCheck className="size-4 text-accent shrink-0" />
+                              )}
+                            </button>
+                          ))}
+
+                          {/* Subtitle Size Selector */}
+                          <div className="pt-2 mt-1.5 border-t border-white/10 space-y-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1">
+                              Size
+                            </p>
+                            <div className="grid grid-cols-5 gap-1">
+                              {subtitleSizeOptions.map((opt) => (
+                                <button
+                                  key={opt.id}
+                                  type="button"
+                                  onClick={() => setSubtitleSize(opt.id)}
+                                  className={`px-1 py-1 text-[11px] font-semibold rounded transition-colors text-center cursor-pointer ${
+                                    subtitleSize === opt.id
+                                      ? "bg-accent text-accent-foreground shadow-xs"
+                                      : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                                  }`}
+                                  title={`${opt.label} (${opt.desc})`}
+                                >
+                                  {opt.shortLabel}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              )}
+
               {/* Playback speed & player mode settings */}
               <div className="relative">
                 <Tooltip delay={400}>
@@ -1502,7 +1859,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                     <Button
                       variant="ghost"
                       isIconOnly
-                      onPress={() => setShowSettings((s) => !s)}
+                      onPress={() => {
+                        setShowSettings((s) => !s);
+                        setShowSubtitleMenu(false);
+                      }}
                       className="text-white hover:bg-white/10 rounded-lg"
                       aria-label="Player settings"
                     >
@@ -1543,6 +1903,70 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                                 className="bg-zinc-900"
                               >
                                 {r === 1 ? "Normal" : `${r}×`}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+
+                        {/* Subtitles setting (if available) */}
+                        {hasSubtitles && (
+                          <div className="pt-2 border-t border-white/10 space-y-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                              Subtitles
+                            </p>
+                            <select
+                              aria-label="Subtitles"
+                              value={
+                                activeSubtitleIndex === null
+                                  ? "off"
+                                  : String(activeSubtitleIndex)
+                              }
+                              onChange={(e) => {
+                                const val = e.target.value;
+                                if (val === "off") {
+                                  applySubtitleTrack(null);
+                                } else {
+                                  applySubtitleTrack(parseInt(val, 10));
+                                }
+                              }}
+                              className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
+                            >
+                              <option value="off" className="bg-zinc-900">
+                                Off
+                              </option>
+                              {availableSubtitles.map((track) => (
+                                <option
+                                  key={track.id}
+                                  value={String(track.index)}
+                                  className="bg-zinc-900"
+                                >
+                                  {track.label}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+                        )}
+
+                        {/* Subtitle Size */}
+                        <div className="pt-2 border-t border-white/10 space-y-1">
+                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                            Subtitle Size
+                          </p>
+                          <select
+                            aria-label="Subtitle Size"
+                            value={subtitleSize}
+                            onChange={(e) =>
+                              setSubtitleSize(e.target.value as SubtitleSize)
+                            }
+                            className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none cursor-pointer"
+                          >
+                            {subtitleSizeOptions.map((opt) => (
+                              <option
+                                key={opt.id}
+                                value={opt.id}
+                                className="bg-zinc-900"
+                              >
+                                {opt.label} ({opt.desc})
                               </option>
                             ))}
                           </select>

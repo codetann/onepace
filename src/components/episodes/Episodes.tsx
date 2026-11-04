@@ -8,9 +8,35 @@ import {
   BiChevronDown,
 } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router";
+import { motion, type Variants } from "framer-motion";
 import { jellyfinClient } from "@/api/jellyfin";
 import { useDataContext } from "@/context";
 import type { Arc, Episode } from "@/typings";
+
+const episodeListVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const episodeCardVariants: Variants = {
+  hidden: { opacity: 0, y: 18, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 24,
+    },
+  },
+};
 
 interface EpisodesProps {
   data: Arc;
@@ -78,7 +104,13 @@ export default function Episodes({ data }: EpisodesProps) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <motion.div
+        key={`episodes-list-${data.id}`}
+        variants={episodeListVariants}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col gap-2"
+      >
         {data.episodes.map((episode) => {
           const played =
             episode.metadata?.UserData?.Played ??
@@ -87,7 +119,7 @@ export default function Episodes({ data }: EpisodesProps) {
 
           return (
             <EpisodeCard
-              key={episode.metadata?.Id || `${data.id}-${episode.id}`}
+              key={`arc-${data.id}-ep-${episode.id}`}
               arcId={data.id.toString()}
               arcTitle={data.title}
               episode={episode}
@@ -98,13 +130,98 @@ export default function Episodes({ data }: EpisodesProps) {
             />
           );
         })}
-      </div>
+      </motion.div>
     </div>
   );
 }
 
 function ticksToMinutes(ticks: number): string {
   return (ticks / 10000000 / 60).toFixed(0);
+}
+
+interface EpisodeThumbnailProps {
+  itemId?: string;
+  title: string;
+  isHovering: boolean;
+  durationText?: string;
+  calculatedPercent: number;
+  isWatched?: boolean;
+  onNavigate: () => void;
+}
+
+function EpisodeThumbnail({
+  itemId,
+  title,
+  isHovering,
+  durationText,
+  calculatedPercent,
+  isWatched,
+  onNavigate,
+}: EpisodeThumbnailProps) {
+  const [loadedUrl, setLoadedUrl] = useState<string | null>(null);
+  const imageUrl = itemId ? jellyfinClient.getItemImageUrl(itemId) : undefined;
+  const isLoaded = Boolean(imageUrl && loadedUrl === imageUrl);
+
+  return (
+    <motion.div
+      onClick={onNavigate}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      className={`relative sm:w-60 xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center cursor-pointer transition-all duration-300 group bg-zinc-900 aspect-video shrink-0 ${
+        isHovering ? "brightness-100 shadow-lg" : "brightness-90"
+      }`}
+    >
+      {/* Placeholder shimmer while thumbnail loads */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 transition-opacity duration-300 ${
+          isLoaded ? "opacity-0 pointer-events-none" : "opacity-100 animate-pulse"
+        }`}
+      />
+
+      {imageUrl && (
+        <motion.img
+          src={imageUrl}
+          alt={title}
+          loading="lazy"
+          onLoad={() => setLoadedUrl(imageUrl)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+
+      <motion.div
+        animate={{ scale: isHovering ? 1.15 : 1, opacity: isHovering ? 1 : 0.75 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="rounded-full p-2.5 bg-black/60 text-white shadow-lg pointer-events-none z-10"
+      >
+        <BiPlay size={24} />
+      </motion.div>
+
+      {/* Runtime Badge */}
+      {durationText && (
+        <Chip
+          size="sm"
+          color="default"
+          className="gap-1 absolute bottom-2 right-2 bg-black/70 text-white border-none z-10 font-medium"
+        >
+          <FiClock />
+          {durationText}
+        </Chip>
+      )}
+
+      {/* Progress Bar overlay on thumbnail */}
+      {!isWatched && calculatedPercent > 0 && (
+        <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-black/60 overflow-hidden z-10">
+          <div
+            className="h-full bg-accent transition-all duration-300"
+            style={{ width: `${calculatedPercent}%` }}
+          />
+        </div>
+      )}
+    </motion.div>
+  );
 }
 
 interface EpisodeCardProps {
@@ -145,6 +262,10 @@ function EpisodeCard({
   };
 
   const runtimeTicks = episode.metadata?.RunTimeTicks || 0;
+  const durationText =
+    runtimeTicks > 0
+      ? `${ticksToMinutes(runtimeTicks)}m`
+      : episode.length || undefined;
   const calculatedPercent =
     progressPercent > 0
       ? progressPercent
@@ -152,11 +273,14 @@ function EpisodeCard({
         ? Math.min(100, Math.round((positionTicks / runtimeTicks) * 100))
         : 0;
 
+  const displayTitle = episode.altTitle || `${arcTitle} Episode ${episode.id}`;
+
   return (
-    <div
-      key={episode.metadata?.Id || episode.id}
+    <motion.div
+      variants={episodeCardVariants}
+      whileHover={{ y: -2, transition: { duration: 0.15 } }}
       id={`episode-${episode.id}`}
-      className={`flex items-start gap-4 rounded-2xl px-2.5 py-2.5 transition-colors xl:flex-row sm:items-start flex-col w-full ${
+      className={`flex items-start gap-4 rounded-2xl px-2.5 py-2.5 transition-colors sm:flex-row flex-col w-full ${
         isWatching
           ? "bg-accent/10 border border-accent/30"
           : "hover:bg-default/10"
@@ -164,52 +288,15 @@ function EpisodeCard({
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      <div
-        onClick={() => handleNavigate(episode.id)}
-        className={`relative xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center cursor-pointer transition-all duration-300 group ${
-          isHovering ? "brightness-100 scale-[1.01]" : "brightness-90"
-        }`}
-        style={{
-          aspectRatio: "16 / 9",
-          backgroundImage: episode.metadata?.Id
-            ? `url(${jellyfinClient.getItemImageUrl(episode.metadata.Id)})`
-            : undefined,
-          backgroundColor: "#18181b",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div
-          className={`rounded-full p-2.5 bg-black/60 text-white shadow-lg transition-transform duration-200 pointer-events-none ${
-            isHovering ? "scale-110 opacity-100" : "opacity-0 sm:group-hover:opacity-100"
-          }`}
-        >
-          <BiPlay size={24} />
-        </div>
-
-        {/* Runtime Badge */}
-        {runtimeTicks > 0 && (
-          <Chip
-            size="sm"
-            color="default"
-            className="gap-1 absolute bottom-2 right-2 bg-black/70 text-white border-none"
-          >
-            <FiClock />
-            {ticksToMinutes(runtimeTicks)}m
-          </Chip>
-        )}
-
-        {/* Progress Bar overlay on thumbnail */}
-        {!isWatched && calculatedPercent > 0 && (
-          <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-black/60 overflow-hidden">
-            <div
-              className="h-full bg-accent transition-all duration-300"
-              style={{ width: `${calculatedPercent}%` }}
-            />
-          </div>
-        )}
-      </div>
+      <EpisodeThumbnail
+        itemId={episode.metadata?.Id}
+        title={displayTitle}
+        isHovering={isHovering}
+        durationText={durationText}
+        calculatedPercent={calculatedPercent}
+        isWatched={isWatched}
+        onNavigate={() => handleNavigate(episode.id)}
+      />
 
       <div className="flex flex-col gap-1 pr-3 pb-2 flex-1">
         <div className="flex items-center gap-2 flex-wrap">
@@ -223,7 +310,7 @@ function EpisodeCard({
             className={`hover:underline cursor-pointer text-md font-semibold ${isWatching ? "text-accent" : ""} ${isWatched ? "line-through opacity-70" : ""}`}
             onClick={() => handleNavigate(episode.id)}
           >
-            {arcTitle} Episode {episode.id}
+            {displayTitle}
           </p>
 
           {isWatched ? (
@@ -259,6 +346,6 @@ function EpisodeCard({
 
         <p className="text-muted text-sm max-w-4xl">{episode.description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }

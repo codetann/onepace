@@ -4,3 +4,57 @@
 html {
   scroll-behavior: smooth;
 }
+
+:root {
+  --subtitle-font-size: clamp(1.65rem, 3.4vw, 2.5rem);
+}
+
+/* Preset variables */
+[data-subtitle-size="small"] {
+  --subtitle-font-size: clamp(1.0rem, 2.0vw, 1.45rem);
+}
+[data-subtitle-size="medium"] {
+  --subtitle-font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+}
+[data-subtitle-size="large"] {
+  --subtitle-font-size: clamp(1.65rem, 3.4vw, 2.5rem);
+}
+[data-subtitle-size="xlarge"] {
+  --subtitle-font-size: clamp(2.05rem, 4.2vw, 3.2rem);
+}
+[data-subtitle-size="huge"] {
+  --subtitle-font-size: clamp(2.55rem, 5.2vw, 4.0rem);
+}
+
+/* Static font-size rules for browsers / WebKit engines with shadow DOM variable limits */
+[data-subtitle-size="small"] video::cue,
+video[data-subtitle-size="small"]::cue {
+  font-size: clamp(1.0rem, 2.0vw, 1.45rem);
+}
+[data-subtitle-size="medium"] video::cue,
+video[data-subtitle-size="medium"]::cue {
+  font-size: clamp(1.3rem, 2.6vw, 1.85rem);
+}
+[data-subtitle-size="large"] video::cue,
+video[data-subtitle-size="large"]::cue {
+  font-size: clamp(1.65rem, 3.4vw, 2.5rem);
+}
+[data-subtitle-size="xlarge"] video::cue,
+video[data-subtitle-size="xlarge"]::cue {
+  font-size: clamp(2.05rem, 4.2vw, 3.2rem);
+}
+[data-subtitle-size="huge"] video::cue,
+video[data-subtitle-size="huge"]::cue {
+  font-size: clamp(2.55rem, 5.2vw, 4.0rem);
+}
+
+video::cue {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: var(--subtitle-font-size, clamp(1.65rem, 3.4vw, 2.5rem));
+  line-height: 1.4;
+  border-radius: 4px;
+  padding: 4px 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95);
+}

@@ -1,7 +1,10 @@
 import type {
   JellyfinItem,
   JellyfinPlaybackInfoResponse,
+  SubtitleTrackInfo,
 } from "@/api/jellyfin/types";
+
+export type { SubtitleTrackInfo };
 
 export interface Episode {
   id: number;
@@ -17,6 +20,7 @@ export interface Episode {
     url: string;
     info: JellyfinPlaybackInfoResponse;
   };
+  subtitles?: SubtitleTrackInfo[];
   length: string;
 }
 

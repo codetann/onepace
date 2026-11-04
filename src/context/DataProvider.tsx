@@ -546,10 +546,16 @@ export const DataProvider = () => {
 
         if (isCancelled) return;
 
+        const subtitles = jellyfinClient.extractSubtitles(
+          videoInfo.info,
+          itemId,
+        );
+
         setEpisode({
           ...baseEpisode,
           metadata: meta,
           video: videoInfo,
+          subtitles,
         } as Episode);
       } catch (err) {
         console.error("Failed to fetch episode video info:", err);

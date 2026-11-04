@@ -75,6 +75,53 @@ export interface JellyfinUserData {
   PlayedPercentage?: number;
 }
 
+export interface JellyfinMediaStream {
+  Codec?: string;
+  CodecTag?: string;
+  Language?: string;
+  ColorSpace?: string;
+  DisplayTitle?: string;
+  Title?: string;
+  IsInterlaced?: boolean;
+  BitRate?: number;
+  BitDepth?: number;
+  IsDefault?: boolean;
+  IsForced?: boolean;
+  IsHearingImpaired?: boolean;
+  IsOriginal?: boolean;
+  Type: "Audio" | "Video" | "Subtitle" | "EmbeddedImage" | "Data" | "Lyric" | string;
+  Index: number;
+  IsExternal?: boolean;
+  IsTextSubtitleStream?: boolean;
+  SupportsExternalStream?: boolean;
+  DeliveryMethod?: "Encode" | "Embed" | "External" | "Hls" | "Drop" | string;
+  DeliveryUrl?: string;
+  IsExternalUrl?: boolean;
+  Path?: string;
+  PixelFormat?: string;
+  Height?: number;
+  Width?: number;
+  AverageFrameRate?: number;
+  RealFrameRate?: number;
+  Profile?: string;
+  AspectRatio?: string;
+  ChannelLayout?: string;
+  Channels?: number;
+  SampleRate?: number;
+}
+
+export interface SubtitleTrackInfo {
+  id: string | number;
+  index: number;
+  label: string;
+  language?: string;
+  isDefault?: boolean;
+  isForced?: boolean;
+  isExternal?: boolean;
+  src: string;
+  deliveryMethod?: string;
+}
+
 export interface JellyfinItem {
   Id: string;
   Name: string;
@@ -89,6 +136,8 @@ export interface JellyfinItem {
   ImageTags?: JellyfinImageTagMap;
   BackdropImageTags?: string[];
   UserData?: JellyfinUserData;
+  MediaStreams?: JellyfinMediaStream[];
+  MediaSources?: JellyfinPlaybackMediaSource[];
 }
 
 /**
@@ -128,6 +177,7 @@ export interface JellyfinPlaybackMediaSource {
   SupportsTranscoding?: boolean;
   /** Server-relative or absolute URL for transcoded playback (often `.m3u8`). */
   TranscodingUrl?: string;
+  MediaStreams?: JellyfinMediaStream[];
 }
 
 export interface JellyfinPlaybackInfoResponse {
@@ -174,6 +224,8 @@ export interface JellyfinPlaybackStartInfo {
   IsMuted?: boolean;
   VolumeLevel?: number | null;
   PlayMethod?: JellyfinPlayMethod;
+  AudioStreamIndex?: number | null;
+  SubtitleStreamIndex?: number | null;
 }
 
 /**

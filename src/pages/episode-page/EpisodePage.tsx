@@ -7,6 +7,8 @@ import {
   BiChevronRight,
   BiTv,
 } from "react-icons/bi";
+import { motion } from "framer-motion";
+import { getArcBackground } from "@/utils";
 import { jellyfinClient } from "@/api/jellyfin/client";
 import { useDataContext } from "@/context";
 import { useParams } from "react-router";
@@ -38,9 +40,16 @@ export default function EpisodePage() {
   const currentArc = arc && arc.id === parsedArcId ? arc : targetArc;
   const currentEpisode: Episode | undefined =
     episode && episode.id === parsedEpisodeId ? episode : targetEpisode;
+  const arcBackground = getArcBackground(currentArc);
+
+  const currentEpisodeTitle =
+    currentEpisode?.altTitle ||
+    (currentArc && currentEpisode
+      ? `${currentArc.title} Episode ${currentEpisode.id}`
+      : "Episode");
 
   const nextTargetTitle = nextEpisode
-    ? `${currentArc?.title} Episode ${nextEpisode.id}`
+    ? nextEpisode.altTitle || `${currentArc?.title} Episode ${nextEpisode.id}`
     : nextArc
       ? `${nextArc.title} Episode 1`
       : undefined;
@@ -112,29 +121,57 @@ export default function EpisodePage() {
 
   return (
     <Layout>
-      <div id="episode" className=" flex w-full flex-col gap-6">
-        <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between pt-3 sm:pt-4 px-4 sm:px-2">
+      <motion.div
+        key={`episode-page-${currentArc.id}-${currentEpisode.id}`}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -16 }}
+        transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+        id="episode"
+        className="flex w-full flex-col gap-6 relative"
+      >
+        {/* Ambient arc background glow */}
+        <div className="absolute top-0 left-0 right-0 h-96 opacity-15 blur-3xl pointer-events-none overflow-hidden -z-10">
+          <img
+            src={arcBackground}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <motion.header
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between pt-3 sm:pt-4 px-4 sm:px-2"
+        >
           <div>
             <Breadcrumbs>
               <Breadcrumbs.Item href={`/${currentArc.id}`}>
                 {currentArc.title}
               </Breadcrumbs.Item>
               <Breadcrumbs.Item href={`/${currentArc.id}/${currentEpisode.id}`}>
-                {currentArc.title} Episode {currentEpisode.id}
+                {currentEpisodeTitle}
               </Breadcrumbs.Item>
             </Breadcrumbs>
           </div>
-        </header>
+        </motion.header>
 
         <section className="flex flex-col relative justify-center items-center">
-          <div className="border-default-100 bg-default-50 relative z-0 w-full overflow-hidden rounded-xl border shadow-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.08 }}
+            className="border-default-100 bg-default-50 relative z-0 w-full overflow-hidden rounded-xl border shadow-sm"
+          >
             {isVideoReady && episode ? (
               <VideoPlayer
                 key={`${currentArc.id}-${currentEpisode.id}`}
                 src={episode.video?.url || ""}
                 playbackInfo={episode.video?.info}
                 jellyfinItemId={episode.metadata?.Id}
-                title={`${currentArc.title} Episode ${currentEpisode.id}`}
+                subtitles={episode.subtitles}
+                title={currentEpisodeTitle}
                 subtitle={currentArc.title}
                 autoPlay
                 initialPlaybackPositionTicks={
@@ -152,11 +189,11 @@ export default function EpisodePage() {
               <div className="relative w-full aspect-video bg-zinc-950 flex flex-col items-center justify-center gap-3">
                 <Spinner size="lg" color="accent" />
                 <p className="text-white/70 text-sm font-medium animate-pulse">
-                  Loading {currentArc.title} Episode {currentEpisode.id}...
+                  Loading {currentEpisodeTitle}...
                 </p>
               </div>
             )}
-          </div>
+          </motion.div>
 
           <div className="w-full pt-6 pb-6 flex justify-between items-start flex-row px-4 sm:px-6">
             <div className="flex flex-col gap-2 pb-4">
@@ -209,8 +246,8 @@ export default function EpisodePage() {
                     </Chip>
                   </span>
                   <div className="flex items-center gap-3 flex-wrap">
-                    <h3 className="text-3xl font-semibold flex items-center gap-2">
-                      {currentArc.title} Episode {currentEpisode.id}
+                    <h3 className="text-2xl sm:text-3xl font-semibold flex items-center gap-2 flex-wrap">
+                      {currentEpisodeTitle}
                     </h3>
                     {isWatched ? (
                       <Chip
@@ -241,43 +278,47 @@ export default function EpisodePage() {
               </div>
             </div>
             <div className="flex flex-row gap-2 sm:flex hidden">
-              <Button
-                variant="ghost"
-                className="rounded-lg cursor-pointer"
-                onPress={handlePreviousEpisode}
-                isDisabled={currentEpisode.id === 1 && currentArc.id === 1}
-                size="sm"
-              >
-                <BiChevronLeft />{" "}
-                {previousEpisode
-                  ? "Previous Episode"
-                  : previousArc
-                    ? previousArc.title
-                    : "Previous"}
-              </Button>
-              <Button
-                variant={
-                  currentEpisode.id === currentArc.episodes.length
-                    ? "primary"
-                    : "secondary"
-                }
-                className="rounded-lg cursor-pointer"
-                size="sm"
-                onPress={handleNextEpisode}
-              >
-                {nextEpisode
-                  ? "Next Episode"
-                  : nextArc
-                    ? nextArc.title
-                    : "Next"}{" "}
-                <BiChevronRight />
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  variant="ghost"
+                  className="rounded-lg cursor-pointer"
+                  onPress={handlePreviousEpisode}
+                  isDisabled={currentEpisode.id === 1 && currentArc.id === 1}
+                  size="sm"
+                >
+                  <BiChevronLeft />{" "}
+                  {previousEpisode
+                    ? "Previous Episode"
+                    : previousArc
+                      ? previousArc.title
+                      : "Previous"}
+                </Button>
+              </motion.div>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button
+                  variant={
+                    currentEpisode.id === currentArc.episodes.length
+                      ? "primary"
+                      : "secondary"
+                  }
+                  className="rounded-lg cursor-pointer"
+                  size="sm"
+                  onPress={handleNextEpisode}
+                >
+                  {nextEpisode
+                    ? "Next Episode"
+                    : nextArc
+                      ? nextArc.title
+                      : "Next"}{" "}
+                  <BiChevronRight />
+                </Button>
+              </motion.div>
             </div>
           </div>
           {/* all episodes */}
           <Episodes data={currentArc} />
         </section>
-      </div>
+      </motion.div>
     </Layout>
   );
 }

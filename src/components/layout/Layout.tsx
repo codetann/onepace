@@ -183,13 +183,20 @@ function Navigation({ onNavigate }: NavigationProps) {
           key={index}
           className={`${arcFinished ? " " : ""}`}
         >
-          <Accordion.Heading>
-            <Accordion.Trigger
-              className={`${openTab === null ? "opacity-100" : openTab === index ? "opacity-100" : "opacity-50"} hover:opacity-100`}
-              onPress={() => {
-                setOpenTab(openTab === index ? null : index);
-                handleJumpToArc(item.id.toString());
-              }}
+          <Accordion.Heading
+            className={`flex items-center justify-between w-full ${
+              openTab === null
+                ? "opacity-100"
+                : openTab === index
+                  ? "opacity-100"
+                  : "opacity-50"
+            } hover:opacity-100 transition-opacity`}
+          >
+            <button
+              type="button"
+              className="flex items-center flex-1 min-w-0 text-left py-3 px-3 cursor-pointer group hover:bg-default/10 rounded-lg transition-colors"
+              onClick={() => handleNavigate(item.id.toString())}
+              aria-label={`Go to ${item.title} arc page`}
             >
               {arcFinished ? (
                 <div
@@ -206,10 +213,21 @@ function Navigation({ onNavigate }: NavigationProps) {
               )}
               <span
                 id={item.id.toString()}
-                className={`dark:text-white text-black ${arcFinished ? " " : ""}`}
+                className={`dark:text-white text-black font-medium text-sm truncate group-hover:underline group-hover:text-accent underline-offset-2 transition-all ${
+                  arcFinished ? " " : ""
+                }`}
               >
                 {item.title}
               </span>
+            </button>
+            <Accordion.Trigger
+              className="p-3 mr-1 cursor-pointer text-muted hover:text-white rounded-lg hover:bg-default/10 transition-colors"
+              onPress={() => {
+                setOpenTab(openTab === index ? null : index);
+                handleJumpToArc(item.id.toString());
+              }}
+              aria-label={`Toggle ${item.title} episodes dropdown`}
+            >
               <Accordion.Indicator>
                 <BiChevronDown />
               </Accordion.Indicator>
