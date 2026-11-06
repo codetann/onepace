@@ -114,7 +114,7 @@ function Header() {
               <BiMenu />
             </Button>
             <Drawer.Backdrop>
-              <Drawer.Content placement="left" className="max-w-xs">
+              <Drawer.Content placement="left" className="w-[88vw] max-w-sm sm:max-w-md">
                 <Drawer.Dialog className="px-2 pb-2">
                   <Drawer.Header>
                     <Drawer.Heading className="flex items-center gap-2">
@@ -144,7 +144,7 @@ function SideMenu() {
   return (
     <div
       id="side-menu"
-      className="hidden lg:block w-86 h-full border-r border-default-100 overflow-y-auto"
+      className="hidden lg:block w-[22.5rem] h-full border-r border-default-100 overflow-y-auto shrink-0"
     >
       <Navigation />
     </div>
@@ -213,7 +213,7 @@ function Navigation({ onNavigate }: NavigationProps) {
               )}
               <span
                 id={item.id.toString()}
-                className={`dark:text-white text-black font-medium text-sm truncate group-hover:underline group-hover:text-accent underline-offset-2 transition-all ${
+                className={`dark:text-white text-black font-medium text-sm group-hover:underline group-hover:text-accent underline-offset-2 transition-all ${
                   arcFinished ? " " : ""
                 }`}
               >
@@ -299,32 +299,37 @@ function Navigation({ onNavigate }: NavigationProps) {
                 </Button>
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5">
                 {openTab === index &&
                   item.episodes.map((episode, epIndex) => {
                     const epFinished = isEpisodePlayed(item.id, episode.id);
+                    const episodeTitle =
+                      episode.altTitle || `${item.title} Episode ${episode.id}`;
+
                     return (
-                      <span
+                      <div
                         key={`${item.title}-${epIndex}`}
-                        className="flex items-center gap-1"
+                        className="flex items-center gap-1.5 w-full"
                       >
                         <Button
                           variant="ghost"
                           isIconOnly
                           size="sm"
-                          className="size-4 shrink-0 text-muted w-5 h-5 rounded-md flex items-center justify-center hover:bg-default/20 cursor-pointer"
+                          className="size-5 shrink-0 text-muted rounded-md flex items-center justify-center hover:bg-default/20 cursor-pointer"
                           onPress={() => toggleEpisodePlayed(item.id, episode.id)}
                           aria-label={epFinished ? "Mark as unplayed" : "Mark as played"}
                         >
                           {epFinished ? (
                             <BiCheck className="size-4 text-green-500" />
                           ) : (
-                            <p className="text-xs">{epIndex + 1}.</p>
+                            <p className="text-[11px] font-medium">{epIndex + 1}.</p>
                           )}
                         </Button>
                         <Button
                           variant="ghost"
-                          className={`w-full justify-start rounded-lg px-2 flex items-center ${epFinished ? "opacity-70" : "dark:text-white text-black"}`}
+                          className={`flex-1 justify-start text-left h-auto py-2 px-2.5 rounded-lg flex items-center min-w-0 ${
+                            epFinished ? "opacity-70" : "dark:text-white text-black"
+                          }`}
                           onPress={() =>
                             handleNavigate(
                               item.id.toString(),
@@ -333,12 +338,15 @@ function Navigation({ onNavigate }: NavigationProps) {
                           }
                         >
                           <span
-                            className={`flex items-center gap-1 ${epFinished ? "line-through opacity-70" : ""}`}
+                            className={`text-xs font-medium leading-relaxed break-words line-clamp-2 ${
+                              epFinished ? "line-through opacity-70" : ""
+                            }`}
+                            title={episodeTitle}
                           >
-                            {item.title} Episode {episode.id}
+                            {episodeTitle}
                           </span>
                         </Button>
-                      </span>
+                      </div>
                     );
                   })}
               </div>

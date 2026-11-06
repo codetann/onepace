@@ -539,7 +539,7 @@ export const DATA = {
             anime: "61-62",
             manga: "101-103",
           },
-          length: "24m",
+          length: "20m",
         },
         {
           id: 2,
@@ -551,7 +551,7 @@ export const DATA = {
             anime: "62-63",
             manga: "104-105",
           },
-          length: "24m",
+          length: "33m",
         },
       ],
     },
@@ -581,7 +581,7 @@ export const DATA = {
             anime: "64-65",
             manga: "106-110",
           },
-          length: "28m",
+          length: "32m",
         },
         {
           id: 2,
@@ -593,7 +593,7 @@ export const DATA = {
             anime: "65-67",
             manga: "111-114",
           },
-          length: "25m",
+          length: "42m",
         },
       ],
     },
@@ -623,7 +623,7 @@ export const DATA = {
             anime: "68-69",
             manga: "83-119",
           },
-          length: "21m",
+          length: "14m",
         },
       ],
     },
@@ -677,7 +677,7 @@ export const DATA = {
             anime: "73-74",
             manga: "121-123",
           },
-          length: "27m",
+          length: "28m",
         },
         {
           id: 4,
@@ -701,7 +701,7 @@ export const DATA = {
             anime: "76-77",
             manga: "127-129",
           },
-          length: "25m",
+          length: "26m",
         },
       ],
     },
@@ -714,7 +714,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/dljPWGGKQnAGOACVDCvN2GGR02J.jpg",
       description:
-        "A medical crisis brings the Straw Hats to a winter kingdom in turmoil, where they confront harsh conditions, local tyranny, and one of the series' most emotional backstories.",
+        "Racing to save a gravely ill Nami, the Straw Hats arrive at a snowbound island ruled by fear and medical hoarding. To save their navigator, Luffy must brave freezing summits and uncover the tragic story of a reindeer who learned to dream.",
       coverage: {
         anime: "78-91",
         manga: "130-154",
@@ -724,90 +724,98 @@ export const DATA = {
         {
           id: 1,
           title: "Drum Island 01",
+          altTitle: "A Deadly Fever: The Winter Island of Drum",
           description:
-            "The crew arrives in a frozen kingdom while racing to find treatment, immediately facing hostility and severe weather.",
+            "With Nami burning with a lethal tropical fever, the Straw Hats urgently search for a doctor and repel an attack by the gluttonous King Wapol. Arriving at the frozen kingdom of Drum Island, the crew is met with suspicion by armed locals until Princess Vivi defuses the confrontation with humility.",
           coverage: {
             anime: "78-80",
             manga: "130-133",
           },
-          length: "TBD",
+          length: "29m",
         },
         {
           id: 2,
           title: "Drum Island 02",
+          altTitle: "The Witch of Drum Rockies: The Tyrant King's Legacy",
           description:
-            "As they search for a doctor, the crew uncovers local fear and the political damage left behind by the kingdom's former ruler.",
+            "Dalton reveals that the fleeing tyrant Wapol hoarded the island's doctors, leaving only the eccentric hundred-year-old Dr. Kureha atop the towering Drum Rockies. Determined to save their navigator, Luffy begins a perilous ascent up the frozen mountains with Nami strapped securely to his back.",
           coverage: {
             anime: "80-81",
             manga: "134-136",
           },
-          length: "TBD",
+          length: "33m",
         },
         {
           id: 3,
           title: "Drum Island 03",
+          altTitle: "Climbing the Precipice: Luffy's Sheer Willpower",
           description:
-            "A critical meeting shifts the arc's direction, introducing the island's key medical figure and raising the emotional stakes.",
+            "After surviving a devastating avalanche triggered by carnivorous Lapins, Sanji is knocked unconscious, leaving Luffy to carry both friends up the sheer vertical cliffs. With bloodied bare hands and hypothermia setting in, Luffy scales the summit before collapsing into the care of Dr. Kureha and the blue-nosed reindeer Tony Tony Chopper.",
           coverage: {
             anime: "81-83",
             manga: "137-139",
           },
-          length: "TBD",
+          length: "34m",
         },
         {
           id: 4,
           title: "Drum Island 04",
+          altTitle: "Doctor Hiriluk: The Reindeer and the Quack Doctor",
           description:
-            "Past and present begin to connect through a powerful backstory that explains the island's wounds and one character's fears.",
+            "As Nami recovers, Dr. Kureha shares the heartbreaking origin of Chopper, who was cast out by humans and reindeer alike after eating the Human-Human Fruit. Only the quack physician Dr. Hiriluk showed him compassion, passing down his pride in the skull-and-crossbones and his dream of curing the kingdom's frozen heart.",
           coverage: {
             anime: "83-84",
             manga: "140-142",
           },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 5,
           title: "Drum Island 05",
+          altTitle: "When Does a Man Die? Hiriluk's Final Words",
           description:
-            "The kingdom's conflict escalates as returning enemies force the Straw Hats and their allies into open resistance.",
+            "Flashbacks recount Hiriluk drinking Chopper's poisonous brew to protect his feelings, before bravely taking his own life while defying Wapol's execution squad. Back in the present, the villainous Wapol returns to reclaim Drum Castle, forcing Chopper and the Straw Hats to defend the sanctuary.",
           coverage: {
             anime: "84-86",
             manga: "143-145",
           },
-          length: "TBD",
+          length: "39m",
         },
         {
           id: 6,
           title: "Drum Island 06",
+          altTitle: "A Flag Never Broken: Chopper's Seven Transformations",
           description:
-            "Key battles unfold across Drum's snowy terrain as the crew defends their allies and pushes toward a turning point.",
+            "When Wapol fires upon Hiriluk's pirate flag flying above the battlements, Luffy absorbs the cannon blast and shields the banner with his life, declaring that true pirate pride can never be broken. Inspired by Luffy's conviction, Chopper consumes a Rumble Ball and unleashes his versatile transformation points against Wapol's ministers.",
           coverage: {
             anime: "86-88",
             manga: "146-148",
           },
-          length: "TBD",
+          length: "25m",
         },
         {
           id: 7,
           title: "Drum Island 07",
+          altTitle: "The Fall of Wapol: Gum-Gum Bazooka in the Snow",
           description:
-            "The main confrontation reaches its peak, resolving the island's immediate crisis and reshaping its future.",
+            "Chopper deciphers Chessmarimo's rhythm to shatter the fused ministers with an Arm Point strike, clearing the way for Luffy to corner the tyrant king. Preventing Wapol from consuming his castle armory, Luffy blasts the ruthless monarch into the far horizon with a mighty Gum-Gum Bazooka.",
           coverage: {
             anime: "88-90",
             manga: "149-151",
           },
-          length: "TBD",
+          length: "33m",
         },
         {
           id: 8,
           title: "Drum Island 08",
+          altTitle: "Hiriluk's Cherry Blossoms: The Will of D",
           description:
-            "Drum Island ends with an emotional farewell and a major crew development before the voyage continues.",
+            "Luffy invites the tearful Chopper to join the crew, pulling him aboard as the official ship's doctor despite Dr. Kureha's staged resistance. As the Going Merry departs, Kureha fires cannons into the winter sky to turn the snowy peaks into blooming cherry blossoms, whispering of the mysterious Will of D.",
           coverage: {
             anime: "90-91",
             manga: "152-154",
           },
-          length: "TBD",
+          length: "30m",
         },
       ],
     },
@@ -820,7 +828,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/ckTRyuedF5hXoZRCjsfaUnNgiS6.jpg",
       description:
-        "The Straw Hats enter a desert kingdom on the brink of civil war, where a hidden mastermind manipulates events and every decision carries national consequences.",
+        "The Straw Hats enter a desert kingdom pushed to the brink of civil war by drought and deception. To save Vivi's homeland, the crew must race across scorching sands and topple Warlord Crocodile before his conspiracy destroys Alabasta.",
       coverage: {
         anime: "92-130",
         manga: "155-217",
@@ -830,170 +838,254 @@ export const DATA = {
         {
           id: 1,
           title: "Arabasta 01",
+          altTitle: "Arrival in Nanohana: Fire Fist Ace",
           description:
-            "The crew reaches Arabasta and sees early signs of unrest, setting up the scale of the crisis Vivi has been trying to stop.",
-          coverage: { anime: "92-94", manga: "155-160" },
-          length: "TBD",
+            "Landing in the bustling port of Nanohana, Luffy gets separated from the crew and crashes into a dining hall where he encounters Captain Smoker and his sworn brother, Portgas D. Ace. With Marines surrounding the restaurant, Luffy leads Smoker on a chase across the streets before Ace steps in to intervene.",
+          coverage: {
+            anime: "92",
+            manga: "155-157",
+          },
+          length: "20m",
         },
         {
           id: 2,
           title: "Arabasta 02",
+          altTitle: "Fire and Smoke: The Duel on the Docks",
           description:
-            "As they travel deeper into the kingdom, the Straw Hats confront desert hazards and the first direct obstacles from Baroque Works.",
-          coverage: { anime: "94-96", manga: "161-166" },
-          length: "TBD",
+            "Ace holds off Smoker's Marines with his Flame-Flame Fruit powers, allowing the Straw Hats to evade capture and safely reach the Going Merry. Joining the crew for a celebratory banquet aboard their ship, Ace gifts Luffy a mysterious piece of paper before departing to track down Blackbeard.",
+          coverage: {
+            anime: "93-95",
+            manga: "158-160",
+          },
+          length: "28m",
         },
         {
           id: 3,
           title: "Arabasta 03",
+          altTitle: "The Green City of Erumalu: Dance Powder's Curse",
           description:
-            "Local tension intensifies and the crew's mission shifts from travel to urgent intervention before the conflict spirals.",
-          coverage: { anime: "96-98", manga: "167-172" },
-          length: "TBD",
+            "Princess Vivi dispatches Karoo to Alubarna Palace with a warning letter for her father, before the Straw Hats head into the scorching desert and befriend the Kung-Fu Dugongs. Arriving at the 'Green City' of Erumalu, they witness how Crocodile's Dance Powder turned a flourishing oasis into a ghost town.",
+          coverage: {
+            anime: "96-97",
+            manga: "161-162",
+          },
+          length: "24m",
         },
         {
           id: 4,
           title: "Arabasta 04",
+          altTitle: "The Oasis of Yuba: Toto's Conviction",
           description:
-            "The rebellion's momentum grows while enemy plans become clearer, forcing the Straw Hats to split tasks strategically.",
-          coverage: { anime: "98-100", manga: "173-178" },
-          length: "TBD",
+            "Trekking through blistering heat and desert hallucinations, the crew finally reaches the sandstorm-ravaged oasis of Yuba. Finding the rebel army has relocated, they meet old Toto stubbornly digging through the sand for water, who entrusts Luffy with a small canteen of pure water.",
+          coverage: {
+            anime: "98-100",
+            manga: "163-165",
+          },
+          length: "25m",
         },
         {
           id: 5,
           title: "Arabasta 05",
+          altTitle: "Put Our Lives on the Line! The Rainbase March",
           description:
-            "The race to the capital begins in earnest, with limited time and increasingly dangerous opposition on every route.",
-          coverage: { anime: "100-102", manga: "179-184" },
-          length: "TBD",
+            "When Vivi insists on heading to Katorea alone to stop the rebel army, Luffy furiously confronts her, demanding that she put their lives on the line together. The Straw Hats alter course to Rainbase to strike Crocodile directly, while Baroque Works' top Officer Agents assemble at Rain Dinners.",
+          coverage: {
+            anime: "103-104",
+            manga: "166-168",
+          },
+          length: "32m",
         },
         {
           id: 6,
           title: "Arabasta 06",
+          altTitle: "The Rainbase Trap: Cage of Seastone",
           description:
-            "Major factions collide as the kingdom edges toward full chaos and Vivi's plea for peace faces mounting resistance.",
-          coverage: { anime: "102-104", manga: "185-190" },
-          length: "TBD",
+            "Storming into the Rain Dinners casino to confront Crocodile, the Straw Hats and Captain Smoker fall through a trapdoor into a seastone prison cell. Crocodile mocks their futile efforts and unveils Operation Utopia, leaving the captives trapped as giant Bananawani flood the chamber.",
+          coverage: {
+            anime: "105-106",
+            manga: "169-170",
+          },
+          length: "20m",
         },
         {
           id: 7,
           title: "Arabasta 07",
+          altTitle: "Mr. Prince Strikes: Luffy vs. Crocodile, Round One",
           description:
-            "Baroque Works agents begin coordinated engagements, creating multiple simultaneous battles across the city.",
-          coverage: { anime: "104-106", manga: "191-196" },
-          length: "TBD",
+            "Sanji outsmarts Crocodile under the alias 'Mr. Prince,' using Mr. 3's wax crafting to unlock the seastone cage and free the crew. As the Straw Hats rush toward Alubarna atop the moving crab Hasami, Crocodile intercepts them in the desert, where Luffy stays behind to duel the Warlord alone.",
+          coverage: {
+            anime: "107-108",
+            manga: "171-176",
+          },
+          length: "18m",
         },
         {
           id: 8,
           title: "Arabasta 08",
+          altTitle: "Sand and Blood: The Battle of Alubarna Begins",
           description:
-            "Each Straw Hat takes on a key opponent, turning the arc into a series of high-pressure one-on-one confrontations.",
-          coverage: { anime: "106-108", manga: "197-202" },
-          length: "TBD",
+            "Powerless against Crocodile's intangible Sand-Sand Fruit powers, Luffy is impaled through the chest and buried in quicksand, only to be secretly rescued by Miss All Sunday. At Alubarna's gates, the Straw Hats split up the Officer Agents, with Usopp and Chopper taking on Mr. 4 and Miss Merry Christmas.",
+          coverage: {
+            anime: "110-113",
+            manga: "177-184",
+          },
+          length: "35m",
         },
         {
           id: 9,
           title: "Arabasta 09",
+          altTitle: "A Man Must Fight: The Miracle of Usopp and Chopper",
           description:
-            "The rebellion and royal forces clash directly, making the cost of delay and misinformation impossible to ignore.",
-          coverage: { anime: "108-110", manga: "203-208" },
-          length: "TBD",
+            "Brutalized by exploding baseballs and a four-ton bat, a battered Usopp rises to his feet after the villains mock Luffy's dream of becoming Pirate King. Coordinating with Chopper's Horn Point, Usopp delivers a decisive hammer strike to defeat Mr. 4 and Miss Merry Christmas, while Sanji engages Bon Kurei.",
+          coverage: {
+            anime: "114-116",
+            manga: "185-188",
+          },
+          length: "36m",
         },
         {
           id: 10,
           title: "Arabasta 10",
+          altTitle: "Tornado Tempo and the Blade of Steel",
           description:
-            "As battles rage, the Straw Hats push through setbacks and continue trying to prevent total catastrophe.",
-          coverage: { anime: "110-112", manga: "209-214" },
-          length: "TBD",
+            "Sanji spots the flaw in Bon Kurei's Clone-Clone transformations and takes down the ballet master, while Nami uses her newly crafted Clima-Tact to defeat Miss Doublefinger with a Tornado Tempo. In the alleyways, Zoro faces Mr. 1, whose steel Supa-Supa blades inflict devastating lacerations.",
+          coverage: {
+            anime: "117-118",
+            manga: "189-192",
+          },
+          length: "36m",
         },
         {
           id: 11,
           title: "Arabasta 11",
+          altTitle: "The Breath of All Things: Lion's Song Cuts Steel",
           description:
-            "Critical matchups near their climax while the kingdom's fate narrows to a handful of decisive moments.",
-          coverage: { anime: "112-114", manga: "215-217" },
-          length: "TBD",
+            "Near death and bleeding heavily, Zoro senses the 'breath of all things,' learning how to cut steel while protecting what he wills. With a single strike of his Shishi Sonson, Zoro cleaves through Mr. 1's steel body, claiming his place among the world's elite swordsmen.",
+          coverage: {
+            anime: "119",
+            manga: "193-195",
+          },
+          length: "34m",
         },
         {
           id: 12,
           title: "Arabasta 12",
+          altTitle: "The Palace Ramparts: Water Luffy Returns!",
           description:
-            "Aftermath begins to settle over Arabasta as the immediate conflict eases and survivors take stock of the damage.",
-          coverage: { anime: "114-115", manga: "217" },
-          length: "TBD",
+            "Crocodile drops Princess Vivi from the royal palace ramparts as civil war breaks out in the plaza below. Caught in mid-air by guardian Falcon Pell and a fully revived Luffy, the battle resumes on the roof with Luffy wielding a barrel of water to exploit Crocodile's sand weakness.",
+          coverage: {
+            anime: "121-122",
+            manga: "196-199",
+          },
+          length: "26m",
         },
         {
           id: 13,
           title: "Arabasta 13",
+          altTitle: "The Thirst of the Desert: Water vs. Sand",
           description:
-            "The kingdom starts rebuilding and the Straw Hats confront the personal consequences of their choices during the war.",
-          coverage: { anime: "116-117", manga: "217" },
-          length: "TBD",
+            "Fighting as 'Water Luffy,' Luffy douses Crocodile and lands powerful physical blows against the stunned Warlord. Retaliating with terrifying force, Crocodile unleashes his right hand's dehydrating powers to drain all moisture from Luffy's body, leaving him desiccated on the crumbling palace stones.",
+          coverage: {
+            anime: "123",
+            manga: "200-201",
+          },
+          length: "24m",
         },
         {
           id: 14,
           title: "Arabasta 14",
+          altTitle: "The Royal Tomb: Robin and the Poneglyph",
           description:
-            "Lingering tensions and recovery efforts highlight how deeply the conflict affected both civilians and leadership.",
-          coverage: { anime: "118-119", manga: "217" },
-          length: "TBD",
+            "A stray water bubble rehydrates Luffy, allowing him to pursue Crocodile into the underground Royal Tomb. Inside, Nico Robin reads the ancient Poneglyph but hides the location of the Ancient Weapon Pluton, prompting Crocodile to impale her with his hook before a blood-soaked Luffy arrives.",
+          coverage: {
+            anime: "124-125",
+            manga: "202-203",
+          },
+          length: "32m",
         },
         {
           id: 15,
           title: "Arabasta 15",
+          altTitle: "Blood on the Fists: The Clock Tower Countdown",
           description:
-            "The crew prepares to move on while important relationships and responsibilities are brought into sharp focus.",
-          coverage: { anime: "120-121", manga: "217" },
-          length: "TBD",
+            "Coating his fists in his own blood to strike Crocodile's sand, Luffy battles the Warlord beneath the earth. Meanwhile in the capital, the Straw Hats deduce that Baroque Works' massive artillery bomb is hidden high inside the central clock tower and race to stop the firing squad.",
+          coverage: {
+            anime: "125-126",
+            manga: "204-207",
+          },
+          length: "29m",
         },
         {
           id: 16,
           title: "Arabasta 16",
+          altTitle: "Pell's Sacrifice: The Poison Hook of Death",
           description:
-            "Arabasta's political landscape begins to stabilize as key figures face the long-term implications of the conflict.",
-          coverage: { anime: "122-123", manga: "217" },
-          length: "TBD",
+            "The Straw Hats defeat the clock tower snipers, but unable to disarm the timed fuse, Pell transforms into a falcon and carries the bomb miles into the stratosphere to save Alubarna. Down in the collapsing tomb, Crocodile removes his golden hook cover, revealing a deadly venomous scorpion blade.",
+          coverage: {
+            anime: "126-127",
+            manga: "208-209",
+          },
+          length: "22m",
         },
         {
           id: 17,
           title: "Arabasta 17",
+          altTitle: "Gum-Gum Storm: Crocodile's Fall",
           description:
-            "The Straw Hats' departure approaches, and unresolved emotions around loyalty and duty come to the surface.",
-          coverage: { anime: "124-125", manga: "217" },
-          length: "TBD",
+            "Fighting through lethal scorpion poison with sheer willpower, Luffy catches Crocodile in mid-air and unleashes a furious Gum-Gum Storm. The barrage shatters Crocodile's poison hook and blasts the Warlord straight through layers of solid bedrock into the open sky above Alubarna.",
+          coverage: {
+            anime: "128",
+            manga: "210-211",
+          },
+          length: "33m",
         },
         {
           id: 18,
           title: "Arabasta 18",
+          altTitle: "Rain Upon the Desert: The War Ends",
           description:
-            "Key farewells and symbolic moments mark the end of one of the crew's most consequential early Grand Line arcs.",
-          coverage: { anime: "126-127", manga: "217" },
-          length: "TBD",
+            "Crocodile's unconscious body crashes into the palace square, and rain pours over Arabasta for the first time in three years. Vivi's desperate pleas for peace finally echo across the battlefield, moving royal guards and rebel soldiers to throw down their weapons in tears.",
+          coverage: {
+            anime: "129",
+            manga: "212-213",
+          },
+          length: "34m",
         },
         {
           id: 19,
           title: "Arabasta 19",
+          altTitle: "A Kingdom Reborn: The 100-Million-Berry Man",
           description:
-            "With the war behind them, the crew regains momentum and begins orienting toward what comes next.",
-          coverage: { anime: "128", manga: "217" },
-          length: "TBD",
+            "The exhausted Straw Hats recuperate inside the palace with royal baths and grand banquets, learning that Luffy's bounty has soared to 100 million berries and Zoro's to 60 million. With Captain Hina's Marine fleet surrounding the coastline, Bon Kurei pledges to help his pirate friends escape.",
+          coverage: {
+            anime: "129-130",
+            manga: "214-215",
+          },
+          length: "29m",
         },
         {
           id: 20,
           title: "Arabasta 20",
+          altTitle: "The Mark of the 'X': The Bond of Friendship",
           description:
-            "Final Arabasta fallout scenes underline the arc's emotional weight and lasting impact on the Straw Hats.",
-          coverage: { anime: "129", manga: "217" },
-          length: "TBD",
+            "Bon Kurei disguises his vessel as the Going Merry, courageously drawing Marine cannon fire so the Straw Hats can slip past the blockade. As Vivi broadcasts her royal farewell from the shore, the Straw Hats turn their backs and raise their left arms in silence, displaying the black 'X' mark of eternal friendship.",
+          coverage: {
+            anime: "130-131",
+            manga: "216",
+          },
+          length: "30m",
         },
         {
           id: 21,
           title: "Arabasta 21",
+          altTitle: "A New Crewmate: Nico Robin Aboard",
           description:
-            "Arabasta concludes with closure, reflection, and a decisive push toward the next stage of the adventure.",
-          coverage: { anime: "130", manga: "217" },
-          length: "TBD",
+            "Captain Hina captures Bon Kurei's crew after a fierce naval skirmish, while the Straw Hats make their escape onto the open sea. Emerging unexpectedly from the ship's cabin, Nico Robin charms the crew with wit and stolen jewelry, convincing Luffy to let her join the Straw Hats as their newest member.",
+          coverage: {
+            anime: "131-132",
+            manga: "217-218",
+          },
+          length: "17m",
         },
       ],
     },
@@ -1006,7 +1098,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/pM4bV2yaB91gobhvAb5PvfCk5f6.jpg",
       description:
-        "Jaya mixes rough pirate-town conflict with sky-high ambition, introducing major figures and setting up the leap into Skypiea.",
+        "A derelict galleon falling from the heavens sets the Straw Hats on the trail of a mythical sky island. In the lawless pirate haven of Mock Town, Luffy meets cynical rivals and passionate dreamers before bracing for a wild ride into the clouds.",
       coverage: {
         anime: "144-152",
         manga: "218-236",
@@ -1016,90 +1108,98 @@ export const DATA = {
         {
           id: 1,
           title: "Jaya 01",
+          altTitle: "Vessels Falling from Heaven: Salvage King Masira",
           description:
-            "The Straw Hats reach Jaya and step into Mock Town's volatile pirate culture, where respect is earned through strength and conviction.",
+            "When a giant derelict galleon falls directly from the clouds and the Log Pose locks upward, the Straw Hats investigate the impossibility of a sky island. While diving into the sunken wreckage for artifacts, they encounter the eccentric Salvage King Masira and his monkey salvaging crew.",
           coverage: {
             anime: "144-145",
             manga: "218-220",
           },
-          length: "TBD",
+          length: "21m",
         },
         {
           id: 2,
           title: "Jaya 02",
+          altTitle: "Mock Town: Bellamy the Hyena",
           description:
-            "Conflicting ideas about dreams and piracy trigger confrontations that define the arc's tone from the start.",
+            "Steering toward the lawless pirate haven of Jaya, Luffy, Zoro, and Nami enter a rowdy saloon in Mock Town. Bellamy the Hyena ridicules their belief in mythical islands and brutally batters them with tavern debris, but Luffy orders Zoro not to raise a fist in retaliation.",
           coverage: {
-            anime: "145-146",
-            manga: "221-223",
+            anime: "146-147",
+            manga: "221-224",
           },
-          length: "TBD",
+          length: "32m",
         },
         {
           id: 3,
           title: "Jaya 03",
+          altTitle: "People's Dreams Never Die! Mont Blanc Cricket",
           description:
-            "As they gather information about the sky island route, the crew faces mounting pressure from local pirate powers.",
+            "Exiting the bar, the battered Straw Hats encounter an enigmatic stranger who passionately proclaims that men's dreams will never die. Sailing to Jaya's secluded eastern coast, they meet Mont Blanc Cricket, a diver suffering from the bends who dives endlessly to prove his ancestor wasn't a liar.",
           coverage: {
-            anime: "146-147",
-            manga: "224-226",
+            anime: "148",
+            manga: "225-227",
           },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 4,
           title: "Jaya 04",
+          altTitle: "Liar Noland: The Knock Up Stream",
           description:
-            "Key players in the wider world begin moving, broadening the scale of the story beyond the immediate island conflict.",
+            "Cricket recounts the tragic tale of 'Liar Noland,' whose lost city of gold may have been blasted into the sky four hundred years ago. Shoujo and the Saruyama Alliance arrive to offer their support, explaining that reaching Skypiea requires riding the monstrous oceanic geyser known as the Knock Up Stream.",
           coverage: {
-            anime: "147-148",
-            manga: "227-229",
+            anime: "148-149",
+            manga: "228-229",
           },
-          length: "TBD",
+          length: "20m",
         },
         {
           id: 5,
           title: "Jaya 05",
+          altTitle: "Hunting the South Bird: Night in the Forest",
           description:
-            "Preparation for the skyward journey intensifies as the crew secures what they need and commits to the impossible route.",
+            "To navigate toward the Knock Up Stream's eruption coordinates, the Straw Hats venture into Jaya's dense jungle in search of a directional South Bird. Comical encounters with giant insects and forest beasts ensue as the crew scrambles to capture the elusive, mocking bird before dawn.",
           coverage: {
-            anime: "148-149",
-            manga: "230-232",
+            anime: "149-150",
+            manga: "230-231",
           },
-          length: "TBD",
+          length: "21m",
         },
         {
           id: 6,
           title: "Jaya 06",
+          altTitle: "Bellamy's Raid: Luffy Returns to Mock Town",
           description:
-            "Final clashes in Jaya resolve unfinished tensions and reinforce the crew's shared belief in chasing distant horizons.",
+            "While the Straw Hats search the jungle, Bellamy ambushes the Saruyama Alliance, brutally beating Cricket and stealing his hard-earned sunken gold. Discovering the blood and wreckage upon their return, an enraged Luffy storms back to Mock Town alone to reclaim his friend's treasure.",
           coverage: {
-            anime: "149-150",
-            manga: "233-234",
+            anime: "150-151",
+            manga: "232-233",
           },
-          length: "TBD",
+          length: "17m",
         },
         {
           id: 7,
           title: "Jaya 07",
+          altTitle: "One Punch: The Fall of Bellamy",
           description:
-            "With plans set, the Straw Hats position themselves for the Knock Up Stream and the risk of total failure.",
+            "At Mary Geoise, the World Government and Warlords assemble to replace Crocodile, where Lafitte brazenly nominates Marshall D. Teach. Back in Mock Town, Bellamy ricochets between buildings with his Spring-Spring powers, only for Luffy to flatten the arrogant rookie with a single catastrophic punch.",
           coverage: {
-            anime: "150-151",
-            manga: "235",
+            anime: "151-152",
+            manga: "234-235",
           },
-          length: "TBD",
+          length: "25m",
         },
         {
           id: 8,
           title: "Jaya 08",
+          altTitle: "Riding the Knock Up Stream: To the Sky!",
           description:
-            "Jaya ends on a bold launch into the unknown, handing off directly into the Skypiea adventure.",
+            "Returning the gold to Cricket, the crew reinforces the Going Merry with chicken wings and catches the current just as Blackbeard's crew chases them down. As a colossal geyser rips through the ocean floor, the Going Merry rides the ascending Knock Up Stream straight up into the clouds.",
           coverage: {
-            anime: "151-152",
+            anime: "152-153",
             manga: "236",
           },
-          length: "TBD",
+          length: "19m",
         },
       ],
     },
@@ -1112,7 +1212,7 @@ export const DATA = {
       altImage:
         "https://image.tmdb.org/t/p/original/ghikmWWkU2U5SrXsAJgyLfeU0by.jpg",
       description:
-        "The Straw Hats reach a sky island where ancient history, territorial conflict, and a self-proclaimed god collide into one of the series' largest adventure arcs.",
+        "Surfing across an ocean of clouds, the Straw Hats arrive at the heavenly realm of Skypiea, a land of sacred earth and soaring ruins. Caught between angelic natives, vengeful Shandia guerrillas, and a lightning-wielding 'God,' Luffy must ring the golden bell to fulfill a four-hundred-year promise.",
       coverage: {
         anime: "153-195",
         manga: "237-302",
@@ -1122,202 +1222,302 @@ export const DATA = {
         {
           id: 1,
           title: "Skypiea 01",
+          altTitle: "Heaven's Gate: The White-White Sea",
           description:
-            "The crew arrives in the White Sea and gets its first look at sky-island rules, dangers, and culture.",
-          coverage: { anime: "153-154", manga: "237-239" },
-          length: "TBD",
+            "Emerging ten thousand meters in the sky, the Straw Hats navigate an ocean of clouds and are rescued from a hostile sky warrior by the wandering knight Gan Fall. Reaching Angel Beach, the crew befriends Conis and Pagaya, discovering the unique wonders of Dials, Wavers, and sky culture.",
+          coverage: {
+            anime: "153-154",
+            manga: "237-239",
+          },
+          length: "20m",
         },
         {
           id: 2,
           title: "Skypiea 02",
+          altTitle: "The Forbidden Vearth: The White Berets Attack",
           description:
-            "A tense introduction to local authority pushes the Straw Hats into conflict almost immediately.",
-          coverage: { anime: "155-156", manga: "240-242" },
-          length: "TBD",
+            "Nami explores the forbidden sanctuary of Upper Yard, while the White Berets attempt to arrest the Straw Hats on fabricated charges of illegal sky entry. Responding with overwhelming force, the crew thrashes the police squad, making themselves full-fledged heretics in the eyes of God Enel.",
+          coverage: {
+            anime: "154-155",
+            manga: "240-242",
+          },
+          length: "21m",
         },
         {
           id: 3,
           title: "Skypiea 03",
+          altTitle: "The Sacrificial Altar: God's Judgment",
           description:
-            "As they move deeper into Skypiea, the crew starts learning how local factions and laws are enforced.",
-          coverage: { anime: "157-158", manga: "243-245" },
-          length: "TBD",
+            "A giant sky lobster abducts the Going Merry along with Zoro, Nami, Robin, and Chopper, depositing them on a sacrificial altar deep inside Upper Yard. As Conis confesses to summoning the beast out of fear of divine punishment, God Enel's pillar of lightning blasts down from the heavens.",
+          coverage: {
+            anime: "156-157",
+            manga: "243-245",
+          },
+          length: "24m",
         },
         {
           id: 4,
           title: "Skypiea 04",
+          altTitle: "The Ordeal of Balls: Satori's Mantra",
           description:
-            "The Upper Yard situation escalates, with multiple sides maneuvering for control of sacred land.",
-          coverage: { anime: "159-160", manga: "246-248" },
-          length: "TBD",
+            "Luffy, Sanji, and Usopp row into Upper Yard to rescue their crewmates, opting to challenge Satori's Ordeal of Balls. The flamboyant priest uses the predictive power of Mantra to anticipate every strike, toying with the Straw Hats using exploding surprise clouds.",
+          coverage: {
+            anime: "158-160",
+            manga: "246-248",
+          },
+          length: "29m",
         },
         {
           id: 5,
           title: "Skypiea 05",
+          altTitle: "Chopper's Crisis: Priest Shura and the Heat Javelin",
           description:
-            "The crew splits and each group faces unique challenges while the central conflict grows wider.",
-          coverage: { anime: "161-162", manga: "249-251" },
-          length: "TBD",
+            "While Zoro, Nami, and Robin explore Upper Yard, Chopper remains behind to guard the Going Merry and is assaulted by Priest Shura atop his fire-breathing bird. Overwhelmed by Shura's burning Heat Javelin and invisible cloud string traps, Chopper blows the whistle to summon Gan Fall.",
+          coverage: {
+            anime: "161-162",
+            manga: "249-251",
+          },
+          length: "23m",
         },
         {
           id: 6,
           title: "Skypiea 06",
+          altTitle: "Sky Battle: Sanji's Concassé",
           description:
-            "Key matchups begin as the Straw Hats and local warriors are drawn into a survival-heavy battle zone.",
-          coverage: { anime: "163-164", manga: "252-254" },
-          length: "TBD",
+            "Gan Fall engages Shura in aerial dogfights, only to be trapped in Shura's invisible Ordeal of String and dumped into the cloud river alongside a drowning Chopper. Inside the Ordeal of Balls, Luffy restrains Satori in an iron grip, allowing Sanji to shatter the priest with a crushing Concassé kick.",
+          coverage: {
+            anime: "163-164",
+            manga: "252-255",
+          },
+          length: "34m",
         },
         {
           id: 7,
           title: "Skypiea 07",
+          altTitle: "The Shandia Invade: Wiper's Resolve",
           description:
-            "Skypiea's power structure becomes clearer as Enel's influence is felt across the island.",
-          coverage: { anime: "165-166", manga: "255-257" },
-          length: "TBD",
+            "The Shandia guerrilla tribe launches a full-scale assault on Upper Yard, where tribal leader Wiper incinerates Priest Shura using the recoil-heavy Reject Dial. Regrouping at the sacrificial altar, the Straw Hats treat their wounded as Robin investigates ancient ruins buried beneath the overgrowth.",
+          coverage: {
+            anime: "165-166",
+            manga: "256-258",
+          },
+          length: "20m",
         },
         {
           id: 8,
           title: "Skypiea 08",
+          altTitle: "Campfire with Wolves: The Survival Game Begins",
           description:
-            "Strategic fights intensify, and the Straw Hats adapt to opponents with unfamiliar abilities.",
-          coverage: { anime: "167-168", manga: "258-260" },
-          length: "TBD",
+            "Robin deduces that Upper Yard is actually the missing half of Jaya blasted into the heavens by the Knock Up Stream, proving Noland's City of Gold is real. As the crew rejoices around a campfire with forest wolves, God Enel proclaims a survival game where only five people will remain standing.",
+          coverage: {
+            anime: "167-169",
+            manga: "259-261",
+          },
+          length: "37m",
         },
         {
           id: 9,
           title: "Skypiea 09",
+          altTitle: "Master of the Sky: Swallowed by the Python",
           description:
-            "Past and present start to connect through hints about Shandora and the island's buried history.",
-          coverage: { anime: "169-170", manga: "261-263" },
-          length: "TBD",
+            "Chaos engulfs Upper Yard as Shandia guerrillas, Straw Hats, and holy priests collide across the jungle in Enel's deadly contest. Just as Luffy begins an intense duel against Wiper, the giant python Nola bursts through the canopy and swallows the rubber captain whole.",
+          coverage: {
+            anime: "170-172",
+            manga: "262-264",
+          },
+          length: "35m",
         },
         {
           id: 10,
           title: "Skypiea 10",
+          altTitle: "The Ordeal of Swamp: Chopper vs. Priest Gedatsu",
           description:
-            "The conflict spreads across Upper Yard as alliances shift under pressure and timing becomes critical.",
-          coverage: { anime: "171-172", manga: "264-266" },
-          length: "TBD",
+            "Trapped inside the giant serpent's belly, Luffy explores ancient stone buildings and discovers stacks of weathered gold. Out in the jungle, Chopper outsmarts the eccentric Priest Gedatsu, pulling off his cloud shoes and sending the priest plunging into his own bottomless swamp.",
+          coverage: {
+            anime: "173-174",
+            manga: "265-267",
+          },
+          length: "19m",
         },
         {
           id: 11,
           title: "Skypiea 11",
+          altTitle: "Thunder on the Merry: Sanji and Usopp Fall",
           description:
-            "A major backstory thread begins, reframing why Skypiea's factions are fighting so fiercely.",
-          coverage: { anime: "173-174", manga: "267-269" },
-          length: "TBD",
+            "God Enel teleports aboard the Going Merry, effortlessly striking down Sanji and Usopp with high-voltage lightning bolts before vanishing into thin air. Meanwhile, Zoro enters the deadly barbed Ordeal of Iron to battle Priest Ohm and his trained boxing dog Holy.",
+          coverage: {
+            anime: "175-176",
+            manga: "268-270",
+          },
+          length: "32m",
         },
         {
           id: 12,
           title: "Skypiea 12",
+          altTitle: "Ruins of Shandora: Robin's Historic Fury",
           description:
-            "Historical revelations deepen the stakes and give new meaning to the current war in the sky.",
-          coverage: { anime: "175-176", manga: "270-272" },
-          length: "TBD",
+            "Robin discovers the submerged ancient city of Shandora, marveling at the eight-hundred-year-old masonry and history. When Enforcer Commander Yama ruthlessly smashes the ancient architecture, Robin executes a cold, merciless Cien Fleurs throw to drop him off the mountain.",
+          coverage: {
+            anime: "177",
+            manga: "271-272",
+          },
+          length: "28m",
         },
         {
           id: 13,
           title: "Skypiea 13",
+          altTitle: "The 108 Caliber Phoenix: Zoro Slices Iron",
           description:
-            "Returning to the present conflict, battles resume with heightened urgency and fewer safe routes.",
-          coverage: { anime: "177-178", manga: "273-275" },
-          length: "TBD",
+            "Zoro, Wiper, and Gan Fall converge inside Ohm's barbed cage as the giant snake thrashes in agony. Reading the whip blade's trajectory, Zoro unleashes his devastating One-Hundred and Eight Caliber Phoenix flying slash to cut Ohm and his iron blade in half.",
+          coverage: {
+            anime: "178-179",
+            manga: "273-275",
+          },
+          length: "33m",
         },
         {
           id: 14,
           title: "Skypiea 14",
+          altTitle: "God Enel's Lightning: The Five Survivors",
           description:
-            "The Straw Hats push through attrition as Enel's plans begin moving toward their final phase.",
-          coverage: { anime: "179-180", manga: "276-278" },
-          length: "TBD",
+            "Enel confronts the remaining survivors at the Shandora ruins, easily striking down Gan Fall and Robin with millions of volts. Wiper pins Enel with seastone and fires his ultimate Reject Dial to stop the God's heart, but Enel uses his lightning to jump-start his own pulse and electrocutes everyone.",
+          coverage: {
+            anime: "180-181",
+            manga: "276-278",
+          },
+          length: "28m",
         },
         {
           id: 15,
           title: "Skypiea 15",
+          altTitle: "The Ark Maxim: Flight to the Endless Vearth",
           description:
-            "Upper Yard becomes increasingly unstable as remaining fighters commit to decisive engagements.",
-          coverage: { anime: "181-182", manga: "279-281" },
-          length: "TBD",
+            "Leaving the fallen warriors behind, Enel takes a terrified Nami aboard his airborne golden ship, the Ark Maxim, preparing to vaporize Skypiea and journey to the Moon. Led out of the serpent's belly by Aisa, Luffy discovers his injured crewmates and charges up the Giant Jack beanstalk.",
+          coverage: {
+            anime: "182-183",
+            manga: "279-281",
+          },
+          length: "36m",
         },
         {
           id: 16,
           title: "Skypiea 16",
+          altTitle: "Natural Enemy: Rubber vs. Lightning",
           description:
-            "The path to the final confrontation narrows, with Luffy and the crew taking bigger risks.",
-          coverage: { anime: "183-184", manga: "282-284" },
-          length: "TBD",
+            "Luffy boards the Ark Maxim and challenges Enel directly, taking a direct hit of two hundred million volts without a scratch. Paralyzed with disbelief, Enel learns that Luffy's rubber body is the ultimate natural counter to electricity, shattering the false God's sense of invulnerability.",
+          coverage: {
+            anime: "184-185",
+            manga: "282-283",
+          },
+          length: "27m",
         },
         {
           id: 17,
           title: "Skypiea 17",
+          altTitle: "The Golden Trap: Sanji Sabotages the Maxim",
           description:
-            "Final-battle momentum builds as surviving factions make last attempts to secure victory.",
-          coverage: { anime: "185-186", manga: "285-287" },
-          length: "TBD",
+            "Unable to shock Luffy, Enel melts gold around Luffy's right arm, forging a colossal metal sphere and kicking him over the side of the ark. In the hold, Sanji and Usopp execute a desperate rescue mission, with Sanji sabotaging the ark's internal gears before taking a fatal lightning blast for Nami.",
+          coverage: {
+            anime: "186-187",
+            manga: "284-286",
+          },
+          length: "31m",
         },
         {
           id: 18,
           title: "Skypiea 18",
+          altTitle: "Thundercloud Raigo: The Doomsday Storm",
           description:
-            "Critical clashes reach peak intensity, with Skypiea's fate hinging on a handful of outcomes.",
-          coverage: { anime: "187-188", manga: "288-290" },
-          length: "TBD",
+            "Powered by the Ark Maxim's cloud generator, Enel summons the apocalyptic lightning storm Raigo, unleashing black thunderclouds capable of vaporizing all of Skypiea. Struggling under the weight of the golden sphere, Luffy drags the metal ball back toward the beanstalk as Angel Island evacuates.",
+          coverage: {
+            anime: "188-189",
+            manga: "287-288",
+          },
+          length: "33m",
         },
         {
           id: 19,
           title: "Skypiea 19",
+          altTitle: "Four Hundred Years Ago: Noland and Calgara",
           description:
-            "Enel's plan advances and the Straw Hats scramble to stop a large-scale catastrophe.",
-          coverage: { anime: "189-190", manga: "291-293" },
-          length: "TBD",
+            "A flashback to four hundred years in the past reveals explorer Mont Blanc Noland landing on the ancient island of Jaya during a tribal sacrifice. Risking his life, Noland slays the giant serpent god Kashigami and cures the Shandia tribe of the deadly Tree Fever plague.",
+          coverage: {
+            anime: "189-190",
+            manga: "289-290",
+          },
+          length: "26m",
         },
         {
           id: 20,
           title: "Skypiea 20",
+          altTitle: "The Chime of Friendship: The Broken Vow",
           description:
-            "The central confrontation drives toward resolution as symbolic goals and personal vows collide.",
-          coverage: { anime: "191-192", manga: "294-296" },
-          length: "TBD",
+            "Calgara discovers Noland cut down their sacred ancestral grove only to stop the plague from returning, weeping in remorse as he races to the harbor to bid his friend farewell. Promising to ring the Great Golden Bell continuously so Noland can find his way back, the two swear eternal brotherhood.",
+          coverage: {
+            anime: "191",
+            manga: "291-292",
+          },
+          length: "23m",
         },
         {
           id: 21,
           title: "Skypiea 21",
+          altTitle: "Cutting the Beanstalk: Luffy Ascends the Jack",
           description:
-            "Skypiea's long-running conflict finally breaks, with immediate consequences across the island.",
-          coverage: { anime: "193", manga: "297-298" },
-          length: "TBD",
+            "The Knock Up Stream tears half of Jaya into the sky centuries ago, leaving Noland to be executed as a liar when he returns with his king. Back in the present, Zoro and Wiper topple the Giant Jack with concentrated slashes, giving Luffy and Nami a direct ramp to launch into Enel's Raigo storm.",
+          coverage: {
+            anime: "192-193",
+            manga: "293-295",
+          },
+          length: "29m",
         },
         {
           id: 22,
           title: "Skypiea 22",
+          altTitle: "The Golden Bell Tolls: Gum-Gum Golden Rifle!",
           description:
-            "Aftermath scenes begin, showing how the island and its people absorb the end of the conflict.",
-          coverage: { anime: "194", manga: "299" },
-          length: "TBD",
+            "Luffy dispels the colossal Raigo sphere and charges Enel's giant Amaru form, bypassing his lightning with the golden ball to unleash the Gum-Gum Golden Rifle. The strike crushes Enel against the Great Golden Bell of Shandora, sending a glorious chime echoing across the sky down to Mont Blanc Cricket on Jaya.",
+          coverage: {
+            anime: "194",
+            manga: "296-298",
+          },
+          length: "31m",
         },
         {
           id: 23,
           title: "Skypiea 23",
+          altTitle: "The Warrior's Shadow: A Feast of Peace",
           description:
-            "Loose ends are addressed as the Straw Hats reconnect and prepare to leave the sky islands.",
-          coverage: { anime: "194", manga: "300" },
-          length: "TBD",
+            "Down on the blue sea, Cricket weeps as he hears the bell and witnesses Luffy's colossal shadow cast against the clouds, vindicating Noland's legacy. Across Skypiea, centuries of warfare cease as angels and Shandians dance together around roaring bonfires in an island-wide celebration.",
+          coverage: {
+            anime: "195",
+            manga: "299-300",
+          },
+          length: "18m",
         },
         {
           id: 24,
           title: "Skypiea 24",
+          altTitle: "Roger's Inscription: The Message of the Poneglyph",
           description:
-            "Skypiea's emotional closure focuses on promises kept and history finally acknowledged.",
-          coverage: { anime: "195", manga: "301" },
-          length: "TBD",
+            "Robin studies the ancient Poneglyph engraved at the base of the golden bell and discovers a message left behind by Pirate King Gol D. Roger. Realizing her true calling is to gather all the historical stones into the Rio Poneglyph, Robin renews her resolve to sail with the Straw Hats.",
+          coverage: {
+            anime: "196",
+            manga: "301",
+          },
+          length: "19m",
         },
         {
           id: 25,
           title: "Skypiea 25",
+          altTitle: "Farewell to the Sky: Octo-Balloon Descent",
           description:
-            "The arc closes with the Straw Hats departing, carrying new perspective into the next sea chapter.",
-          coverage: { anime: "195", manga: "302" },
-          length: "TBD",
+            "Comically fleeing Skypiea with sacks of pure gold, the Straw Hats arrive at the Cloud End with help from Conis, Pagaya, and the citizens. Deploying an octopus balloon from the White Sea, the Going Merry drifts down through the clouds back toward the Grand Line below.",
+          coverage: {
+            anime: "197",
+            manga: "302-303",
+          },
+          length: "20m",
         },
       ],
     },
