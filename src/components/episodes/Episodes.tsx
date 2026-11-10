@@ -8,7 +8,7 @@ import {
   BiChevronDown,
 } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router";
-import { motion, type Variants } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { jellyfinClient } from "@/api/jellyfin";
 import { useDataContext } from "@/context";
 import type { Arc, Episode } from "@/typings";
@@ -191,13 +191,19 @@ function EpisodeThumbnail({
         />
       )}
 
-      <motion.div
-        animate={{ scale: isHovering ? 1.15 : 1, opacity: isHovering ? 1 : 0.75 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="rounded-full p-2.5 bg-black/60 text-white shadow-lg pointer-events-none z-10"
-      >
-        <BiPlay size={24} />
-      </motion.div>
+      <AnimatePresence>
+        {isHovering && (
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1.1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            className="rounded-full p-2.5 bg-black/60 text-white shadow-lg pointer-events-none z-10"
+          >
+            <BiPlay size={24} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Runtime Badge */}
       {durationText && (

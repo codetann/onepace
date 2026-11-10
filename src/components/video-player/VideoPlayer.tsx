@@ -1,19 +1,27 @@
 /**
  * VideoPlayer.tsx — Custom Video Component with HeroUI v3
  *
- * Setup:
- *   npm i @heroui/styles @heroui/react framer-motion
- *
- * globals.css:
- *   @import "tailwindcss";
- *   @import "@heroui/styles";
- *
- * HeroUI v3 needs NO provider wrapper — just import and use.
+ * Features:
+ * - Live video frame + subtitle preview when hovering/scrubbing the progress bar
+ * - Double-tap / double-click left or right to skip -10s / +10s (with cumulative multi-tap ripple)
+ * - Horizontal scroll (trackpad two-finger swipe, Shift+Wheel, or wheel on timeline) to scrub smoothly
+ * - Press-and-hold (pointer or Spacebar) for temporary 2× playback speed
+ * - Quick -10s, +10s, +85s (Skip OP), and Next Episode controls
+ * - High-resolution video frame screenshot capture
+ * - Frame-by-frame stepping (, and .) while paused
+ * - Clickable timestamp to toggle remaining time & estimated finish time
+ * - Comprehensive keyboard shortcuts with interactive '?' cheat-sheet overlay
  */
 
-import React, { useRef, useState, useCallback, useEffect, useMemo } from "react";
+import React, {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  useMemo,
+} from "react";
 import type { PointerEvent as RPointerEvent } from "react";
-import { Button, Chip, Tooltip } from "@heroui/react";
+import { Button, Chip, Spinner, Tooltip } from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import type {
   JellyfinPlaybackInfoResponse,
@@ -28,6 +36,7 @@ import {
 import {
   BiCheck,
   BiCog,
+  BiExitFullscreen,
   BiFullscreen,
   BiPause,
   BiPlay,
@@ -39,31 +48,38 @@ import {
 } from "react-icons/bi";
 import {
   MdAirplay,
+  MdCameraAlt,
   MdCast,
   MdCastConnected,
+  MdFastForward,
+  MdForward10,
+  MdKeyboard,
+  MdReplay10,
+  MdSkipNext,
   MdSubtitles,
   MdSubtitlesOff,
 } from "react-icons/md";
 
-// ─── Inline SVG icons (no extra icon-package dep) ────────────────────────────
+// ─── Icons ───────────────────────────────────────────────────────────────────
 
-const PlayIcon = () => <BiPlay />;
-
-const PauseIcon = () => <BiPause />;
+const PlayIcon = () => <BiPlay className="size-6" />;
+const PauseIcon = () => <BiPause className="size-6" />;
 
 const VolumeIcon = ({ muted, vol }: { muted: boolean; vol: number }) => {
-  if (muted || vol === 0) return <BiVolumeMute />;
-  if (vol < 0.5) return <BiVolumeLow />;
-  return <BiVolumeFull />;
+  if (muted || vol === 0) return <BiVolumeMute className="size-5" />;
+  if (vol < 0.5) return <BiVolumeLow className="size-5" />;
+  return <BiVolumeFull className="size-5" />;
 };
 
-const FullscreenIcon = () => <BiFullscreen />;
+const FullscreenIcon = ({ active }: { active?: boolean }) =>
+  active ? (
+    <BiExitFullscreen className="size-5" />
+  ) : (
+    <BiFullscreen className="size-5" />
+  );
 
-const SettingsIcon = () => <BiCog />;
-
-/** Picture-in-picture / “pop out” mini player */
+const SettingsIcon = () => <BiCog className="size-5" />;
 const PopOutIcon = () => <BiWindows className="size-5" />;
-
 const AirplayIcon = () => <MdAirplay className="size-5" />;
 
 const CastIcon = ({ connected = false }: { connected?: boolean }) =>
@@ -91,10 +107,24 @@ const isAppleDevice = (): boolean => {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 const fmt = (s: number): string => {
-  if (isNaN(s)) return "0:00";
-  const m = Math.floor(s / 60);
-  const sec = Math.floor(s % 60);
+  if (!Number.isFinite(s) || isNaN(s) || s < 0) return "0:00";
+  const totalSec = Math.floor(s);
+  const h = Math.floor(totalSec / 3600);
+  const m = Math.floor((totalSec % 3600) / 60);
+  const sec = totalSec % 60;
+  if (h > 0) {
+    return `${h}:${m.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+  }
   return `${m}:${sec.toString().padStart(2, "0")}`;
+};
+
+const fmtDelta = (deltaSec: number): string => {
+  const sign = deltaSec >= 0 ? "+" : "-";
+  const abs = Math.abs(Math.round(deltaSec));
+  if (abs < 60) return `${sign}${abs}s`;
+  const m = Math.floor(abs / 60);
+  const s = abs % 60;
+  return `${sign}${m}:${s.toString().padStart(2, "0")}`;
 };
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -159,6 +189,23 @@ export interface VideoPlayerProps {
   subtitles?: SubtitleTrackInfo[];
 }
 
+interface SkipFeedbackState {
+  side: "left" | "right";
+  seconds: number;
+  key: number;
+}
+
+interface HudToastState {
+  text: string;
+  subtext?: string;
+  key: number;
+}
+
+interface WheelScrubState {
+  targetTime: number;
+  deltaSeconds: number;
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({
@@ -181,6 +228,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const jellyfinMediaSourceId = playbackInfo?.MediaSources?.[0]?.Id;
 
   const videoRef = useRef<WebKitVideoElement>(null);
+  const previewVideoRef = useRef<HTMLVideoElement>(null);
+  const previewCanvasRef = useRef<HTMLCanvasElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -204,6 +253,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const preMuteVolumeRef = useRef(0.8);
 
   const [playing, setPlaying] = useState(false);
+  const [isBuffering, setIsBuffering] = useState(false);
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(0.8);
   const [currentTime, setCurrentTime] = useState(0);
@@ -215,7 +265,53 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [showCenterFlash, setShowCenterFlash] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
   const [showSettings, setShowSettings] = useState(false);
+  const [showShortcutsModal, setShowShortcutsModal] = useState(false);
   const [pipActive, setPipActive] = useState(false);
+  const [showRemainingTime, setShowRemainingTime] = useState(false);
+  const [shutterFlash, setShutterFlash] = useState(false);
+
+  // Double-tap / skip ripple feedback state
+  const [skipFeedback, setSkipFeedback] = useState<SkipFeedbackState | null>(
+    null,
+  );
+  const skipResetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Transient HUD pill (volume, speed, frame step, etc.)
+  const [hudToast, setHudToast] = useState<HudToastState | null>(null);
+  const hudTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const triggerHudToast = useCallback((text: string, subtext?: string) => {
+    if (hudTimerRef.current) clearTimeout(hudTimerRef.current);
+    setHudToast({ text, subtext, key: Date.now() });
+    hudTimerRef.current = setTimeout(() => {
+      setHudToast(null);
+    }, 1100);
+  }, []);
+
+  // Press-and-hold 2× speed state
+  const [isHoldSpeeding, setIsHoldSpeeding] = useState(false);
+  const holdSpeedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const preHoldRateRef = useRef(1);
+  const wasHoldSpeedingRef = useRef(false);
+
+  // Horizontal wheel scrub state
+  const [wheelScrub, setWheelScrub] = useState<WheelScrubState | null>(null);
+  const wheelScrubTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const wheelScrubStartRef = useRef<number | null>(null);
+  const wheelScrubCurrentRef = useRef<number | null>(null);
+
+  // Timeline hover preview state
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
+  const [dragTime, setDragTime] = useState<number | null>(null);
+  const [hoverTime, setHoverTime] = useState<number | null>(null);
+  const [hoverPct, setHoverPct] = useState<number>(0);
+  const [previewDataUrl, setPreviewDataUrl] = useState<string | null>(null);
+  const [previewCueText, setPreviewCueText] = useState<string | null>(null);
+  const previewCacheRef = useRef<Map<number, string>>(new Map());
+  const isPreviewSeekingRef = useRef(false);
+  const desiredPreviewBucketRef = useRef<number | null>(null);
+  const activePreviewTimeRef = useRef<number | null>(null);
 
   const availableSubtitles = useMemo<SubtitleTrackInfo[]>(() => {
     if (subtitles && subtitles.length > 0) return subtitles;
@@ -299,11 +395,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         const tt = v.textTracks[i];
         const matchingSub = availableSubtitles[i];
         const shouldShow =
-          index !== null &&
-          matchingSub &&
-          matchingSub.index === index;
+          index !== null && matchingSub && matchingSub.index === index;
 
-        tt.mode = shouldShow ? "showing" : "disabled";
+        tt.mode = shouldShow ? "showing" : "hidden";
       }
 
       const activeSession = activeJellyfinSessionRef.current;
@@ -336,7 +430,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           activeSubtitleIndex !== null &&
           matchingSub &&
           matchingSub.index === activeSubtitleIndex;
-        tt.mode = shouldShow ? "showing" : "disabled";
+        // Keep first track at least "hidden" so cues are loaded for timeline hover preview
+        tt.mode = shouldShow ? "showing" : i === 0 ? "hidden" : "disabled";
       }
     };
 
@@ -363,7 +458,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         activeSubtitleIndexRef.current = showingIndex;
         try {
           localStorage.setItem("onepace_subtitles_enabled", "true");
-          const found = availableSubtitles.find((s) => s.index === showingIndex);
+          const found = availableSubtitles.find(
+            (s) => s.index === showingIndex,
+          );
           if (found?.language) {
             localStorage.setItem("onepace_subtitles_language", found.language);
           }
@@ -406,18 +503,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     if (availableSubtitles.length === 1) {
       if (activeSubtitleIndex !== null) {
         applySubtitleTrack(null);
+        triggerHudToast("Subtitles Off");
       } else {
         applySubtitleTrack(availableSubtitles[0].index);
+        triggerHudToast(`Subtitles: ${availableSubtitles[0].label}`);
       }
     } else {
       setShowSettings(false);
       setShowSubtitleMenu((prev) => !prev);
     }
-  }, [availableSubtitles, activeSubtitleIndex, applySubtitleTrack]);
-
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const [isDraggingTimeline, setIsDraggingTimeline] = useState(false);
-  const [dragTime, setDragTime] = useState<number | null>(null);
+  }, [
+    availableSubtitles,
+    activeSubtitleIndex,
+    applySubtitleTrack,
+    triggerHudToast,
+  ]);
 
   const [isAirPlayAvailable, setIsAirPlayAvailable] = useState(false);
   const [isAirPlayConnected, setIsAirPlayConnected] = useState(false);
@@ -455,20 +555,160 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   useEffect(() => {
     setIsNextCancelled(false);
     nextTriggeredRef.current = false;
+    previewCacheRef.current.clear();
+    setPreviewDataUrl(null);
+    isPreviewSeekingRef.current = false;
+    desiredPreviewBucketRef.current = null;
     if (autoPlay) {
       setHasStarted(true);
     }
   }, [src, jellyfinItemId, autoPlay]);
 
-  // ── Play / pause ──────────────────────────────────────────────────────────
+  // ── Preview Frame Extractor (Hover & Scrub Thumbnail) ──────────────────────
+
+  const extractCueAtTime = useCallback((targetTime: number): string | null => {
+    const v = videoRef.current;
+    if (!v || !v.textTracks) return null;
+    for (let i = 0; i < v.textTracks.length; i++) {
+      const track = v.textTracks[i];
+      if (!track.cues || track.cues.length === 0) continue;
+      for (let j = 0; j < track.cues.length; j++) {
+        const cue = track.cues[j] as VTTCue;
+        if (targetTime >= cue.startTime && targetTime <= cue.endTime) {
+          const clean = (cue.text || "")
+            .replace(/<[^>]+>/g, "")
+            .replace(/\{[^}]+\}/g, "")
+            .trim();
+          if (clean) return clean;
+        }
+      }
+    }
+    return null;
+  }, []);
+
+  const requestPreviewFrame = useCallback(
+    (targetTime: number) => {
+      if (!Number.isFinite(targetTime) || targetTime < 0) return;
+      activePreviewTimeRef.current = targetTime;
+      setPreviewCueText(extractCueAtTime(targetTime));
+
+      const bucket = Math.floor(targetTime / 2) * 2;
+      const cache = previewCacheRef.current;
+
+      if (cache.has(bucket)) {
+        setPreviewDataUrl(cache.get(bucket)!);
+        return;
+      }
+
+      // Show closest cached frame within 8s immediately while exact bucket seeks
+      for (const offset of [2, -2, 4, -4, 6, -6]) {
+        const near = cache.get(bucket + offset);
+        if (near) {
+          setPreviewDataUrl(near);
+          break;
+        }
+      }
+
+      desiredPreviewBucketRef.current = bucket;
+      const pv = previewVideoRef.current;
+      if (!pv || pv.readyState < 1) return;
+
+      if (!isPreviewSeekingRef.current) {
+        isPreviewSeekingRef.current = true;
+        try {
+          pv.currentTime = Math.min(
+            Math.max(0.1, bucket),
+            Math.max(0.1, (pv.duration || duration || 1) - 0.1),
+          );
+        } catch {
+          isPreviewSeekingRef.current = false;
+        }
+      }
+    },
+    [duration, extractCueAtTime],
+  );
+
+  useEffect(() => {
+    const pv = previewVideoRef.current;
+    if (!pv || !src) return;
+
+    if (!previewCanvasRef.current && typeof document !== "undefined") {
+      const c = document.createElement("canvas");
+      c.width = 240;
+      c.height = 135;
+      previewCanvasRef.current = c;
+    }
+
+    const handlePreviewSeeked = () => {
+      const canvas = previewCanvasRef.current;
+      const soughtBucket = Math.floor(pv.currentTime / 2) * 2;
+
+      if (canvas && pv.videoWidth > 0 && pv.videoHeight > 0) {
+        try {
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(pv, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL("image/jpeg", 0.72);
+            if (dataUrl && dataUrl.length > 100) {
+              if (previewCacheRef.current.size > 160) {
+                const oldestKey = previewCacheRef.current.keys().next().value;
+                if (oldestKey !== undefined) {
+                  previewCacheRef.current.delete(oldestKey);
+                }
+              }
+              previewCacheRef.current.set(soughtBucket, dataUrl);
+              const activeTime = activePreviewTimeRef.current;
+              if (
+                activeTime !== null &&
+                Math.abs(activeTime - soughtBucket) <= 4
+              ) {
+                setPreviewDataUrl(dataUrl);
+              }
+            }
+          }
+        } catch {
+          // Cross-origin taint or browser security restriction; live previewVideo element still renders
+        }
+      }
+
+      const nextDesired = desiredPreviewBucketRef.current;
+      if (nextDesired !== null && Math.abs(nextDesired - soughtBucket) >= 2) {
+        desiredPreviewBucketRef.current = null;
+        try {
+          pv.currentTime = Math.min(
+            Math.max(0.1, nextDesired),
+            Math.max(0.1, (pv.duration || 1) - 0.1),
+          );
+          return;
+        } catch {
+          /* ignore */
+        }
+      }
+
+      isPreviewSeekingRef.current = false;
+    };
+
+    const handlePreviewError = () => {
+      isPreviewSeekingRef.current = false;
+    };
+
+    pv.addEventListener("seeked", handlePreviewSeeked);
+    pv.addEventListener("error", handlePreviewError);
+    return () => {
+      pv.removeEventListener("seeked", handlePreviewSeeked);
+      pv.removeEventListener("error", handlePreviewError);
+    };
+  }, [src]);
+
+  // ── Play / pause & Seek ───────────────────────────────────────────────────
 
   const togglePlay = useCallback(() => {
     const v = videoRef.current;
     if (!v) return;
+    setShowCenterFlash(true);
+    setTimeout(() => setShowCenterFlash(false), 550);
     if (v.paused) {
-      v.play();
-      setShowCenterFlash(true);
-      setTimeout(() => setShowCenterFlash(false), 600);
+      void v.play();
     } else {
       v.pause();
     }
@@ -482,6 +722,72 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     setCurrentTime(next);
     jellyfinLastPositionTicksRef.current = jellyfinSecondsToTicks(next);
   }, []);
+
+  const triggerSkipWithFeedback = useCallback(
+    (deltaSeconds: number) => {
+      seekBy(deltaSeconds);
+      const side: "left" | "right" = deltaSeconds < 0 ? "left" : "right";
+      const absSec = Math.abs(deltaSeconds);
+
+      setSkipFeedback((prev) => {
+        const accumulated =
+          prev && prev.side === side ? prev.seconds + absSec : absSec;
+        return {
+          side,
+          seconds: accumulated,
+          key: Date.now(),
+        };
+      });
+
+      if (skipResetTimerRef.current) clearTimeout(skipResetTimerRef.current);
+      skipResetTimerRef.current = setTimeout(() => {
+        setSkipFeedback(null);
+        skipResetTimerRef.current = null;
+      }, 750);
+    },
+    [seekBy],
+  );
+
+  const stepFrame = useCallback(
+    (direction: -1 | 1) => {
+      const v = videoRef.current;
+      if (!v) return;
+      if (!v.paused) v.pause();
+      const frameDuration = 1 / 24;
+      seekBy(direction * frameDuration);
+      triggerHudToast(
+        direction > 0 ? "Next Frame (+1f)" : "Previous Frame (-1f)",
+        fmt(v.currentTime),
+      );
+    },
+    [seekBy, triggerHudToast],
+  );
+
+  const captureScreenshot = useCallback(() => {
+    const v = videoRef.current;
+    if (!v || v.videoWidth === 0 || v.videoHeight === 0) return;
+    try {
+      const canvas = document.createElement("canvas");
+      canvas.width = v.videoWidth;
+      canvas.height = v.videoHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.drawImage(v, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL("image/png");
+      const link = document.createElement("a");
+      const safeTitle = (title || "One-Pace").replace(/[^a-z0-9-_ ]/gi, "");
+      const timeStamp = fmt(v.currentTime).replace(/:/g, "-");
+      link.download = `${safeTitle}-${timeStamp}.png`;
+      link.href = dataUrl;
+      link.click();
+
+      setShutterFlash(true);
+      setTimeout(() => setShutterFlash(false), 250);
+      triggerHudToast("Screenshot Saved", `${v.videoWidth}×${v.videoHeight}`);
+    } catch {
+      triggerHudToast("Screenshot unavailable");
+    }
+  }, [title, triggerHudToast]);
 
   const tryApplyPendingResume = useCallback(() => {
     const v = videoRef.current;
@@ -584,25 +890,33 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const volumeBarRef = useRef<HTMLDivElement>(null);
   const [isDraggingVolume, setIsDraggingVolume] = useState(false);
 
-  const handleVolumeChange = useCallback((val: number) => {
-    const v = videoRef.current;
-    const clamped = Math.max(0, Math.min(1, Math.round(val * 100) / 100));
-    if (v) {
-      v.volume = clamped;
-      if (clamped > 0) {
-        preMuteVolumeRef.current = clamped;
-        v.muted = false;
-        setMuted(false);
-      } else {
-        v.muted = true;
+  const handleVolumeChange = useCallback(
+    (val: number, showFeedback = false) => {
+      const v = videoRef.current;
+      const clamped = Math.max(0, Math.min(1, Math.round(val * 100) / 100));
+      if (v) {
+        v.volume = clamped;
+        if (clamped > 0) {
+          preMuteVolumeRef.current = clamped;
+          v.muted = false;
+          setMuted(false);
+        } else {
+          v.muted = true;
+          setMuted(true);
+        }
+      }
+      setVolume(clamped);
+      if (clamped === 0) {
         setMuted(true);
       }
-    }
-    setVolume(clamped);
-    if (clamped === 0) {
-      setMuted(true);
-    }
-  }, []);
+      if (showFeedback) {
+        triggerHudToast(
+          clamped === 0 ? "Muted" : `Volume ${Math.round(clamped * 100)}%`,
+        );
+      }
+    },
+    [triggerHudToast],
+  );
 
   const updateVolumeFromPointer = useCallback(
     (clientX: number) => {
@@ -650,7 +964,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     e.stopPropagation();
     const current = muted ? 0 : volume;
     const delta = e.deltaY < 0 ? 0.05 : -0.05;
-    handleVolumeChange(current + delta);
+    handleVolumeChange(current + delta, true);
   };
 
   const toggleMute = useCallback(() => {
@@ -663,14 +977,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       v.volume = next;
       setMuted(false);
       setVolume(next);
+      triggerHudToast(`Volume ${Math.round(next * 100)}%`);
     } else {
       preMuteVolumeRef.current = v.volume > 0 ? v.volume : volume;
       v.muted = true;
       v.volume = 0;
       setMuted(true);
       setVolume(0);
+      triggerHudToast("Muted");
     }
-  }, [muted, volume]);
+  }, [muted, volume, triggerHudToast]);
 
   // ── Seek ──────────────────────────────────────────────────────────────────
 
@@ -699,7 +1015,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     );
     const isVideoFs = Boolean(v?.webkitDisplayingFullscreen);
 
-    // 1. Exit fullscreen if already in fullscreen
     if (isStandardFs || isVideoFs) {
       if (isVideoFs) {
         if (typeof v?.webkitExitFullscreen === "function") {
@@ -722,9 +1037,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       return;
     }
 
-    // 2. Entering fullscreen:
-    // On iPhone/iPod, HTML div fullscreen is not supported by WebKit.
-    // Use the native video element player which iOS opens in fullscreen.
     const isIPhone = isIPhoneDevice();
 
     if (!isIPhone && container) {
@@ -745,7 +1057,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       }
     }
 
-    // 3. iPhone or fallback to native video player fullscreen
     if (v) {
       try {
         v.controls = true;
@@ -941,18 +1252,122 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   // ── Playback rate ─────────────────────────────────────────────────────────
 
-  const applyRate = useCallback((rate: number) => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.playbackRate = rate;
-    setPlaybackRate(rate);
-    setShowSettings(false);
-  }, []);
+  const applyRate = useCallback(
+    (rate: number, showToast = true) => {
+      const v = videoRef.current;
+      if (!v) return;
+      v.playbackRate = rate;
+      setPlaybackRate(rate);
+      setShowSettings(false);
+      if (showToast) {
+        triggerHudToast(`Speed ${rate}×`);
+      }
+    },
+    [triggerHudToast],
+  );
 
-  // Keyboard shortcuts (only active once the user has engaged with the player,
-  // and ignored while typing in form fields):
-  //   1 / 2          → playback rate 1×/2×
-  //   ← / →          → seek back/forward 15 seconds
+  // ── Auto-hide controls ────────────────────────────────────────────────────
+
+  const resetHideTimer = useCallback(() => {
+    setShowControls(true);
+    if (!hasStarted) return;
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => {
+      if (videoRef.current && !videoRef.current.paused) {
+        setShowControls(false);
+        setShowSettings(false);
+        setShowSubtitleMenu(false);
+      }
+    }, 3000);
+  }, [hasStarted]);
+
+  // ── Horizontal Scroll / Trackpad Scrubbing ────────────────────────────────
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !hasStarted || useNativeControls) return;
+
+    const onWheel = (e: WheelEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.closest("[data-player-menu]") ||
+          target.closest("[data-volume-control]"))
+      ) {
+        return;
+      }
+
+      const isOverTimeline = Boolean(
+        timelineRef.current &&
+          target &&
+          timelineRef.current.contains(target),
+      );
+
+      const absX = Math.abs(e.deltaX);
+      const absY = Math.abs(e.deltaY);
+
+      const isHorizontalScroll = absX > absY && absX > 1.5;
+      const isShiftScroll = e.shiftKey && absY > 1.5;
+      const isTimelineWheel = isOverTimeline && (absX > 1 || absY > 1);
+
+      if (!isHorizontalScroll && !isShiftScroll && !isTimelineWheel) {
+        return;
+      }
+
+      const v = videoRef.current;
+      if (!v || !Number.isFinite(v.duration) || v.duration <= 0) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const rawDelta =
+        absX >= absY ? e.deltaX : e.shiftKey || isOverTimeline ? e.deltaY : 0;
+      if (Math.abs(rawDelta) < 0.5) return;
+
+      if (wheelScrubStartRef.current === null) {
+        wheelScrubStartRef.current = v.currentTime;
+        wheelScrubCurrentRef.current = v.currentTime;
+      }
+
+      // Smooth proportional scrub: ~0.15s per pixel of scroll delta, capped at ±12s per event
+      const stepSeconds = Math.max(-12, Math.min(12, rawDelta * 0.14));
+      const baseTime = wheelScrubCurrentRef.current ?? v.currentTime;
+      const nextTime = Math.min(
+        Math.max(0, baseTime + stepSeconds),
+        v.duration,
+      );
+
+      wheelScrubCurrentRef.current = nextTime;
+      v.currentTime = nextTime;
+      setCurrentTime(nextTime);
+      jellyfinLastPositionTicksRef.current = jellyfinSecondsToTicks(nextTime);
+
+      const totalDelta = nextTime - (wheelScrubStartRef.current ?? nextTime);
+      setWheelScrub({
+        targetTime: nextTime,
+        deltaSeconds: totalDelta,
+      });
+      requestPreviewFrame(nextTime);
+      resetHideTimer();
+
+      if (wheelScrubTimerRef.current) {
+        clearTimeout(wheelScrubTimerRef.current);
+      }
+      wheelScrubTimerRef.current = setTimeout(() => {
+        setWheelScrub(null);
+        wheelScrubStartRef.current = null;
+        wheelScrubCurrentRef.current = null;
+      }, 650);
+    };
+
+    container.addEventListener("wheel", onWheel, { passive: false });
+    return () => {
+      container.removeEventListener("wheel", onWheel);
+    };
+  }, [hasStarted, useNativeControls, requestPreviewFrame, resetHideTimer]);
+
+  // ── Keyboard Shortcuts ────────────────────────────────────────────────────
+
   useEffect(() => {
     if (!hasStarted) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -969,34 +1384,186 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           return;
         }
       }
-      if (e.key === "1") {
-        e.preventDefault();
-        applyRate(1);
-      } else if (e.key === "2") {
-        e.preventDefault();
-        applyRate(2);
-      } else if (e.key === "ArrowRight") {
-        e.preventDefault();
-        seekBy(15);
-      } else if (e.key === "ArrowLeft") {
-        e.preventDefault();
-        seekBy(-15);
+
+      switch (e.key) {
+        case " ":
+        case "k":
+        case "K": {
+          e.preventDefault();
+          if (e.repeat) {
+            if (!isHoldSpeeding && videoRef.current && !videoRef.current.paused) {
+              preHoldRateRef.current = playbackRate;
+              videoRef.current.playbackRate = 2;
+              setIsHoldSpeeding(true);
+            }
+            return;
+          }
+          togglePlay();
+          resetHideTimer();
+          break;
+        }
+        case "ArrowRight":
+        case "l":
+        case "L": {
+          e.preventDefault();
+          triggerSkipWithFeedback(10);
+          resetHideTimer();
+          break;
+        }
+        case "ArrowLeft":
+        case "j":
+        case "J": {
+          e.preventDefault();
+          triggerSkipWithFeedback(-10);
+          resetHideTimer();
+          break;
+        }
+        case "ArrowUp": {
+          e.preventDefault();
+          handleVolumeChange((muted ? 0 : volume) + 0.05, true);
+          resetHideTimer();
+          break;
+        }
+        case "ArrowDown": {
+          e.preventDefault();
+          handleVolumeChange((muted ? 0 : volume) - 0.05, true);
+          resetHideTimer();
+          break;
+        }
+        case "m":
+        case "M": {
+          e.preventDefault();
+          toggleMute();
+          break;
+        }
+        case "f":
+        case "F": {
+          e.preventDefault();
+          void toggleFullscreen();
+          break;
+        }
+        case "c":
+        case "C": {
+          if (hasSubtitles) {
+            e.preventDefault();
+            if (activeSubtitleIndex !== null) {
+              applySubtitleTrack(null);
+              triggerHudToast("Subtitles Off");
+            } else {
+              const targetTrack =
+                availableSubtitles.find((s) => s.isDefault) ||
+                availableSubtitles[0];
+              if (targetTrack) {
+                applySubtitleTrack(targetTrack.index);
+                triggerHudToast(`Subtitles: ${targetTrack.label}`);
+              }
+            }
+          }
+          break;
+        }
+        case "p":
+        case "P": {
+          e.preventDefault();
+          void togglePictureInPicture();
+          break;
+        }
+        case "s":
+        case "S": {
+          e.preventDefault();
+          captureScreenshot();
+          break;
+        }
+        case ",":
+        case "<": {
+          e.preventDefault();
+          stepFrame(-1);
+          break;
+        }
+        case ".":
+        case ">": {
+          e.preventDefault();
+          stepFrame(1);
+          break;
+        }
+        case "1": {
+          e.preventDefault();
+          applyRate(1);
+          break;
+        }
+        case "2": {
+          e.preventDefault();
+          applyRate(2);
+          break;
+        }
+        case "?":
+        case "/": {
+          if (e.key === "?" || e.shiftKey) {
+            e.preventDefault();
+            setShowShortcutsModal((prev) => !prev);
+          }
+          break;
+        }
+        case "Escape": {
+          if (showShortcutsModal) {
+            e.preventDefault();
+            setShowShortcutsModal(false);
+          }
+          break;
+        }
+        default: {
+          if (/^[0-9]$/.test(e.key) && duration > 0) {
+            e.preventDefault();
+            const pct = parseInt(e.key, 10) * 10;
+            const targetTime = (pct / 100) * duration;
+            handleSeek(targetTime);
+            triggerHudToast(`Jump to ${pct}%`, fmt(targetTime));
+            resetHideTimer();
+          }
+          break;
+        }
       }
     };
+
+    const onKeyUp = (e: KeyboardEvent) => {
+      if ((e.key === " " || e.key === "k" || e.key === "K") && isHoldSpeeding) {
+        if (videoRef.current) {
+          videoRef.current.playbackRate = preHoldRateRef.current;
+        }
+        setIsHoldSpeeding(false);
+      }
+    };
+
     document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [hasStarted, applyRate, seekBy]);
-
-  // ── Auto-hide controls ────────────────────────────────────────────────────
-
-  const resetHideTimer = useCallback(() => {
-    setShowControls(true);
-    if (!hasStarted) return;
-    if (hideTimer.current) clearTimeout(hideTimer.current);
-    hideTimer.current = setTimeout(() => {
-      if (videoRef.current && !videoRef.current.paused) setShowControls(false);
-    }, 3000);
-  }, [hasStarted]);
+    document.addEventListener("keyup", onKeyUp);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("keyup", onKeyUp);
+    };
+  }, [
+    hasStarted,
+    isHoldSpeeding,
+    playbackRate,
+    muted,
+    volume,
+    hasSubtitles,
+    activeSubtitleIndex,
+    availableSubtitles,
+    duration,
+    showShortcutsModal,
+    togglePlay,
+    resetHideTimer,
+    triggerSkipWithFeedback,
+    handleVolumeChange,
+    toggleMute,
+    toggleFullscreen,
+    applySubtitleTrack,
+    triggerHudToast,
+    togglePictureInPicture,
+    captureScreenshot,
+    stepFrame,
+    applyRate,
+    handleSeek,
+  ]);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -1121,12 +1688,22 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
     const onPlay = () => {
       setPlaying(true);
+      setIsBuffering(false);
       setHasStarted(true);
       sendStarted();
     };
 
+    const onPlaying = () => {
+      setIsBuffering(false);
+    };
+
+    const onWaiting = () => {
+      setIsBuffering(true);
+    };
+
     const onPause = () => {
       setPlaying(false);
+      setIsBuffering(false);
       setShowControls(true);
       const currentTicks = jellyfinSecondsToTicks(v.currentTime);
       jellyfinLastPositionTicksRef.current = currentTicks;
@@ -1160,7 +1737,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       jellyfinLastProgressAtRef.current = now;
       sendProgress();
 
-      // Auto-advance when reaching the end of the video (<0.4s left)
       if (
         onNextEpisode &&
         !isNextCancelled &&
@@ -1174,6 +1750,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     };
 
     const onSeeked = () => {
+      setIsBuffering(false);
       jellyfinLastPositionTicksRef.current = jellyfinSecondsToTicks(
         v.currentTime,
       );
@@ -1195,6 +1772,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       tryApplyPendingResume();
     };
     const onCanPlay = () => {
+      setIsBuffering(false);
       tryApplyPendingResume();
       if (autoPlay && v.paused) {
         v.play().catch(() => {
@@ -1228,6 +1806,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     };
 
     v.addEventListener("play", onPlay);
+    v.addEventListener("playing", onPlaying);
+    v.addEventListener("waiting", onWaiting);
     v.addEventListener("pause", onPause);
     v.addEventListener("timeupdate", onTimeUpdate);
     v.addEventListener("seeked", onSeeked);
@@ -1253,6 +1833,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
     return () => {
       v.removeEventListener("play", onPlay);
+      v.removeEventListener("playing", onPlaying);
+      v.removeEventListener("waiting", onWaiting);
       v.removeEventListener("pause", onPause);
       v.removeEventListener("timeupdate", onTimeUpdate);
       v.removeEventListener("seeked", onSeeked);
@@ -1273,19 +1855,21 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         tapTimerRef.current = null;
       }
     };
-    // Initial `volume` / `autoPlay` only; avoid re-binding listeners on every volume change.
     // eslint-disable-next-line react-hooks/exhaustive-deps -- stable Jellyfin handlers + resume apply
   }, [tryApplyPendingResume]);
 
-  // ── Seek & Timeline Dragging ──────────────────────────────────────────────
+  // ── Seek & Timeline Hover / Dragging ──────────────────────────────────────
 
-  const getTimeFromPointer = useCallback(
+  const getTimelineMetricsFromPointer = useCallback(
     (clientX: number) => {
-      if (!timelineRef.current || !duration) return 0;
+      if (!timelineRef.current || !duration) return { time: 0, pct: 0 };
       const rect = timelineRef.current.getBoundingClientRect();
-      if (rect.width <= 0) return 0;
+      if (rect.width <= 0) return { time: 0, pct: 0 };
       const ratio = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
-      return ratio * duration;
+      return {
+        time: ratio * duration,
+        pct: ratio * 100,
+      };
     },
     [duration],
   );
@@ -1299,8 +1883,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       /* ignore */
     }
     setIsDraggingTimeline(true);
-    const newTime = getTimeFromPointer(e.clientX);
+    const { time: newTime, pct } = getTimelineMetricsFromPointer(e.clientX);
     setDragTime(newTime);
+    setHoverTime(newTime);
+    setHoverPct(pct);
+    requestPreviewFrame(newTime);
     const v = videoRef.current;
     if (v) {
       v.currentTime = newTime;
@@ -1309,14 +1896,20 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   };
 
   const onTimelinePointerMove = (e: RPointerEvent<HTMLDivElement>) => {
-    if (!isDraggingTimeline || !duration) return;
-    e.stopPropagation();
-    const newTime = getTimeFromPointer(e.clientX);
-    setDragTime(newTime);
-    const v = videoRef.current;
-    if (v) {
-      v.currentTime = newTime;
-      setCurrentTime(newTime);
+    if (!duration) return;
+    const { time: newTime, pct } = getTimelineMetricsFromPointer(e.clientX);
+    setHoverTime(newTime);
+    setHoverPct(pct);
+    requestPreviewFrame(newTime);
+
+    if (isDraggingTimeline) {
+      e.stopPropagation();
+      setDragTime(newTime);
+      const v = videoRef.current;
+      if (v) {
+        v.currentTime = newTime;
+        setCurrentTime(newTime);
+      }
     }
   };
 
@@ -1330,16 +1923,35 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     } catch {
       /* ignore */
     }
-    const finalTime = dragTime ?? getTimeFromPointer(e.clientX);
+    const finalTime =
+      dragTime ?? getTimelineMetricsFromPointer(e.clientX).time;
     handleSeek(finalTime);
     setIsDraggingTimeline(false);
     setDragTime(null);
+  };
+
+  const onTimelinePointerLeave = () => {
+    if (!isDraggingTimeline) {
+      setHoverTime(null);
+      activePreviewTimeRef.current = null;
+    }
   };
 
   const displayTime =
     isDraggingTimeline && dragTime !== null ? dragTime : (currentTime ?? 0);
   const progressPct = duration ? (displayTime / duration) * 100 : 0;
   const bufferedPct = duration ? (buffered / duration) * 100 : 0;
+
+  // Estimate finish clock time when viewing remaining time
+  const finishClockTime = useMemo(() => {
+    if (!duration || displayTime >= duration) return null;
+    const remainingMs = ((duration - displayTime) / (playbackRate || 1)) * 1000;
+    const finishDate = new Date(Date.now() + remainingMs);
+    return finishDate.toLocaleTimeString([], {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  }, [duration, displayTime, playbackRate]);
 
   // ── Auto-advance countdown (10s remaining) ─────────────────────────────────
 
@@ -1371,38 +1983,120 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     ? "relative w-full max-h-full max-w-[calc(100vh*16/9)] aspect-video"
     : "relative w-full h-full";
 
+  // ── Surface Pointer Interactions (Double-tap ±10s & Hold for 2× Speed) ────
+
   const getTapRegion = (e: RPointerEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
-    if (x < rect.width / 3) return "left";
-    if (x > (rect.width * 2) / 3) return "right";
+    if (x < rect.width * 0.32) return "left";
+    if (x > rect.width * 0.68) return "right";
     return "center";
   };
 
+  const handleSurfacePointerDown = (e: RPointerEvent<HTMLDivElement>) => {
+    if (!hasStarted || e.button > 0) return;
+    wasHoldSpeedingRef.current = false;
+    if (holdSpeedTimerRef.current) clearTimeout(holdSpeedTimerRef.current);
+
+    holdSpeedTimerRef.current = setTimeout(() => {
+      const v = videoRef.current;
+      if (v && !v.paused) {
+        wasHoldSpeedingRef.current = true;
+        preHoldRateRef.current = playbackRate;
+        v.playbackRate = 2;
+        setIsHoldSpeeding(true);
+      }
+    }, 420);
+  };
+
+  const clearHoldSpeed = () => {
+    if (holdSpeedTimerRef.current) {
+      clearTimeout(holdSpeedTimerRef.current);
+      holdSpeedTimerRef.current = null;
+    }
+    if (isHoldSpeeding) {
+      const v = videoRef.current;
+      if (v) {
+        v.playbackRate = preHoldRateRef.current;
+      }
+      setIsHoldSpeeding(false);
+    }
+  };
+
   const handleInteractionTap = (e: RPointerEvent<HTMLDivElement>) => {
-    if (!hasStarted) return;
+    if (!hasStarted || e.button > 0) return;
+
+    if (holdSpeedTimerRef.current) {
+      clearTimeout(holdSpeedTimerRef.current);
+      holdSpeedTimerRef.current = null;
+    }
+
+    if (wasHoldSpeedingRef.current || isHoldSpeeding) {
+      clearHoldSpeed();
+      wasHoldSpeedingRef.current = false;
+      return;
+    }
+
     const region = getTapRegion(e);
 
+    // If skip ripple is already active on this side, accumulate another 10s immediately on single tap!
+    if (
+      skipFeedback &&
+      ((region === "left" && skipFeedback.side === "left") ||
+        (region === "right" && skipFeedback.side === "right"))
+    ) {
+      if (tapTimerRef.current) {
+        clearTimeout(tapTimerRef.current);
+        tapTimerRef.current = null;
+      }
+      lastTapRegionRef.current = null;
+      triggerSkipWithFeedback(region === "left" ? -10 : 10);
+      resetHideTimer();
+      return;
+    }
+
+    // Second tap within 260ms in the same region -> Double Tap!
     if (tapTimerRef.current && lastTapRegionRef.current === region) {
       clearTimeout(tapTimerRef.current);
       tapTimerRef.current = null;
       lastTapRegionRef.current = null;
-      if (region === "left") seekBy(-15);
-      if (region === "right") seekBy(15);
+      if (region === "left") {
+        triggerSkipWithFeedback(-10);
+      } else if (region === "right") {
+        triggerSkipWithFeedback(10);
+      } else {
+        void toggleFullscreen();
+      }
+      resetHideTimer();
       return;
     }
 
     if (tapTimerRef.current) clearTimeout(tapTimerRef.current);
     lastTapRegionRef.current = region;
+    const isMouse = e.pointerType === "mouse";
+
     tapTimerRef.current = setTimeout(() => {
-      setShowControls(true);
-      setShowSettings(false);
-      setShowSubtitleMenu(false);
-      resetHideTimer();
+      if (showSettings || showSubtitleMenu || showShortcutsModal) {
+        setShowSettings(false);
+        setShowSubtitleMenu(false);
+        setShowShortcutsModal(false);
+      } else if (isMouse) {
+        togglePlay();
+        resetHideTimer();
+      } else {
+        setShowControls((prev) => {
+          const next = !prev;
+          if (next) resetHideTimer();
+          return next;
+        });
+      }
       tapTimerRef.current = null;
       lastTapRegionRef.current = null;
-    }, 240);
+    }, 250);
   };
+
+  // Clamped horizontal position for the timeline hover preview card
+  const clampedPreviewLeftPct = Math.max(12, Math.min(88, hoverPct));
 
   // ─────────────────────────────────────────────────────────────────────────
 
@@ -1413,17 +2107,25 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       style={{
         ["--subtitle-font-size" as string]: SUBTITLE_SIZE_VALUES[subtitleSize],
       }}
-      className={`relative select-none bg-blackmd overflow-hidden shadow-2xl ${containerClasses}`}
+      className={`relative select-none bg-black overflow-hidden shadow-2xl ${containerClasses}`}
       onMouseMove={resetHideTimer}
-      onMouseLeave={() => playing && setShowControls(false)}
+      onMouseLeave={() => {
+        clearHoldSpeed();
+        if (playing) {
+          setShowControls(false);
+          setShowSettings(false);
+          setShowSubtitleMenu(false);
+        }
+      }}
     >
       <div className={frameClasses}>
-        {/* ── Video element ── */}
+        {/* ── Main Video Element ── */}
         <video
           ref={videoRef}
           data-subtitle-size={subtitleSize}
           style={{
-            ["--subtitle-font-size" as string]: SUBTITLE_SIZE_VALUES[subtitleSize],
+            ["--subtitle-font-size" as string]:
+              SUBTITLE_SIZE_VALUES[subtitleSize],
           }}
           src={src}
           poster={poster}
@@ -1447,6 +2149,33 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           ))}
         </video>
 
+        {/* ── Hidden Offscreen Video for Hover & Scrub Frame Extraction ── */}
+        {src && !useNativeControls && (
+          <video
+            ref={previewVideoRef}
+            src={src}
+            muted
+            playsInline
+            crossOrigin="anonymous"
+            preload="metadata"
+            className="hidden pointer-events-none"
+            aria-hidden
+          />
+        )}
+
+        {/* ── Screenshot Shutter Flash ── */}
+        <AnimatePresence>
+          {shutterFlash && (
+            <motion.div
+              initial={{ opacity: 0.85 }}
+              animate={{ opacity: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="absolute inset-0 z-50 bg-white pointer-events-none"
+            />
+          )}
+        </AnimatePresence>
+
         {useNativeControls && (
           <div className="absolute top-3 right-3 z-30">
             <Button
@@ -1460,14 +2189,18 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </div>
         )}
 
+        {/* ── Interactive Surface Overlay (Tap, Double-Tap ±10s, Hold 2×) ── */}
         {hasStarted && !useNativeControls ? (
           <div
             className="absolute inset-0 z-10 pointer-events-auto"
+            onPointerDown={handleSurfacePointerDown}
             onPointerUp={handleInteractionTap}
+            onPointerCancel={clearHoldSpeed}
             aria-hidden
           />
         ) : null}
 
+        {/* ── Initial Play Button before playback starts ── */}
         {!hasStarted && !useNativeControls && (
           <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/55">
             <Button
@@ -1486,6 +2219,134 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           </div>
         )}
 
+        {/* ── Buffering Spinner ── */}
+        <AnimatePresence>
+          {isBuffering && hasStarted && !useNativeControls && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
+            >
+              <div className="rounded-full bg-black/50 p-4 backdrop-blur-sm">
+                <Spinner size="lg" color="accent" />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Top-Center Transient HUD Pill (2× Hold Speed / Volume / Toast) ── */}
+        <AnimatePresence>
+          {isHoldSpeeding && (
+            <motion.div
+              key="hold-speed-badge"
+              initial={{ opacity: 0, y: -12, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.9 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-4 left-1/2 -translate-x-1/2 z-40 pointer-events-none flex items-center gap-1.5 rounded-full bg-black/75 border border-white/15 px-3.5 py-1.5 text-xs font-bold text-white shadow-xl backdrop-blur-md"
+            >
+              <span>2× Speed</span>
+              <MdFastForward className="size-4 text-accent animate-pulse" />
+            </motion.div>
+          )}
+          {!isHoldSpeeding && hudToast && (
+            <motion.div
+              key={hudToast.key}
+              initial={{ opacity: 0, y: -10, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -8, scale: 0.92 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-4 left-1/2 -translate-x-1/2 z-40 pointer-events-none flex items-center gap-2 rounded-full bg-black/75 border border-white/15 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xl backdrop-blur-md"
+            >
+              <span>{hudToast.text}</span>
+              {hudToast.subtext && (
+                <span className="text-white/60 font-mono text-[11px]">
+                  {hudToast.subtext}
+                </span>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Double-Tap Left / Right Skip 10s Ripple Overlay ── */}
+        <AnimatePresence>
+          {skipFeedback && (
+            <motion.div
+              key={`${skipFeedback.side}-${skipFeedback.key}`}
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className={`absolute inset-y-0 z-30 flex items-center justify-center pointer-events-none w-1/3 ${
+                skipFeedback.side === "left"
+                  ? "left-0 rounded-r-full bg-gradient-to-r from-white/20 via-white/10 to-transparent"
+                  : "right-0 rounded-l-full bg-gradient-to-l from-white/20 via-white/10 to-transparent"
+              }`}
+            >
+              <div className="flex flex-col items-center gap-1.5 rounded-2xl bg-black/65 px-5 py-3.5 text-white shadow-2xl backdrop-blur-md border border-white/15">
+                {skipFeedback.side === "left" ? (
+                  <MdReplay10 className="size-8 text-accent" />
+                ) : (
+                  <MdForward10 className="size-8 text-accent" />
+                )}
+                <span className="text-xs font-bold tracking-wide tabular-nums">
+                  {skipFeedback.side === "left"
+                    ? `-${skipFeedback.seconds} seconds`
+                    : `+${skipFeedback.seconds} seconds`}
+                </span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Horizontal Scroll Scrubbing HUD Overlay ── */}
+        <AnimatePresence>
+          {wheelScrub && (
+            <motion.div
+              key="wheel-scrub-hud"
+              initial={{ opacity: 0, scale: 0.92 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.92 }}
+              transition={{ duration: 0.15 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 pointer-events-none flex flex-col items-center gap-2 rounded-2xl border border-white/20 bg-zinc-950/90 p-3 text-white shadow-2xl backdrop-blur-md"
+            >
+              {previewDataUrl && (
+                <div className="w-44 sm:w-52 aspect-video rounded-lg overflow-hidden bg-zinc-900 border border-white/10">
+                  <img
+                    src={previewDataUrl}
+                    alt="Scrub preview"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="flex items-center gap-2 text-sm font-bold tabular-nums">
+                <span>{fmt(wheelScrub.targetTime)}</span>
+                <span
+                  className={`text-xs px-1.5 py-0.5 rounded font-semibold ${
+                    wheelScrub.deltaSeconds >= 0
+                      ? "bg-accent/20 text-accent"
+                      : "bg-white/15 text-white/90"
+                  }`}
+                >
+                  {fmtDelta(wheelScrub.deltaSeconds)}
+                </span>
+                <span className="text-white/45 text-xs font-normal">
+                  / {fmt(duration)}
+                </span>
+              </div>
+              <div className="w-44 sm:w-52 h-1 rounded-full bg-white/20 overflow-hidden">
+                <div
+                  className="h-full bg-accent rounded-full"
+                  style={{
+                    width: `${duration ? (wheelScrub.targetTime / duration) * 100 : 0}%`,
+                  }}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* ── Centre flash on play/pause ── */}
         <AnimatePresence>
           {showCenterFlash && hasStarted && !useNativeControls && (
@@ -1495,7 +2356,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
               animate={{ scale: 1.3, opacity: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
             >
               <div className="bg-white/20 backdrop-blur-sm rounded-full p-6 text-white">
                 {playing ? <PauseIcon /> : <PlayIcon />}
@@ -1504,57 +2365,128 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           )}
         </AnimatePresence>
 
+        {/* ── Center Play/Pause & Quick Skip Overlay (when controls visible) ── */}
         <AnimatePresence>
-          {hasStarted && showControls && !useNativeControls && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.15 }}
-              className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none"
-            >
-              <Button
-                variant="primary"
-                isIconOnly
-                size="lg"
-                onPress={togglePlay}
-                aria-label={playing ? "Pause video" : "Play video"}
-                className="h-16 w-16 min-w-0 rounded-full bg-black/45 text-white backdrop-blur-sm hover:bg-black/60 pointer-events-auto"
+          {hasStarted &&
+            showControls &&
+            !useNativeControls &&
+            !wheelScrub &&
+            !showShortcutsModal && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.15 }}
+                className="absolute inset-0 z-20 flex items-center justify-center gap-6 sm:gap-10 pointer-events-none"
               >
-                {playing ? <PauseIcon /> : <PlayIcon />}
-              </Button>
-            </motion.div>
-          )}
+                <Button
+                  variant="ghost"
+                  isIconOnly
+                  size="lg"
+                  onPress={() => {
+                    triggerSkipWithFeedback(-10);
+                    resetHideTimer();
+                  }}
+                  aria-label="Rewind 10 seconds"
+                  className="h-12 w-12 min-w-0 rounded-full bg-black/45 text-white backdrop-blur-sm hover:bg-black/65 hover:scale-105 transition-transform pointer-events-auto cursor-pointer"
+                >
+                  <MdReplay10 className="size-6" />
+                </Button>
+
+                <Button
+                  variant="primary"
+                  isIconOnly
+                  size="lg"
+                  onPress={togglePlay}
+                  aria-label={playing ? "Pause video" : "Play video"}
+                  className="h-16 w-16 min-w-0 rounded-full bg-black/50 text-white backdrop-blur-sm hover:bg-black/70 hover:scale-105 transition-transform pointer-events-auto cursor-pointer"
+                >
+                  {playing ? <PauseIcon /> : <PlayIcon />}
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  isIconOnly
+                  size="lg"
+                  onPress={() => {
+                    triggerSkipWithFeedback(10);
+                    resetHideTimer();
+                  }}
+                  aria-label="Forward 10 seconds"
+                  className="h-12 w-12 min-w-0 rounded-full bg-black/45 text-white backdrop-blur-sm hover:bg-black/65 hover:scale-105 transition-transform pointer-events-auto cursor-pointer"
+                >
+                  <MdForward10 className="size-6" />
+                </Button>
+              </motion.div>
+            )}
         </AnimatePresence>
 
         {/* ── Top metadata bar ── */}
         <AnimatePresence>
-          {hasStarted && showControls && !useNativeControls && (title || subtitle) && (
-            <motion.div
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.2 }}
-              className="absolute z-30 top-0 inset-x-0 bg-gradient-to-b from-black/70 to-transparent px-5 pt-4 pb-8 flex items-start gap-3 pointer-events-none"
-            >
-              <div className="flex-1 min-w-0">
-                {title && (
-                  <p className="text-white font-semibold text-sm leading-tight truncate">
-                    {title}
-                  </p>
+          {hasStarted &&
+            showControls &&
+            !useNativeControls &&
+            (title || subtitle) && (
+              <motion.div
+                initial={{ opacity: 0, y: -6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="absolute z-30 top-0 inset-x-0 bg-gradient-to-b from-black/75 via-black/35 to-transparent px-5 pt-4 pb-8 flex items-start gap-3 pointer-events-none"
+              >
+                <div className="flex-1 min-w-0">
+                  {title && (
+                    <p className="text-white font-semibold text-sm leading-tight truncate">
+                      {title}
+                    </p>
+                  )}
+                  {subtitle && (
+                    <p className="text-white/60 text-xs mt-0.5 truncate">
+                      {subtitle}
+                    </p>
+                  )}
+                </div>
+                {playbackRate !== 1 && (
+                  <Chip className="bg-accent/25 text-accent border border-accent/40 text-[11px] font-semibold shrink-0 pointer-events-auto">
+                    {playbackRate}×
+                  </Chip>
                 )}
-                {subtitle && (
-                  <p className="text-white/60 text-xs mt-0.5 truncate">
-                    {subtitle}
-                  </p>
-                )}
-              </div>
-              {/* HeroUI v3 Chip */}
-              <Chip className="bg-white/10 text-white/80 text-[11px] shrink-0 pointer-events-auto">
-                HD
-              </Chip>
-            </motion.div>
-          )}
+                <Chip className="bg-white/10 text-white/80 text-[11px] shrink-0 pointer-events-auto">
+                  HD
+                </Chip>
+              </motion.div>
+            )}
+        </AnimatePresence>
+
+        {/* ── Floating "Skip Opening (+85s)" Pill during first 3 minutes ── */}
+        <AnimatePresence>
+          {hasStarted &&
+            showControls &&
+            !useNativeControls &&
+            duration > 180 &&
+            currentTime >= 5 &&
+            currentTime <= 160 && (
+              <motion.div
+                initial={{ opacity: 0, x: 12 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 12 }}
+                transition={{ duration: 0.2 }}
+                className="absolute bottom-16 right-4 z-30"
+              >
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  onPress={() => {
+                    triggerSkipWithFeedback(85);
+                    resetHideTimer();
+                  }}
+                  className="bg-black/75 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md rounded-xl px-3 py-1.5 text-xs font-semibold shadow-lg flex items-center gap-1.5 cursor-pointer"
+                >
+                  <MdFastForward className="size-4 text-accent" />
+                  Skip OP (+85s)
+                </Button>
+              </motion.div>
+            )}
         </AnimatePresence>
 
         {/* ── Bottom controls overlay ── */}
@@ -1565,487 +2497,761 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 6 }}
               transition={{ duration: 0.2 }}
-              className="absolute z-30 bottom-0 inset-x-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-4 pt-10 pb-3"
+              className="absolute z-30 bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/45 to-transparent px-4 pt-10 pb-3"
             >
-            {/* ── Seekable timeline (smooth dragging & clickable) ── */}
-            <div
-              ref={timelineRef}
-              className="relative w-full py-2 -my-2 flex items-center cursor-pointer mb-2 group/bar touch-none select-none"
-              onPointerDown={onTimelinePointerDown}
-              onPointerMove={onTimelinePointerMove}
-              onPointerUp={onTimelinePointerUp}
-              onPointerCancel={onTimelinePointerUp}
-            >
-              {/* Track Background */}
-              <div className="relative w-full h-1.5 group-hover/bar:h-2 rounded-full bg-white/20 transition-all overflow-hidden">
-                <div
-                  className="absolute inset-y-0 left-0 rounded-full bg-white/30 transition-[width]"
-                  style={{ width: `${bufferedPct}%` }}
-                />
-                <div
-                  className={`absolute inset-y-0 left-0 rounded-full bg-white ${
-                    isDraggingTimeline ? "" : "transition-[width] duration-75"
-                  }`}
-                  style={{ width: `${progressPct}%` }}
-                />
-              </div>
-
-              {/* Scrubber Thumb */}
+              {/* ── Seekable timeline with Live Frame & Subtitle Hover Preview ── */}
               <div
-                className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 size-3.5 rounded-full bg-white shadow-lg pointer-events-none transition-transform ${
-                  isDraggingTimeline
-                    ? "opacity-100 scale-125 ring-2 ring-white/50"
-                    : "opacity-0 group-hover/bar:opacity-100 group-hover/bar:scale-100"
-                }`}
-                style={{ left: `${progressPct}%` }}
-              />
-            </div>
-
-            {/* ── Button / slider row ── */}
-            <div className="flex items-center gap-1">
-              {/* Play / Pause
-                  v3 changes: variant="ghost" (not "light"), onPress (not onClick) */}
-              <Tooltip delay={400}>
-                <Tooltip.Trigger>
-                  <Button
-                    variant="ghost"
-                    isIconOnly
-                    size="sm"
-                    onPress={togglePlay}
-                    className="text-white hover:bg-white/10 rounded-lg"
-                    aria-label={playing ? "Pause" : "Play"}
-                  >
-                    {playing ? <PauseIcon /> : <PlayIcon />}
-                  </Button>
-                </Tooltip.Trigger>
-                <Tooltip.Content placement="top">
-                  {playing ? "Pause" : "Play"}
-                </Tooltip.Content>
-              </Tooltip>
-
-              {/* Mute toggle */}
-              <Tooltip delay={400}>
-                <Tooltip.Trigger>
-                  <Button
-                    variant="ghost"
-                    isIconOnly
-                    size="sm"
-                    onPress={toggleMute}
-                    className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
-                    aria-label={muted || volume === 0 ? "Unmute" : "Mute"}
-                  >
-                    <VolumeIcon muted={muted} vol={volume} />
-                  </Button>
-                </Tooltip.Trigger>
-                <Tooltip.Content placement="top">
-                  {muted || volume === 0 ? "Unmute" : "Mute"}
-                </Tooltip.Content>
-              </Tooltip>
-
-              {/* Volume Slider: smooth clickable/draggable bar */}
-              <div
-                className="group/vol mx-1 flex items-center py-2 cursor-pointer select-none"
-                onWheel={onVolumeWheel}
-                title={`Volume: ${Math.round((muted ? 0 : volume) * 100)}%`}
+                ref={timelineRef}
+                className="relative w-full py-2.5 -my-2.5 flex items-center cursor-pointer mb-2 group/bar touch-none select-none"
+                onPointerDown={onTimelinePointerDown}
+                onPointerMove={onTimelinePointerMove}
+                onPointerUp={onTimelinePointerUp}
+                onPointerCancel={onTimelinePointerUp}
+                onPointerLeave={onTimelinePointerLeave}
               >
-                <div
-                  ref={volumeBarRef}
-                  onPointerDown={onVolumePointerDown}
-                  onPointerMove={onVolumePointerMove}
-                  onPointerUp={onVolumePointerUp}
-                  onPointerCancel={onVolumePointerUp}
-                  className="w-20 sm:w-24 h-6 flex items-center touch-none relative"
-                >
-                  {/* Track Background */}
-                  <div className="w-full h-1.5 rounded-full bg-white/30 group-hover/vol:h-2 transition-all relative overflow-hidden">
-                    {/* Active Fill */}
-                    <div
-                      className="h-full bg-white rounded-full transition-[width] duration-75"
-                      style={{ width: `${(muted ? 0 : volume) * 100}%` }}
-                    />
-                  </div>
-                  {/* Thumb */}
+                {/* Hover Preview Thumbnail Card */}
+                <AnimatePresence>
+                  {hoverTime !== null && duration > 0 && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 6, scale: 0.94 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 6, scale: 0.94 }}
+                      transition={{ duration: 0.12 }}
+                      style={{ left: `${clampedPreviewLeftPct}%` }}
+                      className="absolute bottom-7 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center"
+                    >
+                      <div className="w-44 sm:w-52 rounded-xl overflow-hidden border border-white/25 bg-zinc-950/95 shadow-2xl backdrop-blur-md flex flex-col">
+                        <div className="relative w-full aspect-video bg-zinc-900 overflow-hidden flex items-center justify-center">
+                          {previewDataUrl ? (
+                            <img
+                              src={previewDataUrl}
+                              alt={`Preview at ${fmt(hoverTime)}`}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : poster ? (
+                            <img
+                              src={poster}
+                              alt={title || "Preview"}
+                              className="w-full h-full object-cover opacity-60 blur-[1px]"
+                            />
+                          ) : (
+                            <div className="text-[11px] text-white/40 font-medium">
+                              Loading preview...
+                            </div>
+                          )}
+
+                          {/* Subtitle cue snippet at hovered timestamp */}
+                          {previewCueText && (
+                            <div className="absolute bottom-1.5 inset-x-1.5 bg-black/80 backdrop-blur-xs rounded px-1.5 py-0.5 text-[10px] leading-snug text-white text-center line-clamp-2 font-medium shadow">
+                              {previewCueText}
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="px-2.5 py-1.5 flex items-center justify-between text-[11px] font-semibold tabular-nums bg-zinc-950/90 border-t border-white/10">
+                          <span className="text-white">{fmt(hoverTime)}</span>
+                          <span
+                            className={`text-[10px] font-medium ${
+                              hoverTime - displayTime >= 0
+                                ? "text-accent"
+                                : "text-white/60"
+                            }`}
+                          >
+                            {fmtDelta(hoverTime - displayTime)}
+                          </span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Track Background */}
+                <div className="relative w-full h-1.5 group-hover/bar:h-2.5 rounded-full bg-white/20 transition-all overflow-hidden">
+                  {/* Buffered bar */}
                   <div
-                    className="absolute size-3 rounded-full bg-white shadow-md top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none group-hover/vol:scale-110 transition-transform"
-                    style={{ left: `${(muted ? 0 : volume) * 100}%` }}
+                    className="absolute inset-y-0 left-0 rounded-full bg-white/30 transition-[width]"
+                    style={{ width: `${bufferedPct}%` }}
+                  />
+                  {/* Hover ghost bar */}
+                  {hoverTime !== null && (
+                    <div
+                      className="absolute inset-y-0 left-0 bg-white/35 pointer-events-none"
+                      style={{ width: `${hoverPct}%` }}
+                    />
+                  )}
+                  {/* Active playback progress bar */}
+                  <div
+                    className={`absolute inset-y-0 left-0 rounded-full bg-accent ${
+                      isDraggingTimeline ? "" : "transition-[width] duration-75"
+                    }`}
+                    style={{ width: `${progressPct}%` }}
                   />
                 </div>
+
+                {/* Hover vertical indicator tick */}
+                {hoverTime !== null && (
+                  <div
+                    className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-0.5 h-3.5 bg-white/80 rounded-full pointer-events-none"
+                    style={{ left: `${hoverPct}%` }}
+                  />
+                )}
+
+                {/* Scrubber Thumb */}
+                <div
+                  className={`absolute top-1/2 -translate-y-1/2 -translate-x-1/2 size-3.5 rounded-full bg-accent shadow-lg pointer-events-none transition-transform ${
+                    isDraggingTimeline
+                      ? "opacity-100 scale-125 ring-2 ring-white/60"
+                      : "opacity-0 group-hover/bar:opacity-100 group-hover/bar:scale-110"
+                  }`}
+                  style={{ left: `${progressPct}%` }}
+                />
               </div>
 
-              {/* Timestamp */}
-              <span className="text-white/70 text-xs tabular-nums ml-1 shrink-0">
-                {fmt(displayTime)}{" "}
-                <span className="text-white/40">/ {fmt(duration)}</span>
-              </span>
-
-              <div className="flex-1" />
-
-              {/* AirPlay (Apple / iOS / Safari) */}
-              {isAirPlayAvailable ? (
+              {/* ── Button / slider row ── */}
+              <div className="flex items-center gap-1">
+                {/* Play / Pause */}
                 <Tooltip delay={400}>
                   <Tooltip.Trigger>
                     <Button
                       variant="ghost"
                       isIconOnly
                       size="sm"
-                      onPress={handleAirPlay}
-                      className={`rounded-lg transition-colors ${
-                        isAirPlayConnected
-                          ? "text-blue-400 hover:bg-blue-400/20"
-                          : "text-white hover:bg-white/10"
-                      }`}
-                      aria-label={
-                        isAirPlayConnected ? "Connected to AirPlay" : "AirPlay"
-                      }
+                      onPress={togglePlay}
+                      className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                      aria-label={playing ? "Pause" : "Play"}
                     >
-                      <AirplayIcon />
+                      {playing ? <PauseIcon /> : <PlayIcon />}
                     </Button>
                   </Tooltip.Trigger>
                   <Tooltip.Content placement="top">
-                    {isAirPlayConnected ? "AirPlay (Connected)" : "AirPlay"}
+                    {playing ? "Pause (K)" : "Play (K)"}
                   </Tooltip.Content>
                 </Tooltip>
-              ) : null}
 
-              {/* Cast (Chromecast / Google Cast / Remote Playback) */}
-              {isCastAvailable ? (
+                {/* Rewind 10s */}
                 <Tooltip delay={400}>
                   <Tooltip.Trigger>
                     <Button
                       variant="ghost"
                       isIconOnly
                       size="sm"
-                      onPress={() => void handleCast()}
-                      className={`rounded-lg transition-colors ${
-                        isCastConnected
-                          ? "text-blue-400 hover:bg-blue-400/20"
-                          : "text-white hover:bg-white/10"
-                      }`}
-                      aria-label={
-                        isCastConnected ? "Connected to Cast" : "Cast to screen"
-                      }
+                      onPress={() => triggerSkipWithFeedback(-10)}
+                      className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                      aria-label="Rewind 10 seconds"
                     >
-                      <CastIcon connected={isCastConnected} />
+                      <MdReplay10 className="size-5" />
                     </Button>
                   </Tooltip.Trigger>
                   <Tooltip.Content placement="top">
-                    {isCastConnected ? "Cast (Connected)" : "Cast"}
+                    Rewind 10s (←)
                   </Tooltip.Content>
                 </Tooltip>
-              ) : null}
 
-              {/* Subtitles (CC) toggle / selection */}
-              {hasSubtitles && (
-                <div className="relative">
+                {/* Forward 10s */}
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={() => triggerSkipWithFeedback(10)}
+                      className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                      aria-label="Forward 10 seconds"
+                    >
+                      <MdForward10 className="size-5" />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    Forward 10s (→)
+                  </Tooltip.Content>
+                </Tooltip>
+
+                {/* Next Episode button (when available) */}
+                {onNextEpisode && (
                   <Tooltip delay={400}>
                     <Tooltip.Trigger>
                       <Button
                         variant="ghost"
                         isIconOnly
                         size="sm"
-                        onPress={handleSubtitleButtonClick}
-                        className={`rounded-lg transition-colors cursor-pointer ${
-                          activeSubtitleIndex !== null
-                            ? "text-accent hover:bg-accent/20"
-                            : "text-white hover:bg-white/10"
-                        }`}
-                        aria-label={
-                          activeSubtitleIndex !== null
-                            ? "Disable subtitles"
-                            : "Enable subtitles"
-                        }
+                        onPress={handleTriggerNext}
+                        className="text-white hover:bg-white/10 rounded-lg cursor-pointer hidden sm:inline-flex"
+                        aria-label="Next episode"
                       >
-                        {activeSubtitleIndex !== null ? (
-                          <MdSubtitles className="size-5" />
-                        ) : (
-                          <MdSubtitlesOff className="size-5" />
-                        )}
+                        <MdSkipNext className="size-5" />
                       </Button>
                     </Tooltip.Trigger>
                     <Tooltip.Content placement="top">
-                      {activeSubtitleIndex !== null
-                        ? `Subtitles (${activeSubtitleLabel || "On"})`
-                        : "Subtitles (Off)"}
+                      {nextEpisodeTitle
+                        ? `Next: ${nextEpisodeTitle}`
+                        : "Next Episode"}
                     </Tooltip.Content>
                   </Tooltip>
+                )}
 
-                  <AnimatePresence>
-                    {showSubtitleMenu && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.92, y: 6 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.92, y: 6 }}
-                        transition={{ duration: 0.15 }}
-                        className="absolute bottom-10 right-0 z-50 min-w-[140px] max-w-[220px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
-                      >
-                        <div className="space-y-1 px-1">
-                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1.5">
-                            Subtitles
-                          </p>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              applySubtitleTrack(null);
-                              setShowSubtitleMenu(false);
-                            }}
-                            className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
-                              activeSubtitleIndex === null
-                                ? "bg-white/15 text-white font-medium"
-                                : "text-white/70 hover:bg-white/10 hover:text-white"
-                            }`}
-                          >
-                            <span>Off</span>
-                            {activeSubtitleIndex === null && (
-                              <BiCheck className="size-4 text-accent shrink-0" />
-                            )}
-                          </button>
-                          {availableSubtitles.map((track) => (
-                            <button
-                              key={track.id}
-                              type="button"
-                              onClick={() => {
-                                applySubtitleTrack(track.index);
-                                setShowSubtitleMenu(false);
-                              }}
-                              className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
-                                activeSubtitleIndex === track.index
-                                  ? "bg-white/15 text-white font-medium"
-                                  : "text-white/70 hover:bg-white/10 hover:text-white"
-                              }`}
-                            >
-                              <span className="truncate mr-2">
-                                {track.label}
-                              </span>
-                              {activeSubtitleIndex === track.index && (
-                                <BiCheck className="size-4 text-accent shrink-0" />
-                              )}
-                            </button>
-                          ))}
-
-                          {/* Subtitle Size Selector */}
-                          <div className="pt-2 mt-1.5 border-t border-white/10 space-y-1">
-                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1">
-                              Size
-                            </p>
-                            <div className="grid grid-cols-5 gap-1">
-                              {subtitleSizeOptions.map((opt) => (
-                                <button
-                                  key={opt.id}
-                                  type="button"
-                                  onClick={() => setSubtitleSize(opt.id)}
-                                  className={`px-1 py-1 text-[11px] font-semibold rounded transition-colors text-center cursor-pointer ${
-                                    subtitleSize === opt.id
-                                      ? "bg-accent text-accent-foreground shadow-xs"
-                                      : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
-                                  }`}
-                                  title={`${opt.label} (${opt.desc})`}
-                                >
-                                  {opt.shortLabel}
-                                </button>
-                              ))}
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              )}
-
-              {/* Playback speed & player mode settings */}
-              <div className="relative">
-                <Tooltip delay={400}>
-                  <Tooltip.Trigger>
-                    <Button
-                      variant="ghost"
-                      isIconOnly
-                      onPress={() => {
-                        setShowSettings((s) => !s);
-                        setShowSubtitleMenu(false);
-                      }}
-                      className="text-white hover:bg-white/10 rounded-lg"
-                      aria-label="Player settings"
-                    >
-                      <SettingsIcon />
-                    </Button>
-                  </Tooltip.Trigger>
-                  <Tooltip.Content placement="top">Settings</Tooltip.Content>
-                </Tooltip>
-
-                <AnimatePresence>
-                  {showSettings && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.92, y: 6 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.92, y: 6 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute bottom-10 right-0 z-50 min-w-[130px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
-                    >
-                      <div className="space-y-2 px-1 w-40">
-                        <div className="space-y-1">
-                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
-                            Speed
-                          </p>
-                          <select
-                            aria-label="Playback speed"
-                            value={String(playbackRate)}
-                            onChange={(e) => {
-                              const key = e.target.value;
-                              const rate = key ? parseFloat(key) : 1;
-                              applyRate(rate);
-                            }}
-                            className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
-                          >
-                            {rates.map((r) => (
-                              <option
-                                key={String(r)}
-                                value={String(r)}
-                                className="bg-zinc-900"
-                              >
-                                {r === 1 ? "Normal" : `${r}×`}
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-
-                        {/* Subtitles setting (if available) */}
-                        {hasSubtitles && (
-                          <div className="pt-2 border-t border-white/10 space-y-1">
-                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
-                              Subtitles
-                            </p>
-                            <select
-                              aria-label="Subtitles"
-                              value={
-                                activeSubtitleIndex === null
-                                  ? "off"
-                                  : String(activeSubtitleIndex)
-                              }
-                              onChange={(e) => {
-                                const val = e.target.value;
-                                if (val === "off") {
-                                  applySubtitleTrack(null);
-                                } else {
-                                  applySubtitleTrack(parseInt(val, 10));
-                                }
-                              }}
-                              className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
-                            >
-                              <option value="off" className="bg-zinc-900">
-                                Off
-                              </option>
-                              {availableSubtitles.map((track) => (
-                                <option
-                                  key={track.id}
-                                  value={String(track.index)}
-                                  className="bg-zinc-900"
-                                >
-                                  {track.label}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        )}
-
-                        {/* Subtitle Size */}
-                        <div className="pt-2 border-t border-white/10 space-y-1">
-                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
-                            Subtitle Size
-                          </p>
-                          <select
-                            aria-label="Subtitle Size"
-                            value={subtitleSize}
-                            onChange={(e) =>
-                              setSubtitleSize(e.target.value as SubtitleSize)
-                            }
-                            className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none cursor-pointer"
-                          >
-                            {subtitleSizeOptions.map((opt) => (
-                              <option
-                                key={opt.id}
-                                value={opt.id}
-                                className="bg-zinc-900"
-                              >
-                                {opt.label} ({opt.desc})
-                              </option>
-                            ))}
-                          </select>
-                        </div>
-
-                        {/* Native player toggle */}
-                        <div className="pt-2 border-t border-white/10 space-y-1">
-                          <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
-                            Player Mode
-                          </p>
-                          <button
-                            type="button"
-                            onClick={() => {
-                              setUseNativeControls((prev) => !prev);
-                              setShowSettings(false);
-                            }}
-                            className="w-full text-left text-xs px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors flex items-center justify-between text-white cursor-pointer"
-                          >
-                            <span>Default Player</span>
-                            <span
-                              className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
-                                useNativeControls
-                                  ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
-                                  : "bg-white/10 text-white/50"
-                              }`}
-                            >
-                              {useNativeControls ? "ON" : "OFF"}
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {canUsePictureInPicture ? (
+                {/* Mute toggle */}
                 <Tooltip delay={400}>
                   <Tooltip.Trigger>
                     <Button
                       variant="ghost"
                       isIconOnly
                       size="sm"
-                      onPress={() => void togglePictureInPicture()}
-                      className="text-white hover:bg-white/10 rounded-lg"
-                      aria-label={
-                        pipActive
-                          ? "Close picture-in-picture"
-                          : "Picture in picture"
-                      }
+                      onPress={toggleMute}
+                      className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                      aria-label={muted || volume === 0 ? "Unmute" : "Mute"}
                     >
-                      <PopOutIcon />
+                      <VolumeIcon muted={muted} vol={volume} />
                     </Button>
                   </Tooltip.Trigger>
                   <Tooltip.Content placement="top">
-                    {pipActive ? "Close mini player" : "Pop out (mini player)"}
+                    {muted || volume === 0 ? "Unmute (M)" : "Mute (M)"}
                   </Tooltip.Content>
                 </Tooltip>
-              ) : null}
 
-              {/* Fullscreen */}
-              <Tooltip delay={400}>
-                <Tooltip.Trigger>
-                  <Button
-                    variant="ghost"
-                    isIconOnly
-                    size="sm"
-                    onPress={toggleFullscreen}
-                    className="text-white hover:bg-white/10 rounded-lg"
-                    aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
+                {/* Volume Slider */}
+                <div
+                  data-volume-control
+                  className="group/vol mx-1 flex items-center py-2 cursor-pointer select-none"
+                  onWheel={onVolumeWheel}
+                  title={`Volume: ${Math.round((muted ? 0 : volume) * 100)}%`}
+                >
+                  <div
+                    ref={volumeBarRef}
+                    onPointerDown={onVolumePointerDown}
+                    onPointerMove={onVolumePointerMove}
+                    onPointerUp={onVolumePointerUp}
+                    onPointerCancel={onVolumePointerUp}
+                    className="w-16 sm:w-22 h-6 flex items-center touch-none relative"
                   >
-                    <FullscreenIcon />
-                  </Button>
-                </Tooltip.Trigger>
-                <Tooltip.Content placement="top">
-                  {fullscreen ? "Exit fullscreen" : "Fullscreen"}
-                </Tooltip.Content>
-              </Tooltip>
-            </div>
+                    <div className="w-full h-1.5 rounded-full bg-white/30 group-hover/vol:h-2 transition-all relative overflow-hidden">
+                      <div
+                        className="h-full bg-white rounded-full transition-[width] duration-75"
+                        style={{ width: `${(muted ? 0 : volume) * 100}%` }}
+                      />
+                    </div>
+                    <div
+                      className="absolute size-3 rounded-full bg-white shadow-md top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none group-hover/vol:scale-110 transition-transform"
+                      style={{ left: `${(muted ? 0 : volume) * 100}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Clickable Timestamp (toggles total duration vs remaining & finish time) */}
+                <button
+                  type="button"
+                  onClick={() => setShowRemainingTime((prev) => !prev)}
+                  className="text-white/80 hover:text-white text-xs tabular-nums ml-1 px-1.5 py-0.5 rounded hover:bg-white/10 transition-colors shrink-0 cursor-pointer"
+                  title="Click to toggle remaining time"
+                >
+                  {fmt(displayTime)}{" "}
+                  <span className="text-white/45">
+                    /{" "}
+                    {showRemainingTime
+                      ? `-${fmt(Math.max(0, duration - displayTime))}${
+                          finishClockTime ? ` • Ends ${finishClockTime}` : ""
+                        }`
+                      : fmt(duration)}
+                  </span>
+                </button>
+
+                <div className="flex-1" />
+
+                {/* Skip +85s quick button */}
+                {duration > 120 && (
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onPress={() => triggerSkipWithFeedback(85)}
+                        className="text-white/80 hover:text-white hover:bg-white/10 rounded-lg px-2 h-8 text-[11px] font-semibold hidden md:inline-flex cursor-pointer"
+                        aria-label="Skip forward 85 seconds"
+                      >
+                        +85s
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">
+                      Skip Opening (+85s)
+                    </Tooltip.Content>
+                  </Tooltip>
+                )}
+
+                {/* Screenshot button */}
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={captureScreenshot}
+                      className="text-white hover:bg-white/10 rounded-lg hidden sm:inline-flex cursor-pointer"
+                      aria-label="Take screenshot"
+                    >
+                      <MdCameraAlt className="size-4" />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    Screenshot (S)
+                  </Tooltip.Content>
+                </Tooltip>
+
+                {/* AirPlay */}
+                {isAirPlayAvailable ? (
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        isIconOnly
+                        size="sm"
+                        onPress={handleAirPlay}
+                        className={`rounded-lg transition-colors cursor-pointer ${
+                          isAirPlayConnected
+                            ? "text-blue-400 hover:bg-blue-400/20"
+                            : "text-white hover:bg-white/10"
+                        }`}
+                        aria-label={
+                          isAirPlayConnected
+                            ? "Connected to AirPlay"
+                            : "AirPlay"
+                        }
+                      >
+                        <AirplayIcon />
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">
+                      {isAirPlayConnected ? "AirPlay (Connected)" : "AirPlay"}
+                    </Tooltip.Content>
+                  </Tooltip>
+                ) : null}
+
+                {/* Cast */}
+                {isCastAvailable ? (
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        isIconOnly
+                        size="sm"
+                        onPress={() => void handleCast()}
+                        className={`rounded-lg transition-colors cursor-pointer ${
+                          isCastConnected
+                            ? "text-blue-400 hover:bg-blue-400/20"
+                            : "text-white hover:bg-white/10"
+                        }`}
+                        aria-label={
+                          isCastConnected
+                            ? "Connected to Cast"
+                            : "Cast to screen"
+                        }
+                      >
+                        <CastIcon connected={isCastConnected} />
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">
+                      {isCastConnected ? "Cast (Connected)" : "Cast"}
+                    </Tooltip.Content>
+                  </Tooltip>
+                ) : null}
+
+                {/* Subtitles (CC) toggle / selection */}
+                {hasSubtitles && (
+                  <div className="relative" data-player-menu>
+                    <Tooltip delay={400}>
+                      <Tooltip.Trigger>
+                        <Button
+                          variant="ghost"
+                          isIconOnly
+                          size="sm"
+                          onPress={handleSubtitleButtonClick}
+                          className={`rounded-lg transition-colors cursor-pointer ${
+                            activeSubtitleIndex !== null
+                              ? "text-accent hover:bg-accent/20"
+                              : "text-white hover:bg-white/10"
+                          }`}
+                          aria-label={
+                            activeSubtitleIndex !== null
+                              ? "Disable subtitles"
+                              : "Enable subtitles"
+                          }
+                        >
+                          {activeSubtitleIndex !== null ? (
+                            <MdSubtitles className="size-5" />
+                          ) : (
+                            <MdSubtitlesOff className="size-5" />
+                          )}
+                        </Button>
+                      </Tooltip.Trigger>
+                      <Tooltip.Content placement="top">
+                        {activeSubtitleIndex !== null
+                          ? `Subtitles: ${activeSubtitleLabel || "On"} (C)`
+                          : "Subtitles Off (C)"}
+                      </Tooltip.Content>
+                    </Tooltip>
+
+                    <AnimatePresence>
+                      {showSubtitleMenu && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.92, y: 6 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.92, y: 6 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute bottom-10 right-0 z-50 min-w-[150px] max-w-[220px] rounded-xl border border-white/10 bg-zinc-900/95 p-2 shadow-xl backdrop-blur-md"
+                        >
+                          <div className="space-y-1 px-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1.5">
+                              Subtitles
+                            </p>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                applySubtitleTrack(null);
+                                setShowSubtitleMenu(false);
+                              }}
+                              className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
+                                activeSubtitleIndex === null
+                                  ? "bg-white/15 text-white font-medium"
+                                  : "text-white/70 hover:bg-white/10 hover:text-white"
+                              }`}
+                            >
+                              <span>Off</span>
+                              {activeSubtitleIndex === null && (
+                                <BiCheck className="size-4 text-accent shrink-0" />
+                              )}
+                            </button>
+                            {availableSubtitles.map((track) => (
+                              <button
+                                key={track.id}
+                                type="button"
+                                onClick={() => {
+                                  applySubtitleTrack(track.index);
+                                  setShowSubtitleMenu(false);
+                                }}
+                                className={`w-full text-left text-xs px-2 py-1.5 rounded-md transition-colors flex items-center justify-between cursor-pointer ${
+                                  activeSubtitleIndex === track.index
+                                    ? "bg-white/15 text-white font-medium"
+                                    : "text-white/70 hover:bg-white/10 hover:text-white"
+                                }`}
+                              >
+                                <span className="truncate mr-2">
+                                  {track.label}
+                                </span>
+                                {activeSubtitleIndex === track.index && (
+                                  <BiCheck className="size-4 text-accent shrink-0" />
+                                )}
+                              </button>
+                            ))}
+
+                            <div className="pt-2 mt-1.5 border-t border-white/10 space-y-1">
+                              <p className="text-[10px] font-medium uppercase tracking-widest text-white/45 mb-1">
+                                Size
+                              </p>
+                              <div className="grid grid-cols-5 gap-1">
+                                {subtitleSizeOptions.map((opt) => (
+                                  <button
+                                    key={opt.id}
+                                    type="button"
+                                    onClick={() => setSubtitleSize(opt.id)}
+                                    className={`px-1 py-1 text-[11px] font-semibold rounded transition-colors text-center cursor-pointer ${
+                                      subtitleSize === opt.id
+                                        ? "bg-accent text-accent-foreground shadow-xs"
+                                        : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white"
+                                    }`}
+                                    title={`${opt.label} (${opt.desc})`}
+                                  >
+                                    {opt.shortLabel}
+                                  </button>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
+
+                {/* Keyboard Shortcuts Button */}
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={() => {
+                        setShowShortcutsModal((prev) => !prev);
+                        setShowSettings(false);
+                        setShowSubtitleMenu(false);
+                      }}
+                      className={`rounded-lg hidden sm:inline-flex cursor-pointer ${
+                        showShortcutsModal
+                          ? "text-accent bg-accent/15"
+                          : "text-white hover:bg-white/10"
+                      }`}
+                      aria-label="Keyboard shortcuts"
+                    >
+                      <MdKeyboard className="size-5" />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    Shortcuts (?)
+                  </Tooltip.Content>
+                </Tooltip>
+
+                {/* Playback speed & player mode settings */}
+                <div className="relative" data-player-menu>
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        isIconOnly
+                        size="sm"
+                        onPress={() => {
+                          setShowSettings((s) => !s);
+                          setShowSubtitleMenu(false);
+                          setShowShortcutsModal(false);
+                        }}
+                        className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                        aria-label="Player settings"
+                      >
+                        <SettingsIcon />
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">Settings</Tooltip.Content>
+                  </Tooltip>
+
+                  <AnimatePresence>
+                    {showSettings && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.92, y: 6 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.92, y: 6 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute bottom-10 right-0 z-50 min-w-[160px] rounded-xl border border-white/10 bg-zinc-900/95 p-2.5 shadow-xl backdrop-blur-md"
+                      >
+                        <div className="space-y-2.5 px-1 w-44">
+                          <div className="space-y-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                              Playback Speed
+                            </p>
+                            <div className="grid grid-cols-3 gap-1">
+                              {rates.map((r) => (
+                                <button
+                                  key={String(r)}
+                                  type="button"
+                                  onClick={() => applyRate(r)}
+                                  className={`px-1.5 py-1 text-[11px] font-semibold rounded transition-colors cursor-pointer ${
+                                    playbackRate === r
+                                      ? "bg-accent text-accent-foreground"
+                                      : "bg-white/10 text-white/75 hover:bg-white/20 hover:text-white"
+                                  }`}
+                                >
+                                  {r}×
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+
+                          {hasSubtitles && (
+                            <div className="pt-2 border-t border-white/10 space-y-1">
+                              <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                                Subtitles
+                              </p>
+                              <select
+                                aria-label="Subtitles"
+                                value={
+                                  activeSubtitleIndex === null
+                                    ? "off"
+                                    : String(activeSubtitleIndex)
+                                }
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  if (val === "off") {
+                                    applySubtitleTrack(null);
+                                  } else {
+                                    applySubtitleTrack(parseInt(val, 10));
+                                  }
+                                }}
+                                className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none"
+                              >
+                                <option value="off" className="bg-zinc-900">
+                                  Off
+                                </option>
+                                {availableSubtitles.map((track) => (
+                                  <option
+                                    key={track.id}
+                                    value={String(track.index)}
+                                    className="bg-zinc-900"
+                                  >
+                                    {track.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </div>
+                          )}
+
+                          <div className="pt-2 border-t border-white/10 space-y-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                              Subtitle Size
+                            </p>
+                            <select
+                              aria-label="Subtitle Size"
+                              value={subtitleSize}
+                              onChange={(e) =>
+                                setSubtitleSize(e.target.value as SubtitleSize)
+                              }
+                              className="h-8 w-full min-h-0 rounded-md border border-white/10 bg-white/5 px-2 text-xs text-white outline-none cursor-pointer"
+                            >
+                              {subtitleSizeOptions.map((opt) => (
+                                <option
+                                  key={opt.id}
+                                  value={opt.id}
+                                  className="bg-zinc-900"
+                                >
+                                  {opt.label} ({opt.desc})
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div className="pt-2 border-t border-white/10 space-y-1">
+                            <p className="text-[10px] font-medium uppercase tracking-widest text-white/45">
+                              Player Mode
+                            </p>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setUseNativeControls((prev) => !prev);
+                                setShowSettings(false);
+                              }}
+                              className="w-full text-left text-xs px-2 py-1.5 rounded-md hover:bg-white/10 transition-colors flex items-center justify-between text-white cursor-pointer"
+                            >
+                              <span>Default Player</span>
+                              <span
+                                className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${
+                                  useNativeControls
+                                    ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                                    : "bg-white/10 text-white/50"
+                                }`}
+                              >
+                                {useNativeControls ? "ON" : "OFF"}
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Picture-in-Picture */}
+                {canUsePictureInPicture ? (
+                  <Tooltip delay={400}>
+                    <Tooltip.Trigger>
+                      <Button
+                        variant="ghost"
+                        isIconOnly
+                        size="sm"
+                        onPress={() => void togglePictureInPicture()}
+                        className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                        aria-label={
+                          pipActive
+                            ? "Close picture-in-picture"
+                            : "Picture in picture"
+                        }
+                      >
+                        <PopOutIcon />
+                      </Button>
+                    </Tooltip.Trigger>
+                    <Tooltip.Content placement="top">
+                      {pipActive ? "Close mini player (P)" : "Mini player (P)"}
+                    </Tooltip.Content>
+                  </Tooltip>
+                ) : null}
+
+                {/* Fullscreen */}
+                <Tooltip delay={400}>
+                  <Tooltip.Trigger>
+                    <Button
+                      variant="ghost"
+                      isIconOnly
+                      size="sm"
+                      onPress={toggleFullscreen}
+                      className="text-white hover:bg-white/10 rounded-lg cursor-pointer"
+                      aria-label={
+                        fullscreen ? "Exit fullscreen" : "Fullscreen"
+                      }
+                    >
+                      <FullscreenIcon active={fullscreen} />
+                    </Button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Content placement="top">
+                    {fullscreen ? "Exit fullscreen (F)" : "Fullscreen (F)"}
+                  </Tooltip.Content>
+                </Tooltip>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* ── Keyboard Shortcuts & Gestures Help Overlay ── */}
+        <AnimatePresence>
+          {showShortcutsModal && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              data-player-menu
+              className="absolute inset-0 z-40 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+              onClick={() => setShowShortcutsModal(false)}
+            >
+              <div
+                className="w-full max-w-md rounded-2xl border border-white/15 bg-zinc-900/95 p-5 text-white shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10">
+                  <div className="flex items-center gap-2">
+                    <MdKeyboard className="size-5 text-accent" />
+                    <h4 className="text-sm font-bold">
+                      Player Controls & Shortcuts
+                    </h4>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowShortcutsModal(false)}
+                    className="p-1 rounded-lg text-white/60 hover:text-white hover:bg-white/10 cursor-pointer"
+                  >
+                    <BiX className="size-5" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+                  {[
+                    ["Play / Pause", "Space / K"],
+                    ["Rewind 10s", "← / J / Dbl-Tap L"],
+                    ["Forward 10s", "→ / L / Dbl-Tap R"],
+                    ["Scrub Timeline", "Scroll Left / Right"],
+                    ["Hold 2× Speed", "Hold Space / Click"],
+                    ["Volume Up / Down", "↑ / ↓"],
+                    ["Mute / Unmute", "M"],
+                    ["Fullscreen", "F / Dbl-Tap Center"],
+                    ["Subtitles On/Off", "C"],
+                    ["Frame Step", ", / . (Paused)"],
+                    ["Screenshot", "S"],
+                    ["Jump 0%–90%", "0 – 9"],
+                  ].map(([label, shortcut]) => (
+                    <div
+                      key={label}
+                      className="flex items-center justify-between py-1 border-b border-white/5"
+                    >
+                      <span className="text-white/70">{label}</span>
+                      <kbd className="px-1.5 py-0.5 text-[10px] font-mono font-semibold bg-white/10 text-white rounded border border-white/15">
+                        {shortcut}
+                      </kbd>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
@@ -2081,7 +3287,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 </button>
               </div>
 
-              {/* Countdown Progress Bar */}
               <div className="w-full h-1 bg-white/15 rounded-full overflow-hidden mb-3">
                 <div
                   className="h-full bg-accent transition-[width] duration-300 ease-linear rounded-full"
@@ -2118,25 +3323,3 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 };
 
 export default VideoPlayer;
-
-// ─── Usage example ────────────────────────────────────────────────────────────
-//
-// globals.css:
-//   @import "tailwindcss";
-//   @import "@heroui/styles";
-//
-// App.tsx (no HeroUIProvider needed in v3):
-//   import VideoPlayer from "./VideoPlayer";
-//
-//   export default function App() {
-//     return (
-//       <div className="max-w-3xl mx-auto p-8">
-//         <VideoPlayer
-//           src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
-//           poster="https://peach.blender.org/wp-content/uploads/title_anouncement.jpg"
-//           title="Big Buck Bunny"
-//           subtitle="Blender Foundation · 2008"
-//         />
-//       </div>
-//     );
-//   }
