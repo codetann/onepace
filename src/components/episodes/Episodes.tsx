@@ -146,7 +146,6 @@ interface EpisodeThumbnailProps {
   durationText?: string;
   calculatedPercent: number;
   isWatched?: boolean;
-  onNavigate: () => void;
 }
 
 function EpisodeThumbnail({
@@ -156,24 +155,20 @@ function EpisodeThumbnail({
   durationText,
   calculatedPercent,
   isWatched,
-  onNavigate,
 }: EpisodeThumbnailProps) {
   const [loadedUrl, setLoadedUrl] = useState<string | null>(null);
   const imageUrl = itemId ? jellyfinClient.getItemImageUrl(itemId) : undefined;
   const isLoaded = Boolean(imageUrl && loadedUrl === imageUrl);
 
   return (
-    <motion.div
-      onClick={onNavigate}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-      className={`relative sm:w-60 xl:w-64 w-full rounded-lg overflow-hidden flex justify-center items-center cursor-pointer transition-all duration-300 group bg-zinc-900 aspect-video shrink-0 ${
-        isHovering ? "brightness-100 shadow-lg" : "brightness-90"
+    <div
+      className={`relative sm:w-60 xl:w-64 w-full rounded-xl overflow-hidden flex justify-center items-center bg-zinc-900 aspect-video shrink-0 transition-all duration-150 ease-out shadow-sm ${
+        isHovering ? "shadow-md ring-1 ring-accent/30" : "ring-1 ring-white/5"
       }`}
     >
       {/* Placeholder shimmer while thumbnail loads */}
       <div
-        className={`absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 transition-opacity duration-300 ${
+        className={`absolute inset-0 bg-gradient-to-r from-zinc-900 via-zinc-800 to-zinc-900 transition-opacity duration-200 ${
           isLoaded ? "opacity-0 pointer-events-none" : "opacity-100 animate-pulse"
         }`}
       />
@@ -186,8 +181,10 @@ function EpisodeThumbnail({
           onLoad={() => setLoadedUrl(imageUrl)}
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          transition={{ duration: 0.25, ease: "easeOut" }}
+          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-150 ease-out ${
+            isHovering ? "scale-105 brightness-100" : "brightness-95"
+          }`}
         />
       )}
 
@@ -195,10 +192,14 @@ function EpisodeThumbnail({
         {isHovering && (
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1.1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 350, damping: 25 }}
-            className="rounded-full p-2.5 bg-black/60 text-white shadow-lg pointer-events-none z-10"
+            animate={{ scale: 1.08, opacity: 1 }}
+            exit={{
+              scale: 0.8,
+              opacity: 0,
+              transition: { duration: 0.1, ease: "easeOut" },
+            }}
+            transition={{ type: "spring", stiffness: 450, damping: 28 }}
+            className="rounded-full p-2.5 bg-black/65 text-white shadow-xl backdrop-blur-xs pointer-events-none z-10"
           >
             <BiPlay size={24} />
           </motion.div>
@@ -210,9 +211,9 @@ function EpisodeThumbnail({
         <Chip
           size="sm"
           color="default"
-          className="gap-1 absolute bottom-2 right-2 bg-black/70 text-white border-none z-10 font-medium"
+          className="gap-1 absolute bottom-2 right-2 bg-black/75 text-white border-none z-10 font-medium backdrop-blur-xs text-[11px]"
         >
-          <FiClock />
+          <FiClock className="size-3" />
           {durationText}
         </Chip>
       )}
@@ -226,7 +227,7 @@ function EpisodeThumbnail({
           />
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
 
@@ -256,7 +257,10 @@ function EpisodeCard({
   const [isHovering, setIsHovering] = useState(false);
   const [isHoveringFinished, setIsHoveringFinished] = useState(false);
 
-  const handleTogglePlayed = async () => {
+  const handleTogglePlayed = async (e?: React.MouseEvent | unknown) => {
+    if (e && typeof e === "object" && "stopPropagation" in e) {
+      (e as React.MouseEvent).stopPropagation();
+    }
     const itemId = episode.metadata?.Id;
     if (!itemId) return;
     if (isWatched) {
@@ -284,12 +288,23 @@ function EpisodeCard({
   return (
     <motion.div
       variants={episodeCardVariants}
-      whileHover={{ y: -2, transition: { duration: 0.15 } }}
+      whileHover={{ y: -2, transition: { duration: 0.12, ease: "easeOut" } }}
+      whileTap={{ scale: 0.995 }}
       id={`episode-${episode.id}`}
-      className={`flex items-start gap-4 rounded-2xl px-2.5 py-2.5 transition-colors sm:flex-row flex-col w-full ${
+      role="button"
+      tabIndex={0}
+      aria-label={`Play ${displayTitle}`}
+      onClick={() => handleNavigate(episode.id)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleNavigate(episode.id);
+        }
+      }}
+      className={`group relative flex items-start gap-4 rounded-2xl p-3 sm:p-3.5 transition-all duration-150 ease-out sm:flex-row flex-col w-full cursor-pointer select-none border ${
         isWatching
-          ? "bg-accent/10 border border-accent/30"
-          : "hover:bg-default/10"
+          ? "bg-accent/10 border-accent/40 shadow-sm shadow-accent/5 hover:bg-accent/15 hover:border-accent/60 hover:shadow-md"
+          : "border-transparent bg-transparent hover:bg-default-100/70 dark:hover:bg-white/[0.05] hover:border-default-200 dark:hover:border-white/10 hover:shadow-lg hover:shadow-black/15"
       }`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
@@ -301,32 +316,35 @@ function EpisodeCard({
         durationText={durationText}
         calculatedPercent={calculatedPercent}
         isWatched={isWatched}
-        onNavigate={() => handleNavigate(episode.id)}
       />
 
-      <div className="flex flex-col gap-1 pr-3 pb-2 flex-1">
+      <div className="flex flex-col gap-1.5 pr-2 pb-1 flex-1 min-w-0">
         <div className="flex items-center gap-2 flex-wrap">
           {isWatching && (
-            <Chip size="sm" color="accent">
+            <Chip size="sm" color="accent" className="font-semibold shadow-xs">
               <BiPlay /> Watching
             </Chip>
           )}
 
-          <p
-            className={`hover:underline cursor-pointer text-md font-semibold ${isWatching ? "text-accent" : ""} ${isWatched ? "line-through opacity-70" : ""}`}
-            onClick={() => handleNavigate(episode.id)}
+          <h4
+            className={`text-md font-semibold transition-colors duration-200 group-hover:text-accent ${
+              isWatching ? "text-accent" : "text-foreground"
+            } ${isWatched ? "line-through opacity-70" : ""}`}
           >
             {displayTitle}
-          </p>
+          </h4>
 
           {isWatched ? (
             <Chip
               size="sm"
               color="success"
-              className="cursor-pointer hover:bg-success/20 transition-all duration-200"
+              className="cursor-pointer hover:bg-success/25 transition-all duration-200 z-10"
               onMouseEnter={() => setIsHoveringFinished(true)}
               onMouseLeave={() => setIsHoveringFinished(false)}
-              onClick={handleTogglePlayed}
+              onClick={(e) => {
+                e.stopPropagation();
+                void handleTogglePlayed(e);
+              }}
               title="Click to mark as unplayed"
             >
               {isHoveringFinished ? <BiX /> : <BiCheck />} Finished
@@ -335,8 +353,9 @@ function EpisodeCard({
             <Button
               size="sm"
               variant="ghost"
-              className="text-xs h-6 px-2 text-muted hover:text-success flex items-center gap-1 cursor-pointer"
-              onPress={handleTogglePlayed}
+              className="text-xs h-6 px-2 text-muted hover:text-success hover:bg-success/10 flex items-center gap-1 cursor-pointer z-10 rounded-md transition-colors"
+              onPress={() => void handleTogglePlayed()}
+              onClick={(e) => e.stopPropagation()}
               aria-label="Mark as watched"
             >
               <BiCheck /> Mark watched
@@ -350,7 +369,9 @@ function EpisodeCard({
           )}
         </div>
 
-        <p className="text-muted text-sm max-w-4xl">{episode.description}</p>
+        <p className="text-muted text-sm max-w-4xl leading-relaxed transition-colors duration-200 group-hover:text-default-700 dark:group-hover:text-zinc-300">
+          {episode.description}
+        </p>
       </div>
     </motion.div>
   );
