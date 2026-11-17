@@ -2524,52 +2524,57 @@ export const DATA = {
         {
           "id": 1,
           "title": "Amazon Lily 01",
-          "description": "Luffy washes up alone and quickly learns the island’s rules—and why trespassing is taken seriously.",
+          "altTitle": "Adventure on the Island of Women",
+          "description": "After being blasted away from Sabaody by Bartholomew Kuma, Luffy crash-lands on the secluded jungle island of Amazon Lily and is tended to by Kuja warriors after ingesting parasitic mushrooms. Once the all-female tribe discovers he is a man, Luffy is sentenced to death for trespassing and must flee into the wilderness to retrieve his Vivre Card.",
           "coverage": {
             "anime": "408-410",
             "manga": "514-516"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 2,
           "title": "Amazon Lily 02",
-          "description": "Culture shock and constant pursuit force Luffy into improvised escapes through the jungle kingdom.",
+          "altTitle": "Pirate Empress Boa Hancock",
+          "description": "Margaret reveals that Amazon Lily sits trapped in the monster-infested Calm Belt, leaving Luffy stranded while Vice Admiral Momonga attempts to summon the Pirate Empress Boa Hancock to Marineford. After Hancock petrifies the Marine crew and returns home to bathe in secrecy, Luffy infiltrates the palace in search of a ship and crashes straight into her private bath.",
           "coverage": {
             "anime": "411-413",
             "manga": "517-518"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 3,
           "title": "Amazon Lily 03",
-          "description": "Encounters with powerful locals reveal how this island fits into the wider balance of power.",
+          "altTitle": "The Disposition of a King",
+          "description": "Unmoved by Hancock's beauty and immune to her petrifying beam, Luffy is captured and condemned to a public execution where Margaret and her companions are turned to stone for defending him. Forced to battle the Gorgon sisters in the arena after defeating the beast Bakura, Luffy roars in fury to protect Margaret's statue, releasing an involuntary shockwave of Conqueror's Haki.",
           "coverage": {
             "anime": "414-416",
             "manga": "519-520"
           },
-          "length": "TBD"
+          "length": "24m"
         },
         {
           "id": 4,
           "title": "Amazon Lily 04",
-          "description": "Old grudges and new alliances shape whether Luffy can leave Amazon Lily alive.",
+          "altTitle": "The Hoof of the Soaring Dragon",
+          "description": "After defeating the Gorgon sisters and selflessly shielding Sandersonia's back from the spectators, Luffy chooses to revive his petrified saviors over a boat ride home, prompting Hancock to reveal her tragic past as a Celestial Dragon slave. When Luffy learns from a newspaper that his brother Ace is scheduled for public execution in six days, his desperate plea for help cures Hancock of a fatal bout of lovesickness as she agrees to aid him.",
           "coverage": {
             "anime": "417-419",
             "manga": "521-522"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 5,
           "title": "Amazon Lily 05",
-          "description": "The arc ends with a path forward off the island and a clearer picture of what happened to the crew.",
+          "altTitle": "No One Can Stop This Now",
+          "description": "Smitten by love for Luffy, Boa Hancock unpetrifies Momonga's Marines and boards their warship on the condition they make a detour to Impel Down, while the remaining Straw Hats adjust to the strange lands where Kuma sent them. As tensions reach a boiling point at Marineford over Whitebeard's advancing fleet, Hancock keeps her stowaway well fed while Garp visits an imprisoned Ace deep beneath the sea.",
           "coverage": {
             "anime": "420-421",
             "manga": "523-524"
           },
-          "length": "TBD"
+          "length": "29m"
         }
       ]
     },
@@ -2589,102 +2594,112 @@ export const DATA = {
         {
           "id": 1,
           "title": "Impel Down 01",
-          "description": "Luffy commits to entering Impel Down and faces the first brutal layers of its defenses.",
+          "altTitle": "Undersea Prison Impel Down",
+          "description": "As Garp speaks with Ace in the deepest depths of Impel Down, Boa Hancock smuggles Luffy past the entrance checkpoints by petrifying Vice Jailer Domino during a mandatory strip search. Slipping into the ventilation system, Luffy drops into the Crimson Hell of Level 1 and joins forces with an escaped Buggy the Clown to fight off the axe-wielding Blugori.",
           "coverage": {
             "anime": "422-425",
             "manga": "525-527"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 2,
           "title": "Impel Down 02",
-          "description": "Each descending level introduces deadlier traps, stranger inmates, and tighter security.",
+          "altTitle": "Level 2: Wild Beast Hell",
+          "description": "Buggy agrees to guide Luffy downward in exchange for Captain John's treasure marker, leading them across the razor-sharp forest of Level 1 and into the beast-infested corridors of Level 2. After Buggy's attempt to instigate a prison riot backfires against the floor's monstrous predators, Mr. 3 emerges from his cell to offer assistance while Jinbe languishes in chains on Level 6.",
           "coverage": {
             "anime": "426-429",
             "manga": "528-530"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 3,
           "title": "Impel Down 03",
-          "description": "Allies and enemies blur as Luffy pushes deeper while the prison’s hierarchy fights back.",
+          "altTitle": "Level 3: Starvation Hell",
+          "description": "Following Jinbe's reflection on Whitebeard's protection of Fishman Island, Luffy and his companions battle the Sphinx and collapse through the floor into the sweltering desert of Level 3. While Buggy and Mr. 3 release Bon Clay from his cell, Boa Hancock visits Level 6 under Magellan's guard to secretly inform Ace that his brother has infiltrated the fortress.",
           "coverage": {
             "anime": "430-433",
             "manga": "531-533"
           },
-          "length": "TBD"
+          "length": "41m"
         },
         {
           "id": 4,
           "title": "Impel Down 04",
-          "description": "The pace turns into a race against the clock as conditions worsen and plans start to unravel.",
+          "altTitle": "Level 4: Burning Heat Hell",
+          "description": "As prison officials dispatch the brutal Demon Guard Minotaurus to Level 3, Luffy, Bon Clay, Buggy, and Mr. 3 unite their abilities to defeat the beast before plummeting through the floor into the boiling cauldrons of Level 4. With naval dispatches confirming Shanks has clashed with Kaido in the New World, Warden Magellan mobilizes the entire guard force and personally confronts Luffy.",
           "coverage": {
             "anime": "434-437",
             "manga": "534-536"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 5,
           "title": "Impel Down 05",
-          "description": "Major confrontations erupt in the mid-levels, testing endurance and resolve.",
+          "altTitle": "Level 5: Freezing Hell",
+          "description": "Luffy sacrifices his hands to strike Warden Magellan with a Jet Bazooka, but becomes completely overwhelmed by the warden's multi-toxin Hydra and is left to die in the freezing depths of Level 5. Overcome with guilt for abandoning him, Bon Clay disguises himself as Hannyabal, infiltrates the blizzard of Level 5, and fights off vicious Army Wolves to carry a dying Luffy toward the rumored miracle worker Emporio Ivankov.",
           "coverage": {
             "anime": "438-441",
             "manga": "537-539"
           },
-          "length": "TBD"
+          "length": "38m"
         },
         {
           "id": 6,
           "title": "Impel Down 06",
-          "description": "Luffy’s push downward forces risky bargains with figures who cannot be fully trusted.",
+          "altTitle": "Level 5.5: Newkama Land",
+          "description": "Bon Clay awakes in the secret underground utopia of Level 5.5, Newkama Land, where Queen Emporio Ivankov reveals he has subjected Luffy to a torturous, life-shortening hormone therapy with a minuscule chance of survival. Refusing to leave his friend's side, Bon Clay rallies the entire haven to scream words of encouragement for hours until Luffy miraculously recovers and eats his way back to full strength.",
           "coverage": {
             "anime": "442-444",
             "manga": "540-541"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 7,
           "title": "Impel Down 07",
-          "description": "The prison’s worst hazards close in as escape and rescue goals begin to merge.",
+          "altTitle": "Level 6: Eternal Hell",
+          "description": "Upon learning that Luffy is the son of his revolutionary comrade Dragon, Ivankov injects him with adrenaline hormones and leads a charge down to Level 6, only to discover that Ace has already been taken away for transfer. Trapped by sleeping gas, Luffy resolves to follow Ace all the way to Marineford, agreeing to free both Crocodile and Jinbe from their cells to bolster their breakout force.",
           "coverage": {
             "anime": "445-447",
             "manga": "542-543"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 8,
           "title": "Impel Down 08",
-          "description": "Chaos spreads through multiple floors, turning order into a riot the staff cannot fully contain.",
+          "altTitle": "Straw Hat and Blackbeard",
+          "description": "Crocodile and Jinbe lead an explosive push upward into Level 4, freeing Daz Bonez and joining the Newkamas to overwhelm the Demon Guards while Buggy incites riots on the upper floors. As Blackbeard infiltrates the fortress from above, forcing Magellan to temporarily pardon and release the lethal swordsman Shiryu, Vice Warden Hannyabal makes a valiant stand at the stairs before being brutally crushed by Teach.",
           "coverage": {
             "anime": "448-450",
             "manga": "544-545"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 9,
           "title": "Impel Down 09",
-          "description": "The arc races toward its climax as Luffy nears the deepest cells and the cost of failure rises.",
+          "altTitle": "Candle Champion",
+          "description": "Jinbe intervenes to stop a furious brawl between Luffy and Blackbeard, keeping the focus on escaping before Magellan arrives and wipes out Teach's crew with a single wave of poison. As Magellan pursues the fugitives to Level 1 and cuts off their retreat, Mr. 3 steps up with a protective wax wall and crafts Champion Armor for Luffy, while Jinbe launches Crocodile and Buggy across the sea to capture a Navy battleship.",
           "coverage": {
             "anime": "451-453",
             "manga": "546-547"
           },
-          "length": "TBD"
+          "length": "41m"
         },
         {
           "id": 10,
           "title": "Impel Down 10",
-          "description": "Impel Down concludes with a breakout-level payoff and momentum aimed at the war to come.",
+          "altTitle": "Ship of Departure",
+          "description": "Faced with Magellan's apocalyptic red venom, the escapees fling themselves off the entrance bridge into the sea, where Ivankov's Hell Wink and Jinbe's school of whale sharks deliver them safely aboard the captured warship. As the Marine fleet corners their vessel, the Gates of Justice swing open thanks to Bon Clay, who stayed behind disguised as Magellan to grant his friends one final, tearful farewell.",
           "coverage": {
             "anime": "454-456",
             "manga": "548-549"
           },
-          "length": "TBD"
+          "length": "29m"
         }
       ]
     },
@@ -2704,12 +2719,13 @@ export const DATA = {
         {
           "id": 1,
           "title": "If You Could Go Anywhere... The Adventures of the Straw Hats 01",
-          "description": "Short vignettes follow individual Straw Hats in unfamiliar situations, showing how they cope and keep moving forward apart.",
+          "altTitle": "Friends' Whereabouts",
+          "description": "Scattered across the world by Kuma, the Straw Hats find themselves in absurd predicaments ranging from Brook being worshipped as Satan, Sanji fleeing the okamas of Kamabaka, and Nami studying weather science on a sky island. While Franky is fueled by refined hot tea and Robin is liberated from a slave bridge by the Revolutionary Army, Usopp feasts himself into perilous obesity on the carnivorous Boin Archipelago.",
           "coverage": {
             "anime": "426-429",
             "manga": "543-560"
           },
-          "length": "TBD"
+          "length": "23m"
         }
       ]
     },
@@ -2729,172 +2745,189 @@ export const DATA = {
         {
           "id": 1,
           "title": "Marineford 01",
-          "description": "The war’s scale becomes clear as fleets gather and legendary names take the field.",
+          "altTitle": "The Bloodline of the King: Son of Gol D. Roger",
+          "description": "As Luffy and the Impel Down escapees hurtle toward Navy Headquarters on the Tarai Current, a Marine broadcast exposes Buggy's storied past aboard Gol D. Roger's ship, prompting the gullible prisoners to pledge their devotion to him. Meanwhile, 100,000 elite soldiers and the Three Admirals gather at Marineford before a watchful world, where Fleet Admiral Sengoku steps onto the execution scaffold and reveals that Ace is the biological son of the Pirate King himself.",
           "coverage": {
             "anime": "457-458",
             "manga": "550-551"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 2,
           "title": "Marineford 02",
-          "description": "Initial clashes set the tone for a conflict where even survival is not guaranteed.",
+          "altTitle": "Battle of the Best: Whitebeard and Ace",
+          "description": "Flashbacks reveal how Roger entrusted his unborn son to Garp and how Ace found a true father in Whitebeard, while Sengoku warns that Ace's survival would herald the rise of the next Pirate King. After 43 allied New World ships arrive and the Moby Dick surfaces directly inside the crescent bay, Whitebeard unleashes the apocalyptic tremors of the Tremor-Tremor Fruit to launch the Great War.",
           "coverage": {
             "anime": "459-460",
             "manga": "552-553"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 3,
           "title": "Marineford 03",
-          "description": "Luffy pushes through blockades and chaos, racing toward the execution platform.",
+          "altTitle": "Monsters on the Ice: The Advance of Little Oars Jr.",
+          "description": "Aokiji freezes the massive tsunamis to form an icy battleground, where Diamond Jozu deflects Mihawk's legendary slash and Marco's phoenix flames withstand Kizaru's barrage of light. After Akainu vaporizes an enormous hurled iceberg with his magma fist, the gigantic Little Oars Jr. wades into the fray, relentlessly charging through Marine defenses to rescue his friend Ace.",
           "coverage": {
             "anime": "461-462",
             "manga": "554-555"
           },
-          "length": "TBD"
+          "length": "19m"
         },
         {
           "id": 4,
           "title": "Marineford 04",
-          "description": "Old debts and rivalries ignite as the battle’s center of gravity keeps shifting.",
+          "altTitle": "The Straw Hat of Wano: Justice Will Prevail!",
+          "description": "Little Oars Jr. endures brutal attacks from Kuma, Doflamingo, and Moria—remembering the straw hat Ace made for him in Wano—before his colossal body collapses to open a breach into the plaza. As Doflamingo declares that whoever wins will define the meaning of justice and Sengoku moves to execute Ace ahead of schedule, Luffy and the Impel Down escapees suddenly fall from the sky.",
           "coverage": {
             "anime": "463-464",
             "manga": "556-557"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 5,
           "title": "Marineford 05",
-          "description": "Powerful figures trade blows while the world watches the war unfold in real time.",
+          "altTitle": "Little Brother: Lineage of the Revolutionary",
+          "description": "After crashing into the bay and saving Whitebeard from Crocodile, Luffy audaciously stands toe-to-toe with the legendary pirate, warning him of the Marines' secret plan to expedite Ace's execution. As Luffy charges through admirals, warlords, and zombies toward the scaffold, Ace desperately orders him to turn back, only for Sengoku to shock the entire world by revealing that Luffy is the biological son of Revolutionary Dragon.",
           "coverage": {
             "anime": "465-466",
             "manga": "558-559"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 6,
           "title": "Marineford 06",
-          "description": "The battlefield tightens and casualties mount as strategies collapse into raw force.",
+          "altTitle": "The Key to Freedom: Luffy vs. Mihawk",
+          "description": "While Whitebeard deceives Buggy into an alliance, Boa Hancock strikes down Smoker with Haki and gifts Luffy the key to Ace's handcuffs, swooning when he embraces her in gratitude. After Doflamingo reveals that Kuma was completely stripped of his humanity to become the cyborg weapon PX-0, Dracule Mihawk unsheathes his black blade to test Luffy's fate.",
           "coverage": {
             "anime": "467-468",
             "manga": "560-561"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 7,
           "title": "Marineford 07",
-          "description": "Luffy’s endurance is tested against opponents who refuse to let him pass.",
+          "altTitle": "The Power to Rally: The Encirclement Trap",
+          "description": "Flower Sword Vista intercepts Mihawk's relentless assault on Luffy, leading the master swordsman to recognize that Luffy's greatest strength is his uncanny ability to rally allies to his side. As Sentomaru's Pacifista army surrounds the New World pirates and Sengoku cuts the visual feeds, Buggy hijacks a broadcast snail for self-promotion just as Captain Squard unexpectedly returns to Whitebeard's ship.",
           "coverage": {
             "anime": "469-470",
             "manga": "562-563"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 8,
           "title": "Marineford 08",
-          "description": "Shocking turns reshape alliances and raise the emotional stakes for everyone involved.",
+          "altTitle": "One Man, One Heart: The Man Who Shakes the World",
+          "description": "Squard stabs Whitebeard through the chest after being manipulated by Akainu into believing his allies were sold out, but Whitebeard forgives his son with a warm embrace and destroys the ice walls to prove his loyalty. Stepping onto the battlefield to tilt the entire sea and defeat Vice Admiral John Giant, Whitebeard watches as Sengoku raises iron encirclement walls and Akainu rains down magma meteors to boil the trapped pirates alive.",
           "coverage": {
             "anime": "471-472",
             "manga": "564-565"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 9,
           "title": "Marineford 09",
-          "description": "The war reaches a fever pitch as decisive moments approach the platform.",
+          "altTitle": "Storming the Plaza: The Paddle-Wheel Trump Card",
+          "description": "As Akainu's volcanic barrage burns the Moby Dick to cinders and boils the trapped bay, Jinbe launches Luffy over the encircling wall to confront all three Admirals alone before Crocodile intervenes to halt Ace's executioners. With the plaza under fire, Little Oars Jr. gathers his remaining strength to haul Whitebeard's hidden coated paddle ship over the barrier, landing Whitebeard's army directly into the plaza to face Sengoku and Garp.",
           "coverage": {
             "anime": "473-474",
             "manga": "566-567"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 10,
           "title": "Marineford 10",
-          "description": "Iconic confrontations dominate the field while rescue and execution timelines collide.",
+          "altTitle": "Past the Limit: The Hero of the Marines Steps In",
+          "description": "While Jozu clashes with Aokiji to shield Whitebeard, an overtaxed Luffy collapses from exhaustion and poison, weeping bitterly as Jinbe, Ivankov, and Boa Hancock defend his fallen body. As Marco takes flight as a phoenix to swoop in and rescue Ace, Vice Admiral Garp intercepts him with a crushing Haki fist, seating himself before the scaffold as the Marines' impassable gatekeeper.",
           "coverage": {
             "anime": "475-476",
             "manga": "568-569"
           },
-          "length": "TBD"
+          "length": "15m"
         },
         {
           "id": 11,
           "title": "Marineford 11",
-          "description": "The conflict’s scale spirals beyond any single crew’s control, forcing impossible choices.",
+          "altTitle": "The Will to Live: Awakening of the Supreme King",
+          "description": "After recalling a childhood spent questioning whether he deserved to be born, Ace weeps on the scaffold with a desperate desire to live while Luffy receives a life-shortening hormone injection from Ivankov to rejoin the fray. With Whitebeard struck down by a sudden heart seizure and his commanders immobilized by the Admirals, Luffy unleashes a titanic burst of Conqueror's Haki that knocks out the executioners just as their blades descend.",
           "coverage": {
             "anime": "477-478",
             "manga": "570-571"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 12,
           "title": "Marineford 12",
-          "description": "Momentum swings violently as new powers enter and old legends make their stand.",
+          "altTitle": "The Bridge of Fate: Fire Fist Unchained",
+          "description": "Following Whitebeard's orders to back Straw Hat with everything they have, the pirates clear a path as Inazuma cuts a soaring stone ramp to the scaffold, where an agonizingly conflicted Garp allows Luffy to strike him aside. Though Sengoku transforms into a giant golden Buddha and Kizaru destroys the handcuff key, Mr. 3 creates a wax duplicate to free Ace from his Seastone chains, unleashing a blazing vortex of flames as the platform crumbles.",
           "coverage": {
             "anime": "479-480",
             "manga": "572-573"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 13,
           "title": "Marineford 13",
-          "description": "Luffy closes distance through sheer will while the war’s darkest outcomes loom closer.",
+          "altTitle": "A Father's Final Order: A Brother's Shield",
+          "description": "Ace and Luffy showcase their seamless brotherly teamwork to cut through Marine ranks until Whitebeard issues his final captain's order, commanding his crew to flee to the New World while he stays behind to sink Marineford. When Akainu provokes Ace by slandering Whitebeard as a coward and failure of a bygone era, Ace turns to defend his captain's honor—only to throw his body in front of Akainu's magma fist to save a defenseless Luffy.",
           "coverage": {
             "anime": "481-482",
             "manga": "574-575"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 14,
           "title": "Marineford 14",
-          "description": "The battle’s emotional weight peaks as personal histories collide on the open sea.",
+          "altTitle": "Thank You for Loving Me: The Death of Portgas D. Ace",
+          "description": "As Sengoku pins an enraged Garp to the pavement to stop him from slaughtering Akainu, field doctors confirm that Ace's internal organs have been burned beyond saving. Thanking Luffy, Whitebeard, and his crewmates for loving him despite his cursed bloodline, Ace passes away with a peaceful smile on his face, leaving Luffy utterly broken in silent, catatonic despair.",
           "coverage": {
             "anime": "483-484",
             "manga": "576-577"
           },
-          "length": "TBD"
+          "length": "19m"
         },
         {
           "id": 15,
           "title": "Marineford 15",
-          "description": "Final pushes and last stands define who can still stand when the smoke clears.",
+          "altTitle": "The Great Pirate Edward Newgate: The One Piece Is Real!",
+          "description": "Consumed by grief over Ace, Whitebeard pummels Akainu and cleaves Marineford in two before turning his fury on Blackbeard and his newly recruited Level 6 Impel Down convicts. After enduring a barrage of gunfire and blades from Teach's entire crew, Whitebeard roars to the world that the One Piece is real and dies standing tall, unmarred by a single scar of retreat.",
           "coverage": {
             "anime": "485-486",
             "manga": "578"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 16,
           "title": "Marineford 16",
-          "description": "The war’s climax delivers irreversible consequences for pirates and Marines alike.",
+          "altTitle": "The Dual-Wielding Menace: To the Future",
+          "description": "Blackbeard stuns the world by emerging from beneath a black shroud wielding both the Dark-Dark and Tremor-Tremor Fruits, initiating an island-sinking rampage that forces Sengoku to retaliate in Buddha form. As Akainu melts through Jinbe to wound Luffy, Crocodile and the Whitebeard commanders unite to defend the boy's life until Trafalgar Law arrives in a submarine to offer emergency medical aid.",
           "coverage": {
             "anime": "487-488",
             "manga": "579"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 17,
           "title": "Marineford 17",
-          "description": "Marineford ends in aftermath that changes the era and sends shockwaves across the globe.",
+          "altTitle": "A Moment of Courage: The End of the War",
+          "description": "Overwhelmed by the senseless bloodshed after victory was already secured, Coby awakens Observation Haki and bravely screams for the slaughter to end, only to be saved from Akainu's wrath by the sudden arrival of Red-Haired Shanks. After Law's submarine dives into the deep sea to treat Luffy under heavy admiral fire, Shanks challenges anyone seeking more bloodshed and negotiates a ceasefire with Sengoku to finally bring the Summit War to an end.",
           "coverage": {
             "anime": "489",
             "manga": "580"
           },
-          "length": "TBD"
+          "length": "27m"
         }
       ]
     },
@@ -2914,82 +2947,90 @@ export const DATA = {
         {
           "id": 1,
           "title": "Post-War 01",
-          "description": "The world reacts to Marineford’s outcome while key characters process grief and duty.",
+          "altTitle": "The Creeping Future",
+          "description": "As news of Whitebeard's demise and the Navy's victory throws the seas into unprecedented turmoil, Law's submarine reaches Amazon Lily to treat a critically wounded Luffy under Boa Hancock's care. While the World Government orders a cover-up of the mass breakout at Impel Down, Luffy awakens in agonizing grief over Ace's death and recalls the childhood moment Garp first brought him to meet his new brother.",
           "coverage": {
             "anime": "490-493",
             "manga": "581-584"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 2,
           "title": "Post-War 02",
-          "description": "Ripples spread through the Four Blues and the Grand Line as power vacuums appear.",
+          "altTitle": "The Porchemy Incident",
+          "description": "Ten years in the past, Garp leaves a young Luffy with Dadan's mountain bandits on Mount Corvo, where the stubborn boy relentlessly pursues the hostile Ace through the hazardous wilderness. After discovering Ace and his friend Sabo amassing stolen treasure in Gray Terminal for a pirate ship, Luffy is captured by the Blue Jam Pirates and endures brutal torture without uttering a word to protect his new friends.",
           "coverage": {
             "anime": "494-497",
             "manga": "585-588"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 3,
           "title": "Post-War 03",
-          "description": "Personal journeys begin again as scattered allies choose their next steps.",
+          "altTitle": "Cups of Brotherhood",
+          "description": "After Sabo confesses his origins as a runaway noble disgusted by High Town's hollow elite, he, Ace, and Luffy exchange cups of sake to swear an unbreakable bond as brothers. When Sabo's father hires Blue Jam's pirates to forcibly drag him home, Sabo discovers a horrifying royal conspiracy to burn down Gray Terminal before the Celestial Dragon arrives, leaving Luffy and Ace trapped in the flames.",
           "coverage": {
             "anime": "498-501",
             "manga": "589-592"
           },
-          "length": "TBD"
+          "length": "42m"
         },
         {
           "id": 4,
           "title": "Post-War 04",
-          "description": "Training, reflection, and new resolve take center stage away from the battlefield.",
+          "altTitle": "Sabo's Ocean",
+          "description": "As Gray Terminal burns, Ace awakens Conqueror's Haki and stands his ground alongside Dadan to defeat Blue Jam while Dragon's revolutionaries rescue the surviving outcasts from the inferno. After Sabo steals a boat to set sail for freedom and is mercilessly shot down by a Celestial Dragon, a devastated Ace is restrained by Dadan before reading Sabo's final letter entrusting Luffy to him.",
           "coverage": {
             "anime": "502-504",
             "manga": "593-594"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 5,
           "title": "Post-War 05",
-          "description": "Old bonds are reaffirmed and new promises set the tone for the next era of piracy.",
+          "altTitle": "What Remains",
+          "description": "Ace and Luffy mourn Sabo and swear to live without regrets before eventually setting sail three years apart, while in the present, Dadan violently confronts Garp in Foosha Village and Shanks oversees a solemn funeral for Whitebeard and Ace. On Amazon Lily, an inconsolable Luffy lashes out in despair until Jinbei forces him to confront what he still has left, bringing Luffy to tears as he remembers his scattered crew.",
           "coverage": {
             "anime": "505-507",
             "manga": "595-596"
           },
-          "length": "TBD"
+          "length": "41m"
         },
         {
           "id": 6,
           "title": "Post-War 06",
-          "description": "The Straw Hats’ individual paths gain clarity as the two-year gap takes shape.",
+          "altTitle": "Rayleigh's Proposal",
+          "description": "Rayleigh swims across the Calm Belt to Amazon Lily to deliver Luffy's straw hat and propose an alternative to immediately rushing back to Sabaody. Across the world, the scattered Straw Hats react to news of the Paramount War: Usopp struggles to escape Boin Archipelago, Chopper departs Torino Kingdom, Zoro battles armed baboons, Nami takes Haredas hostage, Franky triggers a catastrophe in Vegapunk's lab, and Brook is kidnapped by the Longarm tribe.",
           "coverage": {
             "anime": "508-510",
             "manga": "597"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 7,
           "title": "Post-War 07",
-          "description": "Loose threads from the war arc tie up while the world braces for what comes next.",
+          "altTitle": "16 Rings: The Message",
+          "description": "As major power shifts rattle the world, headlines reveal that Luffy, Rayleigh, and Jinbei infiltrated Marineford to ring the sacred Ox Bell sixteen times in a daring silent tribute. While pirates across the seas interpret the stunt as a declaration of war, each of the scattered Straw Hats decodes the cryptic \"3D2Y\" tattoo displayed on Luffy's arm in the newspaper photograph.",
           "coverage": {
             "anime": "511-513",
             "manga": "597"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 8,
           "title": "Post-War 08",
-          "description": "Post-War closes with the crew’s reunion on the horizon and the story ready for the New World.",
+          "altTitle": "3D2Y",
+          "description": "Understanding Luffy's message to rendezvous in two years instead of three days, each Straw Hat undertakes grueling specialized training across the world to master new skills for their captain. After bidding farewell to Jinbei, Luffy journeys with Rayleigh to the uninhabited, beast-filled island of Rusukaina to begin his two-year mastery of all three forms of Haki.",
           "coverage": {
             "anime": "514-516",
             "manga": "597"
           },
-          "length": "TBD"
+          "length": "60m"
         }
       ]
     },
@@ -3009,32 +3050,35 @@ export const DATA = {
         {
           "id": 1,
           "title": "Return to Sabaody 01",
-          "description": "The crew members return one by one to a familiar bubble island, each showing the results of their time apart.",
+          "altTitle": "Two Years Later",
+          "description": "Two years after the war, a newly trained Luffy bids farewell to Hancock and heads for a lawless Sabaody Archipelago, where an impostor crew is boldly recruiting rookies under the Straw Hat name. As the real Straw Hats gradually reunite across the islands, an upgraded Nami and Usopp effortlessly humiliate the fake crew, while Zoro accidentally boards and slices a giant pirate galleon in half.",
           "coverage": {
             "anime": "517-518",
             "manga": "598-599"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 2,
           "title": "Return to Sabaody 02",
-          "description": "Reunions spark comedy and confidence as old enemies underestimate the new Straw Hats.",
+          "altTitle": "Island of New Beginnings",
+          "description": "Disguised Luffy casually knocks out the fake Straw Hat captain with Conqueror's Haki before being escorted toward Grove 46 by impostors who mistake him for an ordinary recruit. While Sentomaru deploys Pacifistas to confront the growing pirate gathering, Brook electrifies fans with his farewell concert before declaring Luffy alive and rocking his final anthem.",
           "coverage": {
             "anime": "519-520",
             "manga": "600-601"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 3,
           "title": "Return to Sabaody 03",
-          "description": "The arc ends with the crew whole again and the Thousand Sunny ready for the next sea.",
+          "altTitle": "Romance Dawn for the New World",
+          "description": "When Marines and Pacifistas ambush the pirate gathering at Grove 46, Luffy, Zoro, and Sanji easily obliterate the cyborgs before Luffy declares his dream to Rayleigh and flees to the ship. With their old mentors and allies holding back Navy warships, the fully assembled Straw Hats submerge the Thousand Sunny to begin their underwater voyage toward Fishman Island.",
           "coverage": {
             "anime": "521-522",
             "manga": "602"
           },
-          "length": "TBD"
+          "length": "34m"
         }
       ]
     },
@@ -3054,242 +3098,266 @@ export const DATA = {
         {
           "id": 1,
           "title": "Fishman Island 01",
-          "description": "The crew’s first steps underwater set the tone for a colorful kingdom and the tensions simmering beneath its streets.",
+          "altTitle": "Into the Depths! Kuma's Promise and the Kraken",
+          "description": "As the coated Thousand Sunny descends into the ocean depths, Franky reveals that Bartholomew Kuma secretly allied with the Revolutionary Army and sacrificed his mind so Dr. Vegapunk would program him to protect their ship. After Caribou's ambush fails when Mohmoo flees from Luffy and Sanji, Nami guides the crew down the treacherous Downward Plume current straight into the clutches of the colossal Kraken.",
           "coverage": {
             "anime": "523-525",
             "manga": "603-605"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 2,
           "title": "Fishman Island 02",
-          "description": "Royal halls and public squares reveal how Fish-Man Island survives between human prejudice and deep-sea danger.",
+          "altTitle": "Deep-Sea Adventure: The Flying Dutchman and the Volcano",
+          "description": "Luffy, Zoro, and Sanji venture into the freezing abyss in bubble suits to subdue the giant Kraken, but chaotic currents separate the monster trio from the Thousand Sunny. As the remaining crew fends off deep-sea horrors and recaptures the escaped Logia-user Caribou in a barrel, an anglerfish lures them to the legendary ghost ship Flying Dutchman just before an undersea volcano begins to violently erupt.",
           "coverage": {
             "anime": "526-528",
             "manga": "606-608"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 3,
           "title": "Fishman Island 03",
-          "description": "Old bonds resurface as the Straw Hats learn what this island owes—and what it refuses to forget.",
+          "altTitle": "Paradise on the Seafloor: Welcome to Mermaid Cove",
+          "description": "After Usopp saves the ship from falling volcanic debris, Hammond and the New Fishman Pirates ambush the Straw Hats at the gates, prompting Franky to blast the Sunny directly through the island's bubble wall. The resulting currents scatter the crew, leaving Luffy, Sanji, Usopp, and Chopper to awaken under the care of Keimi and the dazzling beauties of Mermaid Cove while Hody Jones plots their capture.",
           "coverage": {
             "anime": "529-531",
             "manga": "609-611"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 4,
           "title": "Fishman Island 04",
-          "description": "Politics and pride clash when the kingdom’s leaders weigh hospitality against the cost of standing with pirates.",
+          "altTitle": "Madame Shyarly's Prophecy: The Future in Flames",
+          "description": "When Sanji suffers a critical nosebleed upon encountering the mermaids, the crew faces the island's strict ban on sharing blood with humans until two human pirates step in to provide life-saving transfusions. After reuniting with Brook and Pappag at the Mermaid Café, Madame Shyarly peers into her crystal ball and foresees a horrifying vision of Monkey D. Luffy bringing total destruction to Fishman Island.",
           "coverage": {
             "anime": "532-534",
             "manga": "612-613"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 5,
           "title": "Fishman Island 05",
-          "description": "Street-level threats remind everyone that peace here is fragile, and outsiders are watched closely.",
+          "altTitle": "Ryugu Palace: The Mermaid Princess of the Hard-Shell Tower",
+          "description": "Hody Jones showcases the terrifying might of Energy Steroids by obliterating human pirates, while King Neptune personally invites Luffy's group to Ryugu Palace just as Caribou begins abducting mermaids across Mermaid Cove. As Prince Fukaboshi orders the Straw Hats detained due to Madame Shyarly's prophecy, Luffy wanders off in search of food and accidentally lands on the colossal Mermaid Princess Shirahoshi inside her locked tower.",
           "coverage": {
             "anime": "535-536",
             "manga": "614-615"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 6,
           "title": "Fishman Island 06",
-          "description": "The Straw Hats split attention between celebration and unease as rumors spread faster than facts.",
+          "altTitle": "Palace Seized! Princess Shirahoshi's Great Escape",
+          "description": "After Zoro swiftly overpowers King Neptune and the royal guards to take Ryugu Palace hostage, Prince Fukaboshi negotiates from outside the gates and relays Jinbe's urgent warning not to engage Hody Jones. Inside the Hard-Shell Tower, Luffy deflects Vander Decken's targeted battleaxe and agrees to protect the tearful Princess Shirahoshi on an excursion, smuggling her out in Megalo's mouth just as human projectiles crash into the palace.",
           "coverage": {
             "anime": "537-538",
             "manga": "616-617"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 7,
           "title": "Fishman Island 07",
-          "description": "Ancient history surfaces in whispers, tying the island’s fate to figures long thought gone.",
+          "altTitle": "Hachi's Warning: The Road to the Sea Forest",
+          "description": "In the Fishman District, Vander Decken tests his lethal Mark-Mark powers by stabbing Hachi with homing daggers before using human pirates as living cannon fodder to breach the Ryugu Palace gates. A badly wounded Hachi arrives at Coral Hill to warn Chopper and Sanji of the coup, while Luffy and Shirahoshi head toward the Sea Forest to visit the grave of Queen Otohime, where Jinbe awaits.",
           "coverage": {
             "anime": "539-540",
             "manga": "618-619"
           },
-          "length": "TBD"
+          "length": "19m"
         },
         {
           "id": 8,
           "title": "Fishman Island 08",
-          "description": "Tensions boil into confrontation as ideologies meet in rooms too small to contain them.",
+          "altTitle": "Clash at Coral Hill: Vander Decken and the Flooded Palace",
+          "description": "Hody Jones invades Ryugu Palace and floods the halls to drown the defenders, forcing Zoro, Usopp, and Brook to release King Neptune and the royal guards to mount an underwater defense. At Coral Hill, an angry mob detains Luffy until Vander Decken arrives on a flying coral chunk to propose to Shirahoshi; after the princess bluntly rejects him, Luffy blasts Decken away with a bound Jet Hammer and escapes with his crew toward the Sea Forest.",
           "coverage": {
             "anime": "541-542",
             "manga": "620-621"
           },
-          "length": "TBD"
+          "length": "45m"
         },
         {
           "id": 9,
           "title": "Fishman Island 09",
-          "description": "Loyalties fracture under pressure, forcing allies to choose between law, mercy, and survival.",
+          "altTitle": "Tears of the Past: Queen Otohime and Fisher Tiger",
+          "description": "After Hody consumes an Energy Steroid to survive Zoro's underwater strike and captures the palace defenders, his officers sweep across Fishman Island forcing terrified citizens to trample portraits of Queen Otohime. At the Sea Forest, Jinbe tearfully apologizes to Nami for releasing Arlong into the East Blue and begins recounting the tragic history of two visionary leaders who fought for their people's freedom: Queen Otohime and Fisher Tiger.",
           "coverage": {
             "anime": "543-544",
             "manga": "622-623"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 10,
           "title": "Fishman Island 10",
-          "description": "The kingdom’s defenders rally while the crew weighs how far they’ll go for a place that isn’t theirs—yet matters deeply.",
+          "altTitle": "The Sun Pirates: Fisher Tiger and Koala",
+          "description": "Sixteen years in the past, Queen Otohime endures broken bones and public skepticism as she collects signatures to migrate Fishman Island to the surface, while Fisher Tiger scales the Red Line to free the slaves of Mariejois. Tiger forms the Sun Pirates alongside Jinbe and Arlong to protect the freed slaves under a unified brand, eventually taking in a traumatized young girl named Koala and vowing to return her safely home.",
           "coverage": {
             "anime": "545-546",
             "manga": "624-625"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 11,
           "title": "Fishman Island 11",
-          "description": "Battle lines harden as old wounds are weaponized in the present, turning speeches into sparks.",
+          "altTitle": "Tiger's Dying Wish: The Splintered Sun Pirates",
+          "description": "After safely escorting Koala home, Fisher Tiger is ambushed by Marines and tragically dies after refusing a life-saving transfusion of human blood, pleading with his crew not to let hatred consume the next generation. Arlong's vengeful rampage lands him in Impel Down, but when Jinbe accepts a Seven Warlords position to grant his crew amnesty, a furious Arlong breaks away to the East Blue, fracturing the Sun Pirates into three distinct factions.",
           "coverage": {
             "anime": "547-548",
             "manga": "626-627"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 12,
           "title": "Fishman Island 12",
-          "description": "Chaos spreads through the palace district, testing leadership under fire and faith under doubt.",
+          "altTitle": "A Queen's Martyrdom: The End of Otohime's Dream",
+          "description": "Queen Otohime takes a bullet to protect a shipwrecked Celestial Dragon—unleashing young Shirahoshi's dormant ability to summon Sea Kings—and travels to Mariejois to secure an official World Noble endorsement for Fishman Island's migration. Just as the nation celebrates filling the petition boxes with signatures, an assassin torches the collection and shoots Queen Otohime dead, leaving Prince Fukaboshi to vow at her funeral that her dream of unity will never die.",
           "coverage": {
             "anime": "549-550",
             "manga": "628-629"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 13,
           "title": "Fishman Island 13",
-          "description": "Personal grudges collide with public spectacle, dragging bystanders into a conflict they didn’t choose.",
+          "altTitle": "The Apology of Joy Boy: Jinbei vs. Luffy",
+          "description": "After Nami warmly absolves a tearful Jinbei of guilt for Arlong's terror in the East Blue, Hordy Jones broadcasts an island-wide ultimatum demanding citizens trample Queen Otohime’s portrait while Robin discovers a Sea Forest Poneglyph bearing an apology from Joy Boy. Desperate to rescue his trapped crew from the flooded palace before Neptune is executed at Gyoncorde Plaza, Luffy clashes furiously with Jinbei when the former warlord refuses to let a human defeat Hordy.",
           "coverage": {
             "anime": "551-552",
             "manga": "630-631"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 14,
           "title": "Fishman Island 14",
-          "description": "Strength becomes a language everyone understands as fighters trade ideals for fists and blades.",
+          "altTitle": "The White-Haired Monster: Fall of the Royal Princes",
+          "description": "As Vander Decken IX shaves his head in heartbreak and plots total annihilation, an agonizingly wounded Hordy overdoses on Energy Steroids to undergo a terrifying white-haired metamorphosis while his officers rampage through the districts. Princes Fukaboshi, Ryuboshi, and Manboshi lead the royal army into Gyoncorde Plaza to defend Queen Otohime's dream of peace, only to be brutally overpowered and captured by Hordy's drug-enhanced forces.",
           "coverage": {
             "anime": "553-554",
             "manga": "632-633"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 15,
           "title": "Fishman Island 15",
-          "description": "The arc’s emotional center sharpens: who gets to decide what justice means beneath the sea?",
+          "altTitle": "The True Assassin: 100,000 vs. 10",
+          "description": "Before a captive royal family and an army of 100,000 outlaws, Hordy confesses that he assassinated Queen Otohime ten years ago—only for Shirahoshi to reveal she carried the painful secret all along to honor her mother's wish against hatred. Just as Hordy raises his blade to execute King Neptune amidst the approach of the colossal ark Noah, Luffy erupts from Megalo's stomach to smash the tyrant, assembling the Straw Hats on the plaza to face the overwhelming horde.",
           "coverage": {
             "anime": "555-556",
             "manga": "634-635"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 16,
           "title": "Fishman Island 16",
-          "description": "Momentum swings wildly as plans unravel and improvisation becomes the only strategy left.",
+          "altTitle": "Conqueror's Haki: 50,000 Down",
+          "description": "After a flashback reveals Jinbei bribed Luffy with meat to act as the island's hero, Hordy boasts of his 100,000-man army only for Luffy to declare that King of the Pirates is his job and instantly knock out 50,000 outlaws with Conqueror's Haki. The remaining Straw Hats showcase their new techniques—from Zoro's whirlwind slashes and Sanji's airborne Sky Walk to Franky's high-tech battle vehicles—before Luffy happily turns Hordy's pet Kraken into an ally.",
           "coverage": {
             "anime": "557-558",
             "manga": "636-637"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 17,
           "title": "Fishman Island 17",
-          "description": "Allies coordinate under impossible odds while the island itself seems to hold its breath.",
+          "altTitle": "General Franky: The Sacred Ark Descends",
+          "description": "Franky docks his vehicles to debut the giant mecha Iron Pirate Franky Shogun while Chopper showcases his reinforced Horn Point and Luffy promises to protect the Kraken’s family from Hordy's threats. The celebration is cut short when the colossal ark Noah descends from the sea above, prompting Shirahoshi to swim away to divert its collision course as Hordy scales the anchor chain to murder Vander Decken.",
           "coverage": {
             "anime": "559-560",
             "manga": "638-639"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 18,
           "title": "Fishman Island 18",
-          "description": "The fight’s scale grows, forcing hard choices about sacrifice, mercy, and the cost of victory.",
+          "altTitle": "On the Noah: Hordy's Treachery",
+          "description": "As Shirahoshi flees upward into the ocean depths, Hordy boards the Noah and brutally impales Vander Decken with his trident, intending for the stalker's death to deactivate his powers and drop the colossal ark directly onto Fishman Island. Down in the plaza, Sanji, Jinbei, and Zoro prepare to dismantle Wadatsumi and a steroid-mutated Hyozo while high above, Luffy resolves to prove his two years of training by defending the princess.",
           "coverage": {
             "anime": "561-562",
             "manga": "640-641"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 19,
           "title": "Fishman Island 19",
-          "description": "Key duels turn personal, revealing motivations that run deeper than territory or titles.",
+          "altTitle": "Noah's Freefall: The Phantom of Hatred",
+          "description": "While the Straw Hats baffle the New Fishman Pirate officers across Gyoncorde Plaza with comical and lethal counters, an unconscious Decken loses control of Noah, sending the gargantuan vessel into an unguided freefall toward Fishman Island. Facing drowning after Hordy ruptures his protective air bubble, Luffy prepares for an emergency air-bubble launch from the island as Prince Fukaboshi demands to know what tragedy drove Hordy's madness.",
           "coverage": {
             "anime": "563-564",
             "manga": "642-643"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 20,
           "title": "Fishman Island 20",
-          "description": "The climax nears as convictions crash together and the kingdom’s future hangs on a handful of moments.",
+          "altTitle": "Return to Zero: The Empty Phantom",
+          "description": "As Robin snaps the chains of the human pirate slaves to incite a mutiny in the plaza, Prince Fukaboshi broadcasts Hordy's chilling confession that humans did nothing to him, unmasking the villain as an empty phantom born of inherited malice and pleading with Luffy to return the island's history to zero. The air tank fires a massive bubble to encase Noah, allowing Luffy to breathe as the Straw Hats decimate the remaining fishman officers across the plaza.",
           "coverage": {
             "anime": "565-566",
             "manga": "644-645"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 21,
           "title": "Fishman Island 21",
-          "description": "Aftershocks reshape alliances and set terms for what peace could look like—if anyone survives to accept them.",
+          "altTitle": "Stop, Noah!: The Officers Fall",
+          "description": "Brook reveals his Revive-Revive soul awakening and underworld chill against Zeo as the citizens reflect on Whitebeard's legacy and watch the Straw Hats risk their lives to protect them. Across Gyoncorde Plaza, the Straw Hats unleash their ultimate finishing techniques to wipe out every remaining officer, while high above, Luffy batters Hordy into submission as the titanic ark Noah continues its deadly descent.",
           "coverage": {
             "anime": "567-568",
             "manga": "646-647"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 22,
           "title": "Fishman Island 22",
-          "description": "Loose ends tighten as winners reckon with what they’ve proven—and what they still owe the ocean.",
+          "altTitle": "The Road Leading to the Sun: The Ancient Weapon Poseidon",
+          "description": "Luffy batters the ark Noah with an Elephant Gatling until giant Sea Kings arrive to halt its descent, carrying the ship to the Sea Forest and confirming Princess Shirahoshi as their sovereign queen. Collapsing from critical blood loss at Gyoncorde Plaza, Luffy is saved when Jinbei shatters ancient racial taboos to donate his blood, before a palace banquet reveals that Shirahoshi is the legendary Ancient Weapon Poseidon.",
           "coverage": {
             "anime": "569-570",
             "manga": "648-649"
           },
-          "length": "TBD"
+          "length": "43m"
         },
         {
           "id": 23,
           "title": "Fishman Island 23",
-          "description": "The island exhales; celebrations and solemn promises mix as the Straw Hats prepare to leave a changed chapter behind.",
+          "altTitle": "A Voice from the New World: Defying an Emperor",
+          "description": "Jinbei briefs the Straw Hats on Akainu's ascension to Fleet Admiral following a ten-day duel with Aokiji and Blackbeard's rise among the Four Emperors, while the captured Hordy and his officers wither into frail old men from the Tamate Box steroids' curse. After Luffy kicks the creeping Caribou out of Shirahoshi’s bedroom and claims the recovered palace treasure, he intercepts a transmission from Big Mom over consumed candy payments, boldly declaring war on the Emperor and claiming Fishman Island as his own territory.",
           "coverage": {
             "anime": "571-572",
             "manga": "650-651"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 24,
           "title": "Fishman Island 24",
-          "description": "Fishman Island closes with the crew sailing onward, carrying the weight of underwater history into the New World’s next storm.",
+          "altTitle": "The Hero's Hat: Toward the New World",
+          "description": "As Pekoms uses Haki to effortlessly crush Caribou's ambush and G-5 Marines under Vice Admiral Smoker lie in wait near the Red Line, the Minister of the Left gifts Nami a three-needle Log Pose to navigate the New World’s unpredictable magnetic waves. After the Straw Hats exchange a solemn pinky promise with Princess Shirahoshi to walk together in a surface forest one day, the Thousand Sunny bids a fond farewell to the inspired kingdom and ascends toward the surface of the New World.",
           "coverage": {
             "anime": "573-574",
             "manga": "652-653"
           },
-          "length": "TBD"
+          "length": "33m"
         }
       ]
     },
@@ -3309,222 +3377,244 @@ export const DATA = {
         {
           "id": 1,
           "title": "Punk Hazard 01",
-          "description": "The crew crosses into hostile weather and stranger ruins, signaling that the New World doesn’t forgive curiosity.",
+          "altTitle": "The Island of Fire and Ice",
+          "description": "Emerging into the New World with a pod of giant whales, the Straw Hats intercept a distress call from a man under attack by a samurai on the restricted island of Punk Hazard. While Vice Admiral Smoker's G-5 warship changes course to pursue them, Luffy, Zoro, Usopp, and Robin cross a burning sea onto the island and come face-to-face with a fire-breathing dragon.",
           "coverage": {
             "anime": "579-581",
             "manga": "654-656"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 2,
           "title": "Punk Hazard 02",
-          "description": "Split terrain forces split plans as survivors, soldiers, and experiments blur the line between rescue and trap.",
+          "altTitle": "The Severed Samurai and the Biscuit Room",
+          "description": "Luffy and Zoro slay the dragon and discover a talking pair of lower legs stuck to its back, while masked men gas the Thousand Sunny and abduct Sanji, Nami, Chopper, and Franky. Escaping their cell alongside the severed head of a Wano samurai, the captured crewmates stumble into a giant playroom of imprisoned children as Smoker reveals how Aokiji and Akainu's duel reshaped the island.",
           "coverage": {
             "anime": "582-584",
             "manga": "657-659"
           },
-          "length": "TBD"
+          "length": "46m"
         },
         {
           "id": 3,
           "title": "Punk Hazard 03",
-          "description": "Unlikely alliances form under duress while invisible borders separate friends from bait.",
+          "altTitle": "The Surgeon of Death, Warlord Trafalgar Law",
+          "description": "While Luffy's group rows across the half-boiling, half-freezing central lake toward Brownbeard's centaur patrol, Sanji and Franky hold off sheep-men pursuers so Nami and Chopper can lead the abducted children to safety. Reaching the laboratory's front gates, Smoker's G-5 Marines are confronted by newly appointed Warlord Trafalgar Law, who uses his Op-Op Fruit powers to hoist their warship into the air.",
           "coverage": {
             "anime": "585-587",
             "manga": "660-661"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 4,
           "title": "Punk Hazard 04",
-          "description": "The island’s true purpose leaks through its corridors: a place built to test limits—on nature and on people.",
+          "altTitle": "Shambles in the Snow",
+          "description": "Brook rescues Luffy's capsized group from the freezing lake and helps them defeat Brownbeard's centaurs for their coats, while Law uses his Room to swap the hearts and bodies of Nami, Sanji, Chopper, and Franky. Refusing to let the Marines report what they have seen, Law cuts down Tashigi and duels Smoker before swapping their souls and carving out Smoker's heart.",
           "coverage": {
             "anime": "588-589",
             "manga": "662-663"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 5,
           "title": "Punk Hazard 05",
-          "description": "Hazards escalate from environment to enemy as familiar faces and unfamiliar motives collide.",
+          "altTitle": "Caesar Clown, the Master of Punk Hazard",
+          "description": "The Straw Hats reunite in the ruins of an old laboratory with the children and their captive Brownbeard, who recounts how Vegapunk's chemical weapon disaster paralyzed the island's prisoners before their \"Master\" and Law gave them new bodies. Meanwhile, Smoker deduces that Vegapunk's rogue rival Caesar Clown is the true mastermind behind the disaster and that a traitor inside G-5 has been covering up his child abductions.",
           "coverage": {
             "anime": "590-591",
             "manga": "664-665"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 6,
           "title": "Punk Hazard 06",
-          "description": "Science fiction becomes battlefield reality when powers on display rewrite what “possible” means.",
+          "altTitle": "Deadly Candy and the Yeti Cool Brothers",
+          "description": "As Zoro, Brook, and Sanji head into the blizzard to find the samurai's missing torso, Chopper discovers the giant children are suffering violent withdrawals from an addictive stimulant hidden in their daily candy. Before the crew can march on the lab, the Yeti Cool Brothers ambush the hideout, gun down Brownbeard on Caesar's orders, and kidnap Nami in Franky's body.",
           "coverage": {
             "anime": "592-593",
             "manga": "666-667"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 7,
           "title": "Punk Hazard 07",
-          "description": "Children caught in the middle sharpen the stakes, turning a raid into something closer to a rescue mission.",
+          "altTitle": "The Pirate Alliance",
+          "description": "Luffy and a Monster Point Franky pursue the Yeti Cool Brothers into the snowy peaks to rescue Nami, where Law finishes off the assassin Scotch and proposes an alliance with Luffy to take down one of the Four Emperors. Luffy eagerly accepts the pact and sets out to capture Caesar Clown, just as the mad scientist unleashes his giant poison slime pet, Smiley, across the Burning Lands.",
           "coverage": {
             "anime": "594-595",
             "manga": "668-669"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 8,
           "title": "Punk Hazard 08",
-          "description": "Labyrinths of ice and fire hide worse things than temperature—namely, intentions.",
+          "altTitle": "The Slime Monster Smiley",
+          "description": "Sanji, Zoro, and Brook recover the samurai's frozen head and learn his torso fell into the central lake, just as Smiley begins catapulting explosive chunks of itself across the water. Outside the main laboratory, Luffy, Franky, and Robin clash with the G-5 Marines and Caesar's forces until Caesar Clown appears atop the burning warship to herald Smiley's arrival.",
           "coverage": {
             "anime": "596-597",
             "manga": "670-671"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 9,
           "title": "Punk Hazard 09",
-          "description": "Command chains splinter as captains, doctors, and pirates each chase a different definition of “clean up.”",
+          "altTitle": "Foxfire Kin'emon and the Mysterious Vergo",
+          "description": "Luffy uses Armament Haki to grab and pummel the gas-bodied Caesar Clown outside the lab, but both Luffy's group and Law are suddenly incapacitated when the mysterious Vergo appears and crushes Law's heart. At the poisoned lake, Sanji dives into the freezing water to retrieve the samurai's torso, allowing Foxfire Kin'emon to reassemble himself and slice through a massive Smiley explosion.",
           "coverage": {
             "anime": "598-599",
             "manga": "672-673"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 10,
           "title": "Punk Hazard 10",
-          "description": "A long shadow from the Navy’s past steps into the light, reframing who the real antagonist might be.",
+          "altTitle": "Joker's Undercover Vice Admiral",
+          "description": "Imprisoned in a Sea Prism Stone cage alongside Luffy, Robin, Franky, Smoker, and Tashigi, Law reveals that G-5 commander Vice Admiral Vergo is a pirate mole serving the underworld broker \"Joker\"—Warlord Donquixote Doflamingo. Meanwhile, Caesar suffocates Nami and Usopp at the hideout to lure the addicted children back to the lab and broadcasts his weapons demonstration to brokers across the New World.",
           "coverage": {
             "anime": "600-601",
             "manga": "674-675"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 11,
           "title": "Punk Hazard 11",
-          "description": "Betrayals and bargains stack up until the only certainty is that nobody leaves the island unchanged.",
+          "altTitle": "The Land of the Dead",
+          "description": "Caesar suspends the caged Straw Hats, Law, and Smoker outside the laboratory walls so they will be the first victims of his live underworld broadcast. When Smiley devours a giant piece of candy, the monster transforms into the petrifying death gas \"Shinokuni\" and begins swallowing everything on the island as Zoro's group races for the lab.",
           "coverage": {
             "anime": "602-603",
             "manga": "676-677"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 12,
           "title": "Punk Hazard 12",
-          "description": "The laboratory’s heart exposes what was built here—and what was sacrificed to keep it running.",
+          "altTitle": "Counterattack! Escape into the Lab",
+          "description": "As underworld brokers—including Kid, Apoo, and Hawkins—watch the broadcast, Franky torches the warship below to create a smokescreen while Law unlocks their chains and opens a tunnel into the lab. Zoro's group slices through the outer steel wall to escape the petrifying gas just in time, and Law restores Nami and Sanji's bodies before Luffy and Smoker charge deeper into the facility.",
           "coverage": {
             "anime": "604-605",
             "manga": "678-679"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 13,
           "title": "Punk Hazard 13",
-          "description": "Fights spread across mismatched arenas, forcing improvisation when the terrain is as dangerous as the opponent.",
+          "altTitle": "Race Through Building A",
+          "description": "Furious that his captives escaped, Caesar seals the blast doors between Buildings A and B and blasts open the exterior wall to flood the entrance hall with petrifying gas. The G-5 Marines heroically hurl Tashigi through the closing doorway at the cost of their own lives, only for Vergo to begin slaughtering his surviving men in Building B until Sanji intercepts him.",
           "coverage": {
             "anime": "606-607",
             "manga": "680-681"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 14,
           "title": "Punk Hazard 14",
-          "description": "Ideology meets violence as two worldviews about life, death, and progress refuse to coexist quietly.",
+          "altTitle": "Luffy vs. Caesar and Sanji vs. Vergo",
+          "description": "Luffy battles Caesar Clown inside his office until Monet intervenes with walls of solid snow, while Sanji trades fierce blows with Vergo in the gas-flooded corridor of Building B. When alarms announce that Law has entered the SAD manufacturing room, Doflamingo orders Vergo to brutally execute Law while Zoro's group defeats the rampaging small dragon.",
           "coverage": {
             "anime": "608-609",
             "manga": "682-683"
           },
-          "length": "TBD"
+          "length": "20m"
         },
         {
           "id": 15,
           "title": "Punk Hazard 15",
-          "description": "Pressure mounts to shut the facility down for good before its failures become a headline the world can’t ignore.",
+          "altTitle": "The Secret of the SAD Room and Vegapunk's Past",
+          "description": "Monet traps Luffy inside a freezing snow igloo until he crashes through the floor down a trash chute, while Vergo mercilessly beats Law in the SAD room by squeezing his heart until Smoker arrives. As Robin and Chopper struggle to keep the giant children out of the Biscuit Room, Caesar seals Buildings C and D to herd everyone toward Building R while recalling how Vegapunk fired him four years ago.",
           "coverage": {
             "anime": "610-611",
             "manga": "684-685"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 16,
           "title": "Punk Hazard 16",
-          "description": "Allies coordinate under smoke and snow while enemies tighten control over the island’s choke points.",
+          "altTitle": "A Small Dragon's Secret and the Snow Woman's Trap",
+          "description": "At the bottom of the underground garbage dump, Luffy meets a small pink dragon who reveals he is actually Kin'emon's son Momonosuke after eating Vegapunk's artificial Devil Fruit and overhearing Caesar's plan to let the children die. Meanwhile, Zoro and Tashigi stay behind outside the Biscuit Room to battle the snow-harpy Monet so Nami, Robin, and Chopper can stop the children from eating the drugged candy.",
           "coverage": {
             "anime": "612-613",
             "manga": "686-687"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 17,
           "title": "Punk Hazard 17",
-          "description": "The arc’s major players finally share the same stage, and the island pays the price in collateral damage.",
+          "altTitle": "Zoro and Tashigi vs. Monet",
+          "description": "When Monet overpowers Tashigi inside her snowstorm, Zoro steps in and slices the Logia user in half without Haki, paralyzing her with sheer terror so Tashigi can deliver the finishing blow. In the Biscuit Room, Mocha swallows the entire bag of drugged candy herself to save her brainwashed friends, collapsing in Chopper's arms as the G-5 medics sedate the remaining children.",
           "coverage": {
             "anime": "614-615",
             "manga": "688-689"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 18,
           "title": "Punk Hazard 18",
-          "description": "Desperate gambits trade safety for speed as the clock runs on both poison and pride.",
+          "altTitle": "The Gears Broken",
+          "description": "On the first floor of Building R, Caesar paralyzes Brownbeard and mocks his loyal subordinates before Luffy bursts in and pummels the scientist despite his warnings about Doflamingo and the Four Emperors. In the SAD room, Smoker endures Vergo's beating to retrieve Law's heart, allowing Law to slice Vergo, the SAD tank, and the entire mountain laboratory in half as he declares to Doflamingo that the gears of a new era are broken.",
           "coverage": {
             "anime": "616-617",
             "manga": "690-691"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 19,
           "title": "Punk Hazard 19",
-          "description": "Climactic clashes turn scientific hubris into spectacle, then into consequences nobody can undo.",
+          "altTitle": "Grizzly Magnum",
+          "description": "As the sliced laboratory crumbles, Caesar opens the vents to petrify his own subordinates in Building R and absorbs the deadly gas, only for Luffy to send him flying out of the mountain with a colossal Gum-Gum Grizzly Magnum. While the crew, G-5 Marines, and children board an SAD mine cart to race out of the collapsing tunnel, Doflamingo's assassins Baby 5 and Buffalo arrive outside on the tanker and confront General Franky.",
           "coverage": {
             "anime": "618-619",
             "manga": "692-693"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 20,
           "title": "Punk Hazard 20",
-          "description": "Victory tastes bitter when the cleanup reveals how deep the roots of this experiment really go.",
+          "altTitle": "General Franky and the Final Escape",
+          "description": "While the survivors race through the collapsing R-66 tunnel, Monet prepares to trigger the island's self-destruct switch on Doflamingo's orders, but Caesar—believing he holds Smoker's heart—fatally stabs Monet's heart instead. Outside on the tanker, General Franky blasts Baby 5 and Buffalo before Nami and Usopp finish off the fleeing assassins and capture Caesar with Sea Prism Stone handcuffs.",
           "coverage": {
             "anime": "620-621",
             "manga": "694-695"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 21,
           "title": "Punk Hazard 21",
-          "description": "Escape routes and obligations collide as the Straw Hats decide what—and who—they carry forward.",
+          "altTitle": "The Ultimatum to Doflamingo",
+          "description": "Outside the ruined lab, Kin'emon breaks free from his petrified shell to reunite with Momonosuke, Law surgically purges the toxins from the children, and Sanji cooks a feast before the G-5 Marines sail away to take the kids home. As the Straw Hats, Law, Kin'emon, and Momonosuke depart with Caesar on the Sunny, Doflamingo finds the severed heads of Baby 5 and Buffalo on a raft and receives an ultimatum from Law to resign from the Seven Warlords by morning.",
           "coverage": {
             "anime": "622-623",
             "manga": "696-697"
           },
-          "length": "TBD"
+          "length": "24m"
         },
         {
           "id": 22,
           "title": "Punk Hazard 22",
-          "description": "Punk Hazard ends with alliances shifted and a new destination set, leaving the lab’s ghosts behind—if they’ll stay there.",
+          "altTitle": "The Morning Paper and the Alliance's Next Target",
+          "description": "An enraged Doflamingo lands on Punk Hazard and nearly kills Smoker to learn the Straw Hats' destination, until former Navy Admiral Kuzan arrives to freeze Doflamingo in his tracks and save his old friend. Aboard the Thousand Sunny, Law explains their plan to destroy the SMILE factory on Dressrosa and cripple Emperor Kaido's army, and the next morning's newspaper shocks the world with news of Doflamingo's resignation and the new pirate alliances.",
           "coverage": {
             "anime": "624-625",
             "manga": "698-699"
           },
-          "length": "TBD"
+          "length": "26m"
         }
       ]
     },
@@ -3544,482 +3634,530 @@ export const DATA = {
         {
           "id": 1,
           "title": "Dressrosa 01",
-          "description": "The crew arrives in a country that loves heroes a little too loudly—and hides knives a little too well.",
+          "altTitle": "Land of Love, Passion, and Toys",
+          "description": "As news of Doflamingo's apparent resignation shakes the world, the alliance docks at Dressrosa and splits into teams to hand over Caesar and destroy the SMILE factory while Doflamingo sets a trap using Ace's reborn Flame-Flame Fruit. Exploring the port town of Acacia alongside living toys, Luffy defends a blind gambler from crooked thugs, only for the old man to crush his attackers into a massive crater with mysterious gravity powers.",
           "coverage": {
             "anime": "629-631",
             "manga": "700-702"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 2,
           "title": "Dressrosa 02",
-          "description": "Public festivities mask private surveillance as the Straw Hats split up to learn the island’s real rules.",
+          "altTitle": "The Corrida Colosseum",
+          "description": "After unseen 'fairies' steal Shusui in the aftermath of the restaurant brawl, Zoro chases the thief through the streets while Sanji gets swept up by a mysterious dancer named Violet who begs him to kill a man. Meanwhile, Luffy learns that Ace's Flame-Flame Fruit is the grand prize at the Corrida Colosseum and registers under the alias 'Lucy,' immediately drawing the ire of veteran gladiator Spartan.",
           "coverage": {
             "anime": "632-634",
             "manga": "703-705"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 3,
           "title": "Dressrosa 03",
-          "description": "Arena spectacle draws crowds and fighters alike, offering fame to some and cover to others.",
+          "altTitle": "Contenders of the New World",
+          "description": "After effortlessly flooring Spartan, 'Lucy' mingles with eccentric warriors like Cavendish and Rebecca before Blackbeard's captain Jesus Burgess claims victory in Block A. As undercover Vice Admiral Maynard reports to Admiral Issho and falls to the ruthless Bartolomeo, Law's team spots CP0 near the Fighting Fish-infested bridge to Green Bit.",
           "coverage": {
             "anime": "635-637",
             "manga": "706-708"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 4,
           "title": "Dressrosa 04",
-          "description": "Old reputations resurface in the ring while whispers offstage suggest the tournament isn’t the main event.",
+          "altTitle": "Block B's Battle Royale",
+          "description": "Before stepping into the Block B battle royale alongside the despised Bartolomeo, a changed Bellamy recognizes Luffy and vows to win an executive seat in Doflamingo's family. While Dagama's hired wall shields King Elizabello II against ferocious contenders like Hack, Blue Gilly, and Ricky, Don Chinjao confronts Lucy over his blood feud with Garp.",
           "coverage": {
             "anime": "638-640",
             "manga": "709-711"
           },
-          "length": "TBD"
+          "length": "18m"
         },
         {
           "id": 5,
           "title": "Dressrosa 05",
-          "description": "Loyalty tests pile up as allies pretend to be strangers and strangers pretend to be friends.",
+          "altTitle": "King Punch vs. the Barrier",
+          "description": "After Luffy fends off a vengeful Don Chinjao and an envious Cavendish backstage, Block B's battle royale reaches a fever pitch as Bellamy, Blue Gilly, and Bartolomeo thin the ranks. King Elizabello II obliterates the arena with his devastating King Punch, only for Bartolomeo to block the blast with his Barrier-Barrier Fruit and claim victory just as the Toy Soldier recruits Franky outside.",
           "coverage": {
             "anime": "641-643",
             "manga": "712-714"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 6,
           "title": "Dressrosa 06",
-          "description": "The kingdom’s cheerful facade cracks when violence spills from back alleys into broad daylight.",
+          "altTitle": "The Tontatta Kingdom",
+          "description": "After battling giant Fighting Fish across the bridge to Green Bit, Robin and Usopp are captured beneath the forest by the tiny, gullible Tontatta Tribe while Zoro learns from scout Wicca that the Thousand Sunny is under attack. Just minutes before the 3 PM handover, Sanji frantically calls Law to warn him that Doflamingo's resignation was a lie and the entire exchange is a trap.",
           "coverage": {
             "anime": "644-646",
             "manga": "715-717"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 7,
           "title": "Dressrosa 07",
-          "description": "Underground networks mobilize, proving Dressrosa has been angry longer than today’s headlines suggest.",
+          "altTitle": "A Woman's Tears and a Falling Star",
+          "description": "Moved by Sanji's unwavering faith in her tears, Violet betrays Doflamingo's men and reveals that CP0 helped fabricate the Warlord's resignation, prompting Law to call off the handover as Admiral Fujitora drops a meteor onto Green Bit. Meanwhile, Usopp's tall tales convince the Tontatta Tribe that he is a descendant of their legendary hero Mont Blanc Noland, rallying the dwarves to march against Doflamingo.",
           "coverage": {
             "anime": "647-649",
             "manga": "718-719"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 8,
           "title": "Dressrosa 08",
-          "description": "Royal authority and pirate chaos intertwine until even spectators have to pick a side.",
+          "altTitle": "Lucy and the Rampaging Bull",
+          "description": "While Donquixote executive Giolla ambushes the Thousand Sunny with her Art-Art Fruit powers and Diamante orders Bellamy to assassinate Luffy, the Block C battle royale erupts in the Colosseum. After taming the rampaging bull Ucy and flooring the giant Hajrudin with one punch, Lucy faces a dwindling field dominated by Ideo, Don Chinjao, and the fused Funk Brothers.",
           "coverage": {
             "anime": "650-652",
             "manga": "720-721"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 9,
           "title": "Dressrosa 09",
-          "description": "Personal vendettas sharpen the conflict as histories long buried refuse to stay polite.",
+          "altTitle": "Clash of Conqueror's Haki",
+          "description": "After Sai defeats the fused Funk Brothers and both he and Ideo are knocked from the ring, Luffy and Don Chinjao clear the Block C arena with a massive clash of Conqueror's Haki. Meanwhile, Vice Admiral Bastille's Marines surround the Colosseum as the Toy Soldier reveals to Franky that Dressrosa's toys are actually transformed humans erased from their loved ones' memories.",
           "coverage": {
             "anime": "653-655",
             "manga": "722-723"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 10,
           "title": "Dressrosa 10",
-          "description": "The Straw Hats juggle rescue, recon, and reputation while the island’s clock ticks toward open war.",
+          "altTitle": "Settling a Thirty-Year Grudge",
+          "description": "As the Tontatta army marches toward the Flower Field headquarters and a defeated Law desperately calls the art-warped Sunny crew from Green Bit, Don Chinjao recounts how Garp flattened his legendary drill head thirty years ago. Unleashing a lightning-charged elephant punch from the sky, Luffy reshapes Chinjao's pointed skull and splits the arena in half to claim victory in Block C.",
           "coverage": {
             "anime": "656-658",
             "manga": "724-725"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 11,
           "title": "Dressrosa 11",
-          "description": "Battle lines redraw around landmarks and legends, turning geography into strategy.",
+          "altTitle": "The Tin Soldier and the Phantom Princess",
+          "description": "After secret Straw Hat superfan Bartolomeo shields him from Cavendish and Blackbeard taunts him through Burgess's Transponder Snail, Luffy shares a quiet meal with Rebecca in the prisoner barracks and effortlessly disarms her desperate ambush. Stepping into the Block D arena to a chorus of hatred as King Riku's granddaughter, Rebecca recalls the night her mother Scarlet was killed and how the one-legged Toy Soldier raised and protected her.",
           "coverage": {
             "anime": "659-661",
             "manga": "726-727"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 12,
           "title": "Dressrosa 12",
-          "description": "Allies in disguise risk exposure as the enemy tightens its grip on information and movement.",
+          "altTitle": "Bloodline of the Founders",
+          "description": "After Cavendish scolds the jeering crowd at the start of Block D, Usopp and Robin join the rebels beneath the Flower Field while Brook tricks and defeats Giolla to restore the Thousand Sunny. On Green Bit, Doflamingo reveals his Celestial Dragon heritage as Dressrosa's original royal bloodline before Law snatches Caesar and flees toward the Sunny, where Sanji flies in to intercept Doflamingo in midair.",
           "coverage": {
             "anime": "662-664",
             "manga": "728-729"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 13,
           "title": "Dressrosa 13",
-          "description": "The arena’s spectacle gives way to something uglier: power that doesn’t need a crowd to be effective.",
+          "altTitle": "The Thirteen-Year Vendetta",
+          "description": "After Law rescues Sanji from Doflamingo's strings and sends the Thousand Sunny rocketing away with Caesar toward Zou, he faces the Warlord alone on the bridge to settle a thirteen-year-old vendetta. Meanwhile, Bartolomeo scrambles to fetch Luffy in exchange for Zoro's autograph as Rebecca dances along the ring's edge in Block D and the tournament's eliminated fighters awaken trapped in an underground scrap heap.",
           "coverage": {
             "anime": "665-667",
             "manga": "730-731"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 14,
           "title": "Dressrosa 14",
-          "description": "Rebellion becomes visible as symbols replace speeches and courage spreads faster than orders.",
+          "altTitle": "The Tragedy of Dressrosa",
+          "description": "Trapped in the underground scrap heap where defeated gladiators are being turned into toy slaves, the masked fighter Ricky reveals himself as the deposed King Riku Doldo III. Meanwhile, beneath the Flower Field, Chief Gancho and the Toy Soldier—who reveals he is Rebecca's forgotten father—recount the horrific night ten years ago when Doflamingo used his strings to force King Riku and his army to slaughter their own devoted citizens.",
           "coverage": {
             "anime": "668-670",
             "manga": "732-733"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 15,
           "title": "Dressrosa 15",
-          "description": "Leaders on every side gamble with lives, hoping momentum can substitute for certainty.",
+          "altTitle": "Gunshots Outside the Colosseum",
+          "description": "Learning how Princess Viola sacrificed her freedom to spare King Riku's life on the night Doflamingo seized the throne as a false hero, a tearful Franky begs Luffy for permission to join the rebels' all-out war. Just as Dellinger moves to execute Bellamy inside the Colosseum, Doflamingo's battle with Law crashes to the arena gates, where the Warlord ruthlessly shoots a fallen Law before Luffy, Zoro, and Kin'emon's eyes.",
           "coverage": {
             "anime": "671-673",
             "manga": "734-735"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 16,
           "title": "Dressrosa 16",
-          "description": "Chaos escalates citywide as separate fights merge into a storm nobody fully controls.",
+          "altTitle": "Operation SOP",
+          "description": "After Admiral Fujitora helps Doflamingo carry a wounded Law to the palace and Big Mom's flagship ambushes the Thousand Sunny offshore, Sanji's team sails ahead toward Zou while the Toy Soldier briefs Usopp, Robin, and Franky on Operation SOP to knock out the toy-maker Sugar. Desperate to exit the Colosseum and rescue Law, Luffy is stunned into tears of joy when a long-lost brother thought dead for years appears to take his place as 'Lucy' and win Ace's Flame-Flame Fruit.",
           "coverage": {
             "anime": "674-676",
             "manga": "736-737"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 17,
           "title": "Dressrosa 17",
-          "description": "The crew’s pieces finally connect across Dressrosa, turning isolated bravery into coordinated pressure.",
+          "altTitle": "The Underground Trade Port",
+          "description": "While Franky launches a noisy assault on the Toy House against Senor Pink, Usopp, Robin, and the Tontattas infiltrate the underground trade port to target Sugar. Meanwhile, the Toy Soldier hijacks the palace lift as a sudden, unseen whirlwind cuts down nearly every remaining fighter in Block D at the Colosseum.",
           "coverage": {
             "anime": "677-679",
             "manga": "738-739"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 18,
           "title": "Dressrosa 18",
-          "description": "Monsters—literal and political—take center stage as the kingdom’s truth fights its own mythology.",
+          "altTitle": "The Slicing Winds of Rommel",
+          "description": "Rebecca narrowly evades the lethal rampage of Cavendish's sleepwalking alter ego, Hakuba, to claim victory in Block D and advance to the Colosseum finals alongside Diamante and the new 'Lucy.' Meanwhile, Princess Viola guides Luffy, Zoro, and Kin'emon into a secret palace passage just as Admiral Fujitora reveals his ambition to abolish the Seven Warlords system.",
           "coverage": {
             "anime": "680-682",
             "manga": "740-741"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 19,
           "title": "Dressrosa 19",
-          "description": "Key duels reshape the public story of Dressrosa, for better or worse, in front of a watching nation.",
+          "altTitle": "The Colosseum Finals and the Tatababasco Plan",
+          "description": "As the Colosseum finals erupt over fighting fish carrying the Flame-Flame Fruit and 'Lucy' shatters Burgess's elbow armor, Pica merges with the palace stone to confront Luffy's group and Lao G ambushes the Toy Soldier in the lift. Underground, Sugar turns a captured Cavendish into a forgotten toy slave, prompting Leo to leap into action with a scorching Tatababasco grape to knock her unconscious.",
           "coverage": {
             "anime": "683-685",
             "manga": "742-743"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 20,
           "title": "Dressrosa 20",
-          "description": "Hope and dread trade blows as civilians become participants, not just background.",
+          "altTitle": "Operation SOP Fails and the Legend of Kyros",
+          "description": "Robin lures Treble away from the Executive Tower so the Tontattas can ambush Sugar, but Sugar turns several dwarves into hostile toys before an enraged Treble hurls a massive ship through the tower. As Diamante cruelly taunts Rebecca in the Colosseum, the captured Tontattas reveal that their one-legged toy commander is actually the legendary undefeated gladiator Kyros.",
           "coverage": {
             "anime": "686-688",
             "manga": "744-745"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 21,
           "title": "Dressrosa 21",
-          "description": "The arc’s emotional weight shifts from winning fights to deciding what kind of future deserves to win.",
+          "altTitle": "Hero of the Tontattas: My Name Is Usopp",
+          "description": "After Luffy and Viola save the Toy Soldier from Gladius and reach Doflamingo's throne room window, Sugar turns Robin into a forgotten toy and Usopp initially flees before returning to confess his lies and fight Treble as Usopp of the Straw Hats. Meanwhile, the Toy Soldier begins recounting his past as the teenage outcast Kyros, whom King Riku brought to the Colosseum to earn redemption through battle.",
           "coverage": {
             "anime": "689-691",
             "manga": "746-747"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 22,
           "title": "Dressrosa 22",
-          "description": "Climactic momentum builds as every delay costs streets, rooftops, and innocent ground.",
+          "altTitle": "The Curse Broken and the Toy Soldier's Tragedy",
+          "description": "After remembering his life with Princess Scarlet and her tragic murder during Doflamingo's coup, the Toy Soldier's ten-year wait ends when Usopp's horrifying reaction to the Tatababasco grape scares Sugar unconscious and restores every toy and erased memory across Dressrosa. Reclaiming his human form, Kyros storms the throne room to behead Doflamingo just as 'Lucy' shatters the Colosseum ring and sends it crashing into the underground port.",
           "coverage": {
             "anime": "692-694",
             "manga": "748-749"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 23,
           "title": "Dressrosa 23",
-          "description": "Power clashes at the highest level turn the capital into a proving ground for ideals as much as strength.",
+          "altTitle": "Fire Fist Inherited and the Birdcage Game",
+          "description": "After winning the Colosseum finals and eating the Flame-Flame Fruit, Sabo reveals himself as Luffy's brother and Chief of Staff of the Revolutionary Army while the liberated underground gladiators hail the battered Usopp as 'God Usopp.' Up at the palace, Doflamingo reveals his decapitated body was a string clone, ejects Luffy's group via Pica's stone powers, and traps all of Dressrosa inside a razor-sharp Birdcage for a sadistic survival game.",
           "coverage": {
             "anime": "695-696",
             "manga": "750-751"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 24,
           "title": "Dressrosa 24",
-          "description": "Allies push past fear as the enemy reveals how far they’ll go to protect a lie dressed as order.",
+          "altTitle": "Five-Star God Usopp and the Colossal Pica",
+          "description": "Doflamingo places massive star-ranked bounties on twelve targets—topped by a 500-million-berry price on 'God Usopp'—turning Dressrosa's desperate citizens into hunters as Luffy promises Rebecca over Transponder Snail that he will defeat Doflamingo. Charging toward the new palace plateau with Zoro and the still-cuffed Law, Luffy clashes with Doflamingo's executives and Admiral Fujitora until Pica rises as a colossal stone giant whose squeaky voice sends Luffy into fits of laughter.",
           "coverage": {
             "anime": "697-698",
             "manga": "752-753"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 25,
           "title": "Dressrosa 25",
-          "description": "The kingdom’s fate narrows to a handful of decisive confrontations where mercy and cruelty are equally costly.",
+          "altTitle": "The Colosseum Alliance Charges and the Name of Corazon",
+          "description": "Joined by Cavendish, Chinjao, and a host of liberated Colosseum fighters eager to repay 'God Usopp,' Luffy, Zoro, and Law charge toward the palace and shatter Pica's colossal stone body. Zoro stays behind to duel Pica's true form one-on-one as Luffy and Law press upward, with Law revealing his personal vow to avenge Doflamingo's late younger brother, Corazon.",
           "coverage": {
             "anime": "699-700",
             "manga": "754-755"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 26,
           "title": "Dressrosa 26",
-          "description": "Spectacle collapses into survival as Dressrosa’s war stops being metaphor and becomes geography.",
+          "altTitle": "Sabo vs. Fujitora and the Tunnel Ambush",
+          "description": "After Viola locates the key to Law's handcuffs and sends Rebecca, Robin, Bartolomeo, and Leo to deliver it, Sabo single-handedly halts the Marine forces—crushing Vice Admiral Bastille and clashing with Admiral Fujitora to protect his brother Luffy. Meanwhile, Kelly Funk lures Luffy and Law into a flooded dead-end tunnel under the guise of a shortcut, where Doflamingo ambushes them from behind.",
           "coverage": {
             "anime": "701-702",
             "manga": "756-757"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 27,
           "title": "Dressrosa 27",
-          "description": "Hidden players step forward, rewriting assumptions about who controls the island’s narrative.",
+          "altTitle": "Breaking the Tunnel Trap and the Gladiators' Stand",
+          "description": "Saved by Abdullah and Jeet from Kelly Funk's trap and Doflamingo's string clone, Luffy blasts an opening out of the flooded cavern while Robin's group glides over the rooftops and pink bees alert the enslaved Tontattas inside the SMILE Factory that they were deceived. On the second level of the plateau, the Colosseum gladiators unite to hold off Doflamingo's executives so Cavendish can ride ahead with Luffy, Law, and Kyros.",
           "coverage": {
             "anime": "703-704",
             "manga": "758-759"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 28,
           "title": "Dressrosa 28",
-          "description": "The Straw Hats commit to a finish line that isn’t escape—it’s justice loud enough to be remembered.",
+          "altTitle": "Kanjuro's Brush, the Factory Revolt, and Hard-Boiled Kiss",
+          "description": "After Kin'emon reunites with Kanjuro in the underground scrap heap and Zoro slices Pica's stone giant to clear the airspace for Robin's group, the enlightened Tontattas rebel inside the SMILE Factory, let Franky in, and discover that Princess Mansherry is missing. While Franky silences the factory manager Kyuin with a kiss to continue his manly duel with Senor Pink, Viola uses her clairvoyance to search the royal palace for Mansherry.",
           "coverage": {
             "anime": "705-706",
             "manga": "760-761"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 29,
           "title": "Dressrosa 29",
-          "description": "Battle fatigue meets stubborn resolve as fighters trade polish for persistence.",
+          "altTitle": "Barrier Stairs and Reunion in the Sunflower Field",
+          "description": "After Viola locates Princess Mansherry in the palace and discovers that Sugar has woken up, Robin, Bartolomeo, and Cavendish hold off Gladius and a squadron of giant nutcracker toys on the third level so Luffy, Law, and Kyros can ascend Bartolomeo's barrier stairs. Up in the Sunflower Field, Kyros rescues Rebecca from Diamante and stays to avenge Scarlet while Rebecca unlocks Law's handcuffs so Luffy and Law can confront Doflamingo.",
           "coverage": {
             "anime": "707-708",
             "manga": "762-763"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 30,
           "title": "Dressrosa 30",
-          "description": "The capital’s chaos concentrates around decisive duels that will define the country’s next era.",
+          "altTitle": "Usopp's Miracle Shot and the Palace Showdown",
+          "description": "As Sugar creeps up on an unsuspecting Luffy and Law at the palace courtyard, Usopp awakens Observation Haki atop the Old King's Plateau and fires an impossible long-range projectile of his own terrifying face to scare her unconscious a second time. Storming the top floor of the palace, Luffy and Law endure Doflamingo's cruel puppetry of Bellamy before retaliating with a coordinated Red Hawk and Radio Knife combo.",
           "coverage": {
             "anime": "709-710",
             "manga": "764-765"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 31,
           "title": "Dressrosa 31",
-          "description": "Old debts come due in public view, forcing characters to confront who they were—and who they’ll be after.",
+          "altTitle": "The Treasure of Mary Geoise and the Boy from White Town",
+          "description": "While Admiral Fujitora joins King Riku in betting on Luffy's victory, an enraged Doflamingo overwhelms Luffy and Law at the palace, revealing his fallen Celestial Dragon origins, the secret national treasure of Mary Geoise, and the Op-Op Fruit's power to grant eternal youth. As Law refuses to yield, a flashback to sixteen years ago in Spider Miles shows a ten-year-old Law—dying of Amber Lead Syndrome and strapped with bombs—joining Doflamingo's crew and meeting his mute younger brother, Corazon.",
           "coverage": {
             "anime": "711-712",
             "manga": "766-767"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 32,
           "title": "Dressrosa 32",
-          "description": "The war’s final movements hinge on timing, trust, and the willingness to bet everything on one swing.",
+          "altTitle": "The Tragedy of Flevance and the Secret Name of D",
+          "description": "Sixteen years ago, Doflamingo recounts how the World Government and neighboring nations profited from and then massacred Law's poisoned homeland of Flevance, driving the sole surviving boy to stab Corazon in a fit of nihilistic rage. Surprisingly spared when Corazon covers up the attack, Law is officially welcomed into the Donquixote Family—until he lets slip his true name, Trafalgar D. Water Law, prompting the supposedly mute Corazon to speak and urgently warn him to flee from Doflamingo.",
           "coverage": {
             "anime": "713-714",
             "manga": "768-769"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 33,
           "title": "Dressrosa 33",
-          "description": "Aftershocks ripple through the streets as winners become caretakers of a broken city.",
+          "altTitle": "The Silent Man's Vow",
+          "description": "Corazon reveals his Calm-Calm Fruit powers and the legend of the 'Will of D.' to a young Law before whisking him away from the Donquixote Family in a desperate search to cure his White Lead Disease. When every hospital cruelly rejects the boy, Corazon risks everything to infiltrate Diez Barrels' pirate hideout on Minion Island and steal the miraculous Op-Op Fruit.",
           "coverage": {
             "anime": "715-716",
             "manga": "770-771"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 34,
           "title": "Dressrosa 34",
-          "description": "Celebration and mourning overlap while Dressrosa tries to remember itself without the old mask.",
+          "altTitle": "Remember Me Smiling",
+          "description": "A gravely wounded Corazon forces Law to eat the Op-Op Fruit, only for their escape to be thwarted when Law unknowingly hands Corazon's secret intel to the Donquixote Family's Marine mole, Vergo. Trapped inside Doflamingo's Birdcage on Minion Island, Rosinante hides Law in a soundproof chest and sacrifices his life with a final smile to ensure the boy escapes unseen.",
           "coverage": {
             "anime": "717-718",
             "manga": "772-773"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 35,
           "title": "Dressrosa 35",
-          "description": "Loose threads tighten as leaders reckon with what victory actually repaired—and what it only paused.",
+          "altTitle": "A Lead Bullet and a Hyena's Pride",
+          "description": "Returning to the present, Law reveals his full name to Doflamingo and fights to avenge Rosinante, while Viola surveys the fierce clashes erupting against the Donquixote executives across the plateau. After Doflamingo severs Law's arm and releases Bellamy from his strings, the battered Hyena refuses to back down and forces Luffy into one final duel for his dignity.",
           "coverage": {
             "anime": "719-720",
             "manga": "774-775"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 36,
           "title": "Dressrosa 36",
-          "description": "The Straw Hats absorb the cost of the battle while the world beyond Dressrosa starts reacting.",
+          "altTitle": "The Warrior's Spear and the Drill Dragon Nail",
+          "description": "With every bone in his body pushed to the limit, Hajrudin risks his life to launch Machvise into the sky with a single earth-shattering punch and repay his debt to the Straw Hats. Elsewhere on the plateau, Sai stops Baby 5 from taking her own life, surpasses Don Chinjao to become the new leader of the Happo Navy, and defeats a powered-up Lao G to claim Baby 5 as his bride.",
           "coverage": {
             "anime": "721-722",
             "manga": "776-777"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 37,
           "title": "Dressrosa 37",
-          "description": "New dangers loom on the horizon as alliances shift and headlines rewrite the crew’s place in the story.",
+          "altTitle": "The Rampage of Hakuba and the Fanboy's Homage",
+          "description": "After Dellinger strikes down Ideo, Cavendish's bloodthirsty alter ego Hakuba awakens and cuts down Dellinger in a flash before Robin restrains him midway up the cliff. Refusing to let Gladius's explosive ruptures harm Robin, Bartolomeo absorbs a volley of poisoned needles inside his own barrier and flattens the executive with a fist modeled after Luffy.",
           "coverage": {
             "anime": "723-724",
             "manga": "778-779"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 38,
           "title": "Dressrosa 38",
-          "description": "Departures and promises mix as Dressrosa’s chapter closes with scars, gratitude, and unfinished business.",
+          "altTitle": "Tears of a Princess, Tears of a Hard-Boiled Man",
+          "description": "Leo and Kabu storm the palace chapel to rescue Princess Mansherry and knock out Giolla before the princess's healing tears can revive the fallen Donquixote executives. Outside the Smile Factory, Franky and Senor Pink trade unguarded blows in a test of manly resolve, bringing Senor Pink to tears as he remembers his late son Gimlet and his beloved wife Russian.",
           "coverage": {
             "anime": "725-726",
             "manga": "780-781"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 39,
           "title": "Dressrosa 39",
-          "description": "The aftermath reshapes relationships across factions, proving some bonds outlast any single war.",
+          "altTitle": "Trueno Bastardo and the Billion-Fold World",
+          "description": "Under a hail of spiked iron rain in the Sunflower Field, Kyros endures grievous wounds to keep Rebecca's hands unstained and strikes down Diamante to avenge Scarlet's murder. When Pica merges with his colossal stone statue to crush King Riku on the plateau, Zoro flies across the sky to slice the giant golem apart and cut down the Haki-clad executive in midair.",
           "coverage": {
             "anime": "727-728",
             "manga": "782-783"
           },
-          "length": "TBD"
+          "length": "44m"
         },
         {
           "id": 40,
           "title": "Dressrosa 40",
-          "description": "Information becomes its own weapon as reports spread faster than the crew can control the narrative.",
+          "altTitle": "The Shrinking Birdcage and the Gamma Knife",
+          "description": "After Luffy reluctantly knocks out Bellamy with a single punch and the Tontattas demolish the Smile Factory, Doflamingo begins contracting the Birdcage to shred everyone in Dressrosa within an hour. Revealing he faked his death using a massive Room, Law ambushes Doflamingo and ruptures his internal organs with Gamma Knife, only for the Warlord to stitch his own insides back together with strings.",
           "coverage": {
             "anime": "729-730",
             "manga": "784-785"
           },
-          "length": "TBD"
+          "length": "42m"
         },
         {
           "id": 41,
           "title": "Dressrosa 41",
-          "description": "Pressure from powerful institutions reminds everyone that freeing a kingdom doesn’t free you from politics.",
+          "altTitle": "Clash of Conquerors and the Fall of Trebol",
+          "description": "Luffy stops Doflamingo from crushing Law in a fierce clash of Conqueror's Haki, prompting Trebol to recall how the four top executives discovered and nurtured young Doflamingo's malice. Using his severed arm inside a Room, Law slices through Trebol's frail body beneath his flammable mucus coat, leaving Luffy and Doflamingo to face off one-on-one as Luffy prepares to unleash Gear Fourth.",
           "coverage": {
             "anime": "731-732",
             "manga": "786-787"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 42,
           "title": "Dressrosa 42",
-          "description": "The crew steadies itself for what comes next, carrying new allies, new targets, and new responsibilities.",
+          "altTitle": "Gear Fourth: Bounce-Man",
+          "description": "Transforming into Gear Fourth: Bounce-Man, Luffy combines Armament Haki with extreme elasticity to blast Doflamingo off the palace plateau and pummel him through the streets of Dressrosa. As King Riku broadcasts a desperate plea for his people to survive the shrinking Birdcage, Doflamingo unleashes his Devil Fruit Awakening, turning the city's buildings into a relentless sea of strings.",
           "coverage": {
             "anime": "733-734",
             "manga": "788-789"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 43,
           "title": "Dressrosa 43",
-          "description": "Dressrosa’s epilogue beats linger as the island chooses how to rebuild—and who it will trust.",
+          "altTitle": "Ten Minutes to Recover",
+          "description": "Luffy's Gear Fourth expires moments before he can finish Doflamingo, leaving him unable to use Haki for ten minutes as Colosseum announcer Gatz and dozens of gladiators rally to hide him. While Sabo intercepts a Devil Fruit-hunting Jesus Burgess with Ace's flames, Zoro, Bartolomeo, and the newly healed colosseum warriors brace against the accelerating Birdcage to buy Luffy time.",
           "coverage": {
             "anime": "735-736",
             "manga": "790-791"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 44,
           "title": "Dressrosa 44",
-          "description": "Final confrontations resolve personal arcs while the country tries to stitch daylight back together.",
+          "altTitle": "Heaven and Earth: The King Kong Gun",
+          "description": "While Princess Mansherry's healing dandelions and Admiral Fujitora's Marines help the citizens push back the Birdcage, Gatz leads the kingdom in a final countdown as Law swaps a recovered Luffy directly in front of Rebecca's blade. Breaking free of Doflamingo's puppeteer strings, Luffy takes to the sky in Gear Fourth and shatters the Warlord's ultimate defense with a city-splitting King Kong Gun.",
           "coverage": {
             "anime": "737-738",
             "manga": "792-793"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 45,
           "title": "Dressrosa 45",
-          "description": "Victory settles into consequence as leaders speak to a people tired of being lied to.",
+          "altTitle": "The Collapse of the Cage and an Admiral's Bow",
+          "description": "Doflamingo crashes into the underground port and the Birdcage dissolves into the sky, prompting tears of joy across Dressrosa while Sabo silences a taunting Jesus Burgess with a blazing Fire Fist. Rather than covering up the Warlord's crimes, Admiral Fujitora kneels before King Riku on a live broadcast to apologize on behalf of the World Government, sparking outrage from Fleet Admiral Sakazuki and sending shockwaves across the New World.",
           "coverage": {
             "anime": "739-740",
             "manga": "794-795"
           },
-          "length": "TBD"
+          "length": "41m"
         },
         {
           "id": 46,
           "title": "Dressrosa 46",
-          "description": "The Straw Hats weigh what they gained against what the world now believes about them.",
+          "altTitle": "Sabo's Adventure and the King of the Beasts",
+          "description": "Before departing Dressrosa, Sabo visits the resting Straw Hats to leave Luffy's Vivre Card and recount how losing Ace at Marineford restored his childhood memories. Meanwhile, Sanji's group clashes with Beast Pirates on a strange island, and Emperor Kaido survives a ten-thousand-meter suicidal leap from a Sky Island to demand answers from Joker and declare war on the world.",
           "coverage": {
             "anime": "741-742",
             "manga": "796-797"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 47,
           "title": "Dressrosa 47",
-          "description": "Loose ends from the tournament, the rebellion, and the palace converge into one last breath before departure.",
+          "altTitle": "A Father's Lie and a Daughter's Choice",
+          "description": "Three days after the battle, Vice Admiral Tsuru's roll of Fujitora's dice finally mobilizes the Marines to capture the Straw Hats just as Luffy learns that Kyros plans to leave Dressrosa so his criminal past won't tarnish Princess Rebecca's name. Refusing to let them part ways, Luffy storms the royal palace to spirit Rebecca away from the crown and reunite her with her father at their cottage before racing to the eastern port.",
           "coverage": {
             "anime": "743-744",
             "manga": "798-799"
           },
-          "length": "TBD"
+          "length": "38m"
         },
         {
           "id": 48,
           "title": "Dressrosa 48",
-          "description": "Dressrosa ends with the kingdom changed, the crew famous, and the New World looking even more dangerous than before.",
+          "altTitle": "Followers' Sake: The Straw Hat Grand Fleet",
+          "description": "After Law shares a quiet moment with Sengoku honoring Rosinante's memory, Luffy clashes with Admiral Fujitora at the eastern port before the citizens of Dressrosa swarm the harbor to shield their hero from the Admiral's floating mountain of rubble. Safely out at sea, seven colosseum captains pledge their loyalty over cups of sake of their own free will, forming the 5,600-strong Straw Hat Grand Fleet.",
           "coverage": {
             "anime": "745-746",
             "manga": "800-801"
           },
-          "length": "TBD"
+          "length": "43m"
         }
       ]
     },
@@ -4039,102 +4177,112 @@ export const DATA = {
         {
           "id": 1,
           "title": "Zou 01",
-          "description": "The climb to Zou is strange before it’s dangerous: a living landmark that redefines what an island can be.",
+          "altTitle": "The Phantom Island",
+          "description": "As a captured Doflamingo warns of a coming war for supremacy and the destructive new Warlord Edward Weevil hunts down Whitebeard's remnants, Luffy's group sails aboard Bartolomeo's ship—marveling at their raised bounties and Sanji's strange \"Only Alive\" poster—until they reach the fog-shrouded Phantom Island of Zou atop a thousand-year-old elephant. While Jesus Burgess stows away to the Revolutionary Army's secret headquarters at Baltigo, Luffy's crew bids farewell to the Barto Club and scales the elephant's massive leg on Kanjuro's poorly drawn dragon, only for a mysterious figure to plummet toward them from above.",
           "coverage": {
             "anime": "751-753",
             "manga": "802-804"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 2,
           "title": "Zou 02",
-          "description": "A wounded homeland greets visitors with suspicion, hospitality, and stories that don’t match the geography books.",
+          "altTitle": "The Mokomo Dukedom",
+          "description": "After a falling monkey knocks Kin'emon and Kanjuro off the elephant's leg, Kanjuro's exhausted ink dragon carries Luffy's group to the top of Zou, where they find the gates smashed and the streets of Kurau City eerily abandoned and scarred by battle. Luffy clashes with the Electro-wielding Mink Guardians in the Whale Forest until Wanda, Carrot, and the Heart Pirates intervene, warning that a monster named Jack ravaged the Mokomo Dukedom just before a sudden \"rain-ruption\" floods the island.",
           "coverage": {
             "anime": "754-756",
             "manga": "805-807"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 3,
           "title": "Zou 03",
-          "description": "The Mink Tribe’s culture and courage come into focus as survival here means more than strong walls.",
+          "altTitle": "The Saviors of Zou",
+          "description": "Following a daily \"rain-ruption\" from Zunesha's trunk, Wanda leads the crew to the Right Belly Fortress, where the affectionate Mink Tribe welcomes them as saviors and a tearful Nami and Brook reveal that Sanji has left a letter and vanished. After Nami recounts how Sanji's group escaped Big Mom's singing flagship off the coast of Dressrosa, word arrives that Zou's ruler Duke Dogstorm has awakened from his coma as Wanda begins the story of Jack's brutal invasion in search of a Wano warrior named Raizo.",
           "coverage": {
             "anime": "757-759",
             "manga": "808-810"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 4,
           "title": "Zou 04",
-          "description": "Recent trauma surfaces in whispers and wounds, explaining why trust is currency on Zou’s slopes.",
+          "altTitle": "The Kings of Day and Night",
+          "description": "At the fortress sanatorium, the crew meets the one-legged ruler Duke Dogstorm, who thanks them for saving his people from Caesar's poison gas and fondly recalls sailing with Red-Haired Shanks alongside his bitter rival, Master Cat Viper, before abruptly falling asleep at 6:00 PM. As Zou's daytime and nighttime citizens swap shifts to keep their feuding kings apart, Wanda recounts how Dogstorm and the Musketeers held off the one-billion-berry Jack the Drought until nightfall, when Cat Viper roared out of the Whale Forest to take over the battle.",
           "coverage": {
             "anime": "760-762",
             "manga": "810-811"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 5,
           "title": "Zou 05",
-          "description": "Separate arrivals collide as scattered allies realize they’re standing on the same impossible map.",
+          "altTitle": "After the Poison Gas",
+          "description": "Wanda reveals how Dogstorm and Cat Viper fought Jack in alternating shifts for five days until Jack unleashed Caesar's Koro poison gas, crucifying the Minks and maiming both kings before departing upon news of Doflamingo's defeat. Arriving the very next day, Sanji's group defeated Jack's remaining subordinate Sheepshead and forced Caesar to neutralize the deadly gas so Chopper could save the dying nation—until Brook reveals that Big Mom Pirates members Pekoms and Capone \"Gang\" Bege tracked them to Zou two days ago.",
           "coverage": {
             "anime": "763-765",
             "manga": "812-813"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 6,
           "title": "Zou 06",
-          "description": "History lessons arrive with urgency, tying Zou’s fate to events the wider world barely understands.",
+          "altTitle": "The Wedding Invitation",
+          "description": "In Brook's flashback to two days earlier, Big Mom's combatant Pekoms offers to spare the Straw Hats out of gratitude for saving his homeland, only for Capone \"Gang\" Bege to gun him down and trap Sanji's group inside his Castle-Castle body. Bege delivers a stunning ultimatum that \"Vinsmoke Sanji\" must wed Big Mom's daughter Pudding at an upcoming Tea Party, and after Vito whispers a chilling threat into his ear, Sanji tosses Nami, Chopper, and Brook to safety and surrenders himself to settle scores with his past.",
           "coverage": {
             "anime": "766-768",
             "manga": "814-815"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 7,
           "title": "Zou 07",
-          "description": "Revelations reshape the crew’s roadmap, turning rumors into coordinates and guesses into stakes.",
+          "altTitle": "Secret of the Vinsmokes",
+          "description": "In the Whale Forest, Chopper struggles to keep the boisterous Master Cat Viper in bed while Luffy interrogates a recovering Pekoms, who reveals that Sanji's family leads the mythical Germa 66 army of assassins and threatened the lives of his loved ones at the Baratie if he refused the wedding. Determined to crash the Tea Party, Luffy strong-arms Pekoms into taking him along and celebrates with Law's Heart Pirates, only for Robin, Franky, and Brook to fall asleep at the gate just as Kin'emon and Kanjuro reach the top of Zou at dawn.",
           "coverage": {
             "anime": "769-771",
             "manga": "816-817"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 8,
           "title": "Zou 08",
-          "description": "Loyalties and lineages matter as much as strength when the next voyage depends on what Zou remembers.",
+          "altTitle": "Raizo is Safe!",
+          "description": "When Kin'emon and Kanjuro openly announce their search for Raizo as Dogstorm and Cat Viper clash in the city streets, the entire Mink Tribe kneels to reveal the Kozuki Clan crest and declares that Raizo has been safe all along—having chosen near-extinction over betraying a comrade. After Kin'emon reveals that Momonosuke is the rightful heir to Lord Kozuki Oden and the two Mink kings call a truce in his honor, they lead the crew inside the sacred Whale Tree to reunite with Raizo—who puts on a dazzling ninjutsu display—beside a mysterious crimson Poneglyph.",
           "coverage": {
             "anime": "772-774",
             "manga": "818-819"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 9,
           "title": "Zou 09",
-          "description": "The arc tightens toward choices that will echo beyond this island—who to protect, who to pursue, and why.",
+          "altTitle": "The Ninja-Pirate-Mink-Samurai Alliance",
+          "description": "Inside the Whale Tree, Robin and Dogstorm reveal that the crimson stone is one of four Road Poneglyphs whose intersecting coordinates lead to Laugh Tale, and Kin'emon recounts how the Poneglyph-carving Kozuki Clan's lord, Oden, sailed with Gol D. Roger before being executed by Emperor Kaido and the Shogun of Wano. Refusing Kin'emon's pleas until Momonosuke swallows his tears and asks for help as a leader himself, Luffy forms the Ninja-Pirate-Mink-Samurai Alliance on the condition that he rescues Sanji first—just as Jack's fleet returns to Zou with orders to kill the giant elephant Zunesha.",
           "coverage": {
             "anime": "775-777",
             "manga": "820-821"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 10,
           "title": "Zou 10",
-          "description": "Zou closes with the Straw Hats pointed toward a larger game, carrying new truths and new targets across the sea.",
+          "altTitle": "Zunesha's Command",
+          "description": "After Dogstorm and Cat Viper recount sailing with Whitebeard and Roger and propose recruiting Marco the Phoenix, Jack's fleet bombards Zunesha's wounded leg until Momonosuke hears the ancient elephant's voice and commands it to wipe out the entire armada with a single swing of its trunk. With Zunesha's leg bandaged and Nami armed with Usopp's upgraded Sorcery Clima-Tact, Luffy leaps straight off the elephant's back alongside Nami, Chopper, Brook, Pekoms, and Pedro to rescue Sanji, while Princess Vivi sets sail from Alabasta for the Reverie.",
           "coverage": {
             "anime": "778-779",
             "manga": "823-824"
           },
-          "length": "TBD"
+          "length": "46m"
         }
       ]
     },
@@ -4154,431 +4302,431 @@ export const DATA = {
         {
           "id": 1,
           "title": "Whole Cake Island 01",
-          "altTitle": "A World on the Brink",
-          "description": "Kings and queens set sail for the Reverie as Luffy's rescue team — joined by stowaway Carrot — closes on Big Mom's territory. News breaks that Blackbeard razed the Revolutionary HQ at Baltigo, and Luffy learns Dragon is his father. Far ahead, Sanji is shown a photo of his bride and refuses to look.",
+          "altTitle": "The World in Motion",
+          "description": "As monarchs across the globe set sail for the Reverie and a drunken Kaido rages over Doflamingo's fall, Luffy's rescue team discovers Carrot stowed away on the Sunny, learns that Blackbeard razed the Revolutionary Army headquarters at Baltigo, and nearly starves after Luffy ruins a week's worth of rations. Meanwhile, Sanji's escort enters Big Mom's territory beneath a cotton candy snowfall, where Vito shows the defiant groom a photograph of his betrothed, Charlotte Pudding, leaving him instantly smitten.",
           "coverage": {
             "anime": "823-824",
             "manga": "823-824"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 2,
           "title": "Whole Cake Island 02",
           "altTitle": "Poison Pink",
-          "description": "Starving at sea, Luffy hooks a poisonous armored stonefish and bites in. A Germa 66 ship rescues him — not Sanji, but his brother Yonji and sister Reiju, who sucks the poison out herself and quietly explains the Vinsmokes' bloody North Blue legacy of conquest and science.",
+          "description": "While Vito regales Sanji and a caged Caesar Clown with tales of the Germa 66 comic strip, a starving Luffy hooks a giant armored stonefish in the boiling sea and eats its lethally poisonous skin, collapsing near death as the Sunny crosses paths with a Germa warship. Sanji's younger brother Yonji refuses to help, but his older sister Reiju kicks Yonji overboard, sucks the fatal venom directly from Luffy's lips, and explains how their royal family changed Sanji's bounty to Only Alive before parting ways.",
           "coverage": {
             "anime": "825-826",
             "manga": "825-826"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 3,
           "title": "Whole Cake Island 03",
           "altTitle": "Welcome to Chocolat Town",
-          "description": "The crew slips into Cacao Island's edible Chocolat Town, where Luffy and Chopper are nearly arrested for \"snackalism\" after eating a café. A young chocolatier named Pudding — Sanji's chosen bride — agrees to bring him to a secret cape so the Straw Hats can take him home. Their guide Pekoms vanishes, leaving only a scrawled warning to turn back.",
+          "description": "Pekoms bluffs past Totto Land's scouts to dock at Cacao Island's edible Chocolat Town, where Charlotte Pudding rescues Luffy and Chopper from arrest after they devour her chocolate café and—while Big Mom sings a musical celebration of the upcoming Tea Party—promises to help the crew by mapping a secret route and bringing Sanji to Whole Cake Island's southwest coast. Returning to the Sunny, the crew finds Pekoms vanished with a scrawled warning to turn back, while on BrockCollie Island, Sanji's brothers Ichiji and Niji brutally end a two-year war in four hours before setting sail for the wedding.",
           "coverage": {
             "anime": "827-828",
             "manga": "827-828"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 4,
           "title": "Whole Cake Island 04",
-          "altTitle": "Mama's Hunger",
-          "description": "On Whole Cake Island, Big Mom rampages for croquembouche and crushes her own son Moscato with Soul Pocus. Jinbe arrives with the dessert and formally requests release from her crew to join Luffy. Out at sea, Pedro reveals old wounds as the Sunny spots Whole Cake Chateau on the horizon.",
+          "altTitle": "Life or Treat",
+          "description": "On Whole Cake Island, Big Mom rampages through Sweet City in a hunger pang craving croquembouche and steals forty years of lifespan from her own son Moscato before Jinbe arrives with the dessert and formally requests to leave her crew to join Luffy, prompting the Emperor to summon her deadly roulette wheel. Out on the solidifying syrup sea, the rescue team escapes ship-eating ants as Pedro confesses his past defeat in Totto Land and volunteers to steal Big Mom's Road Poneglyph just as the crew sights Whole Cake Island and spots a figure resembling Sanji on the shore.",
           "coverage": {
             "anime": "829-830",
             "manga": "829-830"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 5,
           "title": "Whole Cake Island 05",
           "altTitle": "The Seducing Woods",
-          "description": "The crew lands on the southwest coast and chases a Sanji-shaped lure into the Seducing Woods — talking trees, suited crocodiles, and a mocking Madame Brûlée. Inside the chateau, the real Sanji squares off against his father Judge, who clamps explosive bracelets on his wrists so he can never run from the wedding.",
+          "description": "While Pedro and Brook deploy in the Shark Submerge to infiltrate the chateau, Luffy, Nami, Chopper, and Carrot land on the southwest coast and chase a phantom of Sanji into a candy forest populated by talking crocodiles, a buried giant, and a mirror-image duplicate of Luffy. At Lake Apricot, the floating vessels of the Germa Kingdom assemble as Reiju urges Sanji to embrace his royal Vinsmoke birthright and Judge challenges him to a duel outside, while in the shifting Seducing Woods, the fake Luffy transforms into Big Mom's eighth daughter, Charlotte Brûlée.",
           "coverage": {
             "anime": "831-832",
             "manga": "831-832"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 6,
           "title": "Whole Cake Island 06",
           "altTitle": "Garuda's Duel",
-          "description": "Sanji deliberately loses a private duel to Judge — spared only because the wedding still needs him. Bege intercepts the runaway Pekoms and Praline at sea. In the Seducing Woods, Brûlée drags Carrot into a mirror, while Big Mom orders Caesar to revive her giantification research.",
+          "description": "Sanji duels his father Judge—recalling his childhood abuse and Zeff's rule never to fight with his hands—before Judge uses a human wall of Germa soldiers to overpower him and locks explosive bracelets onto his wrists to force his obedience. While Pedro and Brook learn in Sweet City that Big Mom's forces are tracking the crew's every move and Bege shoots a defiant Pekoms off a cliff into shark-infested waters, Big Mom unveils a candy replica of the Punk Hazard laboratory and gives a terrified Caesar Clown two weeks to complete his giantification drug.",
           "coverage": {
             "anime": "833-834",
             "manga": "833-834"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 7,
           "title": "Whole Cake Island 07",
-          "altTitle": "Pound the Forgotten",
-          "description": "Pursued through the woods, Luffy and Nami stumble across Pound — Big Mom's discarded husband and Lola's father. His Vivre Card protects them when Sweet Commander Charlotte Cracker arrives with his biscuit knights. A furious Carrot bites Brûlée, breaking the mirror network.",
+          "altTitle": "Thousand-Arm Cracker",
+          "description": "After Nami reunites with Luffy in the Seducing Woods and recounts how Brûlée trapped Carrot inside a mirror while Monster Point Chopper held off the living trees, the pair interrogates the buried giant Pound—Big Mom's discarded ex-husband and Lola's father—about how Big Mom taxes lifespans to animate Totto Land's Homies. Sweet Three General Charlotte Cracker arrives to execute Pound and Brûlée shatters the mirror holding Carrot and Chopper, but Nami brandishes Lola's Vivre Card to terrify Kingbaum and the forest Homies into submission as Cracker multiplies his limbs to clash with Luffy.",
           "coverage": {
             "anime": "835-836",
             "manga": "835-836"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 8,
           "title": "Whole Cake Island 08",
-          "altTitle": "Thousand-Arm Cracker",
-          "description": "Cracker reveals himself as a Biscuit-Biscuit user hiding inside a hollow knight, conjuring an endless armored army. While Luffy is buried under waves of biscuit warriors, Carrot and Chopper escape into the mirror world. At the chateau, the Vinsmoke siblings make their entrance and Sanji is forced to dine with the family he despises.",
+          "altTitle": "The Biscuit Knight's Secret",
+          "description": "After Nami and Pound drive Brûlée back into the Mirror World and Cracker's sword Pretzel overwhelms Luffy's Gear Second and Third, an enraged Luffy activates Gear Fourth Boundman and shatters Cracker's body, only for the real Charlotte Cracker to emerge from inside the hollow suit and clap an endless army of hardened Biscuit Soldiers into existence. Meanwhile, Chopper and Carrot slip free inside the Mirror World to search the island's mirrors for Sanji, and Brook and Pedro hide inside a returning Biscuit Soldier to infiltrate the chateau just as Ichiji and Niji arrive for the Vinsmoke reunion.",
           "coverage": {
             "anime": "837-838",
             "manga": "837-838"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 9,
           "title": "Whole Cake Island 09",
           "altTitle": "Failure of the Vinsmokes",
-          "description": "A flashback opens Sanji's wound: the genetically enhanced \"failure\" mocked by his brothers, masked in iron, protected only by his terminally ill mother Sora — who secretly drugged her own womb to keep one son human. In the present, Niji's cruelty toward kitchen maid Cosette finally snaps Sanji at the family table.",
+          "description": "At the Vinsmoke dining table, Sanji clashes with Niji over wasted food and saves head chef Cosette from Niji's kick, only for Judge to silence him with a photograph of Zeff and a threat to massacre the Baratie if he resists the wedding; when Sanji later finds Cosette brutally beaten, his brothers lead him into Germa's underground cloning facility and beat him mercilessly. The assault triggers a flashback to Sanji's childhood as the compassionate, unmodified failure of Judge's genetic experiments—bullied relentlessly by his superhuman brothers, forbidden from cooking, and locked in an iron mask inside a dungeon after Judge fakes his death.",
           "coverage": {
             "anime": "839-840",
             "manga": "839-840"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 10,
           "title": "Whole Cake Island 10",
-          "altTitle": "Tankman Cannonball",
-          "description": "The flashback closes with Sora's death and Reiju unlocking Sanji's cell on the condition he never call himself a Vinsmoke again. In the present, Nami funnels Cracker's biscuit army into Luffy until he balloons into Tankman — and a single Gear Fourth Cannonball flattens the Sweet Commander across the countryside.",
+          "altTitle": "East Blue Boy",
+          "description": "Continuing Sanji's flashback, the imprisoned boy remembers braving a storm to bring a ruined bento to his bedridden mother Sora—whose delighted praise inspired his love of cooking and dream of the All Blue—until Germa 66 attacks the East Blue, Reiju bends open his cell bars, and Judge lets him flee to the passenger ship Orbit on the condition that he never claim Judge as his father. In the present, Reiju fits Sanji with a swelling-suppression mask before the Vinsmokes ride toward Whole Cake Chateau, while in the Seducing Woods after eleven hours of eating Nami's rain-softened biscuits, a bloated Luffy transforms into Gear Fourth Tankman and launches Cracker with a Cannonball.",
           "coverage": {
             "anime": "841-842",
             "manga": "841-842"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 11,
           "title": "Whole Cake Island 11",
           "altTitle": "I'll Wait Right Here",
-          "description": "Word of Cracker's defeat reaches an enraged Big Mom. Sanji finally appears before Luffy and beats his captain bloody to drive him off, calling him garbage. Luffy refuses to lift a finger or move, vowing through swollen lips to sit in the rain until Sanji comes back.",
+          "description": "Luffy's Tankman Cannonball blasts Cracker through his own Biscuit Soldiers and sends him crashing into Whole Cake Chateau, throwing Sweet City into a state of emergency as Luffy and Nami ride Kingbaum out of the woods to intercept the Vinsmoke family's carriage. Putting on a cruel nobleman's facade to protect his friends and Zeff, Sanji batters his captain with Diable Jambe kicks while Luffy refuses to fight back, and as the carriage rolls away with Sanji weeping inside, a bruised Luffy roars that every kick hurt Sanji more and vows to starve on that exact spot until his cook returns.",
           "coverage": {
             "anime": "843-844",
             "manga": "843-844"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 12,
           "title": "Whole Cake Island 12",
-          "altTitle": "Sanji's Sacrifice",
-          "description": "Big Mom's homies march on a starving Luffy as he sits in the syrup, refusing to budge. At the chateau, Pudding tearfully proposes the trap: marry her, and Big Mom spares every Straw Hat. Brook and Pedro begin scouting the Road Poneglyph in Big Mom's library.",
+          "altTitle": "The Enraged Army",
+          "description": "As Big Mom's fury darkens the skies and an enraged army of her children marches out to avenge Cracker, Sanji meets privately with a tearful Pudding, reveals his bruised face and the threats against Zeff, and embraces her as his only salvation before bargaining with Big Mom to spare his crew in exchange for his obedience at the altar. Outside, a starving Luffy and Nami fight fiercely against Big Mom's army until they are overwhelmed and captured along with Lola's Vivre Card, while inside the chateau Pedro and Brook devise a decoy plan to bypass Sweet General Smoothie at the Treasure Repository.",
           "coverage": {
             "anime": "845-846",
             "manga": "845-846"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 13,
           "title": "Whole Cake Island 13",
-          "altTitle": "Lola's Mother",
-          "description": "Pound is dragged before Cracker and killed for fathering Lola, while Brûlée corners Carrot and Chopper. Big Mom calls Luffy to gloat — Lola was her daughter, betrothed to a giant prince of Elbaf, and her escape humiliated the Empress. Pudding visits the cell and tearfully swears she'll save Sanji.",
+          "altTitle": "Soul King in the Vault",
+          "description": "After Judge tours Big Mom's library of living creatures and Mont-d'Or pins the captured Luffy and Nami inside a prison book, Big Mom calls via Transponder Snail to gloat over acquiring Fishman Island's Tamate Box and rage over Lola's runaway marriage that cost her the crown of the pirates, only for a defiant Luffy to tell her the failure is her own fault. Meanwhile, as Sanji cooks a meal for Pudding, Pedro goes on a rampage through the castle to lure Baron Tamago away from the Treasure Repository, allowing Brook to lock himself inside the vault and unleash his Soul King powers on the Chess Peacekeepers while Pudding visits the prison book to whisper a tearful confession.",
           "coverage": {
             "anime": "847-848",
             "manga": "847-848"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 14,
           "title": "Whole Cake Island 14",
-          "altTitle": "Pudding's Smiling Mask",
-          "description": "Carrot and Chopper claw out of Brûlée's house and slip back through the mirrors. In the courtyard, Pedro confronts Charlotte Tamago, who reincarnates through Egg, Hiyoko, and Niwatori forms. Hidden above, Sanji overhears Pudding tell Reiju her real plan: shoot the groom at the altar and let Big Mom slaughter every Vinsmoke.",
+          "altTitle": "Pudding's True Colors",
+          "description": "Inside Brûlée's house, Monster Point Chopper and Carrot overwhelm Brûlée, Randolph, and Noble Croc to commandeer the Mirror World, while back at the chateau Big Mom personally breaks into the Treasure Repository to confront Brook and Pedro clashes with Baron Tamago in the courtyard, recalling how he tore out his own left eye five years ago to buy back fifty years of his lifespan. Standing outside Pudding's balcony window in the pouring rain with a freshly cooked bento and bouquet, Sanji overhears Pudding laughing over a captive, bleeding Reiju as she reveals her sadistic true nature, mocks his proposal, and gloats that Big Mom will slaughter him and the entire Vinsmoke family at tomorrow's wedding.",
           "coverage": {
             "anime": "849-850",
             "manga": "849-850"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 15,
           "title": "Whole Cake Island 15",
-          "altTitle": "A Mother's Defiance",
-          "description": "Pudding details the assassination — a single hidden pistol shot during the kiss. Pedro escapes Tamago by detonating his own gunpowder. Reiju finds the broken Sanji, removes the \"unbreakable\" bracelets, and tells him the truth about Sora's defiance. Luffy smashes through the chateau searching for his cook.",
+          "altTitle": "The Future Mother Wanted",
+          "description": "While a heartbroken Sanji listens from the rain-soaked balcony, Pudding shows off her armor-piercing Candy Jacket pistol and uses her Memo-Memo Fruit to rewrite Reiju's memories, and down in the prison library Jinbe fells Charlotte Opera with a Five Thousand Brick Fist and burns the prison book to free Luffy and Nami. In the medical ward, Sanji tells Reiju the truth about Pudding's assassination plot, prompting Reiju to urge him to let Germa die, recount how their late mother Sora drank a fatal drug to preserve Sanji's human emotions, and reveal she swapped his explosive wrist cuffs for harmless fakes so he can return to his crew.",
           "coverage": {
             "anime": "851-852",
             "manga": "851-852"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 16,
           "title": "Whole Cake Island 16",
-          "altTitle": "A Plate Worth Living For",
-          "description": "Brook reveals he has already rubbed copies of the Road Poneglyph onto his bones. Pudding presents her plan to a delighted Big Mom. Wandering the chateau half-starved, Sanji stumbles on the meal he had cooked for Pudding — and tasting his own food finally reminds him who he is. Luffy blasts another hole through another wall.",
+          "altTitle": "Count Niwatori and the Bento",
+          "description": "After defeating Brook in the vault and finding nothing during a strip search, Big Mom adopts the skeleton as a pet and reviews tomorrow's massacre with Pudding, while Pedro slices Baron Tamago through his Viscount Hiyoko and Count Niwatori evolutions before detonating a vest of dynamite to escape into the Mirror World with Chopper and Carrot. Briefly pulled into the infirmary by Reiju, Luffy learns that Sanji already knows Pudding's true colors and leaps out the chateau window to return to their promised meeting spot, just as Sanji realizes he subconsciously cooked his crewmates' favorite dishes in the bento and kicks Bobbin aside to bolt out into the rain.",
           "coverage": {
             "anime": "853-854",
             "manga": "853-854"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 17,
           "title": "Whole Cake Island 17",
-          "altTitle": "I Want to Go Back",
-          "description": "Carrot and Chopper sneak into Big Mom's bedroom and pry the sleeping Brook out of her arms, swapping in a cloth-and-bone decoy. Sanji finds Luffy in the rain and breaks down: if he runs, the Vinsmokes die and the Baratie burns. Bruised and grinning, Luffy decides they'll crash the wedding instead.",
+          "altTitle": "I Want to Go Home to the Sunny",
+          "description": "Through a mirror connected to Big Mom's bedroom, Jinbe, Nami, Chopper, Carrot, and Pedro execute a nerve-wracking relay mission to pry a sleeping Brook out of the Emperor's arms and swap in a skeleton decoy, after which Brook stuns the crew by pulling three completed rubbings of Big Mom's Poneglyphs out of his skull. Out on the muddy battlefield, Sanji finds a starving, withered Luffy still waiting where he promised, feeds him the rain-soaked bento of the crew's favorite foods, and finally breaks down in tears confessing that he wants to go home to the Sunny—prompting a grinning Luffy to declare they will crash the wedding and save his family together.",
           "coverage": {
             "anime": "855-856",
             "manga": "855-856"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 18,
           "title": "Whole Cake Island 18",
           "altTitle": "An Alliance of Necessity",
-          "description": "Reunited with Carrot, Chopper and a recovered Brook, the rescue team retreats to Capone Bege's hidden base. Jinbe lays out Bege's reputation as the New World's deadliest hitman and his plan to murder Big Mom at the wedding. Inside, they find a badly disguised \"Gastino,\" and an uneasy alliance is forged.",
+          "description": "Contacting Luffy and Sanji through a mirror shard in Kingbaum's bark, Jinbe recounts Capone Bege's ruthless West Blue mafia history and proposes a temporary alliance with Bege's plot to assassinate Big Mom at the wedding, while at the Fire Tank Pirates' base Chiffon tells Nami how Lola's refusal to marry Prince Loki of Elbaf ruined Big Mom's dream of commanding the Giants' army. Brought to the negotiation table alongside Caesar Clown—whom Bege freed and recruited under the thin disguise of Gangster Gastino—Luffy swings at Bege for shooting Pekoms before Jinbe mediates an uneasy alliance built around crashing the Tea Party.",
           "coverage": {
             "anime": "857-858",
             "manga": "857-858"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 19,
           "title": "Whole Cake Island 19",
           "altTitle": "Mother Carmel's Portrait",
-          "description": "Bege's plan: shatter Mother Carmel's portrait mid-ceremony to trigger Big Mom's five-second seizure, then fire Caesar's KX poison launchers point-blank. Jinbe quietly secures the Sun Pirates' release. As guests arrive — Du Feld, Stussy, the gossip Morgans — Katakuri silently snipes a vengeful guest before he can ruin Mama's tea party.",
+          "description": "Bege and Caesar unveil their five-second assassination plan—shatter Mother Carmel's treasured portrait during the wedding kiss to trigger Big Mom's paralyzing shriek and drop her iron-like defenses, then fire Caesar's lethal KX Poison Gas Launchers before escaping through a mirror—while the Sun Pirates tie Pekoms to a rock and secretly sail for Fishman Island so Jinbe can rebel freely. As underworld emperors including Du Feld, Stussy, and Big News Morgans ride Perospero's candy escalator up to the rooftop venue, Sweet Three General Charlotte Katakuri uses his future-sight Observation Haki to snipe a vengeful guest with a jellybean before Big Mom arrives to open the Tea Party.",
           "coverage": {
             "anime": "859-860",
             "manga": "859-860"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 20,
           "title": "Whole Cake Island 20",
           "altTitle": "A Beautiful Third Eye",
-          "description": "The Tea Party begins. Sanji and a beaming Pudding take the altar while Luffy lies hidden, dead asleep from exhaustion. At the moment of the kiss Pudding raises her pistol — but Sanji whispers that her secret third eye is beautiful, and her hands won't fire. Katakuri's future-sight twitches; the priest pulls his trigger early instead.",
+          "description": "As Big Mom welcomes her guests around Mother Carmel's portrait and beams over a mountain of gift chests including the Tamate Box, Bege's crew seals the rooftop passages while Luffy's group sleeps inside Bege's body and Sanji and Pudding ride Zeus onto the towering wedding cake altar above the surrounded Vinsmoke family. At the moment of the wedding kiss, Pudding lifts her veil to shock Sanji with her hidden third eye—only to break down weeping when Sanji sincerely calls her eye beautiful—prompting Big Mom to signal the priest to shoot and Katakuri to intervene with future-sight just as Luffy's group prepares to burst out of the wedding cake.",
           "coverage": {
             "anime": "861-862",
             "manga": "861-862"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 21,
           "title": "Whole Cake Island 21",
-          "altTitle": "Jinbe's Rebellion",
-          "description": "The wedding cake bursts open and a horde of Brûlée-cloned Luffy doppelgängers pours out, throwing the chateau into pandemonium. Jinbe formally renounces his oath to Big Mom and casts his lot with the Straw Hats. Carmel's portrait shatters, Big Mom locks up mid-shriek, and Perospero pins the Vinsmokes in candy as Caesar lines up the killing shot.",
+          "altTitle": "A Mere Emperor of the Sea",
+          "description": "A horde of Brûlée-cloned Luffy doppelgängers bursts from the wedding cake, and Jinbe fearlessly defies Big Mom's Soul Pocus to officially renounce her crew and join the Straw Hats. While a disguised Brook shatters Mother Carmel's portrait and Perospero traps the betrayed Vinsmoke family in candy, Luffy charges through Katakuri's defenses to force the stunned Empress to look at the broken frame and scream.",
           "coverage": {
             "anime": "863-864",
             "manga": "863-864"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 22,
           "title": "Whole Cake Island 22",
-          "altTitle": "Linlin and Mother Carmel",
-          "description": "Caesar fires the KX Launchers, but Big Mom's seizure breaks too soon and the assassination misfires. As her family scrambles to explain her shrieking at the painting, the show plunges into her past — a hungry giantess child named Linlin abandoned on a winter day, and the gentle nun who took her into the House of Lambs.",
+          "altTitle": "The House of Lambs",
+          "description": "Backed by Bege, Jinbe, and Pedro, Luffy forces Big Mom to see the shattered portrait of Mother Carmel, unleashing a deafening shriek that paralyzes the wedding venue. As the Empress drops to her knees in anguish, a flashback to sixty-three years ago reveals how five-year-old Charlotte Linlin was taken into Mother Carmel's orphanage on Elbaf—until a fasting ritual after tasting sweet semla triggers a catastrophic hunger rampage.",
           "coverage": {
             "anime": "865-866",
             "manga": "865-866"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 23,
           "title": "Whole Cake Island 23",
-          "altTitle": "Soul Pocus",
-          "description": "On Elbaf, six-year-old Linlin's craving for semla becomes a city-leveling hunger frenzy that kills the giant chief Jorl. Carmel flees with Linlin and the orphans, secretly trafficking talented children for the World Government. On the morning after Linlin's birthday tea, Carmel and every other lamb simply vanish — and a humming Linlin awakens her Soul-Soul fruit. In the present, Big Mom finally screams.",
+          "altTitle": "Happy Birthday, Linlin",
+          "description": "After Linlin's rampage kills the giant hero Jorul, Mother Carmel relocates the orphanage and negotiates to sell the monstrous child to Cipher Pol—until Carmel and every orphan mysteriously vanish during Linlin's ecstatic birthday feast, prompting chef Streusen to take the newly Soul-Soul-powered girl under his wing. Back at the Tea Party, Bege's crew fires all three KX poison launchers at the kneeling Empress, only for the sheer force of her shriek to detonate the rockets mid-air and shatter Caesar's escape mirror.",
           "coverage": {
             "anime": "867-868",
             "manga": "867-868"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 24,
           "title": "Whole Cake Island 24",
-          "altTitle": "Inside the Iron Castle",
-          "description": "Bege folds the alliance inside his \"Big Father\" fortress as Big Mom claws the walls and his cannon-arm Rook turns guests to dust. With the chateau collapsing, Sanji confesses he can't laugh at the deaths of the family that broke him; the Vinsmokes come too. Caesar will fly the fortress out, while Germa 66 volunteers as rear guard against an enraged Emperor.",
+          "altTitle": "Big Father Under Siege",
+          "description": "With their escape mirror shattered, the newly suited Vinsmoke family covers the alliance's retreat into Bege's giant \"Big Father\" fortress, only for a recovered Big Mom to batter its walls and injure Bege with every blow. After Sanji tells Judge he saved them only so Zeff wouldn't be ashamed of him and severs ties with his biological father forever, Germa 66 vows to fight outside as a rear guard while Caesar flies Bege away.",
           "coverage": {
             "anime": "869-870",
             "manga": "869-870"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 25,
           "title": "Whole Cake Island 25",
-          "altTitle": "One Punch on an Emperor",
-          "description": "Germa 66 holds the line as Caesar lifts Bege's fortress into the sky. Refusing to be smuggled out, Luffy lands a thunderous Red Hawk on Big Mom's jaw and roars he's coming for her head. The chateau collapses — but Streusen turns the falling tower into actual cake mid-fall, just before Big Mom remembers her ruined wedding cake.",
+          "altTitle": "The Fall of Whole Cake Chateau",
+          "description": "Provoked by Big Mom's taunts, Luffy leaps out in Gear Fourth to clash with the Empress, only for the alliance and the Vinsmokes to be cornered until the dropped Tamate Box detonates at the base of the castle and topples the entire Whole Cake Chateau. While Streusen saves Big Mom's crew by turning the falling tower into sponge cake, the Straw Hats and Fire Tank Pirates escape and part ways just as Big Mom descends into a terrifying hunger frenzy for wedding cake.",
           "coverage": {
             "anime": "870-872",
             "manga": "870-872"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 26,
           "title": "Whole Cake Island 26",
-          "altTitle": "Become My Servant, Zeus",
-          "description": "Big Mom's hunger pangs return and she devours her own son Opera for refusing her cocoa. To buy time, Pudding offers to bake a substitute cake on Cacao Island if Sanji helps. The Straw Hats flee on a kidnapped tree-homie named Kingbaum, and Nami coaxes Big Mom's storm-cloud Zeus into eating one of her thunderbolts and claims him.",
+          "altTitle": "Kingbaum's Ride and Zeus's Appetite",
+          "description": "To save Sweet City from Big Mom's deadly hunger pangs, Perospero lies that the Straw Hats stole a spare wedding cake, sending the ravenous Empress flying after Luffy's crew as they charge through the Seducing Woods atop Kingbaum. While Nami distracts the storm-cloud homie Zeus by feeding him thunderclouds and Prometheus incinerates Kingbaum from above, Pudding intercepts Chiffon and begs for her help baking a new cake to save Sanji.",
           "coverage": {
             "anime": "873-874",
             "manga": "873-874"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 27,
           "title": "Whole Cake Island 27",
-          "altTitle": "A Cake Worth Their Lives",
-          "description": "Pudding and her secret twin sister Chiffon ambush the fleeing crew with a desperate proposal — they'll bake a cake fit to soothe Big Mom if Sanji lends his hands. Pudding's love-and-hate for Sanji bleeds through every sentence as she edits memories on the side. Out at sea, the Sunny is cornered by Perospero and Katakuri.",
+          "altTitle": "Breeze of Lightning and the Baking Plan",
+          "description": "As Luffy's group flees through the Seducing Woods, Nami tricks an overfed Zeus into discharging a colossal thunderbolt that blasts Big Mom and her pursuers into a massive crater. When the unstoppable Empress crawls out unscathed, Pudding and Chiffon arrive on a flying carpet to recruit Sanji to bake a replacement wedding cake on Cacao Island, using Pudding's memory powers to disorient the forest homies so the rest of the crew can reach the Sunny.",
           "coverage": {
             "anime": "875-876",
             "manga": "875-876"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 28,
           "title": "Whole Cake Island 28",
-          "altTitle": "Pedro's Last Light",
-          "description": "Perospero pins Chopper and Brook to the deck with rivers of candy as Katakuri prepares to sink the Sunny. Pedro the jaguar mink walks smiling into the heart of the candy ship and detonates every grain of gunpowder on his body — clearing one lane for the Coup de Burst. Luffy stays behind, smashing back into the Mirro-World for a duel with Katakuri.",
+          "altTitle": "Before the Dawn",
+          "description": "With Brook and Chopper suffocating in candy and the Thousand Sunny immobilized between Big Mom and an approaching fleet, Pedro ignites the dynamite beneath his coat in a sacrificial blast that melts Perospero's curse and frees the ship. As Jinbe launches the Sunny to sea with a Coup de Burst, Luffy drags Katakuri into the Mirror-World and shatters the portal behind him to face the undefeated Sweet Commander alone.",
           "coverage": {
             "anime": "877-878",
             "manga": "877-878"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 29,
           "title": "Whole Cake Island 29",
-          "altTitle": "Walking on the Sea",
-          "description": "A grieving Nami clutches Pedro's hat as Jinbe rallies the shaken crew — his sacrifice cannot be wasted. Big Mom strides across the open ocean atop a giant candy slug forged by Perospero, faster than any ship can flee. In the mirror dimension, Luffy is buried alive under a mountain of awakened mochi.",
+          "altTitle": "The WCI 31 and the Mirror Siege",
+          "description": "After Jinbe rallies the grieving crew to honor Pedro's sacrifice, Sanji, Pudding, and Chiffon slip into Chocolat Town on Cacao Island, where Pudding edits the memories of thirty-one master chefs and Sanji reconstructs Streusen's secret recipe by scent alone. Meanwhile, Katakuri overpowers Luffy in the Mirror-World by outmatching every rubber technique with mochi, while Big Mom rides a candy sea slug across the ocean and conjures a monstrous tidal wave to swallow the Sunny.",
           "coverage": {
             "anime": "879-880",
             "manga": "879-880"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 30,
           "title": "Whole Cake Island 30",
           "altTitle": "The Green Room",
-          "description": "Jinbe steers the Sunny straight into a colossal wave — the fishman's \"Green Room\" — and the ship slips out the back as Big Mom's slug crashes past. Luffy orders Brûlée to break every mirror on the Sunny so Katakuri can never reach the crew, severing his own escape route. Across Totto Land, Big Mom's tracking sea slugs mysteriously go silent.",
+          "description": "Jinbe steers the Thousand Sunny straight through the hollow barrel of Big Mom's tidal wave—the \"Green Room\"—while Nami and the crew smash every mirror aboard and set a 1:00 a.m. rendezvous with Luffy at Cacao Island. As Totto Land's tracking sea slugs mysteriously vanish and Germa 66 wipes out Big Mom's ambush force to set sail, Katakuri unleashes his Devil Fruit Awakening and buries Luffy beneath a mountain of mochi to take his delayed afternoon snack.",
           "coverage": {
             "anime": "881-883",
             "manga": "881-883"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 31,
           "title": "Whole Cake Island 31",
-          "altTitle": "Donuts in Secret",
-          "description": "Katakuri retreats to a private chamber for his sacred ritual — devouring stacks of donuts in solitude. A bloodied Luffy crashes through the wrong mirror and sees the Sweet Commander's hidden eel-like mouth. Humiliated, Katakuri snaps and traps Luffy with awakened Mirror Mochi. Out in the ocean, Totto Land's tracking slugs are quietly liberated by an unseen friend.",
+          "altTitle": "Katakuri's Secret Merienda",
+          "description": "After eating his way out of his mochi tomb, Luffy smashes into Katakuri's private shrine during his afternoon snack and exposes the Sweet Commander's jagged, eel-like jaws—throwing Katakuri into a rage that disrupts his Future Sight and lets Gear Fourth Boundman land devastating blows. Meanwhile, Charlotte Oven arrives on Cacao Island and attacks Pound outside the baking factory, while the Sun Pirates secretly lure Totto Land's tracking sea slugs away underwater.",
           "coverage": {
             "anime": "883-884",
             "manga": "883-884"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 32,
           "title": "Whole Cake Island 32",
-          "altTitle": "I Want to Surpass You",
-          "description": "Luffy chews his way out of Katakuri's awakened mochi and demands a real fight, declaring he'll surpass the man who is supposedly Big Mom's strongest son. Katakuri admits for the first time that Luffy is no longer beneath him and sheds his stoic detachment. On Cacao Island, Pound steps between Charlotte Oven and his daughter Chiffon as Bege races to save his wife.",
+          "altTitle": "Ten Minutes on the Run",
+          "description": "When Gear Fourth expires, Luffy kidnaps Brûlée to flee into Nuts Island—landing right in front of a rampaging Big Mom—before recalling Rayleigh's teaching that Haki blooms in extreme battle and returning to the Mirror-World to surpass Katakuri's Future Sight. On Cacao Island, Sanji, Pudding, and Chiffon roll out their finished cake components toward the port, where Oven takes Chiffon hostage until Bege's approaching ship blasts him from the harbor.",
           "coverage": {
             "anime": "885-886",
             "manga": "885-886"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 33,
           "title": "Whole Cake Island 33",
-          "altTitle": "Sulong",
-          "description": "Bege's Nostra Castello rolls onto land on tank treads to extract Chiffon and the cake, while Sanji ferries the towering pastry across the harbor on Sky Walk. Big Mom catches up to the Sunny and Daifuku summons his fleet of jinni warriors. As a perfect full moon rises, Carrot leaps into the sky in white-furred Sulong form and shreds the armada.",
+          "altTitle": "Lion of the Full Moon",
+          "description": "Bege's amphibious ship rolls onto Cacao Island as Sanji kicks the towering wedding cake cart onto its deck, and Pound sacrifices himself to stop Oven from boiling the sea so his daughter Chiffon and grandson can escape. Out on the open ocean, enemy armadas trap the Thousand Sunny from every side—until Carrot gazes at the full moon, awakens her radiant Sulong form, and tears through Daifuku's fleet.",
           "coverage": {
             "anime": "887-888",
             "manga": "887-888"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 34,
           "title": "Whole Cake Island 34",
-          "altTitle": "The Knight in Black",
-          "description": "Carrot tears through battleships in the moonlight before her body gives out. Big Mom catches up riding a fattened Prometheus and reveals her sword Napoleon's true form — a flaming greatsword that nearly cleaves the Sunny in two. Brook discharges Zeus with a spectral slash and Nami brings the chastened cloud aboard as her new \"servant.\"",
+          "altTitle": "The Starving Empress Boards",
+          "description": "After Brook retrieves an exhausted Carrot from her Sulong rampage and Sanji's heavenly whipped cream convinces Bege not to poison the cake, a gaunt, flame-wreathed Big Mom leaps aboard the Thousand Sunny wielding her blazing sword Cognac. Jinbe hurls the Empress off the deck with a Fish-Man Karate Vagabond Drill, and Brook and Nami team up to slice Zeus in two—discharging his lightning onto Big Mom and capturing the shrunken storm cloud as Nami's servant.",
           "coverage": {
             "anime": "889-891",
             "manga": "889-891"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 35,
           "title": "Whole Cake Island 35",
-          "altTitle": "An Honorable Wound",
-          "description": "Katakuri's adoring sister Flambé sneaks into the mirror world and poisons Luffy with a needle to guarantee her brother's victory. Disgusted, Katakuri stabs his own gut with his trident to even the score, exposing both his secret pelican-eel mouth and the rumor that he can never sit down. On Cacao Island, Pudding and Chiffon place the last layer on the rescue cake.",
+          "altTitle": "A Duel Between Men",
+          "description": "Sanji, Pudding, and Chiffon finish the replacement wedding cake aboard Bege's ship just in time to lure a ravenous Big Mom away from the Thousand Sunny and return Sanji to his crew. In the Mirror-World, after Katakuri's sister Flampe secretly shoots Luffy with a numbing dart so Katakuri's trident tears open his side, the disgusted Sweet Commander exposes his hidden face, impales his own torso to even the score, and knocks out Flampe's onlookers with a clash of Conqueror's Haki.",
           "coverage": {
             "anime": "891-893",
             "manga": "891-893"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 36,
           "title": "Whole Cake Island 36",
-          "altTitle": "The Sweetness of Surrender",
-          "description": "Bege's ship sails up to a still-rampaging Big Mom and Sanji uncovers the cake — the smell alone disarms her, halting the assassination cold. Bege and Pudding lure her north toward Liqueur Island while Cacao Island braces for an ambush. In the mirror dimension, Luffy unveils a new Gear Fourth form built to outpace future-sight: the slithering Snakeman.",
+          "altTitle": "Gear Fourth: Snakeman",
+          "description": "While Oven breaks every mirror on Cacao Island save one heavily guarded portal, Chiffon steers Bege's ship toward distant Fluffy Island to draw Big Mom away and Sanji slips into Cacao Town with Pudding to await his captain. Acknowledged as an equal by Katakuri in the Mirror-World, Luffy transforms into his high-speed Gear Fourth \"Snakeman\"—curving his Python strikes around Future Sight before clashing his ultimate King Cobra against Katakuri's Zangiri Mochi.",
           "coverage": {
             "anime": "892-895",
             "manga": "892-895"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 37,
           "title": "Whole Cake Island 37",
-          "altTitle": "A Kiss and a Goodbye",
-          "description": "Pudding asks Sanji for a single farewell favor before they part forever. As the Sun Pirates and Bege's ship sprint for Cacao Island, Luffy slingshots through the only mirror left in Totto Land — smuggled in by a sheepish Pekoms — and lands surrounded by the entire Charlotte family. Just as the noose tightens, the battleships of Germa 66 thunder over the horizon.",
+          "altTitle": "The Hat Over His Mouth",
+          "description": "While Pudding asks Sanji for one final parting favor in a Cacao Island alley, Katakuri acknowledges Luffy's vow to become King of the Pirates and falls onto his back at last—prompting Luffy to respectfully cover the defeated warrior's mouth with a fedora before escaping with Pekoms and Brûlée. When Pekoms's Sulong distraction at the Cacao Island mirror fails and the Charlotte army corners Sanji and an exhausted Luffy mid-air, the warships and siblings of Germa 66 storm the harbor to blast a path to the sea.",
           "coverage": {
             "anime": "896-897",
             "manga": "896-897"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 38,
           "title": "Whole Cake Island 38",
-          "altTitle": "Germa Pays Its Debt",
-          "description": "The Vinsmokes cut down anyone who tries to stop their disowned brother as Sanji rockets across the harbor on Sky Walk to scoop Luffy off Cacao Island, finally repaying the cook who swallowed his pride to save them. On distant Puffs Island, Big Mom takes a single bite of the wedding cake and is transported into teary, blissful silence.",
+          "altTitle": "A Flavor That Brings Joy",
+          "description": "As Brûlée stuns the Cacao Island army with news of Katakuri's defeat, the Vinsmoke siblings tear through the Charlotte forces to launch Sanji and Luffy back to the Thousand Sunny, where Jinbe's old crew, the Sun Pirates, rise from the depths to break the naval blockade. On Fluffy Island, Big Mom finally tastes Sanji's replacement wedding cake and collapses in delirious musical bliss, only for the Queen Mama Chanter's cannons to engulf the Sunny in flames at the harbor's edge.",
           "coverage": {
             "anime": "898-900",
             "manga": "898-900"
           },
-          "length": "TBD"
+          "length": "42m"
         },
         {
           "id": 39,
           "title": "Whole Cake Island 39",
-          "altTitle": "I'll Wait for You in Wano",
-          "description": "The cake's impossible flavor restores Big Mom's senses just long enough for the alliance to slip away. The Sun Pirates' giant Wadatsumi swallows the Sunny to hide it from Charlotte ships. Jinbe stays behind as rear guard, promising to catch up in Wano. The Straw Hats finally clear Totto Land — free with their cook, the Road Poneglyph rubbing, and a very angry new enemy on their heels.",
+          "altTitle": "End Roll",
+          "description": "After Wadatsumi saves the Thousand Sunny from cannon fire, Luffy grants Jinbe permission to stay behind and fight alongside the Sun Pirates—commanding his new helmsman not to die and to reunite with the crew in Wano as the Fish-Men bend the ocean currents to propel the Sunny out of Totto Land. As Big Mom descends upon the rear guard, Katakuri and Brûlée quietly reflect on Luffy's escape in the Mirror-World, Pudding weeps over the memory of a farewell kiss she snipped from Sanji's mind, and Sanji steps back into the Sunny's kitchen to cook for his friends.",
           "coverage": {
             "anime": "901-902",
             "manga": "901-902"
           },
-          "length": "TBD"
+          "length": "35m"
         }
       ]
     },
@@ -4599,34 +4747,34 @@ export const DATA = {
           "id": 1,
           "title": "Reverie 01",
           "altTitle": "The Fifth Emperor",
-          "description": "On a small unprotected island, a Blackbeard-affiliated crew shakes down farmers for the heavenly tribute their absent king is supposed to deliver at the Reverie — until four Revolutionary Army commanders (Belo Betty, Karasu, Lindbergh, and the underground giant Morley) erupt from the ground to wipe them out and reveal Sabo's plan to declare war on the Celestial Dragons. Out at sea, Captain Koby of the Marines saves the Dressrosa delegation from a torpedo attack, while on the Sunny the crew opens the morning paper to discover that Cracker has been silenced, Sanji's bounty now reads \"Vinsmoke Sanji,\" and Big News Morgans has crowned Luffy the Fifth Emperor — backed by a stunning new bounty of 1.5 billion berries.",
+          "description": "While Sanji discovers a Germa Raid Suit canister slipped into Luffy's pocket and fumes that Nami has made Zeus her servant, the morning paper reports on Big Mom's failed assassination—raising Sanji's bounty to 330 million under the name \"Vinsmoke Sanji\" and crowning Luffy the \"Fifth Emperor\" with a 1.5-billion-berry bounty that Luffy initially misreads as 150 million. As royal delegations set sail for the Reverie and Navy Captain Koby saves the Dressrosa and Prodence ships from a pirate submarine, the Revolutionary Army's four commanders rally the citizens of Lulusia against Blackbeard's subordinate Peachbeard ahead of Sabo's plan to declare war on the Celestial Dragons.",
           "coverage": {
             "anime": "878-881",
             "manga": "903-904"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 2,
           "title": "Reverie 02",
           "altTitle": "Climb to the Holy Land",
-          "description": "Fleet Admiral Sakazuki rages from New Marineford as Admiral Fujitora and the wandering Ryokugyu vanish into Mary Geoise behind his back. At the Red Port, the world's monarchs board the bondolas — Beer VI of Roshwan, the Vinsmoke-faced Tacos of the Kingdom of the Dead, the painfully slow Ham Burger of Ballywood — and Garp escorts a wide-eyed Shirahoshi to the surface, where the sky and sun overwhelm her. The newly crowned, insufferable King Sterry of Goa demands Garp bow to him; Vivi, Rebecca, Viola, and the disguised Tontatta knight Leo recognize each other through their shared debt to a certain straw-hatted pirate.",
+          "description": "While Fleet Admiral Sakazuki orders Admiral Ryokugyu to eject Fujitora from Mary Geoise, monarchs from around the globe—including the Ryugu royal family and Sabo's arrogant adoptive brother King Sterry of Goa—ride bubble bondolas up the Red Line and cross the Holy Land on a moving walkway secretly powered by whipped slaves underground. Inside Pangaea Castle, Vivi, Rebecca, Shirahoshi, Leo, and Sai bond over their shared debt to Luffy and confront the sneering King Wapol alongside Dalton and Dr. Kureha, while deep in Impel Down's Level 6, a chained Doflamingo wonders if assassins will silence him before he exposes Mary Geoise's secret treasure.",
           "coverage": {
             "anime": "882-885",
             "manga": "905-906"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 3,
           "title": "Reverie 03",
           "altTitle": "The Empty Throne",
-          "description": "Big Mom calls Kaido on an open line to lay claim to Luffy's head; Kaido refuses, citing a lifetime debt. The Marine high command — Sakazuki, Kizaru, Garp, Tsuru, Hina — realize they can't intervene with every soldier guarding the Reverie, and the long-buried name \"Rocks\" surfaces again. King Sterry is brought before the Empty Throne and its twenty ancient weapons. In the Unity Courtyard, Saint Charlos tries to claim Shirahoshi as his pet; Vivi, Rebecca, and Leo strike at him only to be pinned by CP0 — until the reformed Saint Mjosgard intervenes to save the Ryugu delegation. Saint Rosward then drags out his \"rented invincible slave\" — the silent, broken Bartholomew Kuma — as Jewelry Bonney watches in fury from the depths of Mariejois. The Reverie convenes, Cobra of Alabasta requests an audience with the Five Elders, and far above the throne room a being known only as Imu-sama waits to name who will be erased from history next.",
+          "description": "After Big Mom calls Kaido on an open line to claim Luffy's head—prompting Garp and Hina to recall the legendary \"Rocks\" era—and King Sterry pledges before the Empty Throne, Saint Charlos tries to enslave Shirahoshi in the castle courtyard until the reformed Celestial Dragon Saint Mjosgard clubs him down in honor of the late Queen Otohime. While Red-Haired Shanks privately meets the Five Elders and Sabo's Revolutionary commanders vow to rescue the enslaved Bartholomew Kuma as a disguised Jewelry Bonney weeps nearby, the Reverie formally convenes and the Five Elders bow before the secret sovereign Imu-sama atop the Empty Throne to ask which light should be erased from history.",
           "coverage": {
             "anime": "886-889",
             "manga": "907-908"
           },
-          "length": "TBD"
+          "length": "32m"
         }
       ]
     },
@@ -4646,959 +4794,959 @@ export const DATA = {
         {
           "id": 1,
           "title": "Wano 01",
-          "altTitle": "Arrival in Wano",
-          "description": "Luffy's group arrives at the isolated nation of Wano Country. After surviving the treacherous whirlpool entrance, Luffy washes ashore and quickly finds himself entangled in the cruel reality of life under Kaido and the shogun's rule. He meets a young girl named Tama whose suffering puts a face on the oppression gripping the land.",
+          "altTitle": "Climbing the Waterfall",
+          "description": "Cat Viper visits Whitebeard's hidden homeland to recruit Marco the Phoenix, who explains why he must stay behind to protect the village from Edward Weevil and asks Cat Viper to pass a message to Luffy. Meanwhile, Luffy's group reads about their friends at the Levely before sailing into Wano's perilous waters, where they ride giant koi fish up a reverse waterfall into a massive whirlpool.",
           "coverage": {
             "anime": "909-910",
             "manga": "909-910"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 2,
           "title": "Wano 02",
-          "altTitle": "Infiltration and Disguise",
-          "description": "The Straw Hats scattered across Wano begin taking on new identities to blend into the populace. Zoro poses as a wandering ronin in the Flower Capital while other crewmates assume cover roles. Meanwhile, the brutal grip of the Beast Pirates over the people of Wano becomes increasingly apparent.",
+          "altTitle": "Seppuku and Kuri Beach",
+          "description": "Undercover in the Flower Capital, Zoro is framed as a street slasher and sentenced to seppuku, but he exposes the corrupt magistrate holding his stolen blade Shusui as the true killer and cuts him down. Meanwhile, Luffy washes ashore alone on Kuri Beach with the Thousand Sunny, defeats Beast Pirates scouts, and meets a young girl named Tama who tames a giant baboon with dumplings pinched from her cheek.",
           "coverage": {
             "anime": "909-911",
             "manga": "909-911"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 3,
           "title": "Wano 03",
-          "altTitle": "Zoro the Ronin",
-          "description": "Zoro navigates the dangerous politics of the Flower Capital, where he is framed for murders he didn't commit. His quick deduction exposes the corrupt magistrate as the true killer, but the incident draws unwanted attention. Luffy, still in Kuri, learns more about the suffering inflicted on the local people by Kaido's forces.",
+          "altTitle": "Tama's Birthday Rice",
+          "description": "Tama generously feeds Luffy her only birthday rice while drinking polluted river water to hide her hunger, collapsing just as swordsmith Tenguyama Hitetsu arrives to explain how Kaido's factories poisoned Kuri and how Portgas D. Ace once saved their starving village. After bluntly informing Tama of Ace's death, Luffy borrows the cursed sword Nidai Kitetsu and rides out to find a doctor, reuniting with Zoro right as Basil Hawkins confronts them.",
           "coverage": {
             "anime": "911-912",
             "manga": "911-912"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 4,
           "title": "Wano 04",
-          "altTitle": "The Yokozuna Beast",
-          "description": "Luffy encounters Kaido's subordinate Holdem and his forces in Bakura Town. Outraged by the suffering of the people — especially Tama — Luffy launches a furious assault on Holdem, uncaring of the political consequences. His bold action sends a shockwave through the region and puts the alliance's careful cover plan at risk.",
+          "altTitle": "Straw Man's Card",
+          "description": "Luffy and Zoro clash with Beast Pirates Headliner Basil Hawkins, who uses his Straw-Straw Fruit powers to redirect fatal blows onto his subordinates and summons a giant Straw Man monster that Zoro fends off during their escape. The rescued teahouse owner Tsuru then guides them to Okobore Town to treat Tama's poisoned stomach with medicinal herbs, arriving just as the arrogant sumo champion Urashima harasses the waitress Okiku.",
           "coverage": {
             "anime": "913",
             "manga": "913"
           },
-          "length": "TBD"
+          "length": "20m"
         },
         {
           "id": 5,
           "title": "Wano 05",
-          "altTitle": "The Road to Udon",
-          "description": "The fallout from Luffy's attack continues as the group flees Bakura Town. Law scolds Luffy for blowing their cover so early, but the damage is done. The crew begins to learn more about the alliance being assembled to challenge Kaido, and the enormous scale of the task ahead starts to take shape.",
+          "altTitle": "The Abduction of Tama",
+          "description": "At Tsuru's teahouse in Okobore Town, medicinal herbs cure Tama's fever and Tsuru feeds her sweet red-bean soup while explaining how Shogun Orochi and Kaido hoard Paradise Farm's clean food in Bakura Town after overthrowing the Kozuki Clan. When the Gifters Batman and Gazelleman ambush the teahouse and abduct Tama for Headliner Holdem, Okiku reveals herself as a samurai and charges into Bakura Town alongside Luffy and Zoro.",
           "coverage": {
             "anime": "914-915",
             "manga": "914-915"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 6,
           "title": "Wano 06",
-          "altTitle": "Hiyori and the Witching Hour Boy",
-          "description": "A mysterious figure known as the Witching Hour Boy is revealed to be sneaking into the estates of Wano's corrupt nobles and redistributing stolen goods to the poor. Zoro crosses paths with this enigmatic person, and the encounter begins to pull back the curtain on deeper secrets buried within Wano's past.",
+          "altTitle": "Sumo Showdown in Bakura Town",
+          "description": "Entering Bakura Town to rescue Tama, Luffy, Zoro, and Okiku stumble upon an outdoor sumo tournament where Yokozuna Urashima orders his men to seize Okiku as his bride and mocks the starving commoners of Okobore Town as worthless filth. After an indignant Okiku slices off Urashima's topknot and the enraged wrestler tries to crush her, Luffy steps into the ring and sends Urashima flying across town with a giant Gear Third palm strike.",
           "coverage": {
             "anime": "915-916",
             "manga": "915-916"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 7,
           "title": "Wano 07",
-          "altTitle": "The Kozuki Clan's Retainers",
-          "description": "The history of Wano's fallen Kozuki clan comes into clearer focus. Kin'emon reveals more of the plan to the Straw Hats and allies, explaining how the retainers have waited twenty years for this moment of rebellion. The weight of loyalty, sacrifice, and a dying lord's wish gives the coming battle profound emotional stakes.",
+          "altTitle": "Red Hawk vs. Holdem",
+          "description": "Urashima crashes straight into Holdem's mansion, bringing out Holdem with Tama held hostage in the jaws of the lion growing from his belly just as Headliner Speed arrives escorting a massive Treasure Barge of clean food. While a masked Law intercepts Hawkins at the town gate and Zoro and Okiku hijack the food wagon, Luffy snatches Tama away and—enraged by her pliers-bruised cheek—obliterates Holdem with a fiery Red Hawk punch.",
           "coverage": {
             "anime": "916-917",
             "manga": "916-917"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 8,
           "title": "Wano 08",
-          "altTitle": "Prison Break Plans",
-          "description": "Luffy ends up imprisoned in the harsh labor camp of Udon, where he meets Hyogoro, a legendary yakuza boss reduced to a prisoner. Rather than despair, Luffy sees an opportunity — if he can win the trust of inmates, he can recruit a fighting force for the coming war. His training under these brutal conditions begins.",
+          "altTitle": "The Ghosts of Wano",
+          "description": "Luffy uses Tama's kibi dango to tame the horse-centaur Headliner Speed and escapes Bakura Town with Zoro, Okiku, and Law, delivering the stolen Treasure Barge of clean food to the starving citizens of Okobore Town while promising Tama a land where she can eat her fill every day. Law then leads Luffy and Okiku up the mountain to the ruins of Oden Castle, where Luffy sees his allies' graves before reuniting with Kin'emon, Momonosuke, and Sanji's group and learning that Kin'emon's retainers traveled twenty years forward in time.",
           "coverage": {
             "anime": "918-919",
             "manga": "918-919"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 9,
           "title": "Wano 09",
-          "altTitle": "Luffy's Sumo Training",
-          "description": "Inside Udon's labor camp, Luffy embraces the challenge of sumo-style combat to sharpen his Haki. Through grueling matches against powerful guards, he begins to sense a new level of Armament Haki — one that doesn't require direct contact. Hyogoro's quiet guidance proves unexpectedly valuable.",
+          "altTitle": "Travelers Through Time",
+          "description": "While Robin overhears yakuza boss Kyoshiro mocking Shogun Orochi's fear of a twenty-year vengeance prophecy, Kin'emon recounts how Lord Kozuki Oden tamed lawless Kuri before being executed by Orochi and Kaido, and how Lady Toki used her Time-Time Fruit inside the burning castle to send Momonosuke and his retainers twenty years into the future. Discovering a devastated Wano where loyalists still bore the crescent moon ankle mark, Kin'emon explains how their perilous sea voyage to gather allies led them to Luffy and Law.",
           "coverage": {
             "anime": "919-920",
             "manga": "919-920"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 10,
           "title": "Wano 10",
-          "altTitle": "The Great Banquet at Orochi Castle",
-          "description": "Shogun Orochi hosts a lavish banquet in the Flower Capital while the people of Wano starve. Robin, undercover as a geisha, infiltrates the festivities to gather intelligence. The stark contrast between the ruler's decadence and the nation's misery underscores the evil the alliance is fighting to overthrow.",
+          "altTitle": "The Dragon Emperor Descends",
+          "description": "Kin'emon outlines the plan to raid Kaido's island fortress of Onigashima during the Fire Festival in two weeks and disguises Nami's group alongside veteran kunoichi Shinobu, while in Okobore Town the bandit leader Shutenmaru—former Oden retainer Ashura Doji—clashes blades with Jack the Drought. Suddenly, Kaido himself descends from the storm clouds in his colossal dragon form, and when Hawkins tricks the drunken Emperor into thinking Luffy and Law are hiding in Oden Castle, Kaido obliterates the mountain ruins with a single Blast Breath.",
           "coverage": {
             "anime": "921-922",
             "manga": "921-922"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 11,
           "title": "Wano 11",
-          "altTitle": "Orochi's Paranoia",
-          "description": "Shogun Orochi proves to be a paranoid and erratic ruler, prone to violent outbursts at any perceived threat. Robin's undercover mission becomes increasingly dangerous as Orochi's suspicions flare at the banquet. A prophecy tied to the Kozuki clan looms over the evening, and Orochi's obsessive fear of it reveals his instability.",
+          "altTitle": "Luffy vs. Kaido",
+          "description": "Horrified by the destruction of Oden Castle and enraged after finding a wounded Speed who reveals Kaido attacked her and Tama, Luffy leaps from the sky to slam the dragon Kaido into the ground with an Elephant Gun. Ignoring Law's urgent warnings to flee, Luffy unleashes a furious Gear Fourth Boundman barrage against the Emperor, only for Kaido to revert to human form and knock Luffy out cold with a single swing of his club.",
           "coverage": {
             "anime": "922-923",
             "manga": "922-923"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 12,
           "title": "Wano 12",
-          "altTitle": "Kaido Descends",
-          "description": "Kaido himself arrives in a stunning display of power, crash-landing on the capital in his colossal dragon form. The Emperor's sheer presence is overwhelming. Luffy, still in Udon, remains unaware of the chaos, but the gravity of who they are truly up against becomes impossible to ignore.",
+          "altTitle": "The Prisoner Mine of Udon",
+          "description": "Hawkins ambushes Law with a Sea Prism Stone nail to prevent him from rescuing Luffy, while an unconscious burst of Luffy's Conqueror's Haki knocks out Kaido's men before the Emperor orders him thrown into prison to break his spirit. While Sanji's group reveals they survived Kaido's Blast Breath thanks to Shinobu's Ripe-Ripe Fruit and Inuarashi finds Tama alive in the forest, news of Luffy's defeat shocks his crewmates in the capital as Luffy is locked in the Udon labor camp.",
           "coverage": {
             "anime": "924",
             "manga": "924"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 13,
           "title": "Wano 13",
-          "altTitle": "The Flower Capital's Dark Festival",
-          "description": "The alliance's plans inch forward while darkness spreads through the Flower Capital. Nami and others continue their undercover work as Orochi tightens his grip. The Kozuki loyalists scattered across Wano quietly prepare for the day of reckoning, sustained only by hope and a promise made long ago.",
+          "altTitle": "Turmoil Abroad and Secret Preparations",
+          "description": "Gecko Moria storms Blackbeard's Pirate Island searching for Absalom, only to be slashed by an invisible Shiryu and learn Absalom was killed for his Clear-Clear Fruit while Blackbeard gloats over the chaos at the Levely and in Wano. Back in Wano, Inuarashi clashes with an embittered Ashura Doji, Nami and Shinobu spy on an arms deal, Sanji's group passes out rebellion flyers to crescent-marked samurai, and Raizo sneaks into Udon to tell Luffy that Tama is safe while All-Stars King and Queen berate Jack.",
           "coverage": {
             "anime": "925-926",
             "manga": "925-926"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 14,
           "title": "Wano 14",
-          "altTitle": "Big Mom Arrives",
-          "description": "Big Mom, one of the Four Emperors, unexpectedly arrives on the shores of Wano after falling from a ship. Her arrival throws a massive wrench into the alliance's plans and sends shockwaves through both the Beast Pirates and the Straw Hats alike. A second Emperor on the board changes every calculation.",
+          "altTitle": "Rivals in Udon and the Oiran's Procession",
+          "description": "While Zoro exposes cheating gamblers alongside the jovial Tonoyasu and Sanji's group thrashes Kyoshiro Family thugs for spilling young Toko's soba during the grand procession of the courtesan Komurasaki, Luffy and fellow inmate Eustass Kid compete in hauling giant stones in Udon and crush the hippo Vice Warden Dobon. Hailed as a hero by the prisoners, Luffy gives his extra food tickets to frail old man Hyo and hears Kid debunk rumors about his lost arm, right as Big Mom's ship approaches Wano's waterfall.",
           "coverage": {
             "anime": "926-927",
             "manga": "926-927"
           },
-          "length": "TBD"
+          "length": "38m"
         },
         {
           "id": 15,
           "title": "Wano 15",
-          "altTitle": "Queen's Udon Prison",
-          "description": "Luffy continues to endure the brutal conditions of Udon under the sadistic warden Queen, one of Kaido's three top commanders. Queen's twisted games and punishments reveal the full horror of the labor camp. Luffy's resolve only hardens, and his bond with the imprisoned Hyogoro deepens as they quietly plan resistance.",
+          "altTitle": "The Town That Only Laughs",
+          "description": "After Shogun Orochi demands Dr. Vegapunk from CP0 and Komurasaki ruthlessly bankrupts a corrupt suitor, Franky tracks the missing Onigashima blueprints to a thief from Kuri while Kin'emon and Inuarashi steal Beast Pirates supplies and frame Shutenmaru to force him into their alliance. Meanwhile, Tonoyasu welcomes Zoro to the impoverished slums of Ebisu Town—where starving residents laugh away their misery—and Orochi begins his castle banquet just as Law warns Sanji's group that Hawkins and the Tobi Roppo Page One and X Drake are hunting them.",
           "coverage": {
             "anime": "928-930",
             "manga": "928-930"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 16,
           "title": "Wano 16",
-          "altTitle": "Sanji vs. the Raid Suit",
-          "description": "Sanji discovers that his family's designed Raid Suit — which grants him stealth and power — is causing unsettling changes to his body and mind. Troubled by what it might mean about his true nature as a Vinsmoke, he wrestles with whether to use it at all. His identity and what it means to be human are thrown into question.",
+          "altTitle": "Stealth Black",
+          "description": "While Brook's ghost discovers a Poneglyph inside Orochi Castle, King the Wildfire transforms into a Pteranodon and kicks the Big Mom Pirates' ship off the top of Wano's waterfall, sending Big Mom plunging into the sea. In the Flower Capital, Sanji dons his Germa 66 Raid Suit as \"Soba Mask\" to protect the citizens and keep his identity hidden while battling the Spinosaurus Page One with invisibility tech, before Robin is cornered by the Oniwabanshu ninja squad and Chopper's group finds Big Mom washed ashore on Kuri Beach.",
           "coverage": {
             "anime": "930-931",
             "manga": "930-931"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 17,
           "title": "Wano 17",
-          "altTitle": "Kid and Killer in Udon",
-          "description": "Eustass Kid and his first mate Killer are revealed to be prisoners in Udon alongside Luffy. The two former rivals find themselves in an unlikely shared predicament. Their presence and the conditions they've endured hint at the crushing defeats Kaido has already handed out to some of the most powerful pirates in the New World.",
+          "altTitle": "Panic at Orochi's Banquet",
+          "description": "After escaping the Oniwabanshu with a clone, Robin returns to Orochi's banquet and watches the paranoid Shogun rant about the Nine Red Scabbards until young Toko laughs at him, prompting Komurasaki to slap Orochi in defense of the child and refuse to beg for mercy even as he transforms into an eight-headed serpent. Amidst the ensuing battle as Nami, Brook, and Shinobu rescue Robin and Toko, Kyoshiro seemingly cuts down Komurasaki in a \"mercy killing,\" while in Kuri, Chopper's group feeds sweet oshiruko to an amnesiac Big Mom and lures her toward Udon Prison.",
           "coverage": {
             "anime": "932-933",
             "manga": "932-933"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 18,
           "title": "Wano 18",
-          "altTitle": "The Geisha and the Spy",
-          "description": "Robin's infiltration of the Flower Capital deepens as she gets closer to Orochi's inner circle. Her careful intelligence gathering uncovers critical information about the shogun's defenses and plans. Elsewhere, Nami and the others continue building the network of rebel samurai needed for the upcoming raid.",
+          "altTitle": "Queen the Plague and Hyogoro the Flower",
+          "description": "While Chopper's group leads the amnesiac Big Mom toward Udon and Robin, Nami, and Shinobu soak in a Capital bathhouse discussing the legendary yakuza boss Hyogoro the Flower, Law's group learns in Ebisu Town that Zoro's sword Shusui was stolen and that Eustass Kid escaped prison. Inside Udon, Luffy kicks the six-armed guard Daifugo to save old man Hyo from a brutal beating—earning a death sentence just as Raizo steals the Sea Prism Stone cuff keys, All-Star Queen the Plague arrives with a dance number, and Luffy learns that old man Hyo is Hyogoro the Flower himself while Raizo spots the imprisoned Scabbard Kawamatsu.",
           "coverage": {
             "anime": "934-935",
             "manga": "934-935"
           },
-          "length": "TBD"
+          "length": "38m"
         },
         {
           "id": 19,
           "title": "Wano 19",
-          "altTitle": "Zoro and the Cursed Blade",
-          "description": "Zoro's quest for his stolen sword Shusui leads him to confront Gyukimaru, a mysterious monk guarding a bridge. Their fierce duel is interrupted by the arrival of Kamazo, a deadly assassin. The battle reveals unexpected connections to Wano's past and a secret that cuts to the heart of the country's tragedy.",
+          "altTitle": "The Sumo Inferno and Bandit's Bridge",
+          "description": "While Queen forces Luffy and Hyogoro into the deadly Sumo Inferno in Udon and Sanji uses his Raid Suit to rescue Nami, Robin, and Shinobu from Hawkins and Drake at the Flower Capital bathhouse, Zoro clashes with the warrior monk Gyukimaru to reclaim his stolen sword Shusui. Their duel is interrupted when Orochi's assassin Kamazo arrives hunting O-Toko and a mysterious woman, prompting Zoro to endure a vicious scythe wound before cutting down the killer with his own weapon.",
           "coverage": {
             "anime": "936-938",
             "manga": "936-938"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 20,
           "title": "Wano 20",
-          "altTitle": "Hiyori Revealed",
-          "description": "A wounded young woman saved during Zoro's battle is revealed to be Kozuki Hiyori — daughter of the legendary Lord Oden and the long-lost princess of Wano. Her survival has been a closely guarded secret. Her reunion with those loyal to her family's name carries enormous emotional and strategic weight for the coming rebellion.",
+          "altTitle": "Kozuki Hiyori and Hyogoro the Flower",
+          "description": "As mass arrests of rebels bearing the crescent moon tattoo spark a rift between Law and Shinobu, the woman Zoro rescued tends to his wounds and reveals herself to be Momonosuke's younger sister, Kozuki Hiyori, recounting how Kawamatsu raised her after Oden Castle burned. Back in Udon's Sumo Inferno, frail old Hyo steps forward to strike down a Gifter with unseen internal force, exposing his true identity as Hyogoro the Flower and offering to teach Luffy the flowing power known in Wano as Ryuo.",
           "coverage": {
             "anime": "938-939",
             "manga": "938-939"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 21,
           "title": "Wano 21",
-          "altTitle": "Udon Uprising",
-          "description": "Luffy finally makes his move inside Udon prison, launching an all-out uprising. With the help of Hyogoro and the other prisoners, Luffy battles through the guards. The prison break is a pivotal moment — not just an escape, but a rallying cry that begins to turn the tide of morale among Wano's oppressed people.",
+          "altTitle": "The Capture of Ushimitsu Kozo",
+          "description": "After Hyogoro coaches Luffy in Ryuo until nightfall, Raizo and Caribou sneak into the Udon ring with news of the rebellion, inspiring the old yakuza boss to rally the prison's thousands of inmates while Luffy secretly devours Queen's prized red bean soup. The next morning, word spreads that Ebisu Town's beloved Tonoyasu has been captured as the thief Ushimitsu Kozo and sentenced to public execution, sending O-Toko, Hiyori, Zoro, and Brook racing toward Rasetsu Town.",
           "coverage": {
             "anime": "940-941",
             "manga": "940-941"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 22,
           "title": "Wano 22",
-          "altTitle": "Conquering Udon",
-          "description": "The battle for Udon reaches its peak as Luffy fights Queen directly. Using the combat instincts refined during his imprisonment, Luffy pushes forward even as Queen unleashes devastating techniques. The chaos of the prison riot spreads, and an unexpected player from the Charlotte family enters the scene.",
+          "altTitle": "The Execution of Shimotsuki Yasuie",
+          "description": "Crucified before a live broadcast across Wano, Tonoyasu is unmasked as the former Hakumai daimyo Shimotsuki Yasuie and uses his final moments to mock Orochi's paranoia, claiming the crescent moon flyer was merely a prank to salvage the rebellion's compromised plan. After Orochi and his firing squad gun Yasuie down, the grieving citizens of Ebisu Town arrive laughing uncontrollably through their tears, prompting Hiyori to reveal the cruel curse of the SMILE fruits.",
           "coverage": {
             "anime": "941-942",
             "manga": "941-942"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 23,
           "title": "Wano 23",
-          "altTitle": "Big Mom's Rampage",
-          "description": "Big Mom, having lost her memories after the sea journey, wanders Wano in a confused but still terrifyingly powerful state. Her uncontrolled rampage causes havoc for everyone in her path. The alliance scrambles to contain the situation, knowing that a fully restored Big Mom in Kaido's corner would be catastrophic.",
+          "altTitle": "The Cruelty of SMILE",
+          "description": "After Shinobu reveals how Orochi fed defective SMILE fruits to the starving people of Ebisu Town to rob them of their ability to mourn, Zoro and Sanji leap into the execution yard to save O-Toko from Orochi's bullets while the Straw Hats recover Yasuie's body. Meanwhile in Udon, a recaptured Eustass Kid is horrified to discover that the endlessly laughing assassin Kamazo is his own partner Killer after being forced to eat a failed SMILE, and Queen suspends them both in a water tank just as someone smashes through the prison's front gates.",
           "coverage": {
             "anime": "943-944",
             "manga": "943-944"
           },
-          "length": "TBD"
+          "length": "40m"
         },
         {
           "id": 24,
           "title": "Wano 24",
-          "altTitle": "The Alliance Grows",
-          "description": "With Udon now under their control, Luffy and his allies begin the work of preparing for war in earnest. The rebel forces gather, samurai are rallied, and the scope of what the alliance has built in secret starts to take shape. Time is running out before Kaido and Orochi discover the rebellion brewing beneath their feet.",
+          "altTitle": "O-Lin Crashes Udon",
+          "description": "While the Straw Hats fight their way out of Rasetsu Town with Hiyori and Hawkins uses his Straw Man ability to hold Law's crewmates hostage, Kin'emon humbles himself before Ashura Doji to beg for his aid in the coming raid. At Udon Prison, the amnesiac Big Mom smashes through the front gates in search of red bean soup, prompting a furious Queen to transform into a giant Brachiosaurus to defend his favorite snack.",
           "coverage": {
             "anime": "944-945",
             "manga": "944-945"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 25,
           "title": "Wano 25",
-          "altTitle": "The Raid is Set",
-          "description": "Final preparations for the assault on Onigashima begin. The alliance — Straw Hats, Heart Pirates, samurai, and mink warriors — coordinated their plans for the Fire Festival, when Kaido traditionally holds his celebration on Onigashima. The night that could liberate Wano or destroy everyone fighting for it is almost at hand.",
+          "altTitle": "Unleashing Ryuo",
+          "description": "After O-Lin knocks out Brachiosaurus Queen in two blows and Caribou swallows the Boss Snail to cut Udon's communications, Luffy's accidental confession that he ate all the red bean soup sends the Emperor on a furious rampage that forces him to awaken internal-destruction Ryuo and tear off his and Hyogoro's exploding collars. Queen revives and dives onto Big Mom's head—inadvertently jolting her memories back right before she falls asleep—and hastily chains her in Sea Prism Stone to haul her to Onigashima, leaving Udon isolated in Luffy's hands.",
           "coverage": {
             "anime": "946-947",
             "manga": "946-947"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 26,
           "title": "Wano 26",
-          "altTitle": "Orochi's Treachery",
-          "description": "A devastating betrayal shakes the alliance to its core when their carefully planned meetup point is revealed to have been compromised. The rebel numbers are a fraction of what was expected. Rather than crumble, the remaining fighters resolve to press on regardless — their commitment to Wano's liberation absolute.",
+          "altTitle": "Conquering Udon",
+          "description": "After Raizo frees Kawamatsu the Kappa from thirteen years of captivity and the Red Scabbards unmask themselves before the prison, the guards fire Queen's contagious Mummy virus bullets into the inmates and order them to restrain Luffy out of despair. Embracing the burning, infected prisoners with his bare hands, Luffy reignites their broken spirits with a vow to overthrow Kaido and stops Warden Babanuki's final plague bomb using Future Sight, bringing all of Udon under the alliance's control.",
           "coverage": {
             "anime": "948-949",
             "manga": "948-949"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 27,
           "title": "Wano 27",
-          "altTitle": "Oden's Journal",
-          "description": "The story travels back in time to reveal the life of Kozuki Oden through his personal journal. A young, wild, and impossibly strong Oden dominates the region of Kuri in Wano, drawing both fear and admiration. His early years paint a portrait of a man too large for any single place to contain.",
+          "altTitle": "The Graves of the Impatient",
+          "description": "While Eustass Kid rejects Luffy's alliance offer and Momonosuke reveals himself in Udon to unite the hesitant prisoners behind the rebellion, Ashura Doji shows Kin'emon and Inuarashi the graves of the comrades who died raiding Onigashima ten years ago before rejoining their cause. Elsewhere, Zoro accompanies Hiyori toward Bandit's Bridge in snowy Ringo to reclaim Shusui, and Law secretly surrenders himself to Hawkins in exchange for his captured crewmates' freedom.",
           "coverage": {
             "anime": "950-951",
             "manga": "960-961"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 28,
           "title": "Wano 28",
-          "altTitle": "Oden Joins Whitebeard",
-          "description": "The flashback continues as a restless Oden leaves Wano to seek adventure on the seas. Against all odds, he manages to join Whitebeard's crew — one of the most formidable pirate crews in the world. His time with Whitebeard shapes him profoundly, and sets him on a path toward an even greater destiny.",
+          "altTitle": "Reunion at Bandit's Bridge",
+          "description": "While Kaido orders Big Mom uncuffed on Onigashima—sparking a sky-splitting clash between the two Emperors—Tama tames Warden Babanuki to keep Udon's capture secret as Hyogoro rallies Wano's yakuza bosses and Ashura Doji provides ships and blueprints for the raid. At Bandit's Bridge in Ringo, Kawamatsu shares a tearful reunion with Hiyori after thirteen years apart and fights alongside Zoro against Beast Pirate gunmen as Gyukimaru flees with Shusui.",
           "coverage": {
             "anime": "951-952",
             "manga": "963-964"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 29,
           "title": "Wano 29",
-          "altTitle": "The Dawn of the Roger Pirates",
-          "description": "Oden's journey takes an extraordinary turn when he crosses paths with Gol D. Roger himself. Joining the Roger Pirates for their final voyage, Oden witnesses the crew reach the end of the Grand Line and learn a truth that reshapes his understanding of the world. The weight of that knowledge would follow him home.",
+          "altTitle": "The Guardian of Ringo and the Blade Enma",
+          "description": "After chasing Gyukimaru to a hidden cavern of thousands of swords, Kawamatsu recounts how he and the loyal fox Onimaru secretly gathered blades from Ringo's Eternal Graves to arm the future rebellion, solving the alliance's weapon shortage. To allow the national treasure Shusui to remain in Wano, Hiyori offers Zoro her father Oden's legendary sword Enma in exchange, while in the Flower Capital a mysterious ally frees Law after he defeats Hawkins.",
           "coverage": {
             "anime": "953-954",
             "manga": "966-967"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 30,
           "title": "Wano 30",
-          "altTitle": "Oden's Return and Fall",
-          "description": "Oden returns to Wano to find his homeland corrupted by Orochi, who has seized power with Kaido's backing. Despite his legendary strength, Oden is eventually captured and publicly humiliated in a cruel scheme orchestrated by Orochi. The truth of how Wano fell — and how its greatest hero was broken — is finally laid bare.",
+          "altTitle": "The Sword Enma and the March to War",
+          "description": "While Kaido and Big Mom stun their crews by forming an alliance to conquer the world, Kin'emon decodes Yasuie's two-line message to move the rebellion's rendezvous to Tokage Port and Tenguyama Hitetsu presents Oden's legendary sword Enma to Zoro, who slices off an entire cliffside while taming its Haki-draining edge. After final days of intense training, the Nine Red Scabbards and Momonosuke march out on the morning of the Fire Festival, unaware that Shogun Orochi has received a secret report exposing both their new port and Hiyori's survival.",
           "coverage": {
             "anime": "954-955",
             "manga": "968-969"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 31,
           "title": "Wano 31",
-          "altTitle": "Oden's Dance and Final Hour",
-          "description": "The tragic conclusion of Oden's story unfolds. Tricked by Orochi's manipulations, Oden endured years of public humiliation to protect his people. When the final betrayal comes, he faces his execution with breathtaking courage — his last act a declaration of hope that echoes through the twenty years leading to the present day.",
+          "altTitle": "Big News and the Abolition of the Warlords",
+          "description": "Following the conclusion of the Reverie, 'Big News' Morgans fights off a Cipher Pol cover-up attempt and publishes a bombshell edition of the World Economic Journal that leaves Sabo's comrades and family in tears over his reported fate, while X Drake secretly contacts Koby as head of the Marine unit SWORD to warn of Kaido and Big Mom's alliance. The newspaper also announces the historic abolition of the Seven Warlords of the Sea, prompting Marine fleets across the globe to surround Buggy, Mihawk, Weevil, and Boa Hancock.",
           "coverage": {
             "anime": "956",
             "manga": "970-971"
           },
-          "length": "TBD"
+          "length": "18m"
         },
         {
           "id": 32,
           "title": "Wano 32",
-          "altTitle": "The Scabbards' Twenty Years",
-          "description": "The Nine Red Scabbards, Oden's loyal retainers, are sent twenty years into the future by Kozuki Toki's mysterious power. Arriving in the present, they find Wano still under Kaido's thumb — exactly as they feared. The full scope of their sacrifice, and the promise they carry forward in Oden's name, comes into focus.",
+          "altTitle": "The Legend of Rocks and the Emperors' Bounties",
+          "description": "Triggered by news of Kaido and Big Mom's alliance, former Fleet Admiral Sengoku recounts the erased history of the ruthless Rocks Pirates—where Whitebeard, Big Mom, and Kaido once sailed under Rocks D. Xebec—and reveals how Garp joined forces with Gol D. Roger thirty-eight years ago at God Valley to bring them down. Commodore Brannew then unveils the staggering bounties of each of the Four Emperors alongside Whitebeard and Roger, while Sengoku marvels at how many of the sea's greatest legends are intertwined with Wano.",
           "coverage": {
             "anime": "957",
             "manga": "972-975"
           },
-          "length": "TBD"
+          "length": "16m"
         },
         {
           "id": 33,
           "title": "Wano 33",
-          "altTitle": "To Onigashima",
-          "description": "The alliance sets sail for Onigashima under the cover of the Fire Festival. Despite having far fewer troops than planned, the spirit of the fighters is unbroken. The fleet moves through the night toward Kaido's stronghold, each member carrying the weight of everything Wano has suffered — and everything it deserves to become.",
+          "altTitle": "The Storm at Tokage Port",
+          "description": "On the evening of the Fire Festival, the Nine Red Scabbards and Momonosuke arrive at a stormy Tokage Port to find their fleet destroyed and all 4,000 allies missing, unaware that Orochi acted on leaked intelligence the night before to bomb the bridges and ports across Wano. Refusing to retreat and let their countrymen's sacrifices be in vain, the retainers prepare to row toward Onigashima alone as the story travels forty-one years into the past to recount the life of Kozuki Oden.",
           "coverage": {
             "anime": "958-959",
             "manga": "974-975"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 34,
           "title": "Wano 34",
-          "altTitle": "Storming the Island",
-          "description": "The raid on Onigashima begins. The alliance infiltrates the island during the chaos of the Festival celebration, disguising themselves among Kaido's forces. Tensions are sky-high as they navigate the enemy stronghold. The plan hinges on silence and speed — but the island is crawling with some of the most dangerous fighters in the world.",
+          "altTitle": "Enter Kozuki Oden and the Mountain God",
+          "description": "Forty-one years in the past, eighteen-year-old Kozuki Oden scandalizes the Flower Capital with his wild antics until a young gambler named Kin'emon brings a stolen white boar piglet into the city, luring the colossal Mountain God to rampage through town and swallow O-Tsuru whole. Stepping in for a wounded Kin'emon, Oden slices the giant beast in half to free every trapped citizen and takes full blame for the disaster, departing in exile with his newly devoted followers Kin'emon and Denjiro to Hakumai, where they meet Lord Yasuie's groveling servant, Kurozumi Orochi.",
           "coverage": {
             "anime": "960-961",
             "manga": "976-977"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 35,
           "title": "Wano 35",
-          "altTitle": "Inside the Beast Pirates' Fortress",
-          "description": "Deep inside Onigashima's castle, the alliance must maintain their disguises while surrounded by enemy forces attending the Festival. Small slip-ups threaten to unravel everything. The Straw Hats and samurai push their luck further, getting closer to Kaido's inner sanctum while avoiding detection from the Tobi Roppo and All-Stars.",
+          "altTitle": "Daimyo of Kuri",
+          "description": "Joined on his journey by Izo, Kikunojo, Kanjuro, and Raizo, Oden single-handedly conquers the lawless region of Kuri and defeats Ashura Doji, transforming its bandits into honest citizens and earning the title of Daimyo of Kuri from his father. After taking in the shipwrecked outcasts Inuarashi, Nekomamushi, and Kawamatsu—and watching his retainers refine themselves into noble samurai with Yasuie's help—Oden hears that the Whitebeard Pirates have washed ashore at Itachi Port and charges out to clash with Edward Newgate, begging to be taken out to sea.",
           "coverage": {
             "anime": "962-963",
             "manga": "978-979"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 36,
           "title": "Wano 36",
-          "altTitle": "The Tobi Roppo's Challenge",
-          "description": "The six Flying Six — the Tobi Roppo, Kaido's most powerful subordinates beneath his All-Stars — are summoned for a mysterious meeting. Their internal politics and rivalry with one another hint at cracks in the Beast Pirates' otherwise iron hierarchy. The alliance's presence on the island edges closer to being discovered.",
+          "altTitle": "Oden's Trial and Setting Sail with Whitebeard",
+          "description": "When the Whitebeard Pirates try to slip away from Wano at night, Oden latches onto their ship's trailing chain and endures Whitebeard's brutal three-day trial in the raging sea—only to let go minutes before the deadline to rescue a time-traveling woman named Amatsuki Toki from slavers on a nearby island. Moved by Oden's selflessness, Whitebeard welcomes him, Toki, Izo, Inuarashi, and Nekomamushi aboard the Moby Dick, launching a grand voyage across the seas that catches the attention of Gol D. Roger.",
           "coverage": {
             "anime": "964-965",
             "manga": "980-981"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 37,
           "title": "Wano 37",
-          "altTitle": "Chaos Erupts",
-          "description": "The uneasy calm shatters as chaos breaks out across Onigashima. The alliance's cover is blown and all-out war begins. Luffy, Zoro, and the others throw off their disguises and launch into battle, their war cries signaling the start of the raid everyone has been preparing for. The liberation of Wano has officially begun.",
+          "altTitle": "Oden Joins the Roger Pirates",
+          "description": "While Orochi schemes with a mysterious crone possessing the Clone-Clone Fruit to usurp the ailing Shogun Sukiyaki in Wano, Oden's family grows aboard Whitebeard's ship until a three-day clash with the Roger Pirates changes his destiny. Entrusted with deciphering the Poneglyphs for Gol D. Roger's final voyage, Oden sails up the Knock Up Stream to Skypiea and carves Roger's message onto the golden belfry.",
           "coverage": {
             "anime": "965-966",
             "manga": "982-983"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 38,
           "title": "Wano 38",
-          "altTitle": "The Nine Red Scabbards Attack",
-          "description": "The Nine Red Scabbards break away from the main battle to confront Kaido directly. United by twenty years of grief, rage, and love for their fallen lord Oden, they launch a coordinated assault on the Emperor. What happens next is one of the most emotionally charged confrontations in the entire arc.",
+          "altTitle": "Laugh Tale",
+          "description": "Roger and Oden journey from Water 7 and Fishman Island to Wano and Zou—leaving an ailing Toki and their children behind in Kuri—to gather rubbings of all four Road Poneglyphs. Setting foot on the final island for the first time in eight hundred years, the Roger Pirates uncover the truth of the Void Century and laugh in tears before Joy Boy's treasure, naming the island Laugh Tale.",
           "coverage": {
             "anime": "967",
             "manga": "984-985"
           },
-          "length": "TBD"
+          "length": "22m"
         },
         {
           "id": 39,
           "title": "Wano 39",
-          "altTitle": "Scabbards vs. Kaido",
-          "description": "The Nine Red Scabbards fight Kaido with everything they have, landing blows that genuinely wound the seemingly invincible Emperor. The sight of Kaido bleeding shocks the Beast Pirates who believed their master to be beyond harm. The scabbards' determination — fueled by Oden's memory — briefly makes the impossible seem achievable.",
+          "altTitle": "The Fool of a Lord",
+          "description": "After Roger disbands his crew, Oden returns home to discover Orochi ruling Wano with Kaido's backing and storms the Flower Capital, only to be coerced into dancing naked in the streets every week for five years to save kidnapped citizens. When Orochi breaks his promise to leave Wano and gloats over murdering Hyogoro's wife, Oden finally takes up his blades alongside the Nine Red Scabbards to march on Kaido.",
           "coverage": {
             "anime": "968-969",
             "manga": "986-987"
           },
-          "length": "TBD"
+          "length": "38m"
         },
         {
           "id": 40,
           "title": "Wano 40",
-          "altTitle": "Luffy Reaches the Roof",
-          "description": "Luffy fights his way through wave after wave of Beast Pirates to reach the roof of Onigashima — the Skull Dome — where Kaido is battling the Scabbards. His arrival is triumphant and electric, as the alliance's greatest hope finally comes face to face with its greatest obstacle. The real fight for Wano's future is about to begin.",
+          "altTitle": "The Hour of Legends",
+          "description": "Oden scars Kaido in a fierce battle across Udon before falling to a cruel deception and being sentenced to boil alive in oil with his retainers. Lifting all nine Scabbards on a plank above his head for a full hour while Shinobu reveals the truth of his five-year sacrifice to the weeping citizens, Oden hurls his vassals to safety when Orochi reneges on their deal and meets his execution with a smile.",
           "coverage": {
             "anime": "970-972",
             "manga": "988-989"
           },
-          "length": "TBD"
+          "length": "42m"
         },
         {
           "id": 41,
           "title": "Wano 41",
-          "altTitle": "The Worst Generation Unites",
-          "description": "Luffy, Kid, and Law — three of the Worst Generation's most powerful captains — stand together against Kaido and Big Mom on the Skull Dome roof. The four-on-two battle of emperors versus supernovas begins. The sheer scale of power on display is unlike anything the New World has seen, and the outcome feels genuinely uncertain.",
+          "altTitle": "The Traitor at Port",
+          "description": "As Oden's castle burns twenty years ago, Lady Toki sends Momonosuke and four retainers into the future with her dying prophecy while Denjiro adopts a new identity as Kyoshiro to protect Hiyori in the Flower Capital. In the present, as the Scabbards set out into a storm from a devastated Tokage Port, Kanjuro unmasks himself as Orochi's lifelong Kurozumi spy right before Luffy, Law, and Kid arrive at sea to turn the tide.",
           "coverage": {
             "anime": "972-974",
             "manga": "990-991"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 42,
           "title": "Wano 42",
-          "altTitle": "Roof Piece Begins",
-          "description": "The epic battle on the Skull Dome roof — known among fans as 'Roof Piece' — reaches a fever pitch. Luffy, Zoro, Killer, Kid, and Law unleash their full arsenals against Kaido and Big Mom. Each fighter pushes their limits, and the clash of Conqueror's Haki shakes the entire island. The era of the Worst Generation is being written in real time.",
+          "altTitle": "First Son of the Sea",
+          "description": "While Luffy, Law, and Kid demolish the Beast Pirate battleships, Kyoshiro reveals himself as Denjiro and explains how Kin'emon's accidental misreading of Yasuie's altered message saved their 5,400-strong rebel fleet. Though the real Kanjuro escapes into the sky on an ink crane with a captive Momonosuke, Jinbe surfaces to destroy the enemy's long-range cannons and officially joins the Straw Hat crew as helmsman.",
           "coverage": {
             "anime": "975-976",
             "manga": "992-993"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 43,
           "title": "Wano 43",
-          "altTitle": "Zoro's Conqueror's Haki",
-          "description": "Zoro awakens a power long hinted at but never confirmed — Conqueror's Haki — during his desperate battle against King. Meanwhile across the island, individual battles between the alliance and the Beast Pirates' top fighters intensify. Chopper battles to stop the spread of a deadly virus Queen has unleashed on the live floor.",
+          "altTitle": "Delaying the Toast",
+          "description": "After welcoming Jinbe aboard, the Straw Hats smash through the heavily armed Torii gate guarding Onigashima while Law and the Scabbards coordinate a multi-pronged infiltration around the island. Inside the Skull Dome, Orochi and Queen revel in the Fire Festival and the Tobi Roppo gather for a meeting with Kaido, while outside Luffy postpones Jinbe's welcoming toast until after the war is won.",
           "coverage": {
             "anime": "977-978",
             "manga": "994-995"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 44,
           "title": "Wano 44",
-          "altTitle": "Queen's Plague",
-          "description": "Queen unleashes the Ice Oni plague upon the Live Floor, infecting both his own men and the alliance fighters. The race to find an antidote becomes as urgent as the battle itself. Chopper steps forward as the one person capable of developing a cure, putting his medical genius to the ultimate test under battlefield conditions.",
+          "altTitle": "The Disguised Infiltration",
+          "description": "The rebel samurai sink their own ships to show their resolve as Kin'emon uses his Garb-Garb Fruit to disguise the invading alliance in Beast Pirate uniforms. While Kanjuro gets lost in the castle tunnels with Momonosuke and King tasks the Tobi Roppo with bringing back Kaido's runaway son Yamato, Luffy and Zoro slip into the Performance Floor and watch the enemy waste precious red-bean soup.",
           "coverage": {
             "anime": "978-979",
             "manga": "996-997"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 45,
           "title": "Wano 45",
-          "altTitle": "Yamato's Resolve",
-          "description": "Yamato, Kaido's own child who has long idolized Kozuki Oden, breaks free and fights against the Beast Pirates to protect the alliance. Yamato's deep personal connection to Oden's journals and ideals — and the conflict of opposing their own father — drives one of the most emotionally complex character arcs of the entire raid.",
+          "altTitle": "Red-Bean Soup and Fighting Music",
+          "description": "Furious over the wasted red-bean soup, Luffy and Zoro blow their cover and brawl across the Performance Floor, drawing explosive sound-wave attacks from Scratchmen Apoo until an enraged Kid smashes the traitor. As the Eastern Forces navigate past Black Maria's Pleasure Hall and Chopper's tank locks eyes with Big Mom, Marco the Phoenix arrives at the waterfall to kick the Big Mom Pirates' ship back down to the sea.",
           "coverage": {
             "anime": "980-981",
             "manga": "998-999"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 46,
           "title": "Wano 46",
-          "altTitle": "Luffy vs. Kaido, Round Two",
-          "description": "After the Worst Generation separates the two Emperors, Luffy faces Kaido in a more direct rematch. Drawing on everything he has learned, Luffy pushes to new extremes of power and endurance. The gap between them still seems enormous, but Luffy's unbreakable will refuses to let him stay down.",
+          "altTitle": "Thunder Bagua in the Hall",
+          "description": "Kanjuro finally delivers a beaten Momonosuke to Orochi, who orders the boy crucified on the Performance Floor stage while Denjiro captures Sasaki in Sea Prism Stone chains and Big Mom chases Nami and Chopper's groups. Meanwhile, Luffy clashes with the dinosaur siblings Ulti and Page One until a masked warrior fells Ulti with a Thunder Bagua, whisks Luffy away, and introduces himself as Kaido's son, Yamato.",
           "coverage": {
             "anime": "982-983",
             "manga": "1000-1001"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 47,
           "title": "Wano 47",
-          "altTitle": "The Voice of All Things",
-          "description": "Luffy taps into a deeper level of his abilities as the battle on Onigashima reaches a critical turning point. A new understanding of his own Devil Fruit begins to stir, hinting at a power that goes far beyond what anyone — including Luffy himself — expected. The nature of his ability may be something the world has not seen in centuries.",
+          "altTitle": "The New Onigashima Project",
+          "description": "As Law's group links up with Marco, Nekomamushi, and Izo at the castle's rear entrance and Kiku strikes down Kanjuro in the snow, Yamato reveals to Luffy that she carries Oden's logbook and wishes to fight by his side. On the main stage, Kaido announces his alliance with Big Mom to seize the Ancient Weapons and the One Piece, suddenly decapitating a protesting Orochi to proclaim Wano the pirate empire of New Onigashima.",
           "coverage": {
             "anime": "984-985",
             "manga": "1002-1003"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 48,
           "title": "Wano 48",
-          "altTitle": "Advanced Conqueror's Haki",
-          "description": "Kaido demonstrates the most advanced application of Conqueror's Haki — coating his attacks in it to devastating effect. Luffy observes and begins to grasp this technique instinctively during battle. The fight evolves into a high-level Haki clash, each exchange a lesson in power that Luffy absorbs on the fly.",
+          "altTitle": "Sunacchi",
+          "description": "Offered his life if he denies his lineage, Momonosuke proudly shouts his name and vow to become Wano's shogun just as Luffy frees Yamato from her explosive cuffs and the Nine Red Scabbards ambush Kaido on stage. With Momonosuke rescued by Shinobu and Sanji and the rebel army storming the Live Floor, Kaido transforms into a dragon and flies the Scabbards up to the Skull Dome roof beneath a full moon.",
           "coverage": {
             "anime": "986-987",
             "manga": "1004-1005"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 49,
           "title": "Wano 49",
-          "altTitle": "Luffy's Awakening",
-          "description": "After being defeated and thrown from the island, Luffy awakens his true power. His Devil Fruit transforms in a way that shocks everyone who witnesses it — a revelation that recontextualizes everything about his journey. Reborn with a grin and a new name on his power, Luffy returns to face Kaido one final time.",
+          "altTitle": "The Straw Hats Stand Together",
+          "description": "While the Mink tribe transforms into their Sulong forms on the Skull Dome roof to battle Jack's forces, Sanji clashes with King to save Momonosuke and Franky and Brook run over Big Mom on the Live Floor. After Jinbe and Robin hurl the enraged Big Mom out of the hall and Franky blasts one of the giant Numbers in the General Franky, all ten Straw Hats stand united to clear Luffy's path to the roof.",
           "coverage": {
             "anime": "988-989",
             "manga": "1006-1007"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 50,
           "title": "Wano 50",
-          "altTitle": "Gear Five",
-          "description": "Luffy's awakened form — Gear Five — is fully unleashed against Kaido. Powered by the Mythical Zoan fruit of the Sun God Nika, Luffy fights with a freedom and joy unlike anything seen before, bending the world around him like rubber. The battle becomes something transcendent, and Kaido himself is shaken to his core.",
+          "altTitle": "Unlikely Allies",
+          "description": "On the rooftop, Sulong Inuarashi and Nekomamushi overwhelm Jack to clear the way for the Scabbards, while below, X Drake is exposed as a spy by Queen and Who's-Who and escapes to ask Luffy for an alliance. As Usopp and Nami lure Ulti and Page One away and Zoro and Drake reluctantly team up against Apoo, Kin'emon slices Kaido's Bolo Breath in half atop the Skull Dome.",
           "coverage": {
             "anime": "990-991",
             "manga": "1008-1009"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 51,
           "title": "Wano 51",
-          "altTitle": "The Final Clash",
-          "description": "The battle between Luffy and Kaido reaches its climactic conclusion. Both fighters pour every last ounce of strength into their final exchange. Across the island, the allied forces hold on desperately, their fate tied to whether their captain can do what no one else has been able to — bring down an Emperor of the Sea.",
+          "altTitle": "The Ice Oni Plague",
+          "description": "While the Nine Red Scabbards pierce Kaido's old scar with a combined Oden Two-Sword Style assault on the roof, Queen unleashes his contagious Ice Oni plague across the Live Floor, turning allies and enemies alike into freezing monsters. As Luffy, Sanji, and Jinbe battle their way up the castle stairs and Yamato shields Momonosuke from Sasaki's Armored Division, Kaido reverts to human form on the roof and severs Kikunojo's arm.",
           "coverage": {
             "anime": "992-993",
             "manga": "1010-1011"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 52,
           "title": "Wano 52",
-          "altTitle": "Kaido Falls",
-          "description": "Luffy defeats Kaido, and the shockwave of that victory reverberates through all of Onigashima and Wano Country. The island, which had been hovering above the capital, begins to fall — triggering a desperate race to save the people below. Twenty years of suffering and sacrifice have led to this single, shattering moment.",
+          "altTitle": "Queen's Game and a Navigator's Faith",
+          "description": "Queen tosses the sole Ice Oni antibody vial to Apoo to start a sadistic game of tag on the Live Floor as Chopper's own arm begins to freeze, while Yamato defends Momonosuke from Sasaki's forces and Carrot and Wanda confront Perospero. Cornered and battered by Ulti, a weeping Nami refuses to lie even to save her life, declaring that Luffy will definitely become King of the Pirates just as Otama and Komachiyo charge in to rescue her.",
           "coverage": {
             "anime": "994-995",
             "manga": "1012-1013"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 53,
           "title": "Wano 53",
-          "altTitle": "Orochi's End",
-          "description": "With Kaido defeated, the corrupt shogun Orochi faces his own reckoning. The man who betrayed Oden, enslaved the people of Wano, and poisoned the land for decades is finally brought to justice. His fall is less heroic than Kaido's — fitting for a villain defined entirely by cowardice, cruelty, and manipulation.",
+          "altTitle": "Flames Against the Ice and Floating Clouds",
+          "description": "After Otama helps Nami and Usopp escape, Yamato knocks out the giant Hatcha and flees with Momonosuke while Sanji falls into Black Maria's spiderweb trap on the third floor. On the Live Floor, Zoro cuts down Apoo to win the antibody for Chopper just as a massive tremor shakes Onigashima, revealing that Kaido has lifted the entire island into the sky on flame clouds bound for the Flower Capital.",
           "coverage": {
             "anime": "996-997",
             "manga": "1014-1015"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 54,
           "title": "Wano 54",
-          "altTitle": "Dawn of the New Wano",
-          "description": "The dust begins to settle over Wano Country. The people — many of whom had never known freedom in their lifetimes — emerge into a world without Kaido and Orochi. Tears, celebrations, and quiet grief mix together. The scabbards, Hiyori, and the surviving fighters reckon with what was lost and what has finally, impossibly, been won.",
+          "altTitle": "Memories of Ace",
+          "description": "Marco uses his Phoenix flames to warm the infected Live Floor so Chopper can mass-produce the cure and prepares to fly Zoro to the roof, while Franky and Jinbe square off against Sasaki and Who's-Who. Hiding in a storeroom with Momonosuke and Shinobu, Yamato recounts how Portgas D. Ace raided Onigashima years ago, freed her heart, and spoke proudly of his brother Luffy, who now nears the Skull Dome roof where Big Mom has joined Kaido.",
           "coverage": {
             "anime": "998-999",
             "manga": "1016-1017"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 55,
           "title": "Wano 55",
-          "altTitle": "Chapter 1000: Straw Hat Luffy",
-          "description": "The landmark 1000th chapter of One Piece is adapted in an extended episode celebrating Luffy's journey. A moment of profound reflection on how far Luffy and his crew have come since East Blue, set against the backdrop of Wano's liberation. The Straw Hats stand at the peak of a new era, the name of its king already decided in their hearts.",
+          "altTitle": "Straw Hat Luffy",
+          "description": "Yamato shares the memory of drinking with Ace and learning of Luffy's secret dream before handing Oden's journal to Momonosuke. On the Skull Dome rooftop, Luffy, Zoro, Law, Kid, and Killer assemble against Kaido and Big Mom, where Luffy promises the fallen Kin'emon he will carry Wano on his back and floors Kaido with a devastating Red Roc punch.",
           "coverage": {
             "anime": "1000",
             "manga": "1000"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 56,
           "title": "Wano 56",
-          "altTitle": "The Warlords' Bounties",
-          "description": "The aftermath of the Onigashima raid continues to unfold across Wano. New bounties and titles are distributed reflecting the seismic shifts in the world's power balance. The Five Elders and the World Government begin to grapple with the implications of Kaido's fall and the rise of a new Emperor.",
+          "altTitle": "Battle of Monsters on Onigashima",
+          "description": "On the Skull Dome roof, Luffy, Zoro, Law, Kid, and Killer trade fierce blows with Kaido and Big Mom, pushing their abilities to the limit with Gear Fourth, Punk Rotten, and Gamma Knife. After Kaido takes to the skies in his dragon form, Zoro unleashes Oden's Haki through Enma and Luffy withstands Big Mom's lightning and Kaido's fire breath to pummel the Emperor with a relentless Kong Gatling.",
           "coverage": {
             "anime": "1001-1002",
             "manga": "1051-1052"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 57,
           "title": "Wano 57",
-          "altTitle": "Luffy's New Title",
-          "description": "The world officially acknowledges Luffy's role in defeating Kaido. The title of Emperor — Yonko — is bestowed upon him, a recognition that the balance of power in the world has fundamentally changed. Luffy's reaction to the title is exactly what you'd expect from him, and it's perfect.",
+          "altTitle": "Night on the Board",
+          "description": "While Zoro slices Kaido's scales with Dragon Twister to protect an exhausted Luffy and Kaido enters his hybrid form, CP0 agents calmly track the shifting casualties of the war. Across the castle, Tama, Nami, and Usopp use kibidango to turn Sasaki's Armored Division to the alliance's side while helping Franky, and Black Maria tortures a captured Sanji to lure Nico Robin into a trap.",
           "coverage": {
             "anime": "1003-1004",
             "manga": "1053-1054"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 58,
           "title": "Wano 58",
-          "altTitle": "Leaving Wano",
-          "description": "As Wano begins its long road to recovery, the Straw Hats prepare to depart. Emotional farewells are exchanged with the people and allies who fought alongside them. Wano's borders, sealed for centuries, are now open to the world. The crew sails away from a country forever changed, toward the next chapter of their journey.",
+          "altTitle": "Devil Child and Hyogoro of the Flower",
+          "description": "Sanji shocks the island by calling out to Nico Robin for help, prompting Robin and Brook to rescue him from Black Maria's web while Perospero defeats Carrot and Wanda outside. On the Performance Floor, the Ice Oni plague temporarily restores Hyogoro to his prime strength to defend Chopper alongside Marco, before the old yakuza boss asks his men to execute him before the virus claims his mind.",
           "coverage": {
             "anime": "1005-1006",
             "manga": "1055-1056"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 59,
           "title": "Wano 59",
-          "altTitle": "Toward the Final Sea",
-          "description": "The Wano arc reaches its conclusion as the Straw Hats set their sights on the horizon. The events of Wano — the battles, the losses, the history uncovered — have pushed every member of the crew closer to who they need to be for what lies ahead. The final sea, and the One Piece itself, feels closer than ever.",
+          "altTitle": "Dr. Tanuki and the Impostor Oden",
+          "description": "Chopper saves Hyogoro at the last second and fires a Nebulizer mist cannon to cure the Performance Floor, winning over Queen's abused subordinates before slapping Queen in Monster Point. Meanwhile, the recovering Scabbards are confronted by an explosive ink drawing of Kozuki Oden conjured by Kanjuro, prompting Ashura Doji to heroically tackle the bomb to save his comrades while Inuarashi stays behind to fight Jack.",
           "coverage": {
             "anime": "1007-1008",
             "manga": "1057"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 60,
           "title": "Wano 60",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Conqueror's Haki",
+          "description": "After the Scabbards cut down Orochi's serpent heads below, the Supernovas survive Kaido and Big Mom's combined attack and work together to hurl Big Mom off the Skull Dome roof. Zoro pours his remaining strength into Nine-Sword Style Asura to permanently scar Kaido, and a revitalized Luffy awakens the ability to infuse his strikes with Conqueror's Haki, knocking Kaido off his feet in a one-on-one clash.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 61,
           "title": "Wano 61",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Code of Sweet Red Bean Soup",
+          "description": "Armed with her new thundercloud homie Hera, Big Mom storms back into the castle as Killer breaks off to fight Hawkins and Law teleports an injured Zoro downstairs. While fleeing from Page One and Ulti, Nami, Usopp, and Tama run straight into Big Mom, whose affection for Tama turns to explosive rage against the Beast Pirates when she learns Kaido's men burned down Okobore Town, prompting her to flatten Page One in a single blow.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 62,
           "title": "Wano 62",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Anarchy in the Big Mom",
+          "description": "As Sanji carries a heavily bandaged Zoro toward the Performance Floor and Yamato races toward the roof, Nami and Big Mom retaliate against Ulti for striking Tama, culminating in Big Mom piercing Ulti with her Maser Cannon. Big Mom then betrays Zeus and orders Hera to devour his soul, Kid arrives to slam the Empress to the floor, and a defeated Luffy plummets unconscious from the Skull Dome into the sea.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 63,
           "title": "Wano 63",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Chains",
+          "description": "After Luffy falls unconscious into the sea, Kanjuro mortally wounds Kiku before being struck down by Kin'emon, who then makes a desperate last stand against Kaido so Shinobu can escape with Momonosuke. When news of Luffy's defeat threatens to break the alliance's spirit on the Performance Floor, Sanji arrives to kick Queen aside and Momonosuke broadcasts across the island that Luffy is still alive and will return to win.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 64,
           "title": "Wano 64",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "It's Otama!",
+          "description": "With Zeus's soul now fused into her Clima-Tact, Nami unleashes a homing lightning bolt with Usopp's help to defeat Ulti once and for all, clearing the stage for Tama to broadcast a command that turns every kibidango-fed Gifter on the island to the alliance's side. Below Onigashima, the Heart Pirates pull a drowning Luffy from the ocean into their submarine, while Yamato confronts Kaido on the Skull Dome roof to hold him off until Luffy returns.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 65,
           "title": "Wano 65",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Jinbe vs. Who's-Who",
+          "description": "As Tama's newly allied Gifters turn the tide across Onigashima and Doctor Miyagi prepares a risky Mink recovery drug for Zoro, Jinbe squares off against Tobi Roppo member Who's-Who. The former CP9 agent reveals his grudge over the theft of the Gum-Gum Fruit and speaks of the legendary 'Sun God Nika,' before Jinbe punishes his mockery of Fish-Man history with a decisive Demon Brick Fist.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "23m"
         },
         {
           "id": 66,
           "title": "Wano 66",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Heliceratops and Robin vs. Black Maria",
+          "description": "While Yamato transforms into Wano's mythical guardian deity on the roof to clash with Kaido, Franky sacrifices the General Franky mech to defeat Sasaki with a point-blank Radical Beam, and Robin and Brook shatter Black Maria's cruel illusions. Down at Tokage Port, a revived Luffy gorges on Caribou's hidden food supply to regain his strength and orders Momonosuke to fly him back up to Onigashima.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 67,
           "title": "Wano 67",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Demonio and the Stars Take the Stage",
+          "description": "Robin unleashes her demonic Demonio Fleur form to break Black Maria's spine while Brook defeats her subordinates, and at Tokage Port, Momonosuke convinces a tearful Shinobu to permanently age him into an adult so he can fly Luffy back to battle. On the Performance Floor, the Mink medicine restores Zoro just in time for him and Sanji to launch a coordinated strike against King and Queen as the Straw Hats' twin stars take the stage.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 68,
           "title": "Wano 68",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Splitting Image and So-and-So",
+          "description": "As Zoro and Sanji battle King and Queen on the Performance Floor, Marco deduces King's Lunarian heritage while Hyogoro and Kawamatsu note Zoro's striking resemblance to the late Ringo daimyo Shimotsuki Ushimaru. While Luffy prepares to fly back to Onigashima aboard a giant dragon Momonosuke, Yamato clashes with Kaido on the roof and remembers the imprisoned Wano samurai who sacrificed themselves years ago so Yamato could live to fight for Wano's future.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 69,
           "title": "Wano 69",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Twin Dragons and the Pivotal Clash",
+          "description": "Riding an adult dragon Momonosuke, Luffy crashes straight through Onigashima's castle floors back to the Skull Dome roof, where Momonosuke bites Kaido before Luffy steps up to reclaim his one-on-one duel. Luffy and Kaido's Conqueror's Haki clash splits the heavens apart, clearing the storm clouds to reveal the full moon and allowing Inuarashi and Nekomamushi to re-enter their Sulong forms to defeat Jack and Perospero.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "37m"
         },
         {
           "id": 70,
           "title": "Wano 70",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Danger Beyond Measure and Brachiojaurus",
+          "description": "While Yamato and Momonosuke scramble to keep the crumbling, explosive-laden island of Onigashima from crashing onto the Flower Capital, Zoro damages King's mask in a fierce aerial clash and CP0 moves to capture Nico Robin. Inside the castle, Queen detaches his dinosaur neck like a snake to crush Sanji's bones, only for Sanji's body to regenerate on its own and shatter a blade against his bare neck as his dormant Germa exoskeleton awakens.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 71,
           "title": "Wano 71",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Tower and Echoing the Impermanence of All Things",
+          "description": "As Sanji grapples with the terrifying awakening of his Germa exoskeleton, Killer outsmarts Hawkins by severing his left arm—matching Kid's missing limb—to free his captain from Hawkins's voodoo curse and defeat the fortune-teller. Meanwhile, Usopp and Nami cross paths with Kin'emon's miraculously surviving lower torso to rescue Kiku, and a dying Kanjuro conjures the giant fire demon Kazenbo to burn Onigashima's armory to the ground.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 72,
           "title": "Wano 72",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Warrior of Science",
+          "description": "While Orochi's dying retainer Kanjuro conjures a massive fire demon to detonate Onigashima's armory, Law and Kid unleash their awakened Devil Fruit abilities against Big Mom, forcing the Emperor to consume a year of her own lifespan to power up. Horrified by the thought that his awakening Germa genetics made him strike an innocent woman, Sanji destroys his Raid Suit to preserve his humanity and makes Zoro promise to kill him should he ever lose his heart.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 73,
           "title": "Wano 73",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Oden's Beloved Blade",
+          "description": "While Yamato races to intercept Kanjuro's fire demon and CP0 clashes with Drake and Apoo, Zoro struggles to pierce King's mysterious Lunarian defenses outside the Skull Dome. After Enma wildly drains his Haki, Zoro recalls the exiled Wano swordsmith Shimotsuki Kozaburo from his childhood village and embraces the blade's test, unleashing his Conqueror's Haki to honor his vow to Luffy and Kuina.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 74,
           "title": "Wano 74",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Wings of the Pirate King",
+          "description": "Realizing that an invisible Queen was the true culprit who struck Osome, Sanji sheds his lingering doubts and combines his awakened exoskeleton with Armament Haki to ignite Ifrit Jambe, blasting the All-Star off Onigashima. Outside the castle, Zoro deduces the secret behind King's Lunarian flame and channels his Conqueror's Haki into his King of Hell style, cleaving through King's final magma-like dragon assault to win their duel.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "28m"
         },
         {
           "id": 75,
           "title": "Wano 75",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Drunken Dragon",
+          "description": "As flames engulf the castle, Usopp and Izou rescue a critically wounded Kin'emon and Kiku while Raizo and Fukurokuju refuse to release their mutual paralysis jutsu even as they burn. On the Skull Dome roof, Luffy trades ferocious blows with an unpredictably drunken Kaido while the Five Elders in Mary Geoise receive word of Zunesha's arrival and fear the awakening of a legendary Devil Fruit.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 76,
           "title": "Wano 76",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The New Generation vs. Big Mom",
+          "description": "While Yamato freezes the armory's explosives to prevent a catastrophe, Law and Kid pour the last of their stamina into a final awakened assault against Big Mom, piercing a massive hole straight through Onigashima into the mainland below. Silenced by Law's R-Room and blasted down by Kid's Damned Punk, Big Mom plummets with a stash of bombs into a subterranean explosion while Momonosuke informs Yamato that Zunesha has arrived off Wano's coast.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 77,
           "title": "Wano 77",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Komurasaki's True Face",
+          "description": "After Raizo outlasts Fukurokuju in the flames and Izou sacrifices himself in a mutual strike against CP0, the surviving Cipher Pol agent receives an urgent command from the Five Elders to interfere in Luffy's battle and eliminate him. While Hiyori pins a trapped Orochi with a Sea Prism Stone nail and reveals her true identity as Oden's daughter, Luffy unleashes his final Gear Four Snakeman barrage against Kaido on the roof.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "20m"
         },
         {
           "id": 78,
           "title": "Wano 78",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Drums of Liberation",
+          "description": "Pushed to the brink of his stamina in Gear Four, Luffy prepares one final blow against Kaido, only for the CP0 boss to suddenly restrain him and allow Kaido's club to strike him down. As Kaido descends into the castle to announce Luffy's death and demand Momonosuke's surrender, Zunesha hears the ancient Drums of Liberation beating from the rooftop and declares that Joy Boy has returned.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 79,
           "title": "Wano 79",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Warrior of Liberation",
+          "description": "While Kanjuro's dying fire spirit backfires and sets a begging Orochi ablaze in front of Hiyori, the Five Elders reveal that Luffy's Devil Fruit is actually the Mythical Zoan Human-Human Fruit, Model: Nika. Reaching his peak in Gear Five, an exuberant Luffy drags Kaido back to the rooftop and bends the battlefield itself like rubber, fighting with boundless cartoon-like freedom.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "26m"
         },
         {
           "id": 80,
           "title": "Wano 80",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Waters of Zou",
+          "description": "With the entire castle trapped in a deadly inferno, Raizo unseals the floodwaters of Zou from his ninja scrolls and Jinbe hurls the torrent through the halls to extinguish the flames. As Yamato urges a doubtful Momonosuke to conjure his own flame clouds before Onigashima falls, Luffy grabs lightning from the sky and inflates a fist the size of the island itself to finish Kaido.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "27m"
         },
         {
           "id": 81,
           "title": "Wano 81",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "A Flame of Wishes",
+          "description": "Inside the crumbling castle, Denjiro arrives just in time to sever a burning Orochi's final head and save Hiyori, while on the roof Kaido transforms into a colossal blazing dragon to meet Luffy's island-sized fist head-on. As Momonosuke finally conjures flame clouds to pull Onigashima clear and Kaido reflects on his past and the legend of Joy Boy, Luffy's Haki-infused Bajrang Gun shatters the Emperor's attack and drives him deep beneath the earth.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 82,
           "title": "Wano 82",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Shogun of Wano, Kozuki Momonosuke",
+          "description": "After Momonosuke safely lands Onigashima and a subterranean volcanic eruption seals Kaido and Big Mom's defeat, Toko honors her father Yasuie's sacrifice as the Fire Festival lanterns drift into the sky. Arriving in the Flower Capital alongside Hiyori and the Red Scabbards, an adult Momonosuke proclaims the end of Kaido and Orochi's twenty-year tyranny and steps forward as the new Shogun of Wano.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 83,
           "title": "Wano 83",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Seven Days Later",
+          "description": "While Hawkins confesses that his grim one-percent survival prediction was actually for himself, Wano begins to heal over the next seven days as shrines are planned in Ringo for Ashura Doji and Izou. When Luffy and Zoro finally awaken from their week-long slumber to feast and bathe at the palace, Apoo arrives with newspapers announcing the world's new Emperors and bounties just as Marine Admiral Ryokugyu flies into Wano.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "17m"
         },
         {
           "id": 84,
           "title": "Wano 84",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The New Emperors",
+          "description": "As Wano erupts into a grand victory festival and news of the world's new Emperors spreads across the globe, Tenguyama Hitetsu reveals to Robin that he is actually former Shogun Kozuki Sukiyaki and confirms that the Ancient Weapon Pluton sleeps in Wano. Meanwhile, Admiral Ryokugyu defeats the remnants of the Beast Pirates in Udon and marches on the capital to take Luffy's head, while off the coast, Red-Haired Shanks declares that it is time to claim the One Piece.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 85,
           "title": "Wano 85",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "The Secrets Beneath Wano",
+          "description": "While Sukiyaki guides Robin and Law past the submerged ruins of Old Wano to the Road Poneglyph and explains how the country's walls seal away Pluton, Momonosuke unleashes his own Blast Breath against Admiral Ryokugyu before a burst of Conqueror's Haki from Shanks drives the Marine away. After Inuarashi and Nekomamushi appoint Carrot to rule Zou and Sukiyaki reunites with his grandchildren, Luffy, Law, and Kid share Poneglyph rubbings at the port and choose their next routes across the sea.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 86,
           "title": "Wano 86",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "Before the Departure",
+          "description": "Before leaving Wano, the Straw Hats spend their final days visiting the graves of Oden, Yasuie, and Pedro, sharing warm meals with Tama and the citizens, and completing repairs on the Thousand Sunny. Back in the present at the port, the crew prepares to set sail while wondering if they will really depart without saying goodbye to Momonosuke and Kin'emon.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "18m"
         },
         {
           "id": 87,
           "title": "Wano 87",
-          "altTitle": null,
-          "description": "coming soon",
+          "altTitle": "My Little Brother",
+          "description": "When a tearful Momonosuke, Kin'emon, and Yamato catch up to the Straw Hats at the port, Yamato chooses to stay behind to protect Wano first while Luffy entrusts Momonosuke with his pirate flag, claiming the country as his territory and calling the young Shogun his little brother. After goading one another into bypassing the safe port lift, Luffy, Law, and Kid launch their ships over Wano's waterfall as the citizens in the Flower Capital celebrate the closing ballad of their liberation.",
           "coverage": {
             "anime": "TBD",
             "manga": "TBD"
           },
-          "length": "TBD"
+          "length": "21m"
         }
       ]
     },
@@ -5618,207 +5766,228 @@ export const DATA = {
         {
           "id": 1,
           "title": "Egghead 01",
-          "description": "The world reacts to a new era of bounties and shifting powers while the Straw Hats chart a course toward a rumor too strange to ignore.",
+          "altTitle": "A New Emperor",
+          "description": "After surviving their reckless departure from Wano, the Straw Hats receive their massive new bounties while Crocodile and Mihawk force a terrified Buggy to serve as the figurehead Emperor of Cross Guild. Meanwhile, Marco reflects on his farewell with Luffy, and Sabo contacts Dragon and the Revolutionary Army regarding the assassination of King Cobra.",
           "coverage": {
             "anime": "1086-1088",
             "manga": "1058-1059"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 2,
           "title": "Egghead 02",
-          "description": "A futuristic island of impossible tech welcomes the crew with wonders—then warns them that curiosity here has consequences.",
+          "altTitle": "Luffy's Dream",
+          "description": "On Amazon Lily, Boa Hancock fends off both a Marine invasion led by the new Seraphim weapons and a raid by Blackbeard until Silvers Rayleigh intervenes, though Captain Koby is abducted in the aftermath. Back aboard the Thousand Sunny, the Straw Hats reel from news of King Cobra's death and Vivi's disappearance before Luffy shares his ultimate dream with the crew.",
           "coverage": {
             "anime": "1089-1091",
             "manga": "1060-1061"
           },
-          "length": "TBD"
+          "length": "24m"
         },
         {
           "id": 3,
           "title": "Egghead 03",
-          "description": "Dr. Vegapunk’s many selves turn science into spectacle, and every answer seems to spawn a sharper question.",
+          "altTitle": "Future Island Egghead",
+          "description": "As Sabo attempts to report seeing someone sitting on the Empty Throne, a mysterious weapon in the clouds completely obliterates the Kingdom of Lulusia. Meanwhile, the Straw Hats rescue Jewelry Bonney from freezing waters near Navy Branch G-14, only for a mechanical shark attack to separate the crew as they arrive at Dr. Vegapunk's futuristic island of Egghead.",
           "coverage": {
             "anime": "1092-1093",
             "manga": "1062-1063"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 4,
           "title": "Egghead 04",
-          "description": "Jewelry Bonney’s vendetta collides with the crew’s visit, dragging personal history into a lab built on secrets.",
+          "altTitle": "Six Vegapunks",
+          "description": "While Lilith brings the Thousand Sunny onto Egghead Island, Bonney explains her vendetta against Vegapunk for turning her father Kuma into a mindless cyborg as she and Luffy's group explore the island's holograms and meet Atlas. Meanwhile, CP0 sails to Egghead to assassinate all of Vegapunk's satellites, and Blackbeard ambushes Trafalgar Law and the Heart Pirates at sea for their Road Poneglyphs.",
           "coverage": {
             "anime": "1094-1095",
             "manga": "1064-1065"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 5,
           "title": "Egghead 05",
-          "description": "Cipher Pol arrives with polite smiles and cold objectives, tightening a noose around Egghead’s bright halls.",
+          "altTitle": "The Past and the Future",
+          "description": "As Trafalgar Law clashes with Blackbeard on Winner Island, Lilith brings the Thousand Sunny up to Egghead's Labophase, where Nami's group is tested in battle against a Jinbe-modeled Seraphim while Edison, Pythagoras, and York oversee the data. Shaka halts the fight and stuns the crew by revealing that Egghead's futuristic technology is modeled after an advanced kingdom from 900 years ago, just as Luffy's group discovers a giant ancient robot.",
           "coverage": {
             "anime": "1096-1097",
             "manga": "1066-1067"
           },
-          "length": "TBD"
+          "length": "34m"
         },
         {
           "id": 6,
           "title": "Egghead 06",
-          "description": "Seraphim and new-world weapons raise the stakes until even allies aren’t sure who controls the battlefield.",
+          "altTitle": "The Will of Ohara",
+          "description": "Shaka reveals to a tearful Robin that the books of Ohara survived the Buster Call and were salvaged to Elbaf by giants led by Jaguar D. Saul, an event he witnessed alongside Monkey D. Dragon before the founding of the Revolutionary Army. Down in the scrapyard, Luffy's group pulls the original Dr. Vegapunk out of the ancient iron giant.",
           "coverage": {
             "anime": "1098-1099",
             "manga": "1068-1069"
           },
-          "length": "TBD"
+          "length": "21m"
         },
         {
           "id": 7,
           "title": "Egghead 07",
-          "description": "The Straw Hats split focus between escape routes, hostages, and the moral cost of defending a mad genius.",
+          "altTitle": "Genius's Dream",
+          "description": "After explaining his Brain-Brain Fruit, Punk Records, and the history of the ancient iron giant that attacked Marie Jois, Dr. Vegapunk asks Luffy to help him escape Egghead before the World Government erases him for researching ancient energy. Meanwhile, Kuma suddenly flees the Kamabakka Queendom, and CP0 warps onto Egghead using S-Bear, culminating in Rob Lucci critically damaging Atlas in front of Luffy.",
           "coverage": {
             "anime": "1100-1101",
             "manga": "1070-1071"
           },
-          "length": "TBD"
+          "length": "33m"
         },
         {
           "id": 8,
           "title": "Egghead 08",
-          "description": "Egghead’s defenses blur lines between guardian and jailer as the island’s true purpose inches into view.",
+          "altTitle": "All Things Are Brought Into This World by Desire",
+          "description": "Outraged by the attack on Atlas, Luffy transforms into Gear Five to overwhelm an Awakened Rob Lucci while Vegapunk explains the legend of the Sun God Nika and his theory that Devil Fruits are born from human desires. Sentomaru deploys the Seraphim to aid the Straw Hats' escape to the Labophase, but Lucci strikes him down to seize control of the four Seraphim as Admiral Kizaru sails toward Egghead.",
           "coverage": {
             "anime": "1102-1103",
             "manga": "1072-1073"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 9,
           "title": "Egghead 09",
-          "description": "Ancient knowledge surfaces in files and ruins, hinting at why the world government fears this place.",
+          "altTitle": "The Weight of Memory",
+          "description": "While Kuma scales the Red Line and Bonney discovers a giant paw-shaped mass of her father's memories inside the lab, a mysterious saboteur deactivates the Frontier Dome, allowing CP0 and the Seraphim to invade the Labophase and attack the Thousand Sunny. As Zoro clashes with Kaku, Stussy suddenly betrays CP0 by putting Kaku to sleep, while Kid approaches Elbaf and Garp rallies SWORD to rescue Koby from Pirate Island.",
           "coverage": {
             "anime": "1104-1105",
             "manga": "1074-1075"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 10,
           "title": "Egghead 10",
-          "description": "Time pressure mounts when a Buster Call–scale response turns a tour into a siege.",
+          "altTitle": "Labophase Death Game",
+          "description": "Stussy neutralizes Rob Lucci with Sea Prism Stone and helps Edison and Lilith halt the Seraphim's rampage, while on Sphinx Island, Miss Buckin begs Marco to rescue Weevil from Admiral Ryokugyu and Sentomaru deploys fifty Mark III Pacifistas on Egghead. Trapped inside the locked Frontier Dome as Saint Jaygarcia Saturn sails toward the island, the Straw Hats split up to find the missing Dr. Vegapunk while Princess Vivi hides aboard Morgans' airship.",
           "coverage": {
             "anime": "1106-1107",
             "manga": "1076-1077"
           },
-          "length": "TBD"
+          "length": "36m"
         },
         {
           "id": 11,
           "title": "Egghead 11",
-          "description": "Luffy’s instincts clash with strategy as Egghead’s corridors become a maze of traps and revelations.",
+          "altTitle": "You Should Have Put It Together Sooner",
+          "description": "As the crew searches the Labophase for the missing Dr. Vegapunk, an unseen traitor destroys the surveillance snails and blows up Pythagoras's body before S-Snake petrifies York and S-Bear and S-Hawk attack the control room. Realizing one of the Vegapunks is the traitor, Luffy and Zoro reluctantly uncuff Lucci and Kaku to fight the Seraphim together while the real Vegapunk wakes up imprisoned beside the missing Cipher Pol agents.",
           "coverage": {
             "anime": "1108-1109",
             "manga": "1078-1079"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 12,
           "title": "Egghead 12",
-          "description": "Vegapunk’s dream of free knowledge meets the cruelty of those who decide which truths may exist.",
+          "altTitle": "Traitor York",
+          "description": "Zoro reveals the Seraphim's Lunarian flame weakness to Luffy, Lucci, and Kaku, while Sanji defends Nami from S-Shark and S-Snake petrifies Usopp and Lilith after crushing Pythagoras. Down in the secret basement, Shaka discovers the captive Dr. Vegapunk and Cipher Pol agents just before York shoots Shaka in the head and reveals she betrayed them to become a Celestial Dragon, while Shanks confronts Eustass Kid off the coast of Elbaf.",
           "coverage": {
             "anime": "1110-1111",
             "manga": "1080-1081"
           },
-          "length": "TBD"
+          "length": "29m"
         },
         {
           "id": 13,
           "title": "Egghead 13",
-          "description": "Allies improvise under fire while enemies trade subtlety for overwhelming force.",
+          "altTitle": "The Emperor's Wrath at Elbaf",
+          "description": "After a flashback reveals how York orchestrated the Seraphim's rampage and faked her own petrification, the scene shifts to Elbaf, where Eustass Kid prepares to wipe out Red-Haired Shanks's allied fleet with his railgun. Foreseeing the massacre with Observation Haki, Shanks intercepts Kid with a single devastating Divine Departure before Dorry and Brogy obliterate the Victoria Punk and end the Kid Pirates.",
           "coverage": {
             "anime": "1112-1113",
             "manga": "1082-1083"
           },
-          "length": "TBD"
+          "length": "16m"
         },
         {
           "id": 14,
           "title": "Egghead 14",
-          "description": "The crew’s bonds are stress-tested when survival means choosing who to trust in a room full of masks.",
+          "altTitle": "Galaxy Impact",
+          "description": "As Koby helps prisoners escape on Pirate Island, SWORD infiltrates the base and Vice Admiral Garp launches his warship from the sky to flatten the town with a devastating Galaxy Impact before clashing with his former protégé Kuzan. Meanwhile on Winner Island, Blackbeard defeats Trafalgar Law and sinks the Polar Tang, forcing Bepo to use a special drug from Chopper to enter his Sulong form and swim away with his captain.",
           "coverage": {
             "anime": "1114-1115",
             "manga": "1084-1085"
           },
-          "length": "TBD"
+          "length": "39m"
         },
         {
           "id": 15,
           "title": "Egghead 15",
-          "description": "Science-fiction horror bleeds into the arc as creations meant to protect become weapons of panic.",
+          "altTitle": "Let's Go Claim It!",
+          "description": "After learning that a civilian murdered Vice Admiral T-Bone for a Cross Guild bounty, Buggy defies Crocodile and Mihawk's beatings by announcing over a loudspeaker that Cross Guild will join the race for the One Piece. Meanwhile, Sabo returns safely to the Kamabakka Queendom with survivors from Lulusia and recounts to Dragon and Ivankov how the Revolutionary captains battled Admirals Ryokugyu and Fujitora at Marie Jois while King Cobra sought an audience with the Five Elders.",
           "coverage": {
             "anime": "1116-1117",
             "manga": "1086-1087"
           },
-          "length": "TBD"
+          "length": "32m"
         },
         {
           "id": 16,
           "title": "Egghead 16",
-          "description": "Information warfare matters as much as punches when headlines and deniability shape who lives.",
+          "altTitle": "The Death of Nefertari Cobra",
+          "description": "In Sabo's flashback to the Reverie, Sai and Leo rescue Shirahoshi with Saint Mjosgard's blessing while Morley and Karasu free Kuma, and King Cobra questions the Five Elders about Queen Nefertari Lili and the meaning of the 'D.' When Imu sits upon the Empty Throne and sentences Cobra to death after learning her full name was Nefertari D. Lili, Sabo tries to save the king, who sacrifices himself while asking Sabo to tell Vivi and Luffy that the Nefertari family also carries the 'D.'",
           "coverage": {
             "anime": "1118-1119",
             "manga": "1088-1089"
           },
-          "length": "TBD"
+          "length": "25m"
         },
         {
           "id": 17,
           "title": "Egghead 17",
-          "description": "Key duels erupt across lab zones, each victory buying seconds—not safety.",
+          "altTitle": "A Warrior of Science",
+          "description": "After accidentally witnessing Cobra's murder through a wall, a terrified Wapol crashes into the room where CP0 is holding Vivi captive, allowing the two of them to escape Marie Jois together and seek refuge with Big News Morgans. As Ivankov deduces that Imu is an immortal ruler from the Void Century who used an Ancient Weapon powered by Vegapunk's Mother Flame to erase Lulusia, Holy Knights Supreme Commander Figarland Garling executes Saint Mjosgard for defending the Fish-Men.",
           "coverage": {
             "anime": "1120-1121",
             "manga": "1090-1091"
           },
-          "length": "TBD"
+          "length": "20m"
         },
         {
           "id": 18,
           "title": "Egghead 18",
-          "description": "The world’s power players move in parallel, turning Egghead’s crisis into a global chess match.",
+          "altTitle": "Battleship Bags",
+          "description": "During the escape from Pirate Island, Vice Admiral Garp takes a blade through the chest from Shiryu to protect Koby and clashes fiercely with his former student Kuzan while Avalo Pizarro forms a colossal stone hand to crush the Marine warship. Guided by Garp's final orders, Koby shatters Pizarro's giant arm with a Haki-infused Honesty Impact and Grus shields the ship, allowing the Marines to escape while Garp stays behind to face the Blackbeard Pirates.",
           "coverage": {
             "anime": "1122-1123",
             "manga": "1092-1093"
           },
-          "length": "TBD"
+          "length": "35m"
         },
         {
           "id": 19,
           "title": "Egghead 19",
-          "description": "Escape plans splinter as new threats land on the island faster than anyone can redraw the map.",
+          "altTitle": "The Egghead Incident",
+          "description": "Six days after Lulusia's destruction, an unprecedented global earthquake raises sea levels worldwide by one meter as a massive Marine armada led by Admiral Kizaru and Saint Jaygarcia Saturn surrounds Egghead. Inside the Labophase, the Straw Hats capture York, trap the Seraphim in Sea Energy bubbles, and prepare to escape to Elbaf using Vegaforce-01, just as Kizaru storms the island and engages Sentomaru.",
           "coverage": {
             "anime": "1124-1125",
             "manga": "1094-1095"
           },
-          "length": "TBD"
+          "length": "31m"
         },
         {
           "id": 20,
           "title": "Egghead 20",
-          "description": "Hope hinges on unlikely teamwork between pirates, outlaws, and a genius who can’t stop talking.",
+          "altTitle": "An Old Friend",
+          "description": "After defeating Sentomaru on the coast and seizing command of the Pacifistas, Admiral Kizaru passes through the Frontier Dome into the Labophase while Zoro clashes with a treacherous Rob Lucci and Kuma escapes Sakazuki's magma attacks at Marie Jois. Kizaru kicks Snakeman Luffy through the Vegaforce-01 to destroy the crew's escape robot, only for a giant Gear Five Luffy to grab the Admiral in his hand as the ancient iron giant awakens to the Drums of Liberation.",
           "coverage": {
             "anime": "1126-1127",
             "manga": "1096-1097"
           },
-          "length": "TBD"
+          "length": "30m"
         },
         {
           "id": 21,
           "title": "Egghead 21",
-          "description": "The arc’s emotional center sharpens: what does progress mean if it’s built on stolen lives?",
+          "altTitle": "Bonney's Birth",
+          "description": "In Kuma's flashback, Ginny is abducted by a Celestial Dragon and later succumbs to the fatal Sapphire Scales disease after returning to the Sorbet Kingdom, leaving behind her infant daughter, Jewelry Bonney. When Bonney inherits the same terminal illness and Kuma overthrows the cruel King Bekori, he travels the seas in search of a cure until Dragon directs him to Dr. Vegapunk, who offers a stem-cell treatment while Saint Jaygarcia Saturn eavesdrops on their deal.",
           "coverage": {
             "anime": "1128-1129",
             "manga": "1098-1099"
@@ -5828,7 +5997,8 @@ export const DATA = {
         {
           "id": 22,
           "title": "Egghead 22",
-          "description": "The world’s deepest powers tighten their grip as distant authority joins the fight on Egghead’s shores.",
+          "altTitle": "Thank You, Bonney",
+          "description": "To secure Bonney's cure and freedom, Kuma accepts Saint Jaygarcia Saturn's cruel ultimatum to become a Warlord of the Sea and undergo total cybernetic modification into a mindless Pacifista prototype. While Bonney recovers under government watch in the Sorbet Kingdom and Kuma writes her letters that Alpha intercepts, Kuma secretly checks on a young Luffy in the East Blue before Bonney uses her Age-Age powers to escape to sea in search of her father.",
           "coverage": {
             "anime": "1130-1131",
             "manga": "1100-1101"
@@ -5838,7 +6008,8 @@ export const DATA = {
         {
           "id": 23,
           "title": "Egghead 23",
-          "description": "Battlefields shift from hallways to shorelines as Egghead stops feeling like shelter and starts feeling like a trap.",
+          "altTitle": "The Life of Kuma",
+          "description": "Kuma's flashback concludes as he follows Luffy's rise across the Grand Line, saves the Straw Hats at Sabaody, and asks Vegapunk to program him to guard the Thousand Sunny before tearfully losing his mind while leaving a final birthday message for Bonney. Back in the present on Egghead, Bonney weeps after experiencing her father's memories and tries to strike down Saint Saturn with a Distorted Future attack, only to be pinned by his demonic power as a reviving Luffy secretly gorges on food.",
           "coverage": {
             "anime": "1132-1133",
             "manga": "1102-1103"
@@ -5848,7 +6019,8 @@ export const DATA = {
         {
           "id": 24,
           "title": "Egghead 24",
-          "description": "Buried threats from older wars loom larger than any single fighter’s strength.",
+          "altTitle": "Thank You, Daddy",
+          "description": "Defying the complete erasure of his free will, Bartholomew Kuma warps onto Egghead Island just in time to shield Bonney from execution and delivers a devastating Haki-infused punch that sends Saint Jaygarcia Saturn crashing through the ruins. As Sanji, Franky, and Atlas fight off Saturn and Kizaru to evacuate Kuma and Bonney, Saturn orders a full-scale Buster Call to annihilate Egghead and sends a warship to sink the escaped research staff's vessel.",
           "coverage": {
             "anime": "1134-1135",
             "manga": "1104-1105"
@@ -5858,7 +6030,8 @@ export const DATA = {
         {
           "id": 25,
           "title": "Egghead 25",
-          "description": "The Straw Hats commit to protecting people—not institutions—when orders and morality diverge.",
+          "altTitle": "I've Been Looking for You!",
+          "description": "As the Buster Call bombardment rains down on Egghead, Vegapunk reveals he secretly programmed the Pacifistas to place Bonney's authority above the Five Elders—allowing her to turn the cyborgs against the Marine fleet—right before Saturn impales Vegapunk and Dorry and Brogy arrive with the Giant Warrior Pirates to rescue the crew. Realizing Luffy's Gear Five form is the Sun God Nika her father worshiped, Bonney begs Luffy for help as he pummels Saturn, while Blackbeard pirates Catarina Devon and Van Augur touch Saturn to copy his appearance and recruit Caribou.",
           "coverage": {
             "anime": "1136-1137",
             "manga": "1106-1107"
@@ -5868,7 +6041,8 @@ export const DATA = {
         {
           "id": 26,
           "title": "Egghead 26",
-          "description": "A top-tier Marine’s speed turns open ground into a lethal geometry lesson nobody can ignore.",
+          "altTitle": "Message to the World",
+          "description": "As Sanji carries a fatally wounded Dr. Vegapunk away from the battlefield, Vegapunk's flatlining heartbeat automatically triggers a pre-recorded global video broadcast that gives the world ten minutes to prepare visual screens. Determined to buy time and prevent Saturn and Kizaru from pursuing his friends, giant Gear Five Luffy flattens both enemies at once, forcing a desperate Saturn to summon the remaining Four Elders directly to Egghead in a ring of black lightning.",
           "coverage": {
             "anime": "1138-1139",
             "manga": "1108-1109"
@@ -5878,7 +6052,8 @@ export const DATA = {
         {
           "id": 27,
           "title": "Egghead 27",
-          "description": "Old-guard ideals echo through choices made under fire when duty and family pull in opposite directions.",
+          "altTitle": "The Sun's Shield",
+          "description": "All Five Elders manifest on Egghead in their terrifying awakened yokai forms—Saturn, Mars, Warcury, Nusjuro, and Ju Peter—as Nusjuro races around the island freezing the Pacifistas and Zoro defeats Rob Lucci before escaping with Jinbe. Dorry and Brogy arrive at the center of the island to slice Ju Peter apart and shield Luffy from Warcury's roar, leading the trio back toward the shore while Mars breaches the Labophase and the ancient iron giant rises from the flames.",
           "coverage": {
             "anime": "1140-1141",
             "manga": "1110-1111"
@@ -5888,7 +6063,8 @@ export const DATA = {
         {
           "id": 28,
           "title": "Egghead 28",
-          "description": "Whispers from the highest halls turn Egghead’s crisis into a flashpoint with world-shaking stakes.",
+          "altTitle": "Checkmate",
+          "description": "While Edison sacrifices his safety to launch the Thousand Sunny across the Labophase and Mars confronts York in the Punk Records control room only to find a decoy Transponder Snail, Nusjuro ambushes Bonney's group at the coast and Saturn corners Robin and the crew in the clouds. As Sanji kicks Nusjuro in the jaw and the weakling trio shields Robin from Saturn's venom, Vegapunk's countdown hits zero and his global broadcast begins with the shocking declaration that the entire world is going to sink into the sea.",
           "coverage": {
             "anime": "1142-1143",
             "manga": "1112-1113"
@@ -5898,7 +6074,8 @@ export const DATA = {
         {
           "id": 29,
           "title": "Egghead 29",
-          "description": "Survival stops being a sprint and becomes a war of endurance as injuries and exhaustion compound.",
+          "altTitle": "The Wings of Icarus",
+          "description": "As Mars discovers Vegapunk's gigantic brain inside Punk Records and learns the real Broadcast Transponder Snail is hidden elsewhere, Vegapunk reveals to the stunned world that he stole a piece of the Mother Flame failsafe and begins recounting the history of the Void Century and the first pirate, Joy Boy. Continuing his transmission as Nusjuro slices the entire Labophase in two, Vegapunk explains that the modern world consists of continental fragments submerged when Ancient Weapons raised sea levels by two hundred meters during the 100-year war.",
           "coverage": {
             "anime": "1144-1145",
             "manga": "1114-1115"
@@ -5908,7 +6085,8 @@ export const DATA = {
         {
           "id": 30,
           "title": "Egghead 30",
-          "description": "A long-planned revelation threatens to shake the stories the world believes—if anyone survives to hear the end.",
+          "altTitle": "Those Who Bear the D.",
+          "description": "Vegapunk confesses that a stolen fragment of his Mother Flame was used to power an Ancient Weapon that erased Lulusia Kingdom and declares that the Gol D. Roger Pirates learned the full truth of the Void Century without acting, before York deduces that the Broadcast Transponder Snail is hidden inside the ancient iron giant. As Zoro clashes with Nusjuro to protect the Thousand Sunny's launch, the remaining Four Elders surround and slam into the ancient robot just as Vegapunk begins addressing those around the world who carry the 'D.' in their names, cutting the broadcast short.",
           "coverage": {
             "anime": "1146-1147",
             "manga": "1116-1117"
@@ -5918,7 +6096,8 @@ export const DATA = {
         {
           "id": 31,
           "title": "Egghead 31",
-          "description": "Giants, living weapons, and top officers crowd the board until Egghead feels impossibly small.",
+          "altTitle": "Emeth",
+          "description": "Knocked into the sea by the Five Elders as the Giant Warrior Pirates' ship comes under fire from Warcury and Ju Peter, Luffy transforms back into Gear Five and encourages Bonney to use her Distorted Future power to transform into her own Sun God Nika form alongside him. As Luffy, Bonney, Sanji, and Franky launch a combined counterattack that sends Mars flying into the horizon, the ancient iron giant Emeth awakens from the ocean depths to the sound of Joy Boy's heartbeat and strikes Warcury to defend the escaping ships.",
           "coverage": {
             "anime": "1148-1149",
             "manga": "1118-1119"
@@ -5928,7 +6107,8 @@ export const DATA = {
         {
           "id": 32,
           "title": "Egghead 32",
-          "description": "The climax narrows to a handful of escapes, sacrifices, and truths too loud to bury again.",
+          "altTitle": "The Ebb and Flow of the Ages",
+          "description": "After a flashback reveals that Professor Clover also bore the secret 'D.' initial, Atlas knocks out Lilith to sever her link to Punk Records and self-destructs against Nusjuro so the Thousand Sunny can rocket safely out to sea. As Emeth battles the Elders with his failing body and Luffy and Bonney team up to punch Saint Saturn to pieces on the giants' ship, Vegapunk's broadcast resumes for a final bombshell warning that the fate of the world will be decided by whoever claims the One Piece.",
           "coverage": {
             "anime": "1150-1151",
             "manga": "1120-1121"
@@ -5938,7 +6118,8 @@ export const DATA = {
         {
           "id": 33,
           "title": "Egghead 33",
-          "description": "Aftershocks leave the island scarred and the crew carrying secrets that will follow them across the sea.",
+          "altTitle": "Two Weeks of Blank",
+          "description": "Recalling his final conversation with Joy Boy eight hundred years ago, the ancient robot Emeth unties a rope knot inside his body to unleash a colossal wave of Joy Boy's stored Conqueror's Haki that banishes three of the Five Elders back to Marie Jois and allows the Straw Hats and giants to sail away from Egghead. As the crew celebrates their escape with the Elbaf warriors, a flashback reveals that Vegapunk, Shaka, and Pythagoras discovered York's betrayal two weeks prior, erased their own memories of it, and left a message assuring Sanji that Vegapunk had faith in Luffy.",
           "coverage": {
             "anime": "1152-1153",
             "manga": "1122-1123"
@@ -5948,7 +6129,8 @@ export const DATA = {
         {
           "id": 34,
           "title": "Egghead 34",
-          "description": "Egghead closes with the Straw Hats launched into a darker chapter of the final saga—smarter, angrier, and more wanted than ever.",
+          "altTitle": "How to Define Death",
+          "description": "While a tearful Kizaru lashes out at Fleet Admiral Sakazuki over having to kill his best friend, Lilith wakes up aboard the Elbaf ship and reassures the grieving Straw Hats that she still carries Vegapunk's mind as they toast their voyage to Elbaf. Back on Egghead, Imu remotely strips Saint Jaygarcia Saturn of his immortality—reducing him to a skeleton—and promotes Saint Figarland Garling into the Five Elders, while Edison, Shaka, Pythagoras, and Atlas rebuild a composite body to float Punk Records into the sky.",
           "coverage": {
             "anime": "1154-1155",
             "manga": "1124-1125"
